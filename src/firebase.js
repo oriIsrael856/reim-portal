@@ -1,6 +1,5 @@
-// src/firebase.js
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, enableIndexedDbPersistence } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -13,9 +12,15 @@ const firebaseConfig = {
   measurementId: "G-F0ZHQN17NR"
 };
 
-// אתחול האפליקציה
 const app = initializeApp(firebaseConfig);
-
-// ייצוא שירותים לשימוש בשאר האפליקציה
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+
+// אופטימיזציית מהירות: שמירת נתונים מקומית בדפדפן
+enableIndexedDbPersistence(db).catch((err) => {
+    if (err.code === 'failed-precondition') {
+        console.warn("Persistence failed: Multiple tabs open");
+    } else if (err.code === 'unimplemented') {
+        console.warn("Persistence failed: Browser not supported");
+    }
+});
