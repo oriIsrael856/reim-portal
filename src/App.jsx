@@ -13,6 +13,8 @@ import HomePage from './pages/HomePage';
 import Chapter1 from './pages/Chapter1'; 
 import Chapter2 from './pages/Chapter2'; 
 import Chapter3 from './pages/Chapter3';
+import Chapter4 from './pages/Chapter4';
+import Chapter5 from './pages/Chapter5';
 
 const App = () => {
     const [content, setContent] = useState(null);
@@ -90,14 +92,8 @@ const App = () => {
                 {currentPage === 'chapter1' && <Chapter1 data={content.chapter1} onNext={() => navigateTo('chapter2')} />}
                 {currentPage === 'chapter2' && <Chapter2 data={content.chapter2} onNext={() => navigateTo('chapter3')} />}
                 {currentPage === 'chapter3' && <Chapter3 data={content.chapter3} onNext={() => navigateTo('chapter4')} />}
-                
-                {/* Placeholders לפרקים הבאים */}
-                {['chapter4', 'chapter5'].includes(currentPage) && (
-                    <div className="min-h-screen flex flex-col items-center justify-center pt-32">
-                        <h1 className="text-4xl font-black mb-4">הפרק בבנייה</h1>
-                        <button onClick={() => navigateTo('home')} className="text-[#816AFE] font-bold underline">חזרה לבית</button>
-                    </div>
-                )}
+                {currentPage === 'chapter4' && <Chapter4 data={content.chapter4} onNext={() => navigateTo('chapter5')} />}
+                {currentPage === 'chapter5' && <Chapter5 data={content.chapter5} onNext={() => navigateTo('home')} />}
             </div>
 
             <div className="md:pr-20">
