@@ -1,38 +1,24 @@
 import React, { useState } from 'react';
 import { Save, Home, Menu as MenuIcon, Smile, Users, Briefcase, ClipboardList, Wrench, Layout, Phone, Info, StickyNote, List, CheckCircle2, Layers } from 'lucide-react';
 import { SmartField, UniversalCardEditor, SimpleListEditor } from '../components/admin/VisualBlock';
-import { db } from '../firebase';
-import { doc, updateDoc } from 'firebase/firestore';
+import { saveContent } from '../services/contentService';
+import { getNestedValue, setNestedValue } from '../utils/objectHelpers';
 
 const AdminPanel = ({ content, version }) => {
     const [draft, setDraft] = useState(content || {});
     const [activeTab, setActiveTab] = useState('menu');
     const [isSaving, setIsSaving] = useState(false);
 
-    const getValue = (path) => {
-        try {
-            return path.split('.').reduce((obj, key) => (obj && obj[key] !== undefined) ? obj[key] : undefined, draft);
-        } catch (e) { return undefined; }
-    };
-    
+    const getValue = (path) => getNestedValue(draft, path);
+
     const updateNested = (path, value) => {
-        setDraft(prev => {
-            const newDraft = { ...prev };
-            const keys = path.split('.');
-            let current = newDraft;
-            for (let i = 0; i < keys.length - 1; i++) {
-                if (!current[keys[i]]) current[keys[i]] = {};
-                current = current[keys[i]];
-            }
-            current[keys[keys.length - 1]] = value;
-            return newDraft;
-        });
+        setDraft(prev => setNestedValue(prev, path, value));
     };
 
     const handleSave = async () => {
         setIsSaving(true);
         try {
-            await updateDoc(doc(db, "site_content", version), draft);
+            await saveContent(version, draft);
             alert("✅ הנתונים נשמרו בהצלחה!");
             window.location.reload();
         } catch (e) { alert("❌ שגיאה: " + e.message); }

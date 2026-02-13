@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowLeft, ThumbsUp, Instagram, Facebook, Linkedin } from 'lucide-react';
-import { THEME } from '../theme';
 import StickyCard from '../components/common/StickyCard';
 import NextChapterButton from '../components/common/NextChapterButton';
 

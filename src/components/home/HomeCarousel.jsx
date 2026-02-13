@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { ChevronRight, ChevronLeft, ThumbsUp, Users, Star, Layers, Bell } from 'lucide-react';
-import { THEME } from '../../theme';
 
 // מפת אייקונים: מחרוזת -> קומפוננטה
 const ICON_MAP = {
@@ -45,9 +44,9 @@ const HomeCarousel = ({ items, navigateTo }) => {
                 className="flex gap-6 overflow-x-auto pb-12 px-8 md:px-20 no-scrollbar snap-x"
                 style={{ scrollPaddingLeft: '2rem', scrollPaddingRight: '2rem' }}
             >
-                {items.map((card, i) => (
-                    <div 
-                        key={i} 
+                {items.map((card) => (
+                    <div
+                        key={card.id}
                         onClick={() => card.id === "01" && navigateTo('chapter1')}
                         className="min-w-[280px] w-[280px] h-[380px] bg-white p-8 rounded-[32px] shadow-[0px_4px_20px_rgba(0,0,0,0.03)] border border-transparent hover:border-[#2D2D44] transition-all cursor-pointer snap-start flex flex-col justify-between group relative overflow-hidden"
                     >

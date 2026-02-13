@@ -1,15 +1,21 @@
-import { ThumbsUp, Users, Star, Layers, Bell } from 'lucide-react';
-
 export const INITIAL_DATA = {
 // --- תפריט ניווט מעודכן ---
     menu: [
-        { id: "home", title: "דף הבית", page: "home", isHome: true }, // ללא מספר, עם דגל לבית
+        { id: "home", title: "דף הבית", page: "home", isHome: true },
         { id: "01", title: "תוכנית רעים: נעים להכיר", page: "chapter1" },
         { id: "02", title: "המשתתפים והמשתתפות", page: "chapter2" },
         { id: "03", title: "תפקיד הרכזת", page: "chapter3" },
-        { id: "04", title: "עבודה מנהלית", page: "chapter4" }, // עמוד חדש
-        { id: "05", title: "כלים מעשיים", page: "chapter5" }      // נשאר כרגע כקישור לבית
+        { id: "04", title: "עבודה מנהלית", page: "chapter4" },
+        { id: "05", title: "כלים מעשיים", page: "chapter5" }
     ],
+
+    // --- הדר ---
+    header: {
+        logo: "/Logo (1).png",
+        logoAlt: "רעים",
+        logoFallback: "רעים",
+        ctaText: "הרשמה לניוזלטר"
+    },
 
     // --- עמוד הבית ---
     home: {
@@ -28,7 +34,12 @@ export const INITIAL_DATA = {
             title: "ניוזלטר רעים",
             subtitle: "השראות מיוחדות ישירות לתיבה שלך",
             text: "מנה חודשית מרוכזת של חדשות, משחק ומיטב ההשראה מהשטח.",
-            placeholder: "הקלידי את כתובת המייל שלך"
+            placeholder: "הקלידי את כתובת המייל שלך",
+            images: { left: "/Image (2).png", right: "/Image (4).png" }
+        },
+        carouselHeader: {
+            label: "כל מה שכדאי לדעת",
+            title: "המדריכה לרכזות ורכזים"
         },
         carousel: [
             { id: "01", title: "תוכנית רעים:\nנעים להכיר", desc: "מהי תוכנית \"רעים\", מאיפה באנו", icon: "ThumbsUp" },
@@ -41,10 +52,14 @@ export const INITIAL_DATA = {
 
     // --- פרק 1: נעים להכיר ---
     chapter1: {
+        chapterNumber: "01",
+        nextButton: { title: "לפרק הבא", subtitle: "פרק 02 - מי משתתפות ומשתתפים ברעים" },
         hero: {
             tag: "פרק ראשון",
             title1: "תוכנית רעים:",
             title2: "נעים להכיר",
+            instruction: "גוללים למטה ומגלים את הסיפור שלנו.",
+            imageCaption: "לא רואים עלי!!",
             image1: "/Image (1).png",
             image2: "/Image.png"
         },
@@ -66,12 +81,14 @@ export const INITIAL_DATA = {
 
     // --- פרק 2: המשתתפים ---
     chapter2: {
+        chapterNumber: "02",
+        nextButton: { title: "לפרק הבא", subtitle: "פרק 03 - תפקיד הרכזת" },
         hero: {
             tag: "פרק שני",
             title: "מי משתתפות ומשתתפים ברעים",
-            image1: "/group.jpg", 
-            image2: "/game.jpg", 
-            image3: "/stage.jpg"      
+            image1: "/group.jpg",
+            image2: "/game.jpg",
+            image3: "/stage.jpg"
         },
         contentBox: {
             audienceTitle: "למי מיועדת התכנית?",
@@ -101,7 +118,7 @@ export const INITIAL_DATA = {
                 { id: "02", text: "משתתפים ומשתתפות עם לקויות למידה נרחבות" }
             ],
             description: "שתי האוכלוסיות מביאות עמן שונות נוירולוגית והתפתחותית, שמשפיעה על תהליכי למידה, תקשורת, חיברות ועיבוד מידע. השונות הזו אינה פתולוגיה אלא ביטוי למגוון האנושי.",
-            image: "/group-pillar.jpg" 
+            image: "/group-pillar.jpg"
         },
         group01: {
             id: "קבוצה 01",
@@ -139,6 +156,8 @@ export const INITIAL_DATA = {
 
     // --- פרק 3: תפקיד הרכזת ---
     chapter3: {
+        chapterNumber: "03",
+        nextButton: { title: "לפרק הבא", subtitle: "פרק 04 - עבודה מנהלית" },
         hero: {
             tag: "פרק שלישי",
             titleTop: "הגדרת תפקיד:",
@@ -211,11 +230,13 @@ export const INITIAL_DATA = {
     },
 
     chapter4: {
+        chapterNumber: "04",
+        nextButton: { title: "לפרק הבא", subtitle: "פרק 05 - כלים מעשיים" },
         hero: {
             tag: "פרק רביעי",
             title: "עבודה מנהלית",
             subtitle: "נהלים, מערכות ותהליכים",
-            image: "/admin-hero.png" 
+            image: "/admin-hero.png"
         },
         features: [
             { id: "01", title: "מערכת נתיב", desc: "הנחיות לרכזת", icon: "HeartHandshake" },
@@ -224,6 +245,7 @@ export const INITIAL_DATA = {
         ],
         nativSystem: {
             title: "מערכת נתיב",
+            label: "הנחיות לרכזת",
             description: "נתיב היא מערכת ממוחשבת לניהול ותיעוד המשתתפים והמשתתפות. היא מאפשרת מעקב שוטף ותמונת מצב עדכנית של כל קבוצה.",
             principles: [
                 "עדכון שוטף: כניסה ויציאה של משתתפים ומשתתפות.",
@@ -233,6 +255,8 @@ export const INITIAL_DATA = {
             ],
             support: "רכזות חדשות עוברות הדרכה מסודרת עם אחראי נתיב, המהווה כתובת לכל שאלה בהמשך."
         },
+        qaTitle: "שאלות ותשובות",
+        filesTitle: "נהלים וטפסים",
         committees: {
             title: "הוועדות",
             intro: "תכנית רעים מוכרת ומסובסדת על ידי משרד הרווחה. כדי להשתתף, יש צורך בוועדה המאשרת את המימון.",
@@ -261,8 +285,10 @@ export const INITIAL_DATA = {
             { name: "שם קובץ", desc: "תיאור הקובץ" }
         ]
     },
-    // בתוך INITIAL_DATA ב-src/data.js
+
     chapter5: {
+        chapterNumber: "05",
+        nextButton: { title: "סיימנו את האוגדן!", subtitle: "חזרה לעמוד הבית" },
         hero: {
             tag: "פרק חמישי ואחרון",
             title: "כלים מעשיים",
@@ -270,6 +296,7 @@ export const INITIAL_DATA = {
         },
         marketing: {
             title: "שיווק וגיוס משתתפים ומשתתפות",
+            stickyTitle: "שיווק וגיוס\nמשתתפים ומשתתפות",
             text: "שיווק וגיוס אינם פעולה חד-פעמית אלא תהליך מתמשך. תפקיד הרכזת הוא לא רק להנחות קבוצה, אלא גם להבטיח את חיותה לאורך זמן. שיווק נכון יוצר היכרות עם התוכנית, פותח דלתות בקהילה, ומביא משתתפים ומשתתפות חדשים להצטרף לקבוצה.\n\nשיווק איננו \"שגר ושכח\" (וגם לא שגרי ושכחי). הוא מתבסס על קשרים אישיים, שיתופי פעולה ונוכחות פעילה בשטח. רכזות ורכזים הופכים להיות שגרירי התוכנית - כתובת מוכרת ומשמעותית בקהילה.",
             stepsTitle: "צעדי פעולה מרכזיים:",
             steps: [
@@ -285,7 +312,7 @@ export const INITIAL_DATA = {
             cards: [
                 { title: "קהלי יעד ישירים", text: "קבוצות הורים, פורומים עירוניים, קבוצות פייסבוק ו-ווטסאפ.", checked: true },
                 { title: "רווחה וחינוך", text: "לשכות רווחה, מנהלות חינוך מיוחד, רכזי רווחה, רכזי נוער במרכז הקהילתי.", checked: true },
-                { title: "מטפלות ואנשי מקצוע", content: "פסיכולוגיות, עובדים סוציאליים, מרפאות בעיסוק, קלינאי תקשורת.", checked: true },
+                { title: "מטפלות ואנשי מקצוע", text: "פסיכולוגיות, עובדים סוציאליים, מרפאות בעיסוק, קלינאי תקשורת.", checked: true },
                 { title: "עמותות וארגונים", text: "אלו\"ט, קשר, אסי, אפ\"י, ניצן, שק\"ל, בית אקשטיין, קשת, מכללת גל.", checked: true },
                 { title: "שירות לאומי וצבא", text: "שלומית, בת עמי, ש\"ל, עמינדב, האגודה להתנדבות, \"רואים רחוק\".", checked: true }
             ]
@@ -300,7 +327,8 @@ export const INITIAL_DATA = {
             newsletter: {
                 title: "ניוזלטר רעים",
                 subtitle: "השראות מיוחדות לשירות התיבה שלך",
-                text: "מנה חודשית מרוכזת של חדשות, משחק ומיטב השראה מהשטח."
+                text: "מנה חודשית מרוכזת של חדשות, משחק ומיטב השראה מהשטח.",
+                placeholder: "הקלידי את כתובת המייל"
             },
             sideImage: "/people-boxes.jpg"
         }
@@ -308,12 +336,26 @@ export const INITIAL_DATA = {
 
     // --- פוטר ---
     footer: {
+        logos: { reim: "/Logo (1).png", matnasim: "/Matnasim.png" },
+        organization: "תוכנית רעים מבית החברה למתנ\"סים",
+        labels: { phone: "טלפון:", fax: "פקס:", email: "מייל:" },
         contact: { phone: "0732870187", fax: "0732870387", email: "reim@matnasim.org.il" },
         links: [
             { title: "כותרת", items: ["לינק 1", "לינק 1"] },
             { title: "כותרת", items: ["לינק 1", "לינק 1"] },
             { title: "כותרת", items: ["לינק 1", "לינק 1"] },
             { title: "התוכנית", items: ["לינק 1", "לינק 1"] }
+        ],
+        bottomLinks: [
+            { text: "מדיניות פרטיות", url: "#" },
+            { text: "תקנון אתר", url: "#" }
+        ],
+        copyright: "© כל הזכויות שמורות לחברה למתנ\"סים",
+        socialLinks: [
+            { platform: "facebook", url: "#" },
+            { platform: "instagram", url: "#" },
+            { platform: "linkedin", url: "#" },
+            { platform: "twitter", url: "#" }
         ]
     }
 };

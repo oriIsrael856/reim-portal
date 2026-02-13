@@ -1,8 +1,10 @@
 import React from 'react';
-import * as Icons from 'lucide-react';
+import { HeartHandshake, UserCheck, FileText, File } from 'lucide-react';
+
+const ICON_MAP = { HeartHandshake, UserCheck, FileText, File };
 
 const AdminFeatureCard = ({ id, title, desc, iconName }) => {
-    const Icon = Icons[iconName] || Icons.File;
+    const Icon = ICON_MAP[iconName] || File;
     return (
         <div className="bg-white rounded-[24px] p-8 border-2 border-transparent hover:border-[#816AFE]/20 shadow-sm hover:shadow-md transition-all group flex flex-col items-center text-center relative overflow-hidden h-full">
             <span className="absolute top-4 right-6 text-2xl font-black text-[#2D2D44]/10 font-['Salsa']">{id}</span>

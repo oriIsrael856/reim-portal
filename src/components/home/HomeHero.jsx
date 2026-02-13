@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowDown, Star } from 'lucide-react';
-import { THEME } from '../../theme';
 
 const HomeHero = ({ data }) => {
     return (
