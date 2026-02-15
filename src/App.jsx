@@ -20,12 +20,12 @@ const Chapter5 = lazy(() => import('./pages/Chapter5'));
 const AdminPanel = lazy(() => import('./pages/AdminPanel'));
 
 const ROUTES = {
-    home:     { component: HomePage,    contentKey: 'home' },
-    chapter1: { component: Chapter1,    contentKey: 'chapter1', next: 'chapter2' },
-    chapter2: { component: Chapter2,    contentKey: 'chapter2', next: 'chapter3' },
-    chapter3: { component: Chapter3,    contentKey: 'chapter3', next: 'chapter4' },
-    chapter4: { component: Chapter4,    contentKey: 'chapter4', next: 'chapter5' },
-    chapter5: { component: Chapter5,    contentKey: 'chapter5', next: 'home' },
+    home:     { component: HomePage,    contentKey: 'home', next: 'chapter1' },
+    chapter1: { component: Chapter1,    contentKey: 'chapter1', next: 'chapter2', prev: 'home' },
+    chapter2: { component: Chapter2,    contentKey: 'chapter2', next: 'chapter3', prev: 'chapter1' },
+    chapter3: { component: Chapter3,    contentKey: 'chapter3', next: 'chapter4', prev: 'chapter2' },
+    chapter4: { component: Chapter4,    contentKey: 'chapter4', next: 'chapter5', prev: 'chapter3' },
+    chapter5: { component: Chapter5,    contentKey: 'chapter5', next: 'home', prev: 'chapter4' },
     admin:    { component: AdminPanel,  requiresAuth: true },
 };
 
@@ -68,7 +68,8 @@ const App = () => {
             <PageComponent
                 data={content[route.contentKey]}
                 onNext={route.next ? () => navigateTo(route.next) : undefined}
-                navigateTo={currentPage === 'home' ? navigateTo : undefined}
+                onPrev={route.prev ? () => navigateTo(route.prev) : undefined}
+                navigateTo={navigateTo}
             />
         );
     };
@@ -100,13 +101,16 @@ const App = () => {
                 </button>
             )}
 
-            <Header />
+            <Header onLogoClick={() => navigateTo('home')} />
 
-            <Sidebar
-                navigateTo={navigateTo}
-                toggleMenu={() => setIsMenuOpen(true)}
-                currentPage={currentPage}
-            />
+            {/* סרגל צף – רק מדסקטופ כדי לא להסתיר תוכן במובייל */}
+            <div className="hidden md:block">
+                <Sidebar
+                    navigateTo={navigateTo}
+                    toggleMenu={() => setIsMenuOpen(true)}
+                    currentPage={currentPage}
+                />
+            </div>
 
             <MenuOverlay
                 isOpen={isMenuOpen}
@@ -116,13 +120,14 @@ const App = () => {
                 isAdmin={!!user}
             />
 
-            <div className="md:hidden fixed top-4 right-4 z-[501]">
-                 <button onClick={() => setIsMenuOpen(true)} className="bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-xl text-[#46319B]">
+            {/* כפתור תפריט במובייל – מתחת להדר כדי לא לחפוף */}
+            <div className="md:hidden fixed top-[calc(1.5rem+72px)] sm:top-[calc(1.5rem+80px)] right-4 z-[501]">
+                <button onClick={() => setIsMenuOpen(true)} className="bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-xl text-[#46319B] hover:bg-white transition-colors">
                     <Menu className="w-6 h-6"/>
                 </button>
             </div>
 
-            <main className={`transition-all duration-500 ${user ? 'pt-12' : ''} md:pr-20`}>
+            <main className="transition-all duration-500 px-4 md:px-0 md:pr-20 pt-[100px] md:pt-[116px]">
                 <Suspense fallback={
                     <div className="h-[60vh] flex items-center justify-center font-bold text-[#5E3BEE] animate-pulse">
                         טוען תוכן...
@@ -133,7 +138,7 @@ const App = () => {
             </main>
 
             {currentPage !== 'admin' && (
-                <div className="md:pr-20">
+                <div className="md:pr-20 px-0">
                     <Footer data={content.footer} />
                 </div>
             )}

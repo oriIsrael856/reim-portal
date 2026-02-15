@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Check, ArrowLeft, Plus, Minus } from 'lucide-react';
 import NextChapterButton from '../components/common/NextChapterButton';
+import PrevChapterButton from '../components/common/PrevChapterButton';
 import StickyCard from '../components/common/StickyCard'; 
 // ייבוא הרכיב הארכיטקטוני החדש
 import SplitStickyLayout from '../components/layout/SplitStickyLayout'; 
@@ -206,10 +207,15 @@ const WhyTogetherSection = ({ data }) => {
 /* ==============================================================================
    הרכיב הראשי
    ============================================================================== */
-const Chapter2 = ({ data, onNext }) => {
+const Chapter2 = ({ data, onNext, onPrev }) => {
     if (!data) return <div className="text-center p-20 text-[#816AFE]">טוען פרק 2...</div>;
     return (
-        <div className="min-h-screen bg-[#FFFDF5] pt-32 pb-0 font-['Rubik'] overflow-x-clip">
+        <div className="min-h-screen bg-[#FFFDF5] pt-32 pb-0 font-['Rubik']">
+            {onPrev && (
+                <div className="pt-6 pb-4 px-4">
+                    <PrevChapterButton title="לפרק הקודם" subtitle="פרק 01 - נעים להכיר" onClick={onPrev} />
+                </div>
+            )}
             <HeroSection data={data.hero} />
             {data.contentBox && <UnifiedOrangeSection data={data.contentBox} />}
             {data.groupsIntro && <div className="mb-20"><GroupsIntroSection data={data.groupsIntro} /></div>}

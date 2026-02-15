@@ -1,12 +1,13 @@
 import React from 'react';
 import { ArrowLeft, Check } from 'lucide-react';
 import NextChapterButton from '../components/common/NextChapterButton';
+import PrevChapterButton from '../components/common/PrevChapterButton';
 import StickyCard from '../components/common/StickyCard';
 import SplitStickyLayout from '../components/layout/SplitStickyLayout';
 import ProcessCard from '../components/common/ProcessCard';
 import Accordion from '../components/common/Accordion';
 
-const Chapter3 = ({ data, onNext }) => {
+const Chapter3 = ({ data, onNext, onPrev }) => {
     // הגנה מפני קריסה במקרה של חוסר בנתונים
     if (!data) return <div className="text-center p-20 text-[#816AFE] font-bold">טוען נתוני פרק 3...</div>;
 
@@ -41,8 +42,12 @@ const Chapter3 = ({ data, onNext }) => {
     );
 
     return (
-        <div className="min-h-screen bg-[#FFFDF5] pt-32 pb-0 font-['Rubik'] overflow-x-clip">
-            
+        <div className="min-h-screen bg-[#FFFDF5] pt-32 pb-0 font-['Rubik']">
+            {onPrev && (
+                <div className="pt-6 pb-4 px-4">
+                    <PrevChapterButton title="לפרק הקודם" subtitle="פרק 02 - המשתתפים" onClick={onPrev} />
+                </div>
+            )}
             {/* --- חלק א': תפקיד ואחריות (Split Sticky) --- */}
             <SplitStickyLayout stickyContent={StickyHeader}>
                 
@@ -164,7 +169,7 @@ const Chapter3 = ({ data, onNext }) => {
             <div className="my-32 px-4 max-w-4xl mx-auto">
                  <NextChapterButton 
                     title="סיימנו את פרק 3"
-                    subtitle="חזרה לעמוד הבית"
+                    subtitle="פרק 04 - עבודה מנהלית"
                     onClick={onNext} 
                 />
             </div>

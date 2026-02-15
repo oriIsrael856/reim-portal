@@ -4,13 +4,18 @@ import AdminFeatureCard from '../components/chapter4/AdminFeatureCard';
 import FlowStep from '../components/chapter4/FlowStep'; // אם עדיין יש שגיאה, שנה ל-'../components/chapter4/FlowStep.jsx'
 import Accordion from '../components/common/Accordion';
 import NextChapterButton from '../components/common/NextChapterButton';
+import PrevChapterButton from '../components/common/PrevChapterButton';
 
-const Chapter4 = ({ data, onNext }) => {
+const Chapter4 = ({ data, onNext, onPrev }) => {
     if (!data) return <div className="p-20 text-center font-bold text-[#816AFE]">טוען נתוני עבודה מנהלית...</div>;
 
     return (
-        <div className="min-h-screen bg-[#FFFDF5] pt-32 pb-20 font-['Rubik'] overflow-x-clip">
-            
+        <div className="min-h-screen bg-[#FFFDF5] pt-32 pb-20 font-['Rubik']">
+            {onPrev && (
+                <div className="pt-6 pb-4 px-4">
+                    <PrevChapterButton title="לפרק הקודם" subtitle="פרק 03 - תפקיד הרכזת" onClick={onPrev} />
+                </div>
+            )}
             {/* 1. Hero Section */}
             <header className="max-w-7xl mx-auto px-6 text-center mb-32 relative">
                 <div className="inline-flex items-center gap-2 bg-[#C5E080] border-2 border-[#2D2D44] px-4 py-1.5 rounded-full mb-8 font-bold text-sm shadow-[3px_3px_0px_#2D2D44]">

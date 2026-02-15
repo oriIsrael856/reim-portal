@@ -2,12 +2,18 @@ import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 
 const NextChapterButton = ({ title, subtitle, onClick }) => {
+    const handleClick = () => {
+        if (typeof onClick === 'function') onClick();
+    };
     return (
         // הקונטיינר החיצוני - דואג למרכז את הכפתור
         <div className="w-full max-w-5xl mx-auto px-6 mt-32 mb-24 relative z-30 flex justify-center items-center h-[200px]">
             <button 
-                onClick={onClick}
+                type="button"
+                onClick={handleClick}
+                disabled={!onClick}
                 className="
+                    disabled:opacity-50 disabled:cursor-not-allowed
                     group relative 
                     flex items-center justify-between 
                     h-[160px] rounded-[40px] px-6 md:px-12 

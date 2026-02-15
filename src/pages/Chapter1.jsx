@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft, ThumbsUp, Instagram, Facebook, Linkedin } from 'lucide-react';
 import StickyCard from '../components/common/StickyCard';
 import NextChapterButton from '../components/common/NextChapterButton';
+import PrevChapterButton from '../components/common/PrevChapterButton';
 
 // רכיב עזר: עיגול ירוק עם חץ
 const GreenArrowCircle = ({ direction = 'left' }) => (
@@ -15,12 +16,16 @@ const GreenArrowCircle = ({ direction = 'left' }) => (
     </div>
 );
 
-const Chapter1 = ({ data }) => {
+const Chapter1 = ({ data, onNext, onPrev }) => {
     if (!data) return null;
 
     return (
-        <div className="bg-[#F8F7FF] min-h-screen font-['Rubik'] overflow-x-clip">
-            
+        <div className="bg-[#F8F7FF] min-h-screen font-['Rubik']">
+            {onPrev && (
+                <div className="pt-24 pb-4">
+                    <PrevChapterButton title="חזור לדף הבית" onClick={onPrev} />
+                </div>
+            )}
             {/* ============================================================================
                חלק 1 + 2: הראפר הראשי (Split Screen)
                מכיל את הכותרת (ימין) ואת התמונות והכרטיסיות (שמאל)
@@ -141,7 +146,7 @@ const Chapter1 = ({ data }) => {
                 <NextChapterButton 
                     title="לפרק הבא"
                     subtitle="פרק 02 - מי משתתפות ומשתתפים ברעים"
-                    onClick={() => console.log("Navigate")}
+                    onClick={onNext}
                 />
             </div>
         </div>

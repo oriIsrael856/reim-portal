@@ -10,6 +10,15 @@ const ICON_MAP = {
     "Bell": <Bell size={32} />
 };
 
+// מיפוי מזהה כרטיס → עמוד
+const CARD_ID_TO_PAGE = {
+    "01": "chapter1",
+    "02": "chapter2",
+    "03": "chapter3",
+    "04": "chapter4",
+    "05": "chapter5"
+};
+
 const HomeCarousel = ({ items, navigateTo }) => {
     const scrollRef = useRef(null);
 
@@ -18,6 +27,11 @@ const HomeCarousel = ({ items, navigateTo }) => {
             const scrollAmount = direction === 'right' ? 340 : -340;
             scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
+    };
+
+    const handleCardClick = (card) => {
+        const page = card.page || CARD_ID_TO_PAGE[card.id];
+        if (page && navigateTo) navigateTo(page);
     };
 
     return (
@@ -29,12 +43,13 @@ const HomeCarousel = ({ items, navigateTo }) => {
                     <h2 className="text-3xl md:text-4xl font-black text-[#2D2D44]">המדריכה לרכזות ורכזים</h2>
                 </div>
                 <div className="flex gap-3 ltr">
+                    <button onClick={() => scroll('right')} className="w-12 h-12 flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
+                        <ChevronRight size={24} />
+                    </button>                    
                     <button onClick={() => scroll('left')} className="w-12 h-12 flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
                         <ChevronLeft size={24} />
                     </button>
-                    <button onClick={() => scroll('right')} className="w-12 h-12 flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
-                        <ChevronRight size={24} />
-                    </button>
+
                 </div>
             </div>
 
@@ -47,7 +62,7 @@ const HomeCarousel = ({ items, navigateTo }) => {
                 {items.map((card) => (
                     <div
                         key={card.id}
-                        onClick={() => card.id === "01" && navigateTo('chapter1')}
+                        onClick={() => handleCardClick(card)}
                         className="min-w-[280px] w-[280px] h-[380px] bg-white p-8 rounded-[32px] shadow-[0px_4px_20px_rgba(0,0,0,0.03)] border border-transparent hover:border-[#2D2D44] transition-all cursor-pointer snap-start flex flex-col justify-between group relative overflow-hidden"
                     >
                         <div className="absolute top-6 left-6">
