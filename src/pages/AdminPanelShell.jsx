@@ -61,6 +61,8 @@ const AdminPanelShell = ({ content, version }) => {
         type: 'success',
         message: 'הנתונים נשמרו בהצלחה!',
       });
+      // Tell the app to refresh content from Firestore so the homepage/carousel shows the new card
+      window.dispatchEvent(new CustomEvent('reim-content-saved'));
     } catch (e) {
       setToast({
         type: 'error',

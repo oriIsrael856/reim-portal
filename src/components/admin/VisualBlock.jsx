@@ -69,6 +69,17 @@ export const SimpleListEditor = ({ title, items = [], onUpdate, icon: Icon = Lis
     );
 };
 
+// מחזיר את המספר הבא לפורמט "01", "02", ... לפי המקסימום הקיים או המיקום
+const getNextCardId = (existingItems) => {
+    const numericIds = (existingItems || [])
+        .map((item) => item && item.id != null && String(item.id))
+        .filter(Boolean)
+        .map((id) => parseInt(id, 10))
+        .filter((n) => !Number.isNaN(n));
+    const nextNum = numericIds.length > 0 ? Math.max(...numericIds) + 1 : 1;
+    return nextNum.toString().padStart(2, '0');
+};
+
 // --- רכיב 3: עורך כרטיסים אוניברסלי (לכל השאר) ---
 export const UniversalCardEditor = ({ title, items = [], onUpdate, newItemTemplate = {}, icon: Icon = List }) => {
     const safeItems = Array.isArray(items) ? items : [];
@@ -80,6 +91,12 @@ export const UniversalCardEditor = ({ title, items = [], onUpdate, newItemTempla
         onUpdate(next);
     };
 
+    const handleAddCard = () => {
+        const nextId = getNextCardId(safeItems);
+        const newItem = { ...newItemTemplate, id: nextId };
+        onUpdate([...safeItems, newItem]);
+    };
+
     return (
         <div className="bg-white border border-gray-200 rounded-[30px] p-8 mb-8 shadow-sm">
             <div className="flex justify-between items-center mb-6 pb-4 border-b border-gray-100">
@@ -89,7 +106,7 @@ export const UniversalCardEditor = ({ title, items = [], onUpdate, newItemTempla
                 </div>
                 <div className="flex gap-2">
                     <button onClick={() => setShowRaw(!showRaw)} className="text-gray-300 hover:text-[#5E3BEE]"><Eye size={16}/></button>
-                    <button onClick={() => onUpdate([...safeItems, newItemTemplate])} className="bg-[#C5E080] text-[#2D2D44] px-4 py-2 rounded-full font-black text-xs flex items-center gap-2 hover:brightness-105">
+                    <button onClick={handleAddCard} className="bg-[#C5E080] text-[#2D2D44] px-4 py-2 rounded-full font-black text-xs flex items-center gap-2 hover:brightness-105">
                         <Plus size={14}/> הוסף כרטיס
                     </button>
                 </div>

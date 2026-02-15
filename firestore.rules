@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // תוכן האתר: קריאה לכולם, כתיבה רק למשתמשים מחוברים (אדמין)
+    match /site_content/{version} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null;
+    }
+  }
+}
