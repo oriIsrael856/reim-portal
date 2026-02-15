@@ -24,7 +24,7 @@ const firebaseConfig = {
 
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 // הגדרת מטמון (Cache) מודרנית לביצועים מקסימליים
 export const db = initializeFirestore(app, {

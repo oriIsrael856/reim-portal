@@ -1,5 +1,87 @@
-import React, { useState } from 'react';
-import { Plus, Trash2, Edit3, Type, List, Eye, EyeOff, CheckSquare } from 'lucide-react';
+import React, { useState, useRef, useId } from 'react';
+import { Plus, Trash2, Edit3, Type, List, Eye, EyeOff, CheckSquare, ImagePlus } from 'lucide-react';
+import { uploadImageFile } from '../../services/uploadService';
+
+// --- רכיב תמונה: לחיצה על התמונה פותחת את מערכת הקבצים, העלאה ל-Firebase Storage ---
+export const ImageField = ({ label, value, onChange }) => {
+    const [uploading, setUploading] = useState(false);
+    const [error, setError] = useState(null);
+    const fileInputId = useId();
+    const inputRef = useRef(null);
+
+    const handleFileChange = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        e.target.value = '';
+        setError(null);
+        setUploading(true);
+        try {
+            const url = await uploadImageFile(file);
+            onChange(url);
+        } catch (err) {
+            setError(err?.message || 'ההעלאה נכשלה');
+            console.error('[ImageField] upload failed', err);
+        } finally {
+            setUploading(false);
+        }
+    };
+
+    const src = value && (value.startsWith('http') || value.startsWith('/')) ? value : null;
+
+    return (
+        <div className="mb-4 w-full">
+            {label && (
+                <span className="flex items-center gap-2 text-[10px] font-black text-[#2D2D44]/40 mb-1 uppercase tracking-wider block">
+                    {label}
+                </span>
+            )}
+            <label
+                htmlFor={fileInputId}
+                className={`
+                    relative w-full aspect-video max-h-[200px] rounded-xl border-2 border-dashed overflow-hidden
+                    flex items-center justify-center cursor-pointer transition-all block
+                    ${uploading ? 'pointer-events-none opacity-70' : ''}
+                    ${src ? 'border-[#5E3BEE]/30 hover:border-[#5E3BEE] bg-gray-50' : 'border-gray-200 hover:border-[#5E3BEE]/50 bg-[#F8F9FC]'}
+                `}
+                aria-label="לחצי להחלפת תמונה"
+            >
+                <input
+                    id={fileInputId}
+                    ref={inputRef}
+                    type="file"
+                    accept="image/*"
+                    className="sr-only"
+                    onChange={handleFileChange}
+                    disabled={uploading}
+                />
+                {uploading && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
+                        <div className="w-10 h-10 border-4 border-white border-t-transparent rounded-full animate-spin" />
+                    </div>
+                )}
+                {src ? (
+                    <img src={src} alt="" className="w-full h-full object-contain p-1 pointer-events-none" />
+                ) : (
+                    <div className="flex flex-col items-center gap-2 text-gray-400 pointer-events-none">
+                        <ImagePlus size={40} />
+                        <span className="text-xs font-bold">לחצי לבחירת תמונה מהמחשב</span>
+                    </div>
+                )}
+            </label>
+            {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+            <input
+                type="text"
+                className="mt-2 w-full p-2 bg-[#F8F9FC] border border-gray-200 rounded-lg text-xs"
+                value={value || ''}
+                onChange={(e) => onChange(e.target.value)}
+                placeholder="או הדבקי קישור לתמונה (כתובת URL)"
+            />
+        </div>
+    );
+};
+
+// מחזיר true אם השדה הוא תמונה (לפי שם השדה)
+const isImageKey = (key) => /^image\d*$|^logo$/i.test(key) || key === 'image';
 
 // --- רכיב 1: שדה חכם ---
 export const SmartField = ({ label, value, onChange }) => {
@@ -135,6 +217,10 @@ export const UniversalCardEditor = ({ title, items = [], onUpdate, newItemTempla
                                             icon={CheckSquare}
                                         />
                                     );
+                                }
+                                // שדות תמונה: לחיצה פותחת בחירת קובץ מהמחשב
+                                if (isImageKey(key) && typeof item[key] === 'string') {
+                                    return <ImageField key={key} label={key} value={item[key]} onChange={(val) => updateItem(idx, key, val)} />;
                                 }
                                 return <SmartField key={key} label={key} value={item[key]} onChange={(val) => updateItem(idx, key, val)} />;
                             })}

@@ -1,11 +1,18 @@
 import React from 'react';
 import { Home } from 'lucide-react';
-import { SmartField, UniversalCardEditor } from '../VisualBlock';
+import { SmartField, ImageField, UniversalCardEditor } from '../VisualBlock';
 
 /**
  * Home page content editing section.
  */
 const HomeSection = ({ getValue, update }) => {
+  const heroImages = getValue('home.hero.images') || [];
+  const setHeroImage = (index, url) => {
+    const next = [...heroImages];
+    next[index] = url;
+    update('home.hero.images', next);
+  };
+
   return (
     <div className="space-y-6 animate-in fade-in">
       <div className="bg-white p-8 rounded-[32px] shadow-sm">
@@ -35,6 +42,17 @@ const HomeSection = ({ getValue, update }) => {
           value={getValue('home.intro.text')}
           onChange={(v) => update('home.intro.text', v)}
         />
+        <h3 className="font-black text-xl mb-4 mt-8">תמונות Hero (קרוסלה)</h3>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <ImageField
+              key={i}
+              label={`תמונה ${i + 1}`}
+              value={heroImages[i]}
+              onChange={(v) => setHeroImage(i, v)}
+            />
+          ))}
+        </div>
       </div>
 
       <UniversalCardEditor

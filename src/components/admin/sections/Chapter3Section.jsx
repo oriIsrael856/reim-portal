@@ -1,6 +1,6 @@
 import React from 'react';
 import { Briefcase, List as ListIcon } from 'lucide-react';
-import { SmartField, UniversalCardEditor } from '../VisualBlock';
+import { SmartField, ImageField, UniversalCardEditor } from '../VisualBlock';
 
 /**
  * Chapter 3 – ״תפקיד הרכזת״ section editor.
@@ -24,6 +24,7 @@ const Chapter3Section = ({ getValue, update }) => {
           value={getValue('chapter3.hero.description')}
           onChange={(v) => update('chapter3.hero.description', v)}
         />
+        <ImageField label="תמונה Hero" value={getValue('chapter3.hero.image')} onChange={(v) => update('chapter3.hero.image', v)} />
       </div>
 
       <UniversalCardEditor

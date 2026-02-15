@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["http://localhost:5173", "http://localhost:3000", "http://127.0.0.1:5173", "https://reim-portal.web.app", "https://reim-portal.firebaseapp.com"],
+    "method": ["GET", "HEAD", "PUT", "POST", "DELETE", "OPTIONS"],
+    "responseHeader": ["Content-Type", "Authorization", "Content-Length", "User-Agent", "X-Requested-With", "x-firebase-storage-version", "x-goog-meta-"],
+    "maxAgeSeconds": 3600
+  }
+]

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StickyNote, Layout } from 'lucide-react';
-import { SmartField, UniversalCardEditor } from '../VisualBlock';
+import { SmartField, ImageField, UniversalCardEditor } from '../VisualBlock';
 
 /**
  * Chapter 1 – ״נעים להכיר״ section editor.
@@ -25,6 +25,9 @@ const Chapter1Section = ({ getValue, update }) => {
           value={getValue('chapter1.hero.description')}
           onChange={(v) => update('chapter1.hero.description', v)}
         />
+        <h3 className="font-black text-xl mb-4 mt-6">תמונות</h3>
+        <ImageField label="תמונה 1" value={getValue('chapter1.hero.image1')} onChange={(v) => update('chapter1.hero.image1', v)} />
+        <ImageField label="תמונה 2" value={getValue('chapter1.hero.image2')} onChange={(v) => update('chapter1.hero.image2', v)} />
       </div>
 
       <UniversalCardEditor

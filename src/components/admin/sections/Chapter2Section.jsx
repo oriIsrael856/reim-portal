@@ -1,6 +1,6 @@
 import React from 'react';
 import { StickyNote, Users, Smile } from 'lucide-react';
-import { SmartField, UniversalCardEditor } from '../VisualBlock';
+import { SmartField, ImageField, UniversalCardEditor } from '../VisualBlock';
 
 /**
  * Helper to safely resolve an array from multiple possible nested paths.
@@ -71,6 +71,13 @@ const Chapter2Section = ({ getValue, update }) => {
           value={getValue('chapter2.hero.subtitle')}
           onChange={(v) => update('chapter2.hero.subtitle', v)}
         />
+        <h3 className="font-black text-xl mb-4 mt-6">תמונות Hero</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <ImageField label="תמונה 1" value={getValue('chapter2.hero.image1')} onChange={(v) => update('chapter2.hero.image1', v)} />
+          <ImageField label="תמונה 2" value={getValue('chapter2.hero.image2')} onChange={(v) => update('chapter2.hero.image2', v)} />
+          <ImageField label="תמונה 3" value={getValue('chapter2.hero.image3')} onChange={(v) => update('chapter2.hero.image3', v)} />
+        </div>
+        <ImageField label="תמונת אוכלוסיות" value={getValue('chapter2.groupsIntro.image')} onChange={(v) => update('chapter2.groupsIntro.image', v)} />
       </div>
 
       <UniversalCardEditor
