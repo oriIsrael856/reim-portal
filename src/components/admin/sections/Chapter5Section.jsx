@@ -29,6 +29,24 @@ const Chapter5Section = ({ getValue, update }) => {
         <ImageField label="הרכזיה - תמונה" value={getValue('chapter5.resources.library.image')} onChange={(v) => update('chapter5.resources.library.image', v)} />
       </div>
 
+      <div className="bg-white p-8 rounded-[32px] shadow-sm">
+        <h3 className="font-black text-xl mb-4">משאבים – ניוזלטר</h3>
+        <SmartField label="כותרת" value={getValue('chapter5.resources.newsletter.title')} onChange={(v) => update('chapter5.resources.newsletter.title', v)} />
+        <SmartField label="תת-כותרת" value={getValue('chapter5.resources.newsletter.subtitle')} onChange={(v) => update('chapter5.resources.newsletter.subtitle', v)} />
+        <SmartField label="טקסט" value={getValue('chapter5.resources.newsletter.text')} onChange={(v) => update('chapter5.resources.newsletter.text', v)} />
+        <SmartField label="מציין מקום בשדה מייל" value={getValue('chapter5.resources.newsletter.placeholder')} onChange={(v) => update('chapter5.resources.newsletter.placeholder', v)} />
+      </div>
+
+      <div className="bg-white p-8 rounded-[32px] shadow-sm">
+        <h3 className="font-black text-xl mb-4">תמונה מצד שמאל לניוזלטר</h3>
+        <p className="text-[#2D2D44]/70 text-sm mb-4">התמונה בכרטיס הימני בסקשן המשאבים (מצד שמאל לניוזלטר).</p>
+        <ImageField
+          label="תמונה"
+          value={getValue('chapter5.resources.sideImage')}
+          onChange={(v) => update('chapter5.resources.sideImage', v)}
+        />
+      </div>
+
       <UniversalCardEditor
         title="צעדי פעולה (אקורדיון)"
         items={getValue('chapter5.marketing.steps')}

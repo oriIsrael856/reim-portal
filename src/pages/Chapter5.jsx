@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ArrowLeft, Download } from 'lucide-react';
+import { Mail, ArrowLeft, Star, Plus } from 'lucide-react';
 import SplitStickyLayout from '../components/layout/SplitStickyLayout';
 import Accordion from '../components/common/Accordion';
 import CheckCard from '../components/chapter5/CheckCard';
@@ -80,63 +80,61 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                 </div>
             </section>
 
-            {/* --- 5. Resources Section (הגריד המשולש המתוקן) --- */}
-            <section className="max-w-[1600px] mx-auto px-6 mb-32 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                {/* א. תמונה ימנית (אנשים בקופסאות) */}
-                <div className="rounded-[40px] overflow-hidden border-2 border-[#2D2D44] shadow-sm h-full min-h-[400px]">
-                    <img 
-                        src={data.resources?.sideImage} 
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" 
-                        alt="קהילת רעים" 
-                    />
-                </div>
-
-                {/* ב. ניוזלטר (מרכז) */}
-                <div className="bg-[#C5E080] border-2 border-[#2D2D44] rounded-[40px] p-10 relative overflow-hidden flex flex-col justify-center text-center shadow-[8px_8px_0px_rgba(45,45,68,0.05)] h-full">
-                    <div className="relative z-10">
-                        <h3 className="text-3xl font-black mb-2 text-[#2D2D44]">{data.resources?.newsletter?.title}</h3>
-                        <p className="font-bold text-[#2D2D44]/60 mb-6 text-sm">{data.resources?.newsletter?.subtitle}</p>
-                        <p className="text-base font-medium mb-10 max-w-xs mx-auto text-[#2D2D44] leading-relaxed">
-                            {data.resources?.newsletter?.text}
-                        </p>
-                        
-                        <div className="relative max-w-xs mx-auto">
-                            <input 
-                                type="email" 
-                                placeholder="הקלידי את כתובת המייל" 
-                                className="w-full py-3.5 px-6 rounded-full border-2 border-[#2D2D44] pr-14 outline-none focus:ring-2 ring-[#5E3BEE]/20 transition-all"
-                            />
-                            <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#5E3BEE] text-white p-2 rounded-full shadow-md">
-                                <Mail size={20} />
-                            </div>
-                        </div>
+            {/* --- 5. Resources Section: הרכזיה (שמאל) | ניוזלטר (אמצע) | גריד תמונות (ימין) --- */}
+            <section className="max-w-[1600px] mx-auto px-6 mb-32 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+                {/* א. הרכזיה – כרטיס לבן: טקסט בצד, תמונה בצד (ב-RTL: טקסט ימין, תמונה שמאל) */}
+                <div className="bg-white border-2 border-[#2D2D44] rounded-[40px] overflow-hidden shadow-[8px_8px_0px_rgba(45,45,68,0.05)] flex flex-col lg:flex-row min-h-[480px]">
+                    <div className="lg:w-2/3 h-64 lg:h-auto min-h-[280px] overflow-hidden shrink-0">
+                        <img src={data.resources?.library?.image} className="w-full h-full object-cover" alt="הרכזיה" />
                     </div>
-                    <div className="absolute -bottom-6 -left-6 text-[120px] text-white/20 font-black rotate-12 pointer-events-none">@</div>
-                </div>
-
-                {/* ג. הרכזיה (שמאל) */}
-                <div className="bg-white border-2 border-[#2D2D44] rounded-[40px] overflow-hidden flex flex-col shadow-[8px_8px_0px_rgba(45,45,68,0.05)] h-full">
-                    <div className="h-1/2 overflow-hidden border-b-2 border-[#2D2D44]/10">
-                        <img 
-                            src={data.resources?.library?.image} 
-                            className="w-full h-full object-cover" 
-                            alt="הרכזיה" 
-                        />
-                    </div>
-                    <div className="p-8 text-right flex flex-col flex-grow justify-between">
+                    <div className="lg:w-1/3 p-8 flex flex-col justify-between text-right">
                         <div>
                             <h3 className="text-3xl font-black mb-4 text-[#2D2D44]">{data.resources?.library?.title}</h3>
-                            <p className="text-sm text-[#2D2D44]/70 leading-relaxed font-medium">
+                            <p className="text-[#2D2D44]/80 text-sm leading-relaxed font-medium">
                                 {data.resources?.library?.desc}
                             </p>
                         </div>
-                        <button className="mt-8 bg-[#5E3BEE] text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-[#4a2ec6] transition-all self-start shadow-md hover:-translate-y-1">
-                            {data.resources?.library?.btnText} <ArrowLeft size={18} strokeWidth={3} />
+                        <button className="mt-8 bg-[#5E3BEE] text-white px-8 py-3 rounded-full font-bold inline-flex items-center gap-2 hover:bg-[#4a2ec6] transition-all shadow-md hover:-translate-y-1 self-end">
+                            <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"><Plus size={18} strokeWidth={3} /></span>
+                            {data.resources?.library?.btnText}
                         </button>
                     </div>
                 </div>
 
+                {/* ב. ניוזלטר – כרטיס ירוק */}
+                <div className="bg-[#C5E080] border-2 border-[#2D2D44] rounded-[40px] p-10 relative overflow-hidden flex flex-col justify-center text-center shadow-[8px_8px_0px_rgba(45,45,68,0.05)] min-h-[480px]">
+                    <div className="relative z-10">
+                        <div className="flex justify-center mb-4">
+                            <Star className="text-[#FFD028] fill-[#FFD028]" size={40} />
+                        </div>
+                        <h3 className="text-3xl font-black mb-2 text-[#2D2D44]">{data.resources?.newsletter?.title}</h3>
+                        <p className="font-bold text-[#2D2D44]/60 mb-2 text-sm">{data.resources?.newsletter?.subtitle}</p>
+                        <p className="text-base font-medium mb-8 max-w-xs mx-auto text-[#2D2D44] leading-relaxed">
+                            {data.resources?.newsletter?.text}
+                        </p>
+                        <div className="relative max-w-xs mx-auto">
+                            <input
+                                type="email"
+                                placeholder={data.resources?.newsletter?.placeholder || 'הקלידי את כתובת המייל שלך'}
+                                className="w-full py-3.5 px-6 rounded-full border-2 border-[#2D2D44] pr-12 outline-none focus:ring-2 ring-[#5E3BEE]/20 transition-all bg-white/80"
+                            />
+                            <div className="absolute left-2 top-1/2 -translate-y-1/2 bg-[#5E3BEE] text-white p-2 rounded-full shadow-md">
+                                <Mail size={18} />
+                            </div>
+                        </div>
+                    </div>
+                    <svg className="absolute bottom-6 left-6 w-14 h-14 opacity-30 text-[#2D2D44] pointer-events-none" viewBox="0 0 100 100">
+                        <path d="M10,90 Q50,10 90,90" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="5,5" />
+                        <path d="M85,80 L90,90 L80,92" fill="none" stroke="currentColor" strokeWidth="2" />
+                    </svg>
+                </div>
+
+                {/* ג. תמונה אחת מצד שמאל לניוזלטר */}
+                <div className="bg-white border-2 border-[#2D2D44] rounded-[40px] overflow-hidden shadow-[8px_8px_0px_rgba(45,45,68,0.05)] min-h-[480px]">
+                    {data.resources?.sideImage && (
+                        <img src={data.resources.sideImage} alt="" className="w-full h-full min-h-[480px] object-cover" />
+                    )}
+                </div>
             </section>
 
             {/* כפתור סיום האוגדן */}

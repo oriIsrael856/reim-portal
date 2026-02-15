@@ -57,9 +57,14 @@ const Accordion = ({ items }) => {
 const HeroSection = ({ data }) => (
     <div className="relative pt-10 pb-12 text-center max-w-[1400px] mx-auto px-4">
         <div className="hidden lg:block pointer-events-none">
-            <div className="absolute top-20 left-20 w-64 h-56 rotate-[-6deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[8px_8px_0px_#2D2D44] z-10 bg-gray-200"><img src={data.image1} alt="Group" className="w-full h-full object-cover" /></div>
-            <div className="absolute top-0 right-32 w-52 h-40 rotate-[4deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[-6px_6px_0px_#2D2D44] z-10 bg-gray-200"><img src={data.image2} alt="Game" className="w-full h-full object-cover" /></div>
-            <div className="absolute top-48 right-16 w-64 h-48 rotate-[-3deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[-6px_6px_0px_#2D2D44] z-10 bg-gray-200"><img src={data.image3} alt="Stage" className="w-full h-full object-cover" /></div>
+            {/* שמאל למעלה – תמונה גדולה */}
+            <div className="absolute top-8 left-12 w-72 h-56 rotate-[-6deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[8px_8px_0px_#2D2D44] z-10 bg-gray-200"><img src={data.image1} alt="" className="w-full h-full object-cover" /></div>
+            {/* שמאל למטה – תמונה קטנה מרובעת, חופפת ליד התמונה הגדולה */}
+            <div className="absolute top-44 left-28 w-[240px] h-[240px] rotate-[8deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[6px_6px_0px_#2D2D44] z-20 bg-gray-200"><img src={data.image4} alt="" className="w-full h-full object-cover" /></div>
+            {/* ימין למעלה */}
+            <div className="absolute top-0 right-24 w-56 h-44 rotate-[4deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[-6px_6px_0px_#2D2D44] z-10 bg-gray-200"><img src={data.image2} alt="" className="w-full h-full object-cover" /></div>
+            {/* ימין למטה – חופף לתמונה הימנית העליונה */}
+            <div className="absolute top-36 right-12 w-64 h-48 rotate-[-3deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[-6px_6px_0px_#2D2D44] z-20 bg-gray-200"><img src={data.image3} alt="" className="w-full h-full object-cover" /></div>
         </div>
         <div className="relative z-20 mt-10 lg:mt-32">
             <div className="inline-flex items-center gap-2 bg-[#C5E080] border-2 border-black px-5 py-1.5 rounded-full mb-6 shadow-[3px_3px_0px_black] transform -rotate-1">
@@ -68,7 +73,7 @@ const HeroSection = ({ data }) => (
             </div>
             <h1 className="text-5xl md:text-7xl font-black text-[#2D2D44] leading-[1.1] mb-4">מי משתתפות <br /><span className="text-[#5E3BEE] relative inline-block">ומשתתפים ברעים<span className="absolute bottom-2 left-0 w-full h-4 bg-[#FFB84C] -z-10 rounded-sm transform -rotate-1"></span></span></h1>
             <div className="flex lg:hidden gap-4 overflow-x-auto mt-10 pb-4 px-4 snap-x no-scrollbar">
-                {[data.image1, data.image2, data.image3].map((img, i) => (<div key={i} className="w-64 h-48 rounded-2xl border-2 border-black overflow-hidden snap-center flex-shrink-0 bg-gray-200 shadow-[4px_4px_0px_black]"><img src={img} className="w-full h-full object-cover" /></div>))}
+                {[data.image1, data.image2, data.image3, data.image4].map((img, i) => (<div key={i} className="w-64 h-48 rounded-2xl border-2 border-black overflow-hidden snap-center flex-shrink-0 bg-gray-200 shadow-[4px_4px_0px_black]"><img src={img} className="w-full h-full object-cover" /></div>))}
             </div>
         </div>
         <div className="absolute bottom-10 left-10 text-[140px] font-black text-[#5E3BEE]/10 font-['Salsa'] hidden md:block select-none -z-10">02</div>

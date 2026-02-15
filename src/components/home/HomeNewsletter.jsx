@@ -9,11 +9,11 @@ const HomeNewsletter = ({ data }) => {
         <div className="px-4 md:px-12 mb-20 w-full max-w-[1920px] mx-auto mt-24">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[500px]">
                 
-                {/* 1. תמונה ימנית - קבוצה בחוץ (החלף בנתיב לתמונה האמיתית שלך) */}
+                {/* 1. תמונה מצד ימין לניוזלטר */}
                 <div className="rounded-[40px] overflow-hidden border-2 border-transparent h-[400px] md:h-full relative shadow-sm group">
                     <img 
-                        src="/Image (2).png" // שים כאן את התמונה של החבר'ה בחוץ
-                        alt="Group" 
+                        src={data.images?.right || '/Image (2).png'}
+                        alt=""
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                     />
                 </div>
@@ -51,11 +51,11 @@ const HomeNewsletter = ({ data }) => {
                     </svg>
                 </div>
 
-                {/* 3. תמונה שמאלית - אנשים בקופסאות (החלף בנתיב לתמונה האמיתית שלך) */}
+                {/* 3. תמונה מצד שמאל לניוזלטר */}
                 <div className="rounded-[40px] overflow-hidden border-2 border-transparent h-[400px] md:h-full relative shadow-sm group">
                     <img 
-                        src="/Image (4).png" // שים כאן את התמונה של האנשים בקופסאות
-                        alt="Boxes" 
+                        src={data.images?.left || '/Image (4).png'}
+                        alt=""
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
                     />
                 </div>

@@ -55,6 +55,23 @@ const HomeSection = ({ getValue, update }) => {
         </div>
       </div>
 
+      <div className="bg-white p-8 rounded-[32px] shadow-sm">
+        <h3 className="font-black text-xl mb-4">ניוזלטר – תמונות</h3>
+        <p className="text-[#2D2D44]/70 text-sm mb-4">תמונות משני צדי כרטיס הניוזלטר בעמוד הבית.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <ImageField
+            label="תמונה מצד ימין לניוזלטר"
+            value={getValue('home.newsletter.images.right') ?? getValue('home.newsletter.images')?.right}
+            onChange={(v) => update('home.newsletter.images.right', v)}
+          />
+          <ImageField
+            label="תמונה מצד שמאל לניוזלטר"
+            value={getValue('home.newsletter.images.left') ?? getValue('home.newsletter.images')?.left}
+            onChange={(v) => update('home.newsletter.images.left', v)}
+          />
+        </div>
+      </div>
+
       <UniversalCardEditor
         title="קרוסלת כרטיסים"
         items={getValue('home.carousel')}

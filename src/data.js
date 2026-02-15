@@ -88,7 +88,8 @@ export const INITIAL_DATA = {
             title: "מי משתתפות ומשתתפים ברעים",
             image1: "/group.jpg",
             image2: "/game.jpg",
-            image3: "/stage.jpg"
+            image3: "/stage.jpg",
+            image4: "/group.jpg"
         },
         contentBox: {
             audienceTitle: "למי מיועדת התכנית?",
@@ -326,9 +327,9 @@ export const INITIAL_DATA = {
             },
             newsletter: {
                 title: "ניוזלטר רעים",
-                subtitle: "השראות מיוחדות לשירות התיבה שלך",
-                text: "מנה חודשית מרוכזת של חדשות, משחק ומיטב השראה מהשטח.",
-                placeholder: "הקלידי את כתובת המייל"
+                subtitle: "השראות מיוחדות ישירות לתיבה שלך",
+                text: "מנה חודשית מרוכזת של חדשנות, משחק ומיטב ההשראה מהשטח.",
+                placeholder: "הקלידי את כתובת המייל שלך"
             },
             sideImage: "/people-boxes.jpg"
         }

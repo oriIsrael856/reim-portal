@@ -35,6 +35,31 @@ const Chapter3Section = ({ getValue, update }) => {
         icon={Briefcase}
       />
 
+      <div className="bg-white p-8 rounded-[32px] shadow-sm">
+        <h3 className="font-black text-xl mb-4">מבנה המפגש – תמונות</h3>
+        <p className="text-[#2D2D44]/70 text-sm mb-4">התמונות שמוצגות ליד האקורדיון בסקשן &quot;כיצד נראה מפגש רעים?&quot;</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <ImageField
+            label="תמונה 1 (מעל)"
+            value={(getValue('chapter3.sessionStructure.images') ?? [])[0]}
+            onChange={(v) => {
+              const images = [...(getValue('chapter3.sessionStructure.images') ?? ['', ''])];
+              images[0] = v;
+              update('chapter3.sessionStructure.images', images);
+            }}
+          />
+          <ImageField
+            label="תמונה 2 (מתחת)"
+            value={(getValue('chapter3.sessionStructure.images') ?? [])[1]}
+            onChange={(v) => {
+              const images = [...(getValue('chapter3.sessionStructure.images') ?? ['', ''])];
+              images[1] = v;
+              update('chapter3.sessionStructure.images', images);
+            }}
+          />
+        </div>
+      </div>
+
       <UniversalCardEditor
         title="שלבי המפגש (אקורדיון)"
         items={getValue('chapter3.sessionStructure.items')}
