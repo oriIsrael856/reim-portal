@@ -19,7 +19,7 @@ const CARD_ID_TO_PAGE = {
     "05": "chapter5"
 };
 
-const HomeCarousel = ({ items, navigateTo }) => {
+const HomeCarousel = ({ items, navigateTo, carouselHeader }) => {
     const scrollRef = useRef(null);
 
     const scroll = (direction) => {
@@ -37,26 +37,25 @@ const HomeCarousel = ({ items, navigateTo }) => {
     return (
         <div className="mb-24 max-w-[1920px] mx-auto">
             {/* כותרת וכפתורי ניווט */}
-            <div className="flex flex-row-reverse justify-between items-end mb-8 px-8 md:px-20">
+            <div className="flex flex-row-reverse justify-between items-end mb-6 md:mb-8 px-4 md:px-8 md:px-20">
                 <div className="text-right">
-                    <p className="text-gray-500 font-medium mb-1 text-sm">כל מה שכדאי לדעת</p>
-                    <h2 className="text-3xl md:text-4xl font-black text-[#2D2D44]">המדריכה לרכזות ורכזים</h2>
+                    <p className="text-gray-500 font-medium mb-1 text-sm">{carouselHeader?.label ?? 'כל מה שכדאי לדעת'}</p>
+                    <h2 className="text-2xl md:text-3xl md:text-4xl font-black text-[#2D2D44]">{carouselHeader?.title ?? 'המדריכה לרכזות ורכזים'}</h2>
                 </div>
-                <div className="flex gap-3 ltr">
+                <div className="hidden md:flex gap-3 ltr">
                     <button onClick={() => scroll('right')} className="w-12 h-12 flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
                         <ChevronRight size={24} />
-                    </button>                    
+                    </button>
                     <button onClick={() => scroll('left')} className="w-12 h-12 flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
                         <ChevronLeft size={24} />
                     </button>
-
                 </div>
             </div>
 
             {/* הקרוסלה */}
             <div 
                 ref={scrollRef} 
-                className="flex gap-6 overflow-x-auto pb-12 px-8 md:px-20 no-scrollbar snap-x"
+                className="flex gap-4 md:gap-6 overflow-x-auto pb-8 md:pb-12 px-4 md:px-8 md:px-20 no-scrollbar snap-x"
                 style={{ scrollPaddingLeft: '2rem', scrollPaddingRight: '2rem' }}
             >
                 {items.map((card) => (

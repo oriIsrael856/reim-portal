@@ -15,7 +15,7 @@ const HomePage = ({ data, navigateTo }) => {
             <HomeIntro data={data.intro} />
 
             {/* 3. Carousel */}
-            <HomeCarousel items={data.carousel} navigateTo={navigateTo} />
+            <HomeCarousel items={data.carousel} navigateTo={navigateTo} carouselHeader={data.carouselHeader} />
 
             {/* 4. כפתור מעבר לפרק הראשון */}
             {navigateTo && (

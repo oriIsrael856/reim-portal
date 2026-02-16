@@ -3,7 +3,7 @@ import { useFirebaseContent } from './hooks/useFirebaseContent';
 import { useAuth } from './hooks/useAuth';
 import { resetContent, DATA_VERSION } from './services/contentService';
 import { INITIAL_DATA } from './data';
-import { Lock, Menu } from 'lucide-react';
+import { Lock } from 'lucide-react';
 
 import { Sidebar, MenuOverlay } from './components/layout/Sidebar';
 import Footer from './components/layout/Footer';
@@ -101,7 +101,12 @@ const App = () => {
                 </button>
             )}
 
-            <Header onLogoClick={() => navigateTo('home')} />
+            <Header
+                onLogoClick={() => navigateTo('home')}
+                onMenuClick={() => setIsMenuOpen((prev) => !prev)}
+                isMenuOpen={isMenuOpen}
+                logoUrl={content?.header?.logo}
+            />
 
             {/* סרגל צף – רק מדסקטופ כדי לא להסתיר תוכן במובייל */}
             <div className="hidden md:block">
@@ -120,14 +125,7 @@ const App = () => {
                 isAdmin={!!user}
             />
 
-            {/* כפתור תפריט במובייל – מתחת להדר כדי לא לחפוף */}
-            <div className="md:hidden fixed top-[calc(1.5rem+72px)] sm:top-[calc(1.5rem+80px)] right-4 z-[501]">
-                <button onClick={() => setIsMenuOpen(true)} className="bg-white/90 backdrop-blur-md p-3 rounded-2xl shadow-xl text-[#46319B] hover:bg-white transition-colors">
-                    <Menu className="w-6 h-6"/>
-                </button>
-            </div>
-
-            <main className="transition-all duration-500 px-4 md:px-0 md:pr-20 pt-[100px] md:pt-[116px]">
+            <main className="transition-all duration-500 px-4 md:px-0 md:pr-20 pt-[130px] md:pt-[116px]">
                 <Suspense fallback={
                     <div className="h-[60vh] flex items-center justify-center font-bold text-[#5E3BEE] animate-pulse">
                         טוען תוכן...
