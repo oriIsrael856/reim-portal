@@ -67,6 +67,7 @@ const App = () => {
         return (
             <PageComponent
                 data={content[route.contentKey]}
+                content={content}
                 onNext={route.next ? () => navigateTo(route.next) : undefined}
                 onPrev={route.prev ? () => navigateTo(route.prev) : undefined}
                 navigateTo={navigateTo}
