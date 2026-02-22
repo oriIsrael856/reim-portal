@@ -19,7 +19,7 @@ const HomePage = ({ data, navigateTo }) => {
 
             {/* 4. כפתור מעבר לפרק הראשון */}
             {navigateTo && (
-                <div className="my-16 md:my-24">
+                <div className="my-10 md:my-14">
                     <NextChapterButton
                         title="לפרק הראשון"
                         subtitle="פרק 01 - נעים להכיר"

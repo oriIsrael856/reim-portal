@@ -4,55 +4,59 @@ import { ArrowUpRight, Menu, Share2, X } from 'lucide-react';
 const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl }) => {
     return (
         <>
-            {/* מובייל: הדר סגול + קונטיינר לוגו שקוף (קבועים לאורך הגלילה) */}
+            {/* מובייל: הדר – גובה וריווח ב־vh/vw */}
             <div className="md:hidden fixed top-0 left-0 right-0 z-[1000] w-full">
                 <div className="bg-[#5E3BEE] text-white rounded-b-3xl shadow-lg">
-                    <div className="h-14 flex items-center justify-between px-4 pt-[env(safe-area-inset-top,0)] min-h-[3.5rem] gap-3">
-                        <button type="button" className="p-2 rounded-lg hover:bg-white/10 transition-colors text-white" aria-label="שתף">
-                            <Share2 className="w-5 h-5" strokeWidth={2.5} />
+                    <div className="flex items-center justify-between pt-[env(safe-area-inset-top,0)] gap-[2vw]" style={{ minHeight: 'clamp(3rem, 10vh, 4rem)', paddingLeft: '4%', paddingRight: '4%' }}>
+                        <button type="button" className="p-[2vw] rounded-lg hover:bg-white/10 transition-colors text-white" aria-label="שתף">
+                            <Share2 style={{ width: 'clamp(18px, 4vw, 22px)', height: 'clamp(18px, 4vw, 22px)' }} strokeWidth={2.5} />
                         </button>
                         <div className="flex-1 flex justify-center">
-                            <button type="button" onClick={onMenuClick} className="bg-white text-[#2D2D44] px-6 py-2.5 rounded-full shadow-sm hover:bg-white/95 transition-colors flex items-center justify-center min-w-[44px] min-h-[44px]" aria-label={isMenuOpen ? 'סגירת תפריט' : 'תפריט'}>
-                                {isMenuOpen ? <X className="w-5 h-5" strokeWidth={2.5} /> : <Menu className="w-5 h-5" strokeWidth={2.5} />}
+                            <button type="button" onClick={onMenuClick} className="bg-white text-[#2D2D44] rounded-full shadow-sm hover:bg-white/95 transition-colors flex items-center justify-center min-w-[44px] min-h-[44px]" style={{ paddingLeft: 'clamp(1rem, 4vw, 1.5rem)', paddingRight: 'clamp(1rem, 4vw, 1.5rem)', paddingTop: '0.5rem', paddingBottom: '0.5rem' }} aria-label={isMenuOpen ? 'סגירת תפריט' : 'תפריט'}>
+                                {isMenuOpen ? <X style={{ width: 'clamp(18px, 4vw, 22px)', height: 'clamp(18px, 4vw, 22px)' }} strokeWidth={2.5} /> : <Menu style={{ width: 'clamp(18px, 4vw, 22px)', height: 'clamp(18px, 4vw, 22px)' }} strokeWidth={2.5} />}
                             </button>
                         </div>
-                        <span className="text-white font-bold text-sm whitespace-nowrap">– דף הבית</span>
+                        <span className="text-white font-bold whitespace-nowrap" style={{ fontSize: 'clamp(0.7rem, 2.5vw, 0.9rem)' }}>– דף הבית</span>
                     </div>
                 </div>
-                {/* קונטיינר לוגו – תמונה מ-public + המילה רעים, שקוף לאורך הגלילה */}
-                <div className="mx-4 mt-2 rounded-2xl bg-white/60 backdrop-blur-md border border-white/40 shadow-lg">
-                    <button type="button" onClick={onLogoClick} className="w-full px-6 py-3 flex items-center justify-center" aria-label="דף הבית - רעים">
-                        <img src={logoUrl || '/Logo (1).png'} alt="רעים" className="h-8 w-auto object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
+                <div className="rounded-2xl bg-white/60 backdrop-blur-md border border-white/40 shadow-lg" style={{ marginLeft: '4%', marginRight: '4%', marginTop: 'clamp(0.25rem, 1.5vh, 0.5rem)' }}>
+                    <button type="button" onClick={onLogoClick} className="w-full flex items-center justify-center" style={{ padding: 'clamp(0.5rem, 2vw, 0.75rem)' }} aria-label="דף הבית - רעים">
+                        <img src={logoUrl || '/Logo (1).png'} alt="רעים" className="w-auto object-contain" style={{ height: 'clamp(1.5rem, 6vw, 2rem)' }} onError={(e) => { e.target.style.display = 'none'; }} />
                     </button>
                 </div>
             </div>
 
-            {/* דסקטופ: פיל צף */}
-            <header className="hidden md:flex fixed top-6 left-0 right-0 z-[500] justify-center px-3 sm:px-4 pointer-events-none print:hidden">
+            {/* דסקטופ: פיל צף – גובה ב־vh, ריווח ב־vw */}
+            <header className="hidden md:flex fixed left-0 right-0 z-[500] justify-center pointer-events-none print:hidden" style={{ top: 'clamp(0.75rem, 2vh, 1.5rem)', paddingLeft: '1vw', paddingRight: '1vw' }}>
             <div className="
-                w-full max-w-[1700px]
+                w-full max-w-[95vw]
                 bg-white/10
                 backdrop-blur-[2px]
                 border border-white/20
                 shadow-sm
-                h-[72px] sm:h-[80px] md:h-[90px]
                 rounded-full
                 flex items-center justify-between
-                pl-4 pr-14 sm:px-6 md:px-10
                 pointer-events-auto
                 transition-all duration-300
-            ">
-                {/* צד ימין: לוגו – לחיצה מחזירה לעמוד הבית */}
+            "
+                style={{
+                    height: 'clamp(52px, 8vh, 80px)',
+                    paddingLeft: 'clamp(0.75rem, 1.5vw, 2.5rem)',
+                    paddingRight: 'clamp(2rem, 4vw, 2.5rem)'
+                }}
+            >
+                {/* צד ימין: לוגו */}
                 <button
                     type="button"
                     onClick={onLogoClick}
-                    className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 text-right cursor-pointer bg-transparent border-0 p-0"
+                    className="flex items-center gap-[0.5vw] min-w-0 flex-1 text-right cursor-pointer bg-transparent border-0 p-0"
                     aria-label="חזרה לעמוד הבית"
                 >
                     <img 
                         src="/Logo (1).png" 
                         alt="רעים" 
-                        className="h-9 sm:h-10 md:h-12 object-contain shrink-0"
+                        className="object-contain shrink-0"
+                        style={{ height: 'clamp(1.5rem, 2.2vw, 2.25rem)' }}
                         onError={(e) => {
                             e.target.style.display = 'none';
                             if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
@@ -66,23 +70,23 @@ const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl }) => {
                     </span>
                 </button>
 
-                {/* צד שמאל: כפתור */}
+                {/* צד שמאל: כפתור – גודל ב־vw */}
                 <button className="
-                    group flex items-center gap-2 sm:gap-3 pl-1 pr-4 sm:pr-6 py-2 shrink-0
+                    group flex items-center gap-[0.5vw] shrink-0 py-2
                     bg-white/90 hover:bg-white
                     border border-white/50 hover:border-[#816AFE]
                     rounded-full
                     transition-all duration-300
                     cursor-pointer shadow-sm
-                ">
-                    <span className="text-[#2D2D44] font-bold text-xs sm:text-sm md:text-base group-hover:text-[#816AFE] transition-colors whitespace-nowrap hidden sm:inline">
+                " style={{ paddingLeft: '0.25rem', paddingRight: 'clamp(0.75rem, 1.5vw, 1.5rem)' }}>
+                    <span className="text-[#2D2D44] font-bold group-hover:text-[#816AFE] transition-colors whitespace-nowrap hidden sm:inline" style={{ fontSize: 'clamp(0.7rem, 1vw, 1rem)' }}>
                         הרשמה לניוזלטר
                     </span>
-                    <span className="text-[#2D2D44] font-bold text-xs group-hover:text-[#816AFE] sm:hidden">
+                    <span className="text-[#2D2D44] font-bold group-hover:text-[#816AFE] sm:hidden" style={{ fontSize: 'clamp(0.7rem, 1vw, 1rem)' }}>
                         ניוזלטר
                     </span>
-                    <div className="w-9 h-9 md:w-10 md:h-10 bg-[#816AFE] rounded-full flex items-center justify-center text-white transform group-hover:rotate-45 transition-transform duration-300 shadow-md">
-                        <ArrowUpRight size={18} className="sm:w-5 sm:h-5" />
+                    <div className="bg-[#816AFE] rounded-full flex items-center justify-center text-white transform group-hover:rotate-45 transition-transform duration-300 shadow-md" style={{ width: 'clamp(32px, 2.5vw, 40px)', height: 'clamp(32px, 2.5vw, 40px)' }}>
+                        <ArrowUpRight style={{ width: 'clamp(14px, 1.2vw, 20px)', height: 'clamp(14px, 1.2vw, 20px)' }} />
                     </div>
                 </button>
             </div>

@@ -45,7 +45,7 @@ const HeroSection = ({ data }) => {
             </div>
 
             {/* אלמנט דקורטיבי - מספר 02 */}
-            <div className="absolute bottom-0 left-10 text-[120px] font-black text-[#5E3BEE]/10 font-['Salsa'] hidden md:block select-none">
+            <div className="absolute bottom-0 left-10 text-[120px] font-black text-[#5E3BEE]/10 font-['Rubik'] hidden md:block select-none">
                 02
             </div>
         </div>

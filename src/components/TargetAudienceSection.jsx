@@ -5,7 +5,7 @@ const AgeCard = ({ label, age }) => (
     <div className="bg-white rounded-2xl border-2 border-[#2D2D44] p-4 text-center shadow-[4px_4px_0px_rgba(0,0,0,0.1)] flex flex-col items-center justify-center h-full min-h-[100px]">
         <h3 className="font-black text-[#2D2D44] text-xl mb-1">{label}</h3>
         <div className="text-sm font-bold text-[#2D2D44]/60 mb-1">גילאי</div>
-        <div className="text-[#5E3BEE] font-black text-2xl font-['Salsa']">{age}</div>
+        <div className="text-[#5E3BEE] font-black text-2xl font-['Rubik']">{age}</div>
     </div>
 );
 

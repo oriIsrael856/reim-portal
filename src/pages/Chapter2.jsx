@@ -15,7 +15,7 @@ const AgeCard = ({ label, age }) => (
         <div className="bg-[#EBE5FC] px-3 py-0.5 rounded-md mb-1">
             <span className="text-xs font-bold text-[#2D2D44]/70">גילאי</span>
         </div>
-        <div className="text-[#5E3BEE] font-black text-3xl font-['Salsa'] leading-none">{age}</div>
+        <div className="text-[#5E3BEE] font-black text-3xl font-['Rubik'] leading-none">{age}</div>
     </div>
 );
 
@@ -76,12 +76,12 @@ const HeroSection = ({ data }) => (
                 {[data.image1, data.image2, data.image3, data.image4].map((img, i) => (<div key={i} className="w-64 h-48 rounded-2xl border-2 border-black overflow-hidden snap-center flex-shrink-0 bg-gray-200 shadow-[4px_4px_0px_black]"><img src={img} className="w-full h-full object-cover" /></div>))}
             </div>
         </div>
-        <div className="absolute bottom-10 left-10 text-[140px] font-black text-[#5E3BEE]/10 font-['Salsa'] hidden md:block select-none -z-10">02</div>
+        <div className="absolute bottom-10 left-10 text-[140px] font-black text-[#5E3BEE]/10 font-['Rubik'] hidden md:block select-none -z-10">02</div>
     </div>
 );
 
 const UnifiedOrangeSection = ({ data }) => (
-    <div className="w-full max-w-[1300px] mx-auto px-4 mb-32 relative z-20">
+    <div className="w-full max-w-[1300px] mx-auto px-4 mb-20 relative z-20">
         <div className="bg-[#FFF9F0] rounded-[40px] border-[3px] border-[#2D2D44] p-6 md:p-12 shadow-[10px_10px_0px_#2D2D44]">
             <div className="bg-[#FFB84C] rounded-[30px] border-[2px] border-[#2D2D44] p-8 md:p-12 mb-16 shadow-[4px_4px_0px_rgba(45,45,68,0.1)]">
                 <div className="text-center">
@@ -108,7 +108,7 @@ const UnifiedOrangeSection = ({ data }) => (
 const GroupsIntroSection = ({ data }) => {
     if (!data) return null; 
     return (
-        <div className="w-full max-w-[1400px] mx-auto px-6 mb-32">
+        <div className="w-full max-w-[1400px] mx-auto px-6 mb-20">
             <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
                 <div className="w-full md:w-1/2 text-right">
                     <div className="text-sm font-bold text-[#2D2D44]/60 mb-2 tracking-wide">{data.subheading}</div>
@@ -139,7 +139,7 @@ const GroupsIntroSection = ({ data }) => {
 const GroupDetailsSection = ({ data }) => {
     if (!data) return null;
     return (
-        <div className="w-full bg-[#FDFBFF] py-24 border-y border-[#816AFE]/5 relative mb-32">
+        <div className="w-full bg-[#FDFBFF] py-24 border-y border-[#816AFE]/5 relative mb-20">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#816AFE]/5 rounded-bl-[100px] -z-0"></div>
             <div className="max-w-[1000px] mx-auto px-6 relative z-10">
                 <div className="text-right mb-12">
@@ -170,7 +170,7 @@ const WhyTogetherSection = ({ data }) => {
 
     return (
         // שימוש ברכיב ה-Layout הגנרי שיצרנו
-        <SplitStickyLayout stickyContent={StickyHeader} className="mb-32">
+        <SplitStickyLayout stickyContent={StickyHeader} className="mb-20">
             
             {/* הזרקת הכרטיסים (צד שמאל) */}
             {data.cards && data.cards.map((card, index) => (
@@ -220,7 +220,7 @@ const Chapter2 = ({ data, onNext, onPrev }) => {
     const goals = contentBox?.goals || [];
 
     return (
-        <div className="min-h-screen bg-[#FFFDF5] pt-32 pb-0 font-['Rubik']">
+        <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-0 font-['Rubik']">
             {onPrev && (
                 <div className="pt-6 pb-4 px-4">
                     <PrevChapterButton title="לפרק הקודם" subtitle="פרק 01 - נעים להכיר" onClick={onPrev} />
@@ -256,7 +256,7 @@ const Chapter2 = ({ data, onNext, onPrev }) => {
                         <div className="absolute bottom-2 left-2 w-[40%] aspect-[4/3] max-h-[90px] rounded-xl overflow-hidden border-2 border-white shadow-lg z-20 bg-gray-100">
                             <img src={hero.image3} alt="" className="w-full h-full object-cover" />
                         </div>
-                        <div className="absolute bottom-4 right-4 text-[80px] font-black text-[#816AFE] font-['Salsa'] leading-none opacity-20 select-none">02</div>
+                        <div className="absolute bottom-4 right-4 text-6xl font-black text-[#816AFE] font-['Rubik'] leading-none opacity-20 select-none">02</div>
                     </div>
                 </div>
             </div>

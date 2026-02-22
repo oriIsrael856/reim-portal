@@ -30,7 +30,7 @@ export const MenuOverlay = ({ isOpen, closeMenu, menuItems, navigateTo }) => (
                 {menuItems.map((item, i) => (
                     <div key={i} onClick={()=>navigateTo(item.page)} className="text-2xl font-bold hover:text-[#46319B] cursor-pointer flex justify-between items-center border-b border-gray-100 pb-4">
                         <span>{item.title}</span>
-                        <span className="text-[#EBE5FC] font-['Salsa'] text-4xl font-black">{item.id}</span>
+                        <span className="text-[#EBE5FC] font-['Rubik'] text-4xl font-black">{item.id}</span>
                     </div>
                 ))}
             </div>

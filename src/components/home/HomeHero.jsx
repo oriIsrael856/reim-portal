@@ -7,40 +7,55 @@ const HomeHero = ({ data }) => {
     const hasMultiple = images.length > 1;
 
     return (
-        <div className="pt-6 md:pt-12 pb-12 md:pb-20 text-center px-4 relative overflow-hidden">
-            {/* כותרות */}
-            <div className="relative z-10 mb-6 md:mb-12">
-                <p className="text-base sm:text-xl text-[#2D2D44] font-medium mb-2 tracking-wide opacity-80">{data.subtitle}</p>
-                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-[#2D2D44] leading-tight mb-2">
+        <div
+            className="text-center px-[4%] relative overflow-hidden md:min-h-0 md:flex md:flex-col md:justify-center md:max-h-[calc(100vh-5.5rem)]"
+            style={{
+                paddingTop: 'clamp(0.5rem, 4vh, 1.5rem)',
+                paddingBottom: 'clamp(0.5rem, 5vh, 2rem)'
+            }}
+        >
+            {/* כותרות – גודל באחוזים (vw), z גבוה כדי שלא ייכוסו על ידי התמונות */}
+            <div className="relative z-20" style={{ marginBottom: 'clamp(2rem, 6vh, 3.5rem)' }}>
+                <p className="text-[#2D2D44] font-medium tracking-wide opacity-80 md:font-['Rubik']" style={{ fontSize: 'clamp(0.75rem, 1.8vw, 1rem)', marginBottom: '0.25rem' }}>{data.subtitle}</p>
+                <h1 className="font-black text-[#2D2D44] leading-tight md:font-['Rubik']" style={{ fontSize: 'clamp(1.25rem, 4.5vw, 3rem)', marginBottom: '0.25rem' }}>
                     {data.title1}
                 </h1>
                 <div className="relative inline-block">
-                    <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-[#5E3BEE] leading-tight relative z-10">
+                    <h1 className="font-black text-[#5E3BEE] leading-tight relative z-10 md:font-['Rubik']" style={{ fontSize: 'clamp(1.25rem, 4.5vw, 3rem)' }}>
                         {data.title2}
                     </h1>
-                    <div className="absolute bottom-1.5 md:bottom-2 left-0 w-full h-3 md:h-4 bg-[#FFD028] -z-0 rounded-sm"></div>
+                    <div className="absolute bottom-0.5 left-0 w-full bg-[#FFD028] -z-0 rounded-sm" style={{ height: 'clamp(4px, 0.5vh, 12px)' }}></div>
                 </div>
             </div>
 
-            {/* קישוטים – דסקטופ: כמו מקור (כוכב + נקודה אדומה). מובייל: כוכב + מטוס */}
-            <div className="absolute top-16 md:top-20 right-[10%] md:right-[15%] text-[#FFD028]"><Star fill="currentColor" size={22} className="md:w-6 md:h-6"/></div>
-            <div className="absolute top-40 left-[15%] w-3 h-3 bg-[#FF5C5C] rounded-full hidden md:block" />
-            <svg className="absolute top-32 left-[8%] w-10 h-10 text-[#7DD3FC] opacity-90 md:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 19l-7-7 7-7M19 12H5"/></svg>
+            {/* קישוטים – מיקום באחוזים, גודל ב־vw */}
+            <div className="absolute right-[10%] text-[#FFD028]" style={{ top: 'clamp(2rem, 12vh, 4rem)' }}>
+                <Star fill="currentColor" style={{ width: 'clamp(16px, 1.2vw, 24px)', height: 'clamp(16px, 1.2vw, 24px)' }} />
+            </div>
+            <div className="absolute left-[15%] bg-[#FF5C5C] rounded-full hidden md:block" style={{ top: 'clamp(4rem, 18vh, 6rem)', width: 'clamp(6px, 0.5vw, 10px)', height: 'clamp(6px, 0.5vw, 10px)' }} />
+            <svg className="absolute left-[8%] text-[#7DD3FC] opacity-90 md:hidden" style={{ top: 'clamp(4rem, 14vh, 5rem)', width: 'clamp(24px, 5vw, 36px)', height: 'clamp(24px, 5vw, 36px)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 19l-7-7 7-7M19 12H5"/></svg>
 
-            {/* דסקטופ בלבד: גריד תמונות כמו במקור */}
-            <div className="hidden md:flex justify-center items-center gap-4 md:gap-6 mt-8 h-[320px] relative z-10 max-w-[1400px] mx-auto perspective-1000">
+            {/* דסקטופ: גלריית תמונות – רווח ברור מהכותרת כדי שהתמונות לא יעלו על הטקסט */}
+            <div
+                className="hidden md:flex justify-center items-center relative z-0 max-w-[90vw] mx-auto perspective-1000 flex-shrink-0"
+                style={{
+                    gap: 'clamp(0.5rem, 1vw, 1.25rem)',
+                    marginTop: 'clamp(3rem, 8vh, 6rem)',
+                    height: 'clamp(120px, 22vh, 240px)'
+                }}
+            >
                 {images.map((img, i) => {
                     const rotate = i === 2 ? 0 : i === 1 ? -3 : i === 0 ? -6 : i === 3 ? 3 : 6;
-                    const translateY = i === 2 ? 0 : i === 1 || i === 3 ? 20 : 40;
+                    const translateY = i === 2 ? 0 : i === 1 || i === 3 ? 10 : 20;
                     return (
                         <div key={i} className="relative transition-all duration-500 hover:z-50 hover:scale-110 shrink-0"
                             style={{
                                 transform: `rotate(${rotate}deg) translateY(${translateY}px)`,
-                                width: i === 2 ? 'clamp(140px, 35vw, 240px)' : 'clamp(120px, 28vw, 200px)',
+                                width: i === 2 ? 'clamp(80px, 18vw, 220px)' : 'clamp(70px, 14vw, 180px)',
                                 zIndex: i === 2 ? 10 : 5
                             }}>
-                            <div className="p-2 bg-white rounded-2xl shadow-lg border border-gray-100">
-                                <div className="w-full h-64 overflow-hidden rounded-xl bg-gray-200">
+                            <div className="p-[2%] bg-white rounded-xl shadow-lg border border-gray-100 w-full h-full min-h-0 flex flex-col">
+                                <div className="w-full flex-1 min-h-0 overflow-hidden rounded-lg bg-gray-200">
                                     <img src={img} alt="" className="w-full h-full object-cover" />
                                 </div>
                             </div>
@@ -49,8 +64,8 @@ const HomeHero = ({ data }) => {
                 })}
             </div>
 
-            {/* מובייל: קרוסלה עם נקודות */}
-            <div className="md:hidden mt-6 relative z-10 max-w-sm mx-auto">
+            {/* מובייל: קרוסלה – רוחב באחוזים */}
+            <div className="md:hidden relative z-10 mx-auto w-[92%] max-w-[360px]" style={{ marginTop: 'clamp(1rem, 4vh, 1.5rem)' }}>
                 <div className="relative rounded-2xl overflow-hidden bg-gray-100 border-2 border-[#2D2D44]/10 aspect-[4/3]">
                     {images.length > 0 && (
                         <img src={images[carouselIndex]} alt="" className="w-full h-full object-cover" />
@@ -64,16 +79,17 @@ const HomeHero = ({ data }) => {
                                 type="button"
                                 aria-label={`תמונה ${i + 1}`}
                                 onClick={() => setCarouselIndex(i)}
-                                className={`w-2.5 h-2.5 rounded-full border-2 transition-colors ${i === carouselIndex ? 'bg-[#5E3BEE] border-[#5E3BEE]' : 'bg-transparent border-[#2D2D44]/40'}`}
+                                className={`rounded-full border-2 transition-colors ${i === carouselIndex ? 'bg-[#5E3BEE] border-[#5E3BEE]' : 'bg-transparent border-[#2D2D44]/40'}`}
+                                style={{ width: 'clamp(8px, 2vw, 12px)', height: 'clamp(8px, 2vw, 12px)' }}
                             />
                         ))}
                     </div>
                 )}
             </div>
 
-            <div className="mt-12 md:mt-20 flex justify-center">
-                <button className="bg-[#D1E68F] p-3 rounded-full border border-black/10 shadow-md animate-bounce hover:bg-[#c3d97f] transition" aria-label="גלילה למטה">
-                    <ArrowDown size={24} color="#2D2D44" />
+            <div className="flex justify-center flex-shrink-0" style={{ marginTop: 'clamp(0.5rem, 3vh, 1.5rem)' }}>
+                <button className="bg-[#D1E68F] rounded-full border border-black/10 shadow-md animate-bounce hover:bg-[#c3d97f] transition" aria-label="גלילה למטה" style={{ padding: 'clamp(0.4rem, 1vw, 0.75rem)' }}>
+                    <ArrowDown style={{ width: 'clamp(16px, 2vw, 24px)', height: 'clamp(16px, 2vw, 24px)' }} color="#2D2D44" />
                 </button>
             </div>
         </div>

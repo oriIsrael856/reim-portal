@@ -33,7 +33,7 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
                     {/* תג פרק + אייקון */}
                     <div className="flex items-center justify-center gap-2 mb-6">
                         <div className="inline-flex items-center gap-2 bg-[#C5E080] border-2 border-black px-4 py-2 rounded-full shadow-[3px_3px_0px_black]">
-                            <span className="font-black text-[#2D2D44] font-['Salsa'] text-lg">01</span>
+                            <span className="font-black text-[#2D2D44] font-['Rubik'] text-lg">01</span>
                             <span className="font-bold text-[#2D2D44] text-sm">{data.hero.tag}</span>
                         </div>
                         <ThumbsUp fill="#EBE5FC" stroke="#816AFE" size={28} className="shrink-0 -rotate-12" />
@@ -61,7 +61,7 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
                         <div className="absolute bottom-0 left-2 w-[55%] aspect-[3/4] max-h-[180px] rounded-2xl overflow-hidden border-4 border-white shadow-xl rotate-[5deg] z-20 bg-gray-100">
                             <img src={data.hero.image2} alt="" className="w-full h-full object-cover" />
                         </div>
-                        <div className="absolute bottom-4 right-4 text-[100px] font-black text-[#816AFE] font-['Salsa'] leading-none opacity-20 select-none">01</div>
+                        <div className="absolute bottom-4 right-4 text-7xl font-black text-[#816AFE] font-['Rubik'] leading-none opacity-20 select-none">01</div>
                     </div>
                 </div>
             </div>
@@ -125,7 +125,7 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
                     </div>
                     
                     {/* כותרת ראשית */}
-                    <h1 className="text-6xl md:text-8xl font-black text-[#2D2D44] leading-[1] mb-6">
+                    <h1 className="text-5xl md:text-6xl font-black text-[#2D2D44] leading-[1] mb-4">
                         {data.hero.title1}
                         <br />
                         <span className="text-[#816AFE] relative inline-block">
@@ -162,14 +162,14 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
                                 <div className="rounded-[20px] overflow-hidden h-[200px] bg-gray-200">
                                     <img src={data.hero.image2} alt="Mask" className="w-full h-full object-cover" />
                                 </div>
-                                <div className="absolute bottom-4 left-0 w-full text-center font-['Salsa'] text-[#816AFE] text-xl opacity-80 rotate-[-2deg]">
+                                <div className="absolute bottom-4 left-0 w-full text-center font-['Rubik'] text-[#816AFE] text-xl opacity-80 rotate-[-2deg]">
                                     לא רואים עלי!!
                                 </div>
                             </div>
                         </div>
 
                         {/* מספר 01 רקע */}
-                        <div className="absolute bottom-10 right-20 text-[180px] font-black text-[#816AFE] font-['Salsa'] leading-none opacity-10 select-none -z-0">
+                        <div className="absolute bottom-10 right-20 text-[180px] font-black text-[#816AFE] font-['Rubik'] leading-none opacity-10 select-none -z-0">
                             01
                         </div>
                     </div>

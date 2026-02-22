@@ -87,7 +87,7 @@ const App = () => {
     }
 
     return (
-        <div dir="rtl" className="font-sans text-[#2D2D44] bg-[#F3F0FF] min-h-screen">
+        <div dir="rtl" className="font-['Rubik'] text-[#2D2D44] bg-[#F3F0FF] min-h-screen">
 
             {user ? (
                 <AdminBar

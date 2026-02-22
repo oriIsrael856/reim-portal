@@ -11,6 +11,6 @@ export const THEME = {
     },
     fonts: {
         main: 'Rubik, sans-serif',
-        decor: 'Salsa, cursive' // למספרים הגדולים
+        decor: 'Rubik, sans-serif'
     }
 };

@@ -1,13 +1,11 @@
 import React from 'react';
-import { ArrowLeft, ChevronDown, Facebook, Instagram, Linkedin, Plus, Star, Twitter } from 'lucide-react';
+import { ArrowLeft, ChevronDown, Plus, Star } from 'lucide-react';
 import NextChapterButton from '../components/common/NextChapterButton';
 import PrevChapterButton from '../components/common/PrevChapterButton';
 import StickyCard from '../components/common/StickyCard';
 import SplitStickyLayout from '../components/layout/SplitStickyLayout';
 import ProcessCard from '../components/common/ProcessCard';
 import Accordion from '../components/common/Accordion';
-
-const MOBILE_TAGLINE = 'שווה לחיות ביחד';
 
 const Chapter3 = ({ data, content, onNext, onPrev }) => {
     // הגנה מפני קריסה במקרה של חוסר בנתונים
@@ -17,17 +15,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
     const MobilePart1 = () => (
         <div className="md:hidden w-full max-w-lg mx-auto px-2 pb-8">
             <div className="rounded-[40px] overflow-hidden bg-[#FFFDF5] border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                {/* פס סגול + לוגו ותגית */}
-                <div className="bg-[#5E3BEE] px-5 py-4 flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
-                        <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                        <p className="text-white font-black text-lg leading-tight">רעים</p>
-                        <p className="text-white/90 text-sm">{MOBILE_TAGLINE}</p>
-                    </div>
-                </div>
-                <div className="p-6 pt-5">
+                <div className="p-6">
                     {/* תגית פרק */}
                     <div className="flex items-center gap-2 mb-6">
                         <span className="text-[#EF4444] text-xl" aria-hidden>✶</span>
@@ -104,7 +92,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                             className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]"
                         >
                             <div className="p-6">
-                                <h3 className={`text-xl font-black text-right mb-6 ${card.titleColor || 'text-[#5E3BEE]'}`}>
+                                <h3 className={`text-xl font-black text-center mb-6 ${card.titleColor || 'text-[#5E3BEE]'}`}>
                                     {card.title}
                                 </h3>
                                 <ul className="flex flex-col gap-4 pr-0">
@@ -143,18 +131,8 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         return (
             <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
                 <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                    {/* פס לוגו בראש הכרטיס */}
-                    <div className="bg-white border-b border-[#2D2D44]/5 px-5 py-4 flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-[#5E3BEE] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                            <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                            <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                            <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                        </div>
-                    </div>
                     <div className="p-6">
-                        <h3 className="text-2xl font-black text-[#FFB84C] text-right mb-6 leading-tight">
+                        <h3 className="text-2xl font-black text-[#FFB84C] text-center mb-6 leading-tight">
                             למידה<br />והדרכה
                         </h3>
                         <ul className="flex flex-col gap-4 pr-0">
@@ -180,18 +158,8 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         return (
             <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
                 <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                    {/* פס לוגו בראש הכרטיס */}
-                    <div className="bg-white border-b border-[#2D2D44]/5 px-5 py-4 flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-xl bg-[#5E3BEE] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                            <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                            <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                            <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                        </div>
-                    </div>
                     <div className="p-6">
-                        <h3 className="text-2xl font-black text-[#EF4444] text-right mb-6 leading-tight">
+                        <h3 className="text-2xl font-black text-[#EF4444] text-center mb-6 leading-tight">
                             עבודה<br />מנהלית
                         </h3>
                         <ul className="flex flex-col gap-4 pr-0">
@@ -287,19 +255,8 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         return (
             <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
                 <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                    <div className="bg-[#F3F0FF] border-b border-[#2D2D44]/5 px-5 py-4">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-12 h-12 rounded-xl bg-[#5E3BEE] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                                <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                            </div>
-                        </div>
-                        <p className="text-[#2D2D44] font-bold text-center">{firstStepTitle}</p>
-                    </div>
-                    <div className="p-4">
+                    <div className="p-4 pt-6">
+                        <p className="text-[#2D2D44] font-bold text-center mb-2">{firstStepTitle}</p>
                         {part7Steps.map((step, index) => (
                             <React.Fragment key={index}>
                                 <MobileFlowStepCard step={step} showConnector={index < part7Steps.length - 1} />
@@ -321,19 +278,8 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         return (
             <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
                 <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                    <div className="bg-[#F3F0FF] border-b border-[#2D2D44]/5 px-5 py-4">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-12 h-12 rounded-xl bg-[#5E3BEE] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                                <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                            </div>
-                        </div>
-                        <p className="text-[#2D2D44] font-bold text-center">{sectionTitle}</p>
-                    </div>
-                    <div className="p-4">
+                    <div className="p-4 pt-6">
+                        <p className="text-[#2D2D44] font-bold text-center mb-2">{sectionTitle}</p>
                         {part8Steps.map((step, index) => (
                             <React.Fragment key={index}>
                                 <MobileFlowStepCard step={step} showConnector={index < part8Steps.length - 1} />
@@ -352,18 +298,6 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         return (
             <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
                 <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                    <div className="bg-[#F3F0FF] border-b border-[#2D2D44]/5 px-5 py-4">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-12 h-12 rounded-xl bg-[#5E3BEE] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                                <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                            </div>
-                        </div>
-                        <p className="text-[#2D2D44] font-bold text-center">{step.title}</p>
-                    </div>
                     <div className="p-6">
                         <div className="flex items-center gap-2 mb-4">
                             <div className="w-12 h-12 bg-[#C5E080] border-2 border-[#2D2D44] rounded-full flex items-center justify-center font-black text-lg text-[#2D2D44] shadow-[3px_3px_0px_#2D2D44]">
@@ -371,7 +305,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                             </div>
                             <span className="text-sm font-bold text-[#2D2D44]/60">{step.step}</span>
                         </div>
-                        <h3 className="text-2xl font-black text-[#2D2D44] text-right mb-6">{step.title}</h3>
+                        <h3 className="text-2xl font-black text-[#2D2D44] text-center mb-6">{step.title}</h3>
                         <ul className="flex flex-col gap-4 pr-0">
                             {(step.items || []).map((item, idx) => (
                                 <li key={idx} className="flex items-start gap-3 text-right text-[#2D2D44] text-base leading-snug">
@@ -395,18 +329,6 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         return (
             <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
                 <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                    <div className="bg-[#F3F0FF] border-b border-[#2D2D44]/5 px-5 py-4">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-12 h-12 rounded-xl bg-[#5E3BEE] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                                <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                            </div>
-                        </div>
-                        <p className="text-[#2D2D44] font-bold text-center">{step.title}</p>
-                    </div>
                     <div className="p-6">
                         <div className="flex items-center gap-2 mb-4">
                             <div className="w-12 h-12 bg-[#C5E080] border-2 border-[#2D2D44] rounded-full flex items-center justify-center font-black text-lg text-[#2D2D44] shadow-[3px_3px_0px_#2D2D44]">
@@ -414,7 +336,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                             </div>
                             <span className="text-sm font-bold text-[#2D2D44]/60">{step.step}</span>
                         </div>
-                        <h3 className="text-2xl font-black text-[#2D2D44] text-right mb-6">{step.title}</h3>
+                        <h3 className="text-2xl font-black text-[#2D2D44] text-center mb-6">{step.title}</h3>
                         <ul className="flex flex-col gap-4 pr-0">
                             {(step.items || []).map((item, idx) => (
                                 <li key={idx} className="flex items-start gap-3 text-right text-[#2D2D44] text-base leading-snug">
@@ -431,84 +353,49 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         );
     };
 
-    // --- מובייל בלבד: חלק 11 – צעד עשירי + תמונת מפגש (פיצה) ---
+    // --- מובייל בלבד: חלק 11 – צעד עשירי (תמונת פיצה רק בחלק 12 עם הקולאז') ---
     const MobilePart11 = () => {
         const step = data.onboarding?.steps?.find((s) => s.id === '10');
-        const pizzaImage = data.sessionStructure?.images?.[0];
-        if (!step && !pizzaImage) return null;
+        if (!step) return null;
         return (
-            <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8 space-y-6">
-                {step && (
-                    <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                        <div className="bg-[#F3F0FF] border-b border-[#2D2D44]/5 px-5 py-4">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-12 h-12 rounded-xl bg-[#5E3BEE] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                    <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                    <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                                    <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                                </div>
+            <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
+                <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
+                    <div className="p-6">
+                        <div className="flex items-center gap-2 mb-4">
+                            <div className="w-12 h-12 bg-[#C5E080] border-2 border-[#2D2D44] rounded-full flex items-center justify-center font-black text-lg text-[#2D2D44] shadow-[3px_3px_0px_#2D2D44]">
+                                {step.id}
                             </div>
-                            <p className="text-[#2D2D44] font-bold text-center">{step.title}</p>
+                            <span className="text-sm font-bold text-[#2D2D44]/60">{step.step}</span>
                         </div>
-                        <div className="p-6">
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="w-12 h-12 bg-[#C5E080] border-2 border-[#2D2D44] rounded-full flex items-center justify-center font-black text-lg text-[#2D2D44] shadow-[3px_3px_0px_#2D2D44]">
-                                    {step.id}
-                                </div>
-                                <span className="text-sm font-bold text-[#2D2D44]/60">{step.step}</span>
-                            </div>
-                            <h3 className="text-2xl font-black text-[#2D2D44] text-right mb-6">{step.title}</h3>
-                            <ul className="flex flex-col gap-4 pr-0">
-                                {(step.items || []).map((item, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 text-right text-[#2D2D44] text-base leading-snug">
-                                        <div className="mt-1 flex-shrink-0 bg-[#C5E080]/40 p-1 rounded-full text-[#2D2D44]">
-                                            <ArrowLeft size={16} strokeWidth={3} />
-                                        </div>
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className="flex justify-center mt-4" aria-hidden>
-                                <span className="text-2xl text-[#FFB84C]">✶</span>
-                            </div>
+                        <h3 className="text-2xl font-black text-[#2D2D44] text-center mb-6">{step.title}</h3>
+                        <ul className="flex flex-col gap-4 pr-0">
+                            {(step.items || []).map((item, idx) => (
+                                <li key={idx} className="flex items-start gap-3 text-right text-[#2D2D44] text-base leading-snug">
+                                    <div className="mt-1 flex-shrink-0 bg-[#C5E080]/40 p-1 rounded-full text-[#2D2D44]">
+                                        <ArrowLeft size={16} strokeWidth={3} />
+                                    </div>
+                                    <span>{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="flex justify-center mt-4" aria-hidden>
+                            <span className="text-2xl text-[#FFB84C]">✶</span>
                         </div>
                     </div>
-                )}
-                {pizzaImage && (
-                    <div className="relative rounded-[40px] overflow-hidden border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)] bg-[#FFFDF5]">
-                        <img
-                            src={pizzaImage}
-                            alt="מפגש רעים - שיתוף ביחד"
-                            className="w-full aspect-[4/3] object-cover"
-                        />
-                        <div className="absolute bottom-3 right-3 w-2 h-2 rounded-full bg-[#C5E080]" aria-hidden />
-                    </div>
-                )}
+                </div>
             </div>
         );
     };
 
-    // --- מובייל בלבד: חלק 12 – קולאז' תמונות + כיצד נראה מפגש רעים ---
+    // --- מובייל בלבד: חלק 12 – כיצד נראה מפגש רעים (קולאז' תמונות + כותרת + אקורדיון – פעם אחת) ---
     const MobilePart12 = () => {
         const session = data.sessionStructure;
         const images = session?.images ?? [];
-        if (!session?.title && images.length === 0) return null;
+        const hasContent = (session?.title || images.length > 0 || (session?.items?.length > 0));
+        if (!hasContent) return null;
         return (
             <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
                 <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                    <div className="bg-[#F3F0FF] border-b border-[#2D2D44]/5 px-5 py-4">
-                        <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-xl bg-[#5E3BEE] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                                <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                            </div>
-                        </div>
-                    </div>
                     <div className="p-5 relative">
                         {images.length > 0 && (
                             <div className="relative min-h-[220px] mb-6">
@@ -527,14 +414,21 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                             </div>
                         )}
                         {session.recommendation && (
-                            <p className="text-[#5E3BEE] font-bold text-sm tracking-wide text-center mb-1">
-                                {session.recommendation}
-                            </p>
+                            <div className="flex justify-end mb-2">
+                                <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#F3F0FF] text-[#5E3BEE] font-bold text-sm">
+                                    {session.recommendation}
+                                </span>
+                            </div>
                         )}
                         {session.title && (
-                            <h2 className="text-2xl font-black text-[#5E3BEE] text-center">
+                            <h2 className="text-2xl font-black text-[#2D2D44] text-center mb-6">
                                 {session.title}
                             </h2>
+                        )}
+                        {session?.items?.length > 0 && (
+                            <div className="bg-[#FDFBFF] rounded-2xl border border-[#816AFE]/10 p-3">
+                                <Accordion items={session.items} />
+                            </div>
                         )}
                     </div>
                 </div>
@@ -549,17 +443,6 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         return (
             <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
                 <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                    <div className="bg-[#F3F0FF] border-b border-[#2D2D44]/5 px-5 py-4">
-                        <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-xl bg-[#5E3BEE] flex items-center justify-center flex-shrink-0 overflow-hidden">
-                                <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                                <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                                <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                            </div>
-                        </div>
-                    </div>
                     <div className="p-6">
                         {session.recommendation && (
                             <p className="text-[#5E3BEE] font-bold text-sm tracking-wide text-center mb-1">
@@ -578,22 +461,13 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         );
     };
 
-    // --- מובייל בלבד: חלק 14 – לוגו סגול + רשימת נושאים (סגורה בסגנון אקורדיון) ---
+    // --- מובייל בלבד: חלק 14 – רשימת נושאים (סגורה בסגנון אקורדיון) ---
     const MobilePart14 = () => {
         const session = data.sessionStructure;
         const items = session?.items ?? [];
         return (
             <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
                 <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                    <div className="bg-[#5E3BEE] px-5 py-4 flex items-center gap-3">
-                        <div className="flex-1 min-w-0">
-                            <p className="text-white font-black text-lg leading-tight">רעים</p>
-                            <p className="text-white/90 text-sm">{MOBILE_TAGLINE}</p>
-                        </div>
-                        <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0">
-                            <img src="/Logo (1).png" alt="" className="w-8 h-8 object-contain opacity-90" onError={(e) => { e.target.style.display = 'none'; }} />
-                        </div>
-                    </div>
                     <div className="p-4">
                         {items.length > 0 && (
                             <div className="space-y-1">
@@ -616,65 +490,18 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
         );
     };
 
-    // --- מובייל בלבד: חלק 15 – לוגו + לפרק הבא + פוטר (פרטי קשר, סושיאל, זכויות) ---
-    const MobilePart15 = () => {
-        const footer = content?.footer ?? {};
-        const contact = footer.contact ?? {};
-        const bottomLinks = footer.bottomLinks ?? [
-            { text: 'מדיניות פרטיות', url: '#' },
-            { text: 'תקנון אתר', url: '#' }
-        ];
-        const organization = footer.organization ?? 'תוכנית רעים מבית החברה למתנ"סים';
-        const copyright = footer.copyright ?? '© כל הזכויות שמורות לחברה למתנ"סים';
-        return (
-            <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8 space-y-6">
-                <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)] p-6 text-center">
-                    <div className="flex justify-center gap-2 mb-4">
-                        <img src="/Logo (1).png" alt="רעים" className="h-10 object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
-                        <div className="text-right">
-                            <p className="text-[#5E3BEE] font-black text-lg leading-tight">רעים</p>
-                            <p className="text-[#2D2D44]/70 text-sm">{MOBILE_TAGLINE}</p>
-                        </div>
-                    </div>
-                </div>
-                {onNext && (
-                    <NextChapterButton
-                        title={data.nextButton?.title ?? 'לפרק הבא'}
-                        subtitle={data.nextButton?.subtitle ?? 'פרק 04 - עבודה מנהלית'}
-                        onClick={onNext}
-                    />
-                )}
-                <div className="rounded-[32px] overflow-hidden bg-white border border-[#2D2D44]/5 shadow-lg p-6 text-center">
-                    <div className="flex flex-wrap justify-center items-center gap-4 mb-4">
-                        <img src="/Logo (1).png" alt="רעים" className="h-10 object-contain" onError={(e) => { e.target.style.display = 'none'; }} />
-                        <img src="/matnasimLogo.png" alt="החברה למתנ&quot;סים" className="h-10 object-contain" style={{ filter: 'invert(32%) sepia(89%) saturate(1582%) hue-rotate(231deg)' }} />
-                    </div>
-                    <p className="text-[#2D2D44] text-sm font-medium mb-4">{organization}</p>
-                    <div className="text-[#2D2D44] text-sm space-y-1 mb-4">
-                        <p>טלפון: {contact.phone}</p>
-                        <p>פקס: {contact.fax}</p>
-                        <p>מייל: <a href={`mailto:${contact.email}`} className="text-[#5E3BEE] underline">{contact.email}</a></p>
-                    </div>
-                    <div className="flex justify-center gap-3 mb-4">
-                        {[Facebook, Instagram, Linkedin, Twitter].map((Icon, i) => (
-                            <a key={i} href="#" className="bg-[#EBE5FC] p-2.5 rounded-xl text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors" aria-label="רשתות חברתיות">
-                                <Icon size={20} />
-                            </a>
-                        ))}
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-2 text-sm text-[#2D2D44]/80 mb-3">
-                        {bottomLinks.map((link, i) => (
-                            <React.Fragment key={i}>
-                                {i > 0 && <span className="text-gray-300">•</span>}
-                                <a href={link.url} className="text-[#5E3BEE] underline hover:no-underline">{link.text}</a>
-                            </React.Fragment>
-                        ))}
-                    </div>
-                    <p className="text-xs text-[#2D2D44]/60">{copyright}</p>
-                </div>
-            </div>
-        );
-    };
+    // --- מובייל בלבד: חלק 15 – כפתור לפרק הבא בלבד (פוטר גלובלי ב-App) ---
+    const MobilePart15 = () => (
+        <div className="md:hidden w-full max-w-lg mx-auto px-4 pb-8">
+            {onNext && (
+                <NextChapterButton
+                    title={data.nextButton?.title ?? 'לפרק הבא'}
+                    subtitle={data.nextButton?.subtitle ?? 'פרק 04 - עבודה מנהלית'}
+                    onClick={onNext}
+                />
+            )}
+        </div>
+    );
 
     // --- 1. הגדרת התוכן הדביק לצד ימין ---
     const StickyHeader = (
@@ -707,7 +534,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
     );
 
     return (
-        <div className="min-h-screen bg-[#FFFDF5] pt-32 pb-0 font-['Rubik']">
+        <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-0 font-['Rubik']">
             {onPrev && (
                 <div className="pt-6 pb-4 px-4">
                     <PrevChapterButton title="לפרק הקודם" subtitle="פרק 02 - המשתתפים" onClick={onPrev} />
@@ -729,34 +556,14 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
             {/* מובייל בלבד: חלק 5 – עבודה מנהלית */}
             <MobilePart5 />
 
-            {/* מובייל בלבד: חלק 6 – מבנה המפגש */}
-            <MobilePart6 />
+            {/* מובייל: חלק 2 מציג את כל המדריך – אין Part 7–11 (כפילות) */}
 
-            {/* מובייל בלבד: חלק 7 – צעדים 1–3 (זרימה) */}
-            <MobilePart7 />
-
-            {/* מובייל בלבד: חלק 8 – צעדים 4–10 (המשך זרימה) */}
-            <MobilePart8 />
-
-            {/* מובייל בלבד: חלק 9 – צעד תשיעי: פתיחת הקבוצה */}
-            <MobilePart9 />
-
-            {/* מובייל בלבד: חלק 10 – צעד עשירי: תוכן ותהליך קבוצתי */}
-            <MobilePart10 />
-
-            {/* מובייל בלבד: חלק 11 – צעד עשירי + תמונת מפגש */}
-            <MobilePart11 />
-
-            {/* מובייל בלבד: חלק 12 – קולאז' תמונות + כיצד נראה מפגש רעים */}
+            {/* מובייל בלבד: חלק 12 – כיצד נראה מפגש רעים (תמונות + המלצה + כותרת + אקורדיון – פעם אחת) */}
             <MobilePart12 />
 
-            {/* מובייל בלבד: חלק 13 – כיצד נראה מפגש רעים (לוגו + אקורדיון) */}
-            <MobilePart13 />
+            {/* מובייל: Part 14 הוסר – רשימת נושאים כפולה לאקורדיון בחלק 12 */}
 
-            {/* מובייל בלבד: חלק 14 – לוגו סגול + רשימת נושאים (סגורה) */}
-            <MobilePart14 />
-
-            {/* מובייל בלבד: חלק 15 – לוגו + לפרק הבא + פוטר */}
+            {/* מובייל בלבד: חלק 15 – כפתור לפרק הבא בלבד */}
             <MobilePart15 />
 
             {/* דסקטופ: כל תוכן הפרק */}
@@ -773,7 +580,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute bottom-6 left-6 flex flex-col items-center">
-                            <span className="text-[80px] font-black text-[#5E3BEE] font-['Salsa'] leading-none drop-shadow-sm bg-white/80 px-4 rounded-xl backdrop-blur-sm">
+                            <span className="text-6xl font-black text-[#5E3BEE] font-['Rubik'] leading-none drop-shadow-sm bg-white/80 px-4 rounded-xl backdrop-blur-sm">
                                 03
                             </span>
                         </div>
@@ -887,17 +694,6 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                 />
             </div>
             </div>
-
-            {/* מובייל: כפתור לפרק הבא */}
-            {onNext && (
-                <div className="md:hidden my-8 px-4">
-                    <NextChapterButton 
-                        title="סיימנו את פרק 3"
-                        subtitle="פרק 04 - עבודה מנהלית"
-                        onClick={onNext} 
-                    />
-                </div>
-            )}
         </div>
     );
 };

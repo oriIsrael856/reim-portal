@@ -17,18 +17,18 @@ const NextChapterButton = ({ title, subtitle, onClick }) => {
                     className="
                         w-full disabled:opacity-50 disabled:cursor-not-allowed
                         flex flex-col items-center justify-center
-                        bg-[#816AFE] hover:bg-[#7050e8]
-                        rounded-[24px] shadow-xl
-                        pt-8 pb-6 px-6
+                        bg-[#5E3BEE] hover:bg-[#4a2ec6]
+                        rounded-[40px] shadow-xl
+                        pt-6 pb-4 px-5
                         text-white text-center
                         transition-colors
                     "
                 >
-                    <h2 className="text-2xl font-black mb-1">{title}</h2>
-                    <p className="text-base font-medium opacity-90 mb-6">{subtitle}</p>
+                    <h2 className="text-xl font-black mb-1">{title}</h2>
+                    <p className="text-sm font-medium opacity-90 mb-4">{subtitle}</p>
                     <div className="flex justify-center">
-                        <span className="bg-white rounded-full p-3 inline-flex items-center justify-center shadow-md">
-                            <ArrowLeft size={24} color="#816AFE" strokeWidth={3} />
+                        <span className="bg-white rounded-[16px] p-3 inline-flex items-center justify-center shadow-md">
+                            <ArrowLeft size={24} color="#5E3BEE" strokeWidth={3} />
                         </span>
                     </div>
                 </button>

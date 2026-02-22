@@ -1,6 +1,13 @@
 import React from 'react';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
+const SOCIAL_LINKS = [
+    { Icon: Facebook, href: 'https://www.facebook.com/reimprogram/', label: 'פייסבוק – תוכנית רעים' },
+    { Icon: Instagram, href: '#', label: 'אינסטגרם' },
+    { Icon: Linkedin, href: '#', label: 'לינקדאין' },
+    { Icon: Twitter, href: '#', label: 'טוויטר' }
+];
+
 const Footer = ({ data }) => {
     const contact = data?.contact ?? {};
     const bottomLinks = data?.bottomLinks ?? [
@@ -11,7 +18,7 @@ const Footer = ({ data }) => {
     const organization = data?.organization ?? 'תוכנית רעים מבית החברה למתנ"סים';
 
     return (
-        <footer className="bg-[#F3F0FF] pt-16 pb-8 px-8 md:px-20 border-t border-[#5E3BEE]/5 mt-20">
+        <footer className="bg-[#F3F0FF] pt-10 pb-6 px-6 md:px-12 border-t border-[#5E3BEE]/5 mt-12">
             <div className="max-w-[1600px] mx-auto">
                 
                 {/* מובייל: כרטיס לבן מעוגל – לוגואים, פרטי קשר, סושיאל, לינקים, זכויות */}
@@ -32,8 +39,8 @@ const Footer = ({ data }) => {
                         <p>מייל: <a href={`mailto:${contact.email}`} className="text-[#5E3BEE] underline">{contact.email}</a></p>
                     </div>
                     <div className="flex justify-center gap-3 mb-6">
-                        {[Facebook, Instagram, Linkedin, Twitter].map((Icon, i) => (
-                            <a key={i} href="#" className="bg-[#EBE5FC] p-2.5 rounded-xl text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
+                        {SOCIAL_LINKS.map(({ Icon, href, label }, i) => (
+                            <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="bg-[#EBE5FC] p-2.5 rounded-xl text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
                                 <Icon size={20} />
                             </a>
                         ))}
@@ -82,8 +89,8 @@ const Footer = ({ data }) => {
                 {/* דסקטופ: סושיאל וזכויות */}
                 <div className="hidden md:flex flex-col-reverse md:flex-row justify-between items-center pt-8 border-t border-gray-200">
                     <div className="flex gap-4 mt-4 md:mt-0">
-                        {[Facebook, Instagram, Linkedin, Twitter].map((Icon, i) => (
-                            <a key={i} href="#" className="bg-[#EBE5FC] p-2 rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
+                        {SOCIAL_LINKS.map(({ Icon, href, label }, i) => (
+                            <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="bg-[#EBE5FC] p-2 rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
                                 <Icon size={18} />
                             </a>
                         ))}

@@ -29,7 +29,7 @@ export const MenuOverlay = ({ isOpen, closeMenu, menuItems, navigateTo }) => {
                     {menuItems.map((item, index) => (
                         <div key={index} onClick={() => { navigateTo(item.page); closeMenu(); }} className="flex items-center justify-between p-4 border-b border-gray-100 hover:bg-[#F3F0FF] rounded-lg cursor-pointer group transition-all">
                             <span className="text-xl font-bold text-[#2D2D44] group-hover:text-[#5E3BEE]">{item.title}</span>
-                            <span className="text-4xl font-black text-[#F3F0FF] group-hover:text-[#EBE5FC] font-['Salsa']">{item.id}</span>
+                            <span className="text-4xl font-black text-[#F3F0FF] group-hover:text-[#EBE5FC] font-['Rubik']">{item.id}</span>
                         </div>
                     ))}
                 </div>

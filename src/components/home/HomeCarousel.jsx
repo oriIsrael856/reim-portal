@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { ChevronRight, ChevronLeft, ThumbsUp, Users, Star, Layers, Bell } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ThumbsUp, Users, Star, Layers, Bell, ArrowUpLeft } from 'lucide-react';
 
 // מפת אייקונים: מחרוזת -> קומפוננטה
 const ICON_MAP = {
@@ -23,8 +23,10 @@ const HomeCarousel = ({ items, navigateTo, carouselHeader }) => {
     const scrollRef = useRef(null);
 
     const scroll = (direction) => {
-        if (scrollRef.current) {
-            const scrollAmount = direction === 'right' ? 340 : -340;
+        if (scrollRef.current?.firstChild) {
+            const card = scrollRef.current.firstChild;
+            const gap = parseFloat(getComputedStyle(scrollRef.current).gap) || 12;
+            const scrollAmount = (card.offsetWidth + gap) * (direction === 'right' ? 1 : -1);
             scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
     };
@@ -34,53 +36,98 @@ const HomeCarousel = ({ items, navigateTo, carouselHeader }) => {
         if (page && navigateTo) navigateTo(page);
     };
 
+    // פיצול כותרת לחלק רגיל + חלק מודגש (אחרי ":" או שורה חדשה)
+    const renderTitle = (title) => {
+        if (!title) return null;
+        const sep = title.includes(':\n') ? ':\n' : title.includes(':') ? ':' : null;
+        if (!sep) return <span>{title}</span>;
+        const i = title.indexOf(sep);
+        const before = title.slice(0, i + (sep === ':' ? 1 : 2));
+        const after = title.slice(i + sep.length).trim();
+        return (<><span>{before}</span><span className="text-[#2D2D44] group-hover:text-[#FFD028] transition-colors">{after}</span></>);
+    };
+
     return (
-        <div className="mb-24 max-w-[1920px] mx-auto">
-            {/* כותרת וכפתורי ניווט */}
-            <div className="flex flex-row-reverse justify-between items-end mb-6 md:mb-8 px-4 md:px-8 md:px-20">
-                <div className="text-right">
-                    <p className="text-gray-500 font-medium mb-1 text-sm">{carouselHeader?.label ?? 'כל מה שכדאי לדעת'}</p>
-                    <h2 className="text-2xl md:text-3xl md:text-4xl font-black text-[#2D2D44]">{carouselHeader?.title ?? 'המדריכה לרכזות ורכזים'}</h2>
+        <div className="mb-[clamp(1rem,4vw,2rem)] w-full max-w-[95vw] mx-auto px-[4%]">
+            {/* כותרת מימין, חצים משמאל (RTL) */}
+            <div className="flex justify-between items-end px-0 md:px-[1%]" style={{ marginBottom: 'clamp(0.75rem, 2vw, 1.5rem)' }}>
+                <div className="text-right shrink-0 min-w-0">
+                    <p className="text-gray-500 font-medium mb-0.5" style={{ fontSize: 'clamp(0.65rem, 1.2vw, 0.8rem)' }}>{carouselHeader?.label ?? 'כל מה שכדאי לדעת'}</p>
+                    <h2 className="font-black text-[#2D2D44]" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.5rem)' }}>{carouselHeader?.title ?? 'המדריכה לרכזות ורכזים'}</h2>
                 </div>
-                <div className="hidden md:flex gap-3 ltr">
-                    <button onClick={() => scroll('right')} className="w-12 h-12 flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
-                        <ChevronRight size={24} />
+                <div className="hidden md:flex gap-[0.5vw] ltr shrink-0">
+                    <button onClick={() => scroll('right')} className="flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors" style={{ width: 'clamp(32px, 2.5vw, 44px)', height: 'clamp(32px, 2.5vw, 44px)' }}>
+                        <ChevronRight style={{ width: 'clamp(16px, 1.2vw, 22px)', height: 'clamp(16px, 1.2vw, 22px)' }} />
                     </button>
-                    <button onClick={() => scroll('left')} className="w-12 h-12 flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
-                        <ChevronLeft size={24} />
+                    <button onClick={() => scroll('left')} className="flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors" style={{ width: 'clamp(32px, 2.5vw, 44px)', height: 'clamp(32px, 2.5vw, 44px)' }}>
+                        <ChevronLeft style={{ width: 'clamp(16px, 1.2vw, 22px)', height: 'clamp(16px, 1.2vw, 22px)' }} />
                     </button>
                 </div>
             </div>
 
-            {/* הקרוסלה */}
-            <div 
-                ref={scrollRef} 
-                className="flex gap-4 md:gap-6 overflow-x-auto pb-8 md:pb-12 px-4 md:px-8 md:px-20 no-scrollbar snap-x"
-                style={{ scrollPaddingLeft: '2rem', scrollPaddingRight: '2rem' }}
+            {/* הקרוסלה – כרטיסים באחוזים: 5 כרטיסים + רווחים נכנסים ב־100% */}
+            <div
+                ref={scrollRef}
+                className="flex overflow-x-auto no-scrollbar snap-x"
+                style={{
+                    gap: 'clamp(0.5rem, 1.2vw, 1.25rem)',
+                    paddingTop: '0.5rem',
+                    paddingBottom: 'clamp(1.5rem, 4vw, 2.5rem)',
+                    scrollPaddingLeft: '1rem',
+                    scrollPaddingRight: '1rem'
+                }}
             >
                 {items.map((card) => (
-                    <div
-                        key={card.id}
-                        onClick={() => handleCardClick(card)}
-                        className="min-w-[280px] w-[280px] h-[380px] bg-white p-8 rounded-[32px] shadow-[0px_4px_20px_rgba(0,0,0,0.03)] border border-transparent hover:border-[#2D2D44] transition-all cursor-pointer snap-start flex flex-col justify-between group relative overflow-hidden"
-                    >
-                        <div className="absolute top-6 left-6">
-                            <span className="text-5xl font-black text-[#2D2D44] font-['Salsa'] opacity-100 group-hover:text-[#FFD028] transition-colors">
-                                {card.id}
-                            </span>
-                        </div>
-
-                        <div className="mt-auto">
-                            {/* המרת הטקסט לאייקון */}
-                            <div className="mb-4 text-[#2D2D44] group-hover:scale-110 transition-transform origin-bottom-right">
-                                {ICON_MAP[card.icon] || <Star size={32} />}
+                    <div key={card.id} className="flex-shrink-0 snap-start pt-1 pb-2">
+                        <div
+                            onClick={() => handleCardClick(card)}
+                            className="bg-white rounded-2xl border border-transparent transition-all duration-300 cursor-pointer flex flex-col justify-between group relative overflow-visible"
+                            style={{
+                                width: 'clamp(140px, 18vw, 220px)',
+                                minWidth: 'clamp(140px, 18vw, 220px)',
+                                aspectRatio: '2/3',
+                                minHeight: 'clamp(200px, 38vw, 320px)',
+                                maxHeight: 'min(330px, 42vh)',
+                                padding: 'clamp(0.6rem, 1.4vw, 1.25rem)',
+                                boxShadow: '0 4px 16px rgba(0,0,0,0.04)'
+                            }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.background = '#FFF8EB';
+                                e.currentTarget.style.boxShadow = '8px 12px 32px rgba(45,45,68,0.18), 0 4px 12px rgba(0,0,0,0.08)';
+                                e.currentTarget.style.transform = 'translateY(-6px) scale(1.08)';
+                                e.currentTarget.style.zIndex = '10';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.background = '';
+                                e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.04)';
+                                e.currentTarget.style.transform = '';
+                                e.currentTarget.style.zIndex = '';
+                            }}
+                        >
+                            {/* אייקון פינה ימנית־עליונה – מופיע בהובר */}
+                            <div className="absolute top-[clamp(0.5rem,1.2vw,1.25rem)] left-[clamp(0.5rem,1.2vw,1.25rem)] w-8 h-8 rounded-lg bg-[#FFB84C] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <ArrowUpLeft className="text-white" size={18} strokeWidth={2.5} />
                             </div>
-                            <h3 className="text-xl font-black text-[#2D2D44] mb-2 leading-tight whitespace-pre-line">
-                                {card.title}
-                            </h3>
-                            <p className="text-gray-400 text-xs leading-relaxed font-medium">
-                                {card.desc}
-                            </p>
+
+                            {/* מספר – מרכז למעלה */}
+                            <div className="flex justify-center pt-1">
+                                <span className="font-black text-[#2D2D44] font-['Salsa'] group-hover:text-[#FFD028] transition-colors" style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.75rem)' }}>
+                                    {card.id}
+                                </span>
+                            </div>
+
+                            {/* תוכן – אייקון, כותרת, תיאור – ממורכז */}
+                            <div className="flex flex-col items-center text-center mt-auto pt-2">
+                                <div className="text-[#2D2D44] group-hover:scale-110 transition-transform duration-300 mb-2 flex justify-center">
+                                    {ICON_MAP[card.icon] || <Star size={26} />}
+                                </div>
+                                <h3 className="font-black text-[#2D2D44] leading-tight whitespace-pre-line w-full" style={{ fontSize: 'clamp(0.8rem, 1.4vw, 1rem)', marginBottom: '0.35rem' }}>
+                                    {renderTitle(card.title)}
+                                </h3>
+                                <p className="text-gray-400 leading-relaxed font-medium w-full" style={{ fontSize: 'clamp(0.6rem, 1vw, 0.7rem)' }}>
+                                    {card.desc}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 ))}
