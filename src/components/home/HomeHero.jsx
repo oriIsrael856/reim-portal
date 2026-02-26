@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { ArrowDown, Star } from 'lucide-react';
 
+// Decorative assets live in public/assets – use root paths only (no import).
+
 const HomeHero = ({ data }) => {
     const [carouselIndex, setCarouselIndex] = useState(0);
     const images = data.images || [];
@@ -8,12 +10,44 @@ const HomeHero = ({ data }) => {
 
     return (
         <div
-            className="text-center px-[4%] relative overflow-hidden md:min-h-0 md:flex md:flex-col md:justify-center md:max-h-[calc(100vh-5.5rem)]"
+            className="text-center px-[4%] relative overflow-hidden overflow-x-clip md:min-h-0 md:flex md:flex-col md:justify-center md:max-h-[calc(100vh-5.5rem)]"
             style={{
                 paddingTop: 'clamp(0.5rem, 4vh, 1.5rem)',
                 paddingBottom: 'clamp(0.5rem, 5vh, 2rem)'
             }}
         >
+            {/* --- LEFT PLANE ASSEMBLY --- */}
+            <div className="absolute top-[15%] left-[5%] md:left-[12%] z-10 hidden lg:block pointer-events-none select-none">
+                {/* Trail (Above and behind the plane) */}
+                <img
+                    src="/assets/Vector 3.png"
+                    alt="trail"
+                    className="absolute -top-12 -right-8 w-24 opacity-60 -z-10 -translate-x-20 scale-x-100"
+                />
+                {/* Plane (Rotated to face down-right towards the title) */}
+                <img
+                    src="/assets/Vector 2 (1).png"
+                    alt="plane"
+                    className="relative z-10 w-16 rotate-[20deg] animate-[bounce_4s_infinite] mt-15"
+                />
+            </div>
+
+            {/* --- RIGHT PLANE ASSEMBLY --- */}
+            <div className="absolute top-[40%] right-[5%] md:right-[12%] z-10 hidden lg:block pointer-events-none select-none">
+                {/* Trail (Below and behind the plane, flipped horizontally using -scale-x-100) */}
+                <img
+                    src="/assets/Vector 3.png"
+                    alt="trail"
+                    className="absolute -bottom-10 -left-12 w-24 opacity-60 -z-10 scale-x-100 rotate-12"
+                />
+                {/* Plane (Rotated to face up-left towards the title) */}
+                <img
+                    src="/assets/Vector 1.png"
+                    alt="plane"
+                    className="relative z-10 w-16 -rotate-[5deg] animate-[bounce_5s_infinite] -mt-20 -translate-x-23"
+                />
+            </div>
+
             {/* כותרות – גודל באחוזים (vw), z גבוה כדי שלא ייכוסו על ידי התמונות */}
             <div className="relative z-20" style={{ marginBottom: 'clamp(2rem, 6vh, 3.5rem)' }}>
                 <p className="text-[#2D2D44] font-medium tracking-wide opacity-80 md:font-['Rubik']" style={{ fontSize: 'clamp(0.75rem, 1.8vw, 1rem)', marginBottom: '0.25rem' }}>{data.subtitle}</p>
@@ -28,12 +62,12 @@ const HomeHero = ({ data }) => {
                 </div>
             </div>
 
-            {/* קישוטים – מיקום באחוזים, גודל ב־vw */}
-            <div className="absolute right-[10%] text-[#FFD028]" style={{ top: 'clamp(2rem, 12vh, 4rem)' }}>
-                <Star fill="currentColor" style={{ width: 'clamp(16px, 1.2vw, 24px)', height: 'clamp(16px, 1.2vw, 24px)' }} />
+            {/* Fallback: star + dot when no SVG – keep for small screens / no assets */}
+            <div className="absolute right-[10%] text-[#FFD028] z-10 hidden md:block" style={{ top: 'clamp(2rem, 12vh, 4rem)' }}>
+                <Star fill="currentColor" className="animate-pulse" style={{ width: 'clamp(16px, 1.2vw, 24px)', height: 'clamp(16px, 1.2vw, 24px)' }} />
             </div>
-            <div className="absolute left-[15%] bg-[#FF5C5C] rounded-full hidden md:block" style={{ top: 'clamp(4rem, 18vh, 6rem)', width: 'clamp(6px, 0.5vw, 10px)', height: 'clamp(6px, 0.5vw, 10px)' }} />
-            <svg className="absolute left-[8%] text-[#7DD3FC] opacity-90 md:hidden" style={{ top: 'clamp(4rem, 14vh, 5rem)', width: 'clamp(24px, 5vw, 36px)', height: 'clamp(24px, 5vw, 36px)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 19l-7-7 7-7M19 12H5"/></svg>
+            <div className="absolute left-[15%] bg-[#FF5C5C] rounded-full hidden md:block z-10" style={{ top: 'clamp(4rem, 18vh, 6rem)', width: 'clamp(6px, 0.5vw, 10px)', height: 'clamp(6px, 0.5vw, 10px)' }} />
+            <svg className="absolute left-[8%] text-[#7DD3FC] opacity-90 md:hidden z-10" style={{ top: 'clamp(4rem, 14vh, 5rem)', width: 'clamp(24px, 5vw, 36px)', height: 'clamp(24px, 5vw, 36px)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 19l-7-7 7-7M19 12H5"/></svg>
 
             {/* דסקטופ: גלריית תמונות – רווח ברור מהכותרת כדי שהתמונות לא יעלו על הטקסט */}
             <div

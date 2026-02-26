@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+/* אנימציית ציפה לקישוטים (מטוסי נייר) */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Hero: slow bounce for left paper plane */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-\[bounce_3s_infinite\] {
+  animation: bounce 3s infinite;
+}
+.animate-\[bounce_4s_infinite\] {
+  animation: bounce 4s infinite;
+}
+.animate-\[bounce_5s_infinite\] {
+  animation: bounce 5s infinite;
+}
+
 html,
 body {
   font-family: 'Rubik', sans-serif;
