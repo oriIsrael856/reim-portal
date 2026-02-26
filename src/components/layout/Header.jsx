@@ -27,7 +27,7 @@ const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl }) => {
             </div>
 
             {/* דסקטופ: פיל צף – גובה ב־vh, ריווח ב־vw */}
-            <header className="hidden md:flex fixed left-0 right-0 z-[500] justify-center pointer-events-none print:hidden" style={{ top: 'clamp(0.75rem, 2vh, 1.5rem)', paddingLeft: '1vw', paddingRight: '1vw' }}>
+            <header className="hidden md:flex fixed z-[500] justify-center pointer-events-none print:hidden" style={{ top: '12px', left: '12px', right: 0, paddingLeft: '1vw', paddingRight: '1vw' }}>
             <div className="
                 w-full max-w-[95vw]
                 bg-white/10

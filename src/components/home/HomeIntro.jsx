@@ -3,7 +3,7 @@ import { Send } from 'lucide-react';
 
 const HomeIntro = ({ data }) => {
     return (
-        <div className="relative w-full mx-auto z-20" style={{ maxWidth: 'min(1100px, 92vw)', paddingLeft: '4%', paddingRight: '4%', marginTop: 'clamp(3rem, 10vh, 6rem)', marginBottom: 'clamp(1rem, 4vh, 2rem)' }}>
+        <div className="relative w-full mx-auto z-20" style={{ maxWidth: 'min(1100px, 92vw)', paddingLeft: '0', paddingRight: '0', marginTop: 'clamp(1.5rem, 4vh, 3rem)', marginBottom: 'clamp(1rem, 4vh, 2rem)' }}>
             <div className="absolute left-1/2 transform -translate-x-1/2 z-20" style={{ top: '-1.25rem' }}>
                 <div className="bg-[#FFB84C] md:bg-[#FFD028] rounded-lg rotate-12 shadow-[2px_2px_0px_rgba(0,0,0,0.1)] border-2 border-white" style={{ padding: 'clamp(0.25rem, 1vw, 0.5rem)' }}>
                     <Send className="text-white transform rotate-45" style={{ width: 'clamp(14px, 2vw, 20px)', height: 'clamp(14px, 2vw, 20px)' }} fill="white" />

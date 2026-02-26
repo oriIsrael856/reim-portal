@@ -87,7 +87,18 @@ const App = () => {
     }
 
     return (
-        <div dir="rtl" className="font-['Rubik'] text-[#2D2D44] bg-[#F3F0FF] min-h-screen">
+        <div dir="rtl" className="font-['Rubik'] text-[#2D2D44] min-h-screen" style={{ background: 'var(--Purple-Dark, #46319B)' }}>
+            {/* קונטיינר פנימי – פס סגול תמיד נראה למעלה, שמאל ולמטה */}
+            <div
+                className="min-h-screen rounded-[12px] md:rounded-[16px] flex flex-col overflow-hidden"
+                style={{
+                    marginTop: '12px',
+                    marginBottom: '12px',
+                    marginLeft: '12px',
+                    marginRight: 0,
+                    background: 'linear-gradient(to bottom, #fff 0%, #F5F3FA 100%)'
+                }}
+            >
 
             {user ? (
                 <AdminBar
@@ -143,6 +154,9 @@ const App = () => {
             )}
 
             {showLogin && <LoginModal onClose={() => setShowLogin(false)} onLogin={login} />}
+            </div>
+            {/* פס סגול קבוע בתחתית העמוד */}
+            <div className="h-3 shrink-0" style={{ background: 'var(--Purple-Dark, #46319B)' }} aria-hidden />
         </div>
     );
 };

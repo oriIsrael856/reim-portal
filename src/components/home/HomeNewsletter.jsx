@@ -11,22 +11,27 @@ const HomeNewsletter = ({ data }) => {
 
     return (
         <div className="w-full mx-auto" style={{ paddingLeft: '4%', paddingRight: '4%', marginBottom: 'clamp(1rem, 3vw, 2rem)', marginTop: 'clamp(0.75rem, 3vw, 1.5rem)', maxWidth: 'min(1400px, 96vw)' }}>
-            {/* שלושה כרטיסים ריבועיים – עמודות שוות, כל כרטיס גובה = רוחב */}
+            {/* שלושה כרטיסים – רווחים אחידים, כולם ישרים (מיושרים) */}
             <div
-                className="grid grid-cols-1 md:grid-cols-3 gap-[clamp(0.5rem, 1.5vw, 1rem)] w-full"
-                style={{ minHeight: 'clamp(200px, 28vh, 320px)' }}
+                className="grid grid-cols-1 md:grid-cols-[0.75fr_1fr_1.5fr] w-full items-stretch"
+                style={{
+                    minHeight: 'clamp(220px, 30vh, 360px)',
+                    gap: 'clamp(0.75rem, 2vw, 1.5rem)'
+                }}
             >
-                <div className="hidden md:block rounded-2xl overflow-hidden border-2 border-transparent relative shadow-sm group w-full aspect-square max-w-full">
-                    <img src={rightImg} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                {/* תמונה ימנית – מלבנית גבוהה, ישרה */}
+                <div className="hidden md:block rounded-2xl overflow-hidden border-2 border-transparent relative shadow-sm group w-full h-full min-h-0">
+                    <img src={rightImg} alt="" className="w-full h-full block object-cover object-center transition-transform duration-700 group-hover:scale-105" />
                 </div>
 
                 <NewsletterCard
                     data={data}
-                    className="w-full md:aspect-square md:max-w-full min-h-[clamp(220px,30vh,360px)] md:min-h-0"
+                    className="w-full min-h-[clamp(220px,30vh,360px)] md:min-h-0 md:max-w-full flex flex-col"
                 />
 
-                <div className="hidden md:block rounded-2xl overflow-hidden border-2 border-transparent relative shadow-sm group w-full aspect-square max-w-full">
-                    <img src={leftImg} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                {/* תמונה שמאלית – מלבנית רחבה, ישרה */}
+                <div className="hidden md:block rounded-2xl overflow-hidden border-2 border-transparent relative shadow-sm group w-full h-full min-h-0">
+                    <img src={leftImg} alt="" className="w-full h-full block object-cover object-center transition-transform duration-700 group-hover:scale-105" />
                 </div>
             </div>
 

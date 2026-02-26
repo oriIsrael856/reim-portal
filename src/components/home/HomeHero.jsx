@@ -47,11 +47,13 @@ const HomeHero = ({ data }) => {
                 {images.map((img, i) => {
                     const rotate = i === 2 ? 0 : i === 1 ? -3 : i === 0 ? -6 : i === 3 ? 3 : 6;
                     const translateY = i === 2 ? 0 : i === 1 || i === 3 ? 10 : 20;
+                    const isLeftImage = i === images.length - 1; // תמונה שמאלית ב־RTL – מלבנית יותר
                     return (
                         <div key={i} className="relative transition-all duration-500 hover:z-50 hover:scale-110 shrink-0"
                             style={{
                                 transform: `rotate(${rotate}deg) translateY(${translateY}px)`,
-                                width: i === 2 ? 'clamp(80px, 18vw, 220px)' : 'clamp(70px, 14vw, 180px)',
+                                width: i === 2 ? 'clamp(80px, 18vw, 220px)' : isLeftImage ? 'clamp(100px, 22vw, 280px)' : 'clamp(70px, 14vw, 180px)',
+                                aspectRatio: isLeftImage ? '4/3' : undefined,
                                 zIndex: i === 2 ? 10 : 5
                             }}>
                             <div className="p-[2%] bg-white rounded-xl shadow-lg border border-gray-100 w-full h-full min-h-0 flex flex-col">
@@ -71,8 +73,9 @@ const HomeHero = ({ data }) => {
                         <img src={images[carouselIndex]} alt="" className="w-full h-full object-cover" />
                     )}
                 </div>
+                {/* פס ניווט (נקודות) – מוסתר בתצוגות קטנות לפי בקשת המשתמש */}
                 {hasMultiple && (
-                    <div className="flex justify-center gap-2 mt-4">
+                    <div className="hidden md:flex justify-center gap-2 mt-4">
                         {images.map((_, i) => (
                             <button
                                 key={i}
@@ -87,7 +90,7 @@ const HomeHero = ({ data }) => {
                 )}
             </div>
 
-            <div className="flex justify-center flex-shrink-0" style={{ marginTop: 'clamp(0.5rem, 3vh, 1.5rem)' }}>
+            <div className="flex justify-center flex-shrink-0" style={{ marginTop: 'clamp(7.5rem, 16vh, 9rem)' }}>
                 <button className="bg-[#D1E68F] rounded-full border border-black/10 shadow-md animate-bounce hover:bg-[#c3d97f] transition" aria-label="גלילה למטה" style={{ padding: 'clamp(0.4rem, 1vw, 0.75rem)' }}>
                     <ArrowDown style={{ width: 'clamp(16px, 2vw, 24px)', height: 'clamp(16px, 2vw, 24px)' }} color="#2D2D44" />
                 </button>

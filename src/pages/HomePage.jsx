@@ -11,11 +11,21 @@ const HomePage = ({ data, navigateTo }) => {
             {/* 1. Hero */}
             <HomeHero data={data.hero} />
 
-            {/* 2. Intro Box */}
-            <HomeIntro data={data.intro} />
+            {/* קונטיינר: התחלה חדשה בפתח + קרוסלה – רווח ברור בין החץ הירוק לתמונות */}
+            <div
+                className="w-full rounded-2xl md:rounded-[28px] mt-3 md:mt-4 mb-6 md:mb-10 overflow-hidden"
+                style={{
+                    background: '#EBE8FC',
+                    border: '2px solid var(--Purple-Dark, #46319B)',
+                    padding: 'clamp(1rem, 4vh, 2rem) clamp(1rem, 4%, 2rem)'
+                }}
+            >
+                {/* 2. Intro Box – התחלה חדשה בפתח */}
+                <HomeIntro data={data.intro} />
 
-            {/* 3. Carousel */}
-            <HomeCarousel items={data.carousel} navigateTo={navigateTo} carouselHeader={data.carouselHeader} />
+                {/* 3. Carousel */}
+                <HomeCarousel items={data.carousel} navigateTo={navigateTo} carouselHeader={data.carouselHeader} />
+            </div>
 
             {/* 4. כפתור מעבר לפרק הראשון */}
             {navigateTo && (

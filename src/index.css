@@ -1,5 +1,34 @@
 @import "tailwindcss";
 
+html,
 body {
   font-family: 'Rubik', sans-serif;
+  min-height: 100%;
+  background: var(--Purple-Dark, #46319B);
+}
+
+#root {
+  min-height: 100%;
+}
+
+/* הסתרת scrollbar בתצוגות קטנות – קרוסלה וכל אלמנט עם .no-scrollbar */
+.no-scrollbar,
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 767px) {
+  .no-scrollbar,
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar,
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

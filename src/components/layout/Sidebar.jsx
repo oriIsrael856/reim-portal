@@ -1,15 +1,40 @@
 import React from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, LogOut } from 'lucide-react';
 
-// הפס הצף בצד
+// סרגל צד – רקע שחור, דף הבית אנכי בלבן, כפתור תפריט לבן מעוגל, אייקון יציאה בלבן
 export const Sidebar = ({ toggleMenu }) => {
     return (
-        <button 
-            onClick={toggleMenu} 
-            className="fixed right-0 top-1/2 -translate-y-1/2 z-50 bg-white p-4 rounded-l-2xl shadow-xl hover:bg-gray-50 transition-transform hover:-translate-x-1 border border-gray-100 flex items-center justify-center w-16 h-24"
+        <aside
+            className="fixed right-0 top-0 bottom-0 z-50 w-[72px] md:w-20 flex flex-col items-center justify-between py-6 rounded-tl-[32px] rounded-bl-[32px] shadow-xl"
+ style={{ background: 'var(--Purple-Dark, #46319B)' }}
+            aria-label="תפריט צד"
         >
-            <Menu size={24} color="#2D2D44" />
-        </button>
+            {/* דף הבית – טקסט אנכי בלבן */}
+            <span
+                className="text-white font-bold text-sm whitespace-nowrap"
+                style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
+            >
+                דף הבית
+            </span>
+
+            {/* כפתור תפריט – צורה לבנה מעוגלת (טאב), אייקון כהה */}
+            <button
+                onClick={toggleMenu}
+                className="flex items-center justify-center bg-white hover:bg-gray-50 rounded-[24px] p-4 shadow-md hover:scale-105 transition-all duration-300 border-0 cursor-pointer min-w-[56px] min-h-[56px]"
+                aria-label="תפריט"
+            >
+                <Menu size={26} color="#1a1a2e" strokeWidth={2} />
+            </button>
+
+            {/* אייקון יציאה – לבן על הרקע השחור */}
+            <button
+                type="button"
+                className="flex items-center justify-center bg-transparent hover:bg-white/10 rounded-[24px] p-3 transition-all duration-300 border-0 cursor-pointer min-w-[48px] min-h-[48px]"
+                aria-label="יציאה"
+            >
+                <LogOut size={22} color="white" strokeWidth={2} />
+            </button>
+        </aside>
     );
 };
 
