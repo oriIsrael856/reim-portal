@@ -85,7 +85,14 @@ const isImageKey = (key) => /^image\d*$|^logo$/i.test(key) || key === 'image';
 
 // --- רכיב 1: שדה חכם ---
 export const SmartField = ({ label, value, onChange }) => {
-    const isLong = String(value).length > 60 || label.toLowerCase().includes('text') || label.toLowerCase().includes('desc') || label.toLowerCase().includes('content');
+    const lowerLabel = String(label || '').toLowerCase();
+    // מזהה שדות "טקסט ארוך" גם בעברית (טקסט / תיאור / פסקה) וגם באנגלית (text / desc / content)
+    const isLong =
+        String(value).length > 60 ||
+        lowerLabel.includes('text') ||
+        lowerLabel.includes('desc') ||
+        lowerLabel.includes('content') ||
+        /טקסט|תיאור|פסקה/.test(String(label || ''));
     
     return (
         <div className="mb-4 w-full">

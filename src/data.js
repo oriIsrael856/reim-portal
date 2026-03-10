@@ -20,9 +20,10 @@ export const INITIAL_DATA = {
     // --- עמוד הבית ---
     home: {
         hero: {
-            title1: "לפורטל הרכזים והרכזות",
-            title2: "של תוכנית רעים",
             subtitle: "ברוכים.ות הבאים.ות",
+            title1: "לפורטל הרכזים",
+            titleLine2: "והרכזות של",
+            title2: "תוכנית רעים",
             logoText: "רעים",
             tagline: "שווה להיות ביחד",
             images: ["/img1.jpg", "/img2.jpg", "/img3.jpg", "/img4.jpg", "/img5.jpg"]
@@ -30,7 +31,10 @@ export const INITIAL_DATA = {
         intro: {
             title: "התחלה חדשה בפתח",
             subtitle: "אז, איפה מתחילים?",
-            text: "תפקיד הרכזות ברעים הוא תפקיד משמעותי וייחודי:\nלהוביל קבוצה של משתתפים ומשתתפות מהמגוון האוטיסטי או עם לקויות למידה נרחבות, ליצירת חיי חברה, תחושת שייכות לקבוצה וקהילה.\n\nהאוגדן שלפניך מרכז את כל המידע הדרוש לתחילת הדרך."
+            text:
+                "תפקיד הרכזת ברעים הוא תפקיד משמעותי וייחודי:\n" +
+                "להוביל קבוצה של משתתפים ומשתתפות מהמגוון האוטיסטי או עם לקויות למידה נרחבות, ליצירת חיי חברה, תחושת שייכות לקבוצה וקהילה.\n\n" +
+                "האוגדן שלפניך מרכז את כל המידע הדרוש לתחילת הדרך."
         },
         newsletter: {
             title: "ניוזלטר רעים",
@@ -353,7 +357,7 @@ export const INITIAL_DATA = {
 
     // --- פוטר ---
     footer: {
-        logos: { reim: "/Logo (1).png", matnasim: "/matnasimLogo.png" },
+        logos: { reim: "/Logo (1).png", matnasim: "/assets/matnasimLogo.png" },
         organization: "תוכנית רעים מבית החברה למתנ\"סים",
         labels: { phone: "טלפון:", fax: "פקס:", email: "מייל:" },
         contact: { phone: "0732870187", fax: "0732870387", email: "reim@matnasim.org.il" },

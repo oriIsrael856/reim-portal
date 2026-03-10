@@ -52,8 +52,8 @@ const HomeCarousel = ({ items, navigateTo, carouselHeader }) => {
             {/* כותרת מימין, חצים משמאל (RTL) */}
             <div className="flex justify-between items-end px-0 md:px-[1%]" style={{ marginBottom: 'clamp(0.75rem, 2vw, 1.5rem)' }}>
                 <div className="text-right shrink-0 min-w-0">
-                    <p className="text-gray-500 font-medium mb-0.5" style={{ fontSize: 'clamp(0.65rem, 1.2vw, 0.8rem)' }}>{carouselHeader?.label ?? 'כל מה שכדאי לדעת'}</p>
-                    <h2 className="font-black text-[#2D2D44]" style={{ fontSize: 'clamp(1rem, 2.2vw, 1.5rem)' }}>{carouselHeader?.title ?? 'המדריכה לרכזות ורכזים'}</h2>
+                    <p className="text-gray-500 font-medium mb-0.5" style={{ fontSize: 'clamp(0.7rem, 1.5vw, 0.95rem)' }}>{carouselHeader?.label ?? 'כל מה שכדאי לדעת'}</p>
+                    <h2 className="font-black text-[#2D2D44]" style={{ fontSize: 'clamp(1.25rem, 2.8vw, 1.9rem)' }}>{carouselHeader?.title ?? 'המדריכה לרכזות ורכזים'}</h2>
                 </div>
                 <div className="hidden md:flex gap-[0.5vw] ltr shrink-0">
                     <button onClick={() => scroll('right')} className="flex items-center justify-center bg-[#EBE5FC] rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors" style={{ width: 'clamp(32px, 2.5vw, 44px)', height: 'clamp(32px, 2.5vw, 44px)' }}>
@@ -81,13 +81,12 @@ const HomeCarousel = ({ items, navigateTo, carouselHeader }) => {
                     <div key={card.id} className="flex-shrink-0 snap-start pt-1 pb-2">
                         <div
                             onClick={() => handleCardClick(card)}
-                            className="bg-white rounded-2xl border border-transparent transition-all duration-300 cursor-pointer flex flex-col justify-between group relative overflow-visible"
+                            className="bg-white rounded-xl border border-transparent transition-all duration-300 cursor-pointer flex flex-col justify-between group relative overflow-visible"
                             style={{
-                                width: 'clamp(140px, 18vw, 220px)',
-                                minWidth: 'clamp(140px, 18vw, 220px)',
-                                aspectRatio: '2/3',
-                                minHeight: 'clamp(200px, 38vw, 320px)',
-                                maxHeight: 'min(330px, 42vh)',
+                                // כרטיס צר יותר – בערך 60% מרוחב המסך במובייל, עדיין רואים כרטיס אחד ועוד \"רבע\"
+                                width: 'clamp(180px, 60vw, 220px)',
+                                minWidth: 'clamp(180px, 60vw, 220px)',
+                                aspectRatio: '3/4',
                                 padding: 'clamp(0.6rem, 1.4vw, 1.25rem)',
                                 boxShadow: '0 4px 16px rgba(0,0,0,0.04)'
                             }}
@@ -109,22 +108,22 @@ const HomeCarousel = ({ items, navigateTo, carouselHeader }) => {
                                 <ArrowUpLeft className="text-white" size={18} strokeWidth={2.5} />
                             </div>
 
-                            {/* מספר – מרכז למעלה */}
-                            <div className="flex justify-center pt-1">
-                                <span className="font-black text-[#2D2D44] font-['Salsa'] group-hover:text-[#FFD028] transition-colors" style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.75rem)' }}>
+                            {/* מספר – ימין למעלה (RTL: start = ימין) */}
+                            <div className="flex justify-start pt-1">
+                                <span className="font-black text-[#2D2D44] font-['Salsa'] group-hover:text-[#FFD028] transition-colors" style={{ fontSize: 'clamp(2rem, 3.6vw, 3.1rem)' }}>
                                     {card.id}
                                 </span>
                             </div>
 
-                            {/* תוכן – אייקון, כותרת, תיאור – ממורכז */}
-                            <div className="flex flex-col items-center text-center mt-auto pt-2">
-                                <div className="text-[#2D2D44] group-hover:scale-110 transition-transform duration-300 mb-2 flex justify-center">
+                            {/* תוכן – אייקון, כותרת, תיאור – מיושר לימין (RTL: items-start = ימין) */}
+                            <div className="flex flex-col items-start text-right mt-auto pt-2">
+                                <div className="text-[#2D2D44] group-hover:scale-110 transition-transform duration-300 mb-2">
                                     {ICON_MAP[card.icon] || <Star size={26} />}
                                 </div>
-                                <h3 className="font-black text-[#2D2D44] leading-tight whitespace-pre-line w-full" style={{ fontSize: 'clamp(0.8rem, 1.4vw, 1rem)', marginBottom: '0.35rem' }}>
+                                <h3 className="font-black text-[#2D2D44] leading-tight whitespace-pre-line w-full" style={{ fontSize: 'clamp(0.9rem, 1.6vw, 1.1rem)', marginBottom: '0.4rem' }}>
                                     {renderTitle(card.title)}
                                 </h3>
-                                <p className="text-gray-400 leading-relaxed font-medium w-full" style={{ fontSize: 'clamp(0.6rem, 1vw, 0.7rem)' }}>
+                                <p className="text-gray-400 leading-relaxed font-medium w-full" style={{ fontSize: 'clamp(0.7rem, 1.2vw, 0.85rem)' }}>
                                     {card.desc}
                                 </p>
                             </div>

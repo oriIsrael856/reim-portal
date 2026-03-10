@@ -10,11 +10,11 @@ const HomeIntro = ({ data }) => {
                 </div>
             </div>
 
-            <div className="bg-[#5E3BEE] text-white rounded-2xl text-right md:text-center shadow-xl relative overflow-hidden" style={{ padding: 'clamp(1rem, 4vh, 1.5rem) clamp(1rem, 4%, 3rem)' }}>
-                <div className="relative z-10 font-['Rubik']">
+            <div className="bg-[#5E3BEE] text-white rounded-2xl text-center shadow-xl relative overflow-hidden" style={{ padding: 'clamp(1rem, 4vh, 1.5rem) clamp(1rem, 4%, 3rem)' }}>
+                <div className="relative z-10 font-['Rubik'] mx-auto" style={{ maxWidth: '48rem' }}>
                     <h3 className="text-purple-200 font-bold tracking-widest uppercase" style={{ fontSize: 'clamp(0.55rem, 1.2vw, 0.65rem)', marginBottom: '0.25rem' }}>{data.subtitle}</h3>
                     <h2 className="font-black mb-2" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.9rem)' }}>{data.title}</h2>
-                    <p className="leading-snug opacity-90 font-light whitespace-pre-line md:mx-auto" style={{ fontSize: 'clamp(0.7rem, 1.4vw, 0.9rem)', maxWidth: '48rem' }}>
+                    <p className="leading-snug opacity-90 font-light whitespace-pre-line mx-auto" style={{ fontSize: 'clamp(0.7rem, 1.4vw, 0.9rem)' }}>
                         {data.text}
                     </p>
                 </div>

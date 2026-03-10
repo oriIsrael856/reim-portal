@@ -23,6 +23,11 @@ const HomeSection = ({ getValue, update }) => {
           onChange={(v) => update('home.hero.title1', v)}
         />
         <SmartField
+          label="כותרת 1.5 (שורה אמצעית)"
+          value={getValue('home.hero.titleLine2') || ''}
+          onChange={(v) => update('home.hero.titleLine2', v)}
+        />
+        <SmartField
           label="כותרת 2"
           value={getValue('home.hero.title2')}
           onChange={(v) => update('home.hero.title2', v)}

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
+// סדר מימין לשמאל (RTL): איקס, אינסטגרם, לינקדאין, פייסבוק
 const SOCIAL_LINKS = [
-    { Icon: Facebook, href: 'https://www.facebook.com/reimprogram/', label: 'פייסבוק – תוכנית רעים' },
+    { Icon: Twitter, href: '#', label: 'איקס (טוויטר)' },
     { Icon: Instagram, href: '#', label: 'אינסטגרם' },
     { Icon: Linkedin, href: '#', label: 'לינקדאין' },
-    { Icon: Twitter, href: '#', label: 'טוויטר' }
+    { Icon: Facebook, href: 'https://www.facebook.com/reimprogram/', label: 'פייסבוק – תוכנית רעים' }
 ];
 
 const Footer = ({ data }) => {
@@ -16,21 +17,18 @@ const Footer = ({ data }) => {
     ];
     const copyright = data?.copyright ?? '© כל הזכויות שמורות לחברה למתנ"סים';
     const organization = data?.organization ?? 'תוכנית רעים מבית החברה למתנ"סים';
+    const logos = data?.logos ?? { reim: '/Logo (1).png', matnasim: '/assets/matnasimLogo.png' };
 
     return (
         <footer className="bg-[#F3F0FF] pt-10 pb-6 px-6 md:px-12 border-t border-[#5E3BEE]/5 mt-12">
             <div className="max-w-[1600px] mx-auto">
                 
-                {/* מובייל: כרטיס לבן מעוגל – לוגואים, פרטי קשר, סושיאל, לינקים, זכויות */}
+                {/* מובייל: כרטיס לבן – לוגו רעים ליד לוגו החברה למתנ"סים בשורה אחת */}
                 <div className="md:hidden bg-white rounded-[32px] shadow-xl border border-[#2D2D44]/5 p-6 mb-8 text-center">
-                    <div className="flex flex-wrap justify-center items-center gap-4 mb-4">
-                        <div className="flex items-center gap-2">
-                            <img src="/Logo (1).png" alt="רֵעִים" className="h-10 object-contain" />
-                        </div>
-                        <div className="h-8 w-px bg-gray-200 hidden sm:block" />
-                        <div className="flex items-center justify-center">
-                            <img src="/matnasimLogo.png" alt="החברה למתנ&quot;סים" className="h-10 object-contain" style={{ filter: 'invert(32%) sepia(89%) saturate(1582%) hue-rotate(231deg)' }} />
-                        </div>
+                    <div className="flex flex-nowrap justify-center items-center gap-3 mb-4">
+                        <img src={logos.reim || '/Logo (1).png'} alt="רֵעִים" className="h-5 shrink-0 object-contain" />
+                        <div className="h-4 w-px bg-gray-200 shrink-0" />
+                        <img src="/matnasimLogo.png" alt="החברה למתנ&quot;סים" className="h-5 shrink-0 object-contain" style={{ filter: 'invert(32%) sepia(89%) saturate(1582%) hue-rotate(231deg)' }} />
                     </div>
                     <p className="text-[#2D2D44] text-sm font-medium mb-6">{organization}</p>
                     <div className="text-[#2D2D44] text-sm space-y-1 mb-6">
@@ -60,9 +58,9 @@ const Footer = ({ data }) => {
                 <div className="hidden md:flex flex-col md:flex-row justify-between items-start mb-16">
                     <div className="text-right mb-10 md:mb-0">
                         <div className="flex items-center gap-4 mb-4 justify-end">
-                            <img src="/Logo (1).png" alt="רֵעִים" className="h-10 object-contain" />
-                            <div className="h-8 w-[1px] bg-gray-300"></div>
-                            <img src="/matnasimLogo.png" alt="החברה למתנ&quot;סים" className="h-10 object-contain" style={{ filter: 'invert(32%) sepia(89%) saturate(1582%) hue-rotate(231deg)' }} />
+                            <img src={logos.reim || '/Logo (1).png'} alt="רֵעִים" className="h-5 object-contain" />
+                            <div className="h-4 w-[1px] bg-gray-300"></div>
+                            <img src={logos.matnasim || '/assets/matnasimLogo.png'} alt="החברה למתנ&quot;סים" className="h-5 object-contain" style={{ filter: 'invert(32%) sepia(89%) saturate(1582%) hue-rotate(231deg)' }} />
                         </div>
                         <div className="text-[#2D2D44] text-sm space-y-1 font-medium">
                             <p>{organization}</p>

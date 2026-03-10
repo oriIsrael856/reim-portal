@@ -48,17 +48,22 @@ const HomeHero = ({ data }) => {
                 />
             </div>
 
-            {/* כותרות – גודל באחוזים (vw), z גבוה כדי שלא ייכוסו על ידי התמונות */}
-            <div className="relative z-20" style={{ marginBottom: 'clamp(2rem, 6vh, 3.5rem)' }}>
+            {/* כותרות – כמו בתמונה: שלוש שורות, מיושר למרכז, שורה אחרונה סגולה עם קו צהוב־כתום */}
+            <div className="relative z-20 text-center" style={{ marginBottom: 'clamp(2rem, 6vh, 3.5rem)' }}>
                 <p className="text-[#2D2D44] font-medium tracking-wide opacity-80 md:font-['Rubik']" style={{ fontSize: 'clamp(0.75rem, 1.8vw, 1rem)', marginBottom: '0.25rem' }}>{data.subtitle}</p>
                 <h1 className="font-black text-[#2D2D44] leading-tight md:font-['Rubik']" style={{ fontSize: 'clamp(1.25rem, 4.5vw, 3rem)', marginBottom: '0.25rem' }}>
                     {data.title1}
                 </h1>
+                {data.titleLine2 && (
+                    <h1 className="font-black text-[#2D2D44] leading-tight md:font-['Rubik']" style={{ fontSize: 'clamp(1.25rem, 4.5vw, 3rem)', marginBottom: '0.25rem' }}>
+                        {data.titleLine2}
+                    </h1>
+                )}
                 <div className="relative inline-block">
                     <h1 className="font-black text-[#5E3BEE] leading-tight relative z-10 md:font-['Rubik']" style={{ fontSize: 'clamp(1.25rem, 4.5vw, 3rem)' }}>
                         {data.title2}
                     </h1>
-                    <div className="absolute bottom-0.5 left-0 w-full bg-[#FFD028] -z-0 rounded-sm" style={{ height: 'clamp(4px, 0.5vh, 12px)' }}></div>
+                    <div className="absolute bottom-0.5 left-0 w-full bg-[#FFD028] -z-0 rounded-sm" style={{ height: 'clamp(4px, 0.5vh, 12px)' }} />
                 </div>
             </div>
 
@@ -100,28 +105,42 @@ const HomeHero = ({ data }) => {
                 })}
             </div>
 
-            {/* מובייל: קרוסלה – רוחב באחוזים */}
-            <div className="md:hidden relative z-10 mx-auto w-[92%] max-w-[360px]" style={{ marginTop: 'clamp(1rem, 4vh, 1.5rem)' }}>
-                <div className="relative rounded-2xl overflow-hidden bg-gray-100 border-2 border-[#2D2D44]/10 aspect-[4/3]">
-                    {images.length > 0 && (
-                        <img src={images[carouselIndex]} alt="" className="w-full h-full object-cover" />
+            {/* מובייל: קולאז' 3 תמונות – גדול באמצע, שתיים משופעות למטה כמו בעיצוב */}
+            <div className="md:hidden relative z-10 mx-auto w-[88%] max-w-[360px]" style={{ marginTop: 'clamp(1.25rem, 4vh, 1.75rem)' }}>
+                <div
+                    className="relative"
+                    style={{ height: 'clamp(230px, 52vw, 270px)' }}
+                >
+                    {/* כרטיס מרכזי – הגדול עם כל החבורה, ישר במרכז */}
+                    {images[0] && (
+                        <div
+                            className="absolute inset-x-[10%] top-0 bottom-[22%] rounded-2xl bg-white shadow-xl border-2 border-[#E2E0F5] overflow-hidden z-10"
+                            style={{ transform: 'rotate(0deg)' }}
+                        >
+                            <img src={images[0]} alt="" className="w-full h-full object-cover" />
+                        </div>
+                    )}
+
+                    {/* כרטיס שמאלי תחתון – יותר בפינה השמאלית התחתונה מעל התמונה הגדולה */}
+                    {images[1] && (
+                        <div
+                            className="absolute bottom-[-6%] right-[54%] w-[52%] rounded-2xl bg-white shadow-lg border border-[#E2E0F5] overflow-hidden z-20"
+                            style={{ transform: 'rotate(-10deg)' }}
+                        >
+                            <img src={images[1]} alt="" className="w-full h-full object-cover" />
+                        </div>
+                    )}
+
+                    {/* כרטיס ימני תחתון – קטן יותר, יושב על התמונה הגדולה ויורד למטה */}
+                    {images[2] && (
+                        <div
+                            className="absolute bottom-[-6%] left-[58%] w-[34%] rounded-2xl bg-white shadow-lg border border-[#E2E0F5] overflow-hidden z-20"
+                            style={{ transform: 'rotate(9deg)' }}
+                        >
+                            <img src={images[2]} alt="" className="w-full h-full object-cover" />
+                        </div>
                     )}
                 </div>
-                {/* פס ניווט (נקודות) – מוסתר בתצוגות קטנות לפי בקשת המשתמש */}
-                {hasMultiple && (
-                    <div className="hidden md:flex justify-center gap-2 mt-4">
-                        {images.map((_, i) => (
-                            <button
-                                key={i}
-                                type="button"
-                                aria-label={`תמונה ${i + 1}`}
-                                onClick={() => setCarouselIndex(i)}
-                                className={`rounded-full border-2 transition-colors ${i === carouselIndex ? 'bg-[#5E3BEE] border-[#5E3BEE]' : 'bg-transparent border-[#2D2D44]/40'}`}
-                                style={{ width: 'clamp(8px, 2vw, 12px)', height: 'clamp(8px, 2vw, 12px)' }}
-                            />
-                        ))}
-                    </div>
-                )}
             </div>
 
             <div className="flex justify-center flex-shrink-0" style={{ marginTop: 'clamp(7.5rem, 16vh, 9rem)' }}>
