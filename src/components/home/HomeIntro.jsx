@@ -10,8 +10,10 @@ const HomeIntro = ({ data }) => {
                 </div>
             </div>
 
-            <div className="bg-[#5E3BEE] text-white rounded-2xl text-center shadow-xl relative overflow-hidden" style={{ padding: 'clamp(1rem, 4vh, 1.5rem) clamp(1rem, 4%, 3rem)' }}>
-                <div className="relative z-10 font-['Rubik'] mx-auto" style={{ maxWidth: '48rem' }}>
+            {/* הכרטיס הסגול – באותו רוחב בסיסי כמו ניוזלטר (צר יותר), ארוך יותר בגובה; הטקסט מתפרס על כל הרוחב */}
+            <div className="w-[72%] max-w-[300px] mx-auto md:w-full md:max-w-full">
+                <div className="bg-[#5E3BEE] text-white rounded-2xl text-center shadow-xl relative overflow-hidden" style={{ padding: 'clamp(1.25rem, 5vh, 2.5rem) clamp(1rem, 4%, 3rem)', minHeight: 'clamp(260px, 55vh, 420px)' }}>
+                <div className="relative z-10 font-['Rubik'] mx-auto" style={{ maxWidth: '100%' }}>
                     <h3 className="text-purple-200 font-bold tracking-widest uppercase" style={{ fontSize: 'clamp(0.55rem, 1.2vw, 0.65rem)', marginBottom: '0.25rem' }}>{data.subtitle}</h3>
                     <h2 className="font-black mb-2" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.9rem)' }}>{data.title}</h2>
                     <p className="leading-snug opacity-90 font-light whitespace-pre-line mx-auto" style={{ fontSize: 'clamp(0.7rem, 1.4vw, 0.9rem)' }}>
@@ -21,6 +23,7 @@ const HomeIntro = ({ data }) => {
 
                 <div className="absolute top-[-50%] left-[-10%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
                 <div className="absolute bottom-[-50%] right-[-10%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-[#FFD028]/10 rounded-full blur-3xl pointer-events-none" />
+            </div>
             </div>
         </div>
     );

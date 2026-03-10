@@ -10,10 +10,13 @@ const HomeHero = ({ data }) => {
 
     return (
         <div
-            className="text-center px-[4%] relative overflow-hidden overflow-x-clip md:min-h-0 md:flex md:flex-col md:justify-center md:max-h-[calc(100vh-5.5rem)]"
+            className="text-center relative overflow-hidden overflow-x-clip md:min-h-0 md:flex md:flex-col md:justify-center md:max-h-[calc(100vh-5.5rem)]"
             style={{
                 paddingTop: 'clamp(0.5rem, 4vh, 1.5rem)',
-                paddingBottom: 'clamp(0.5rem, 5vh, 2rem)'
+                paddingBottom: 'clamp(0.5rem, 5vh, 2rem)',
+                maxWidth: 'min(1100px, 92vw)',
+                marginInline: 'auto',
+                paddingInline: '4%'
             }}
         >
             {/* --- LEFT PLANE ASSEMBLY --- */}
