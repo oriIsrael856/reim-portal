@@ -13,10 +13,9 @@ const HomeNewsletter = ({ data }) => {
         <div className="w-full mx-auto" style={{ paddingLeft: '4%', paddingRight: '4%', marginBottom: 'clamp(1rem, 3vw, 2rem)', marginTop: 'clamp(0.75rem, 3vw, 1.5rem)', maxWidth: 'min(1400px, 96vw)' }}>
             {/* שלושה כרטיסים – רווחים אחידים, כולם ישרים (מיושרים) */}
             <div
-                className="grid grid-cols-1 md:grid-cols-[0.75fr_1fr_1.5fr] w-full items-stretch"
+                className="grid grid-cols-1 md:grid-cols-[0.75fr_1fr_1.5fr] w-full items-stretch min-h-[clamp(190px,30vh,260px)] md:min-h-[clamp(220px,30vh,360px)]"
                 style={{
-                    minHeight: 'clamp(220px, 30vh, 360px)',
-                    gap: 'clamp(0.75rem, 2vw, 1.5rem)'
+                    gap: 'clamp(0.5rem, 1.5vw, 1.5rem)'
                 }}
             >
                 {/* תמונה ימנית – מלבנית גבוהה, ישרה */}
@@ -24,10 +23,12 @@ const HomeNewsletter = ({ data }) => {
                     <img src={rightImg} alt="" className="w-full h-full block object-cover object-center transition-transform duration-700 group-hover:scale-105" />
                 </div>
 
-                <NewsletterCard
-                    data={data}
-                    className="w-full min-h-[clamp(220px,30vh,360px)] md:min-h-0 md:max-w-full flex flex-col"
-                />
+                <div className="w-[82%] max-w-[300px] mx-auto md:w-full md:max-w-full">
+                    <NewsletterCard
+                        data={data}
+                        className="w-full min-h-[clamp(190px,75vh,300px)] md:min-h-0 flex flex-col"
+                    />
+                </div>
 
                 {/* תמונה שמאלית – מלבנית רחבה, ישרה */}
                 <div className="hidden md:block rounded-2xl overflow-hidden border-2 border-transparent relative shadow-sm group w-full h-full min-h-0">
@@ -35,8 +36,8 @@ const HomeNewsletter = ({ data }) => {
                 </div>
             </div>
 
-            {/* מובייל: גלריה */}
-            <div className="md:hidden grid grid-cols-4 grid-rows-3 gap-2 mx-auto aspect-[4/3] w-[92%] max-w-[min(360px,90vw)]" style={{ marginTop: 'clamp(0.75rem, 3vw, 1.25rem)', maxHeight: 'min(280px, 60vh)' }}>
+            {/* מובייל: גלריה – באותן פרופורציות: צרה יותר וקצת ארוכה יותר */}
+            <div className="md:hidden grid grid-cols-4 grid-rows-3 gap-1.5 mx-auto aspect-[3/2] w-[82%] max-w-[min(300px,72vw)]" style={{ marginTop: 'clamp(0.5rem, 2vw, 1rem)', maxHeight: 'min(230px, 52vh)' }}>
                 <div className="col-start-2 col-span-3 row-span-3 rounded-2xl overflow-hidden border-2 border-[#2D2D44]/10 bg-gray-100">
                     <img src={galleryImages[0]} alt="" className="w-full h-full object-cover" />
                 </div>

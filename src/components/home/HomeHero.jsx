@@ -51,16 +51,16 @@ const HomeHero = ({ data }) => {
             {/* כותרות – כמו בתמונה: שלוש שורות, מיושר למרכז, שורה אחרונה סגולה עם קו צהוב־כתום */}
             <div className="relative z-20 text-center" style={{ marginBottom: 'clamp(2rem, 6vh, 3.5rem)' }}>
                 <p className="text-[#2D2D44] font-medium tracking-wide opacity-80 md:font-['Rubik']" style={{ fontSize: 'clamp(0.75rem, 1.8vw, 1rem)', marginBottom: '0.25rem' }}>{data.subtitle}</p>
-                <h1 className="font-black text-[#2D2D44] leading-tight md:font-['Rubik']" style={{ fontSize: 'clamp(1.25rem, 4.5vw, 3rem)', marginBottom: '0.25rem' }}>
+                <h1 className="font-black text-[#2D2D44] leading-tight md:font-['Rubik']" style={{ fontSize: 'clamp(2.5rem, 9vw, 6rem)', marginBottom: '0.25rem' }}>
                     {data.title1}
                 </h1>
                 {data.titleLine2 && (
-                    <h1 className="font-black text-[#2D2D44] leading-tight md:font-['Rubik']" style={{ fontSize: 'clamp(1.25rem, 4.5vw, 3rem)', marginBottom: '0.25rem' }}>
+                    <h1 className="font-black text-[#2D2D44] leading-tight md:font-['Rubik']" style={{ fontSize: 'clamp(2.5rem, 9vw, 6rem)', marginBottom: '0.25rem' }}>
                         {data.titleLine2}
                     </h1>
                 )}
                 <div className="relative inline-block">
-                    <h1 className="font-black text-[#5E3BEE] leading-tight relative z-10 md:font-['Rubik']" style={{ fontSize: 'clamp(1.25rem, 4.5vw, 3rem)' }}>
+                    <h1 className="font-black text-[#5E3BEE] leading-tight relative z-10 md:font-['Rubik']" style={{ fontSize: 'clamp(2.5rem, 9vw, 6rem)' }}>
                         {data.title2}
                     </h1>
                     <div className="absolute bottom-0.5 left-0 w-full bg-[#FFD028] -z-0 rounded-sm" style={{ height: 'clamp(4px, 0.5vh, 12px)' }} />
