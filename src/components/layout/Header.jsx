@@ -1,10 +1,11 @@
 import React from 'react';
 import { ArrowUpRight, Menu, Share2, X } from 'lucide-react';
 
-const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl }) => {
+const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl, hideMobileChrome }) => {
     return (
         <>
-            {/* מובייל: הדר – גובה וריווח ב־vh/vw */}
+            {/* מובייל: הדר — מוסר בכל העמודים הציבוריים (כרום Figma ב-`MobilePublicLayout` + `SiteMobileStickyChrome`) */}
+            {!hideMobileChrome && (
             <div className="md:hidden fixed top-0 left-0 right-0 z-[1000] w-full">
                 <div className="bg-[#5E3BEE] text-white rounded-b-3xl shadow-lg">
                     <div className="flex items-center justify-between pt-[env(safe-area-inset-top,0)] gap-[2vw]" style={{ minHeight: 'clamp(3rem, 10vh, 4rem)', paddingLeft: '4%', paddingRight: '4%' }}>
@@ -25,6 +26,7 @@ const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl }) => {
                     </button>
                 </div>
             </div>
+            )}
 
             {/* דסקטופ: פיל צף – גובה ב־vh, ריווח ב־vw */}
             <header className="hidden md:flex fixed z-[500] justify-center pointer-events-none print:hidden" style={{ top: '12px', left: '12px', right: 0, paddingLeft: '1vw', paddingRight: '1vw' }}>

@@ -1,0 +1,1196 @@
+{
+  "_meta": {
+    "title": "Figma design cache — Page 3 (פרק 3)",
+    "figmaFileUrlPrimary": "https://www.figma.com/design/pCQsVHvp5kYNlIvoXTlqqf/%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA-%D7%A8%D7%A2%D7%99%D7%9D--Copy---Copy-?node-id=253-6705&m=dev",
+    "fileKeyPrimary": "pCQsVHvp5kYNlIvoXTlqqf",
+    "figmaFileUrlLegacy": "https://www.figma.com/design/C2NkiNoHtXbBcYwBG3u0Ad/%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA-%D7%A8%D7%A2%D7%99%D7%9D--Copy-?node-id=253-6705",
+    "fileKeyLegacy": "C2NkiNoHtXbBcYwBG3u0Ad",
+    "figmaFileUrlAlternate": "https://www.figma.com/design/yFlNPGkCOnVPjFCuc8Kb1T/%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA-%D7%A8%D7%A2%D7%99%D7%9D?node-id=253-6705",
+    "fileKeyAlternate": "yFlNPGkCOnVPjFCuc8Kb1T",
+    "rootNodeId": "253:6705",
+    "rootNodeIdUrlForm": "253-6705",
+    "rootFrameName": "Chapter 3",
+    "mcpDumpRelativePath": "docs/figma-mcp-pCQsVHvp5kYNlIvoXTlqqf-node-253-6705.yaml",
+    "extractedAt": "2026-03-24T22:30:00Z",
+    "extractionStatus": "page3_cards_onboarding_section3_cache",
+    "extractionNote": "Responsibility cards (253:8655) + Section 3 onboarding (253:8815) full layout tokens from Figma MCP. See layout.onboardingSection3, _cacheExtractionProtocol.figmaSourceThisPass.",
+    "generatorScript": "scripts/fetch-figma-page3-cache.mjs",
+    "npmScript": "figma:cache-page3",
+    "doNotHallucinate": "Hebrew copy under referenceAccordionTitles must match Figma/CMS; numeric tokens taken from MCP YAML globalVars."
+  },
+  "_cacheExtractionProtocol": {
+    "title": "כללים לעדכון קאש מפיגמה",
+    "seeAlso": ".cursor/rules/figma-cache-extraction.mdc",
+    "mustInclude": [
+      "רווחים: gap, padding, גבהים קבועים, עמודות עם ריווח אנכי בין בלוקים (למשל 200px בין כרטיסיות)",
+      "גדלי כרטיסיות: אותו גובה קבוע לכל הווריאנטים אם מופיע בפיגמה (כאן 520px)",
+      "רכיב חוזר: תבנית אחת — כותרת H5 + רשימת שורות (Body 2 + אייקון חץ); וריאציה רק בצבעי כותרת/רקע/אייקון וב-padding",
+      "פונטים וצבעי טקסט/רקע לכל שכבה",
+      "אלמנטים מיוחדים: צל No blur, מסגרות, כפתור CTA (מופיע רבעון שלישי)",
+      "נכסים לייצוא: רשימת node ids + נתיב קובץ תחת public/assets"
+    ],
+    "figmaSourceThisPass": {
+      "nodes": ["253:8655", "253:8656", "253:8685", "253:8698", "253:8815", "254:9802"],
+      "method": "Figma MCP get_figma_data + YAML globalVars + SVG export"
+    }
+  },
+  "_extractionScope": {
+    "figmaTarget": "Mobile frame `Chapter 3` (375×812) under node 253:6705",
+    "includedSubtree": {
+      "figmaNodeId": "253:6715",
+      "name": "Main content",
+      "note": "White scroll column (359px wide) stacking Section 1, Page Content, Section 3, Section Meeting before in-frame footer/top bar siblings."
+    },
+    "excludedFigmaNodes": [
+      {
+        "figmaNodeId": "253:6706",
+        "name": "Right Sidebar",
+        "reason": "Back control, screen title `הגדרת תפקיד`, hamburger — global nav chrome; do not re-spec in chapter cache."
+      },
+      {
+        "figmaNodeId": "253:6864",
+        "name": "iPhone XStatus Bars",
+        "reason": "Status bar — out of chapter scope."
+      },
+      {
+        "figmaNodeId": "253:6861",
+        "name": "Top bar",
+        "reason": "Floating pill wrapping logo (`Logo` instance) — user asked not to touch this chrome."
+      },
+      {
+        "figmaNodeId": "253:6860",
+        "name": "Footer",
+        "reason": "Global site footer (logos, legal, links) — lives in app shell, not Chapter3."
+      },
+      {
+        "figmaNodeId": "253:6859",
+        "name": "Next Chapter",
+        "reason": "Already implemented as `NextChapterButton` + CMS `nextButton`."
+      }
+    ],
+    "scrollNote": "Figma `Main content` uses vertical overflow scroll (`layout_1R1U7M`). Map to page/global mobile scroll — do not duplicate as a second scrollbar inside chapter body beyond layout spacing tokens.",
+    "implementedSectionsSkippedForCopy": [
+      {
+        "figmaNodeId": "253:6716",
+        "name": "Section 1",
+        "mapsTo": "src/pages/Chapter3.jsx — MobilePart1, StickyHeader, hero fields under content.chapter3.hero"
+      },
+      {
+        "figmaNodeId": "253:8649",
+        "name": "Page Content",
+        "mapsTo": "Hero image card + stacked responsibility cards (desktop StickyCard stack + mobile Part 3–5)"
+      },
+      {
+        "figmaNodeId": "253:8815",
+        "name": "Section 3",
+        "mapsTo": "Onboarding / `ProcessCard` — MobilePart2, desktop purple band"
+      },
+      {
+        "figmaNodeId": "254:9802",
+        "name": "Section Meeting",
+        "mapsTo": "sessionStructure — MobilePart12, desktop session block + `Accordion`"
+      }
+    ]
+  },
+  "_rtl": {
+    "layoutDirection": "rtl",
+    "documentDir": "rtl",
+    "noteHebrew": "הפרויקט בעברית — סידור RTL: משמאל לימין כמו שכותבים בעברית. סדר הילדים ב-DOM צריך לשקף סדר לוגי ב-RTL.",
+    "figmaAuthoringNote": "Figma file uses mixed textAlign on some styles (e.g. CENTER/LEFT); map to RTL in React per CLAUDE.md / .cursor rules."
+  },
+  "_fillInstructions": [
+    "1. Shell excluded: see _extractionScope.excludedFigmaNodes (menu, status, logo pill, footer, next CTA).",
+    "2. Next step: align Chapter3 mobile/desktop with `sections.gapsVsChapter3` and `layout` using tokens below.",
+    "3. Export meeting images from Figma using imageRef entries under assets (MCP download or REST export).",
+    "4. After UI parity, set extractionStatus to `complete`."
+  ],
+  "typography": {
+    "_comment": "Styles referenced by gap/shell tokens below (from MCP globalVars.styles)",
+    "styles": {
+      "Chapter/Small": {
+        "fontFamily": "Salsa",
+        "fontWeight": 400,
+        "fontSize": 16,
+        "lineHeightEm": 1.28,
+        "letterSpacingPercent": 0.9375,
+        "textAlignHorizontal": "CENTER"
+      },
+      "Typography/H4": {
+        "fontFamily": "Rubik",
+        "fontWeight": 700,
+        "fontSize": 34,
+        "lineHeightEm": 1.1,
+        "letterSpacingPercent": 0.735294,
+        "textAlignHorizontal": "CENTER"
+      },
+      "Typography/H5": {
+        "fontFamily": "Rubik",
+        "fontWeight": 700,
+        "fontSize": 24,
+        "lineHeightEm": 1.334,
+        "textAlignHorizontal": "CENTER"
+      },
+      "Typography/H6": {
+        "fontFamily": "Rubik",
+        "fontWeight": 600,
+        "fontSize": 20,
+        "lineHeightEm": 1.28,
+        "letterSpacingPercent": 0.75,
+        "textAlignHorizontal": "CENTER"
+      },
+      "Typography/Subtitle 1": {
+        "fontFamily": "Rubik",
+        "fontWeight": 500,
+        "fontSize": 16,
+        "lineHeightEm": 1.22,
+        "letterSpacingPercent": 0.9375,
+        "textAlignHorizontal": "RIGHT"
+      },
+      "Typography/Body 1": {
+        "fontFamily": "Rubik",
+        "fontWeight": 400,
+        "fontSize": 16,
+        "lineHeightEm": 1.32,
+        "letterSpacingPercent": 0.9375,
+        "textAlignHorizontal": "CENTER"
+      },
+      "Typography/Body 2": {
+        "fontFamily": "Rubik",
+        "fontWeight": 400,
+        "fontSize": 14,
+        "lineHeightEm": 1.43,
+        "letterSpacingPercent": 1.214286,
+        "textAlignHorizontal": "RIGHT"
+      },
+      "heroImageChapterNumber": {
+        "_figmaStyleId": "style_MLINJ8",
+        "fontFamily": "Salsa",
+        "fontWeight": 400,
+        "fontSize": 80,
+        "lineHeightEm": 1.28,
+        "letterSpacingPercent": 0.104508,
+        "textAlignHorizontal": "LEFT",
+        "note": "Large `03` on hero photo (node 253:8808) — verify vs current sticky hero badge styling."
+      },
+      "Components/Button Large": {
+        "fontFamily": "Rubik",
+        "fontWeight": 700,
+        "fontSize": 16,
+        "lineHeightEm": 1.625,
+        "letterSpacingPercent": 2.875,
+        "textCase": "UPPER",
+        "textAlignHorizontal": "LEFT"
+      }
+    }
+  },
+  "colors": {
+    "_comment": "Semantic names for tokens used in gap/decoration extract",
+    "palette": {
+      "pageBezelPurple": "#46319B",
+      "white": "#FFFFFF",
+      "ink": "#001D26",
+      "purpleBrand": "#6546DE",
+      "purpleBrandRgb": "rgb(101, 70, 222)",
+      "greenTag": "#BCE079",
+      "greenTagDark": "#839C54",
+      "yellowAccent": "#FFB23B",
+      "yellowSoftRgba": "rgba(255, 178, 59, 0.16)",
+      "greenSoftRgba": "rgba(188, 224, 121, 0.12)",
+      "purpleSectionTint": "rgba(101, 70, 222, 0.08)",
+      "purpleSectionBlob": "rgba(101, 70, 222, 0.12)",
+      "stepCardFillTop": "rgba(188, 224, 121, 0.08)",
+      "listIconCircle": "rgba(101, 70, 222, 0.16)",
+      "stepIconCircle": "rgba(188, 224, 121, 0.6)",
+      "waveRed": "#C4213B",
+      "adminTitleRed": "#C4213B",
+      "adminSurfaceTint": "rgba(196, 33, 59, 0.04)",
+      "adminIconPill": "rgba(196, 33, 59, 0.16)"
+    },
+    "text": {
+      "primary": "#001D26",
+      "onPurpleCta": "#FFFFFF",
+      "accordionTitleOpen": "#6546DE"
+    },
+    "surfaces": {
+      "mainContentSheet": "#FFFFFF",
+      "responsibilityCard": "linear-gradient-like: rgba(101,70,222,0.04) + #FFFFFF (fill_B55XRZ)",
+      "learningCard": "rgba(255, 178, 59, 0.04) + #FFFFFF (fill_MSEF1F)",
+      "meetingSection": "rgba(255, 178, 59, 0.08) + #FFFFFF (fill_ZVITMU)",
+      "nextChapterCtaFill": "rgba(101, 70, 222, 0.6) (fill_BOX7ZJ) — excluded node but useful for button parity",
+      "accordionRowRest": "rgba(101, 70, 222, 0.04) + #FFFFFF",
+      "accordionIconOpenBg": "rgba(101, 70, 222, 0.08)"
+    },
+    "borders": {
+      "cardStroke": { "color": "#001D26", "weightPx": 1.5 },
+      "accordionCollapsed": { "color": "rgba(101, 70, 222, 0.08)", "weightPx": 1 },
+      "accordionOpenRight": { "color": "#6546DE", "weightPx": "0 2 0 0" }
+    }
+  },
+  "effects": {
+    "shadows": {
+      "chapterLabelDrop": {
+        "boxShadow": "2px 2px 0px 0px rgba(0, 29, 38, 1)",
+        "_figmaName": "No blur"
+      },
+      "topLogoPill": {
+        "boxShadow": "0px 4px 24px 0px rgba(101, 70, 222, 0.04)",
+        "_figmaName": "effect_U17EMW",
+        "note": "Excluded from implementation per user; documented for global chrome only."
+      }
+    },
+    "blurs": {
+      "largeAmbientEllipse": {
+        "filter": "blur(200px)",
+        "_figmaName": "effect_WDSLWH",
+        "usedOn": ["Section 1 ellipses", "Section 3 decorative ellipse"]
+      }
+    }
+  },
+  "layout": {
+    "_comment": "Numbers from MCP layout_* for mobile Chapter 3",
+    "pageFrame": {
+      "figmaNodeId": "253:6705",
+      "widthPx": 375,
+      "heightPx": 812,
+      "fill": "#46319B",
+      "autoLayout": {
+        "mode": "column",
+        "alignItems": "center",
+        "padding": { "top": 48, "right": 0, "bottom": 12, "left": 0 }
+      },
+      "gapVsChapter3": "Site uses cream page bg (`#FFFDF5`) and global chrome; Figma uses full purple bezel — align in next pass if mobile shell should match."
+    },
+    "mainContentColumn": {
+      "figmaNodeId": "253:6715",
+      "widthPx": 359,
+      "borderRadiusPx": 24,
+      "fill": "#FFFFFF",
+      "autoLayout": {
+        "mode": "column",
+        "gapPx": -24,
+        "overflowY": "scroll",
+        "sizing": { "horizontal": "fixed", "vertical": "fill" }
+      },
+      "gapVsChapter3": "Negative vertical overlap between stacked sections is not reproduced in current Chapter3 mobile stack (separate blocks with pb-8)."
+    },
+    "section1": {
+      "figmaNodeId": "253:6716",
+      "padding": { "top": 120, "right": 24, "bottom": 0, "left": 24 },
+      "innerColumnGapPx": 8,
+      "heroInnerGapPx": 24,
+      "heroTextBlockWidthPx": 303
+    },
+    "pageContentStack": {
+      "figmaNodeId": "253:8649",
+      "outerColumn": {
+        "figmaLayout": "layout_RLGSEH",
+        "gapPx": 200,
+        "horizontalPaddingPx": 40,
+        "fixedHeightPx": 700
+      },
+      "gapVsChapter3": "Figma uses 200px vertical gap and fixed 700px column between hero image block and card stack; Chapter3 mobile uses much tighter spacing — primary layout delta for next implementation step."
+    },
+    "pageContentHeroImage": {
+      "_comment": "Figma node 253:8650 (URL node-id=253-8650) — child of 253:8649 Page Content; horizontal padding 40px applies to sibling card Container only",
+      "figmaNodeId": "253:8650",
+      "name": "Image",
+      "parentFigmaNodeId": "253:8649",
+      "autoLayout": {
+        "mode": "column",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "gapPx": 11,
+        "sizing": { "horizontal": "fill", "vertical": "fixed" },
+        "heightPx": 700
+      },
+      "photoFrame": {
+        "figmaNodeId": "253:8651",
+        "widthPx": 311,
+        "heightPx": 600,
+        "borderRadiusPx": 16,
+        "stroke": { "color": "#001D26", "weightPx": 1.5 },
+        "effect": {
+          "boxShadow": "2px 2px 0px 0px rgba(0, 29, 38, 1)",
+          "_figmaName": "No blur"
+        },
+        "fills": [
+          {
+            "type": "GRADIENT_LINEAR",
+            "css": "linear-gradient(162deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 94%)"
+          },
+          {
+            "type": "IMAGE",
+            "imageRef": "9061cefc7047b674f8e7eda8427a9b3cf6a9a26b",
+            "scaleMode": "FILL",
+            "objectFit": "cover"
+          }
+        ]
+      },
+      "numberBadgeGroup": {
+        "figmaNodeId": "253:8807",
+        "name": "No.",
+        "positionRelativeToParent": { "xLtr": 216, "y": 538 },
+        "sizePx": { "w": 94, "h": 102 },
+        "chapterDigitText": {
+          "figmaNodeId": "253:8808",
+          "sampleText": "03",
+          "textStyle": "style_Z4KCJN / style_MLINJ8 (Salsa display)",
+          "fontFamily": "Salsa",
+          "fontWeight": 400,
+          "fontSize": 80,
+          "lineHeightEm": 1.2799999237060546,
+          "letterSpacingPercent": 0.10450819507241249,
+          "textAlignHorizontal": "LEFT",
+          "fill": "#6546DE"
+        }
+      },
+      "waveDecoration": {
+        "figmaNodeId": "253:8809",
+        "componentId": "106:3092",
+        "variant": "Wave",
+        "positionInGroup": { "x": 0, "y": 42 },
+        "sizePx": { "w": 54, "h": 31 },
+        "fill": "#C4213B",
+        "stroke": { "color": "#6546DE", "weightPx": 1.1147540807724 }
+      },
+      "twoLinesDecoration": {
+        "figmaNodeId": "253:8752",
+        "componentId": "104:3022",
+        "variant": "two lines",
+        "positionRelativeToParent": { "xLtr": 119, "y": -13 },
+        "sizePx": { "w": 122, "h": 122 },
+        "stroke": {
+          "color": "rgba(0, 29, 38, 0.24)",
+          "weightPx": 2,
+          "dash": [4, 4]
+        }
+      },
+      "rtlImplementationNotes": {
+        "parentWidthPx": 359,
+        "badgeInsetInlineEndPx": 49,
+        "badgePhysicalLeftPx": 49,
+        "badgePlacementCss": "left: 49px; right: auto; (physical left — mirrors Figma LTR x≈216 on 359px frame)",
+        "badgeBottomPx": 60,
+        "decoInsetInlineStartPx": 119
+      }
+    },
+    "responsibilityCards": {
+      "_figmaStack": "253:8655 Container — layout_RLGSEH",
+      "stack": {
+        "mode": "column",
+        "gapPx": 200,
+        "paddingHorizontalPx": 40,
+        "fixedHeightPx": 700,
+        "note": "עמודת כרטיסיות תחת Page Content; ריווח 200px בין כרטיס לכרטיס"
+      },
+      "repeatedTemplate": {
+        "description": "מסגרת ילד אחת לכל כרטיס: עמודה, כותרת Subtitle (Typography/H5) + מיכל רשימה; שורה = Body Text + Icon (חץ). רק מילוי, צבע כותרת, רקע כרטיס, padding ואייקון משתנים.",
+        "sharedChrome": {
+          "fixedHeightPx": 520,
+          "borderRadiusPx": 24,
+          "stroke": { "color": "#001D26", "weightPx": 1.5 },
+          "shadow": "2px 2px 0px 0px rgba(0, 29, 38, 1)"
+        },
+        "titleTypography": {
+          "textStyle": "Typography/H5",
+          "fontFamily": "Rubik",
+          "fontWeight": 700,
+          "fontSize": 24,
+          "lineHeightEm": 1.334,
+          "textAlignHorizontal": "RIGHT"
+        },
+        "bodyTypography": {
+          "textStyle": "Typography/Body 2",
+          "fontFamily": "Rubik",
+          "fontWeight": 400,
+          "fontSize": 14,
+          "lineHeightEm": 1.43,
+          "letterSpacingPercent": 1.214286,
+          "textAlignHorizontal": "RIGHT",
+          "fill": "#001D26"
+        },
+        "listRow": {
+          "layoutMode": "row",
+          "justifyContent": "flex-end",
+          "alignItems": "center",
+          "gapPx": 12,
+          "listContainerGapPx": 8
+        }
+      },
+      "variants": {
+        "daily": {
+          "figmaNodeId": "253:8656",
+          "layout": "layout_59ZXDJ",
+          "paddingCss": "32px 24px 24px",
+          "columnGapPx": 14,
+          "titleSectionGapPx": 4,
+          "fills": ["rgba(101, 70, 222, 0.04)", "#FFFFFF"],
+          "titleFill": "#6546DE",
+          "listIconPillFill": "rgba(101, 70, 222, 0.16)",
+          "exportedListIconSvg": "public/assets/chapter3/resp-list-icon-arrow.svg",
+          "figmaIconNodeId": "253:8776"
+        },
+        "learning": {
+          "figmaNodeId": "253:8685",
+          "layout": "layout_6KKRAA",
+          "paddingCss": "32px 24px 40px 40px",
+          "columnGapPx": 24,
+          "fills": ["rgba(255, 178, 59, 0.04)", "#FFFFFF"],
+          "titleFill": "#FFB23B",
+          "listIconPillFill": "rgba(255, 178, 59, 0.16)",
+          "exportedListIconSvg": "public/assets/chapter3/resp-list-icon-arrow-learning.svg",
+          "figmaIconNodeId": "253:8781"
+        },
+        "admin": {
+          "figmaNodeId": "253:8698",
+          "layout": "layout_P0RKP5",
+          "paddingCss": "32px 24px 24px",
+          "columnGapPx": 100,
+          "columnJustify": "space-between",
+          "fills": ["rgba(196, 33, 59, 0.04)", "#FFFFFF"],
+          "titleFill": "#C4213B",
+          "listIconPillFill": "rgba(196, 33, 59, 0.16)",
+          "exportedListIconSvg": "public/assets/chapter3/resp-list-icon-arrow-admin.svg",
+          "figmaIconNodeId": "253:8792",
+          "cta": {
+            "figmaInstanceId": "253:8715",
+            "componentId": "37:3053",
+            "variant": "Color=Purple, Type=Filed",
+            "fill": "#6546DE",
+            "textFill": "#FFFFFF",
+            "textStyle": "Components/Button Large",
+            "borderStroke": { "color": "#6546DE", "note": "stroke_5AOIKM on instance" }
+          }
+        }
+      },
+      "implementationRule": "כל הכרטיסיות באותו גובה מינימלי 520px; כרטיס admin משתמש ב-justify-content: space-between כדי למקם כפתור בתחתית."
+    },
+    "onboardingSection3": {
+      "figmaNodeId": "253:8815",
+      "figmaUrl": "https://www.figma.com/design/pCQsVHvp5kYNlIvoXTlqqf/%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA-%D7%A8%D7%A2%D7%99%D7%9D--Copy---Copy-?node-id=253-8815&m=dev",
+      "name": "Section 3",
+      "mcpLayoutIds": {
+        "section": "layout_IBZPYK",
+        "introContainer": "layout_LZPPJW",
+        "headerFrame": "layout_TI7A5F",
+        "goals": "layout_V03SUD",
+        "stepsColumn": "layout_5XN9EO",
+        "stepCard": "layout_FRJDU7",
+        "stepTitleColumn": "layout_PKAUZT",
+        "stepBody": "layout_ANZ0AM",
+        "listRow": "layout_5PKFBI",
+        "listRowWide": "layout_6C3BYN",
+        "iconPill": "layout_4BPC0D",
+        "chapterLabelChip": "layout_ZXJAEI",
+        "chapterNumPill": "layout_AJCVBP"
+      },
+      "section": {
+        "layoutMode": "column",
+        "justifyContent": "center",
+        "alignItems": "stretch",
+        "alignSelf": "stretch",
+        "gapPx": 80,
+        "padding": { "top": 60, "right": 24, "bottom": 80, "left": 24 },
+        "sizing": { "horizontal": "fill", "vertical": "hug" },
+        "fills": ["rgba(101, 70, 222, 0.08)", "#FFFFFF"]
+      },
+      "ambientEllipse": {
+        "figmaNodeId": "253:8816",
+        "name": "Ellipse 3",
+        "layoutMode": "none",
+        "position": "absolute",
+        "locationRelativeToParent": { "xLtr": -341, "y": 2393 },
+        "dimensionsPx": { "w": 916, "h": 756 },
+        "fill": "rgba(101, 70, 222, 0.12)",
+        "blurPx": 200
+      },
+      "introContainer": {
+        "figmaNodeId": "253:8818",
+        "name": "Container",
+        "layoutMode": "column",
+        "justifyContent": "center",
+        "alignItems": "stretch",
+        "alignSelf": "stretch",
+        "gapPx": 24,
+        "sizing": { "horizontal": "fill", "vertical": "hug" }
+      },
+      "headerBlock": {
+        "figmaNodeId": "253:8819",
+        "name": "Frame 6",
+        "layoutMode": "column",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "alignSelf": "stretch",
+        "sizing": { "horizontal": "fill", "vertical": "hug" },
+        "accentLine": {
+          "figmaNodeId": "253:8820",
+          "name": "Line",
+          "position": "absolute",
+          "locationRelativeToParent": { "xLtr": 41, "y": 42 },
+          "dimensionsPx": { "w": 89, "h": 8 },
+          "fill": "#BCE079"
+        },
+        "eyebrow": {
+          "figmaNodeId": "253:8821",
+          "textStyle": "Typography/Body 1",
+          "fill": "#001D26",
+          "sampleFromFigma": "צעדים ראשונים ברעים"
+        },
+        "title": {
+          "figmaNodeId": "253:8822",
+          "textStyle": "Typography/H5",
+          "fill": "#001D26",
+          "sampleFromFigma": "מדריך לרכזת מתחילה"
+        }
+      },
+      "introParagraph": {
+        "figmaNodeId": "253:8823",
+        "textStyle": "Typography/H6",
+        "fill": "#001D26",
+        "sampleFromFigma": "תפקיד הרכזת או הרכז ברעים הוא עשיר, מגוון ומורכב. כדי לסייע בכניסה חלקה לתפקיד, ריכזנו כאן את הצעדים הראשונים המומלצים:"
+      },
+      "goalsBlock": {
+        "figmaNodeId": "253:8824",
+        "name": "Goals",
+        "layoutMode": "column",
+        "alignItems": "stretch",
+        "alignSelf": "stretch",
+        "gapPx": 48,
+        "sizing": { "horizontal": "fill", "vertical": "hug" }
+      },
+      "stepsColumn": {
+        "figmaNodeId": "253:8825",
+        "name": "Steps",
+        "layoutMode": "column",
+        "alignItems": "stretch",
+        "alignSelf": "stretch",
+        "gapPx": 32,
+        "sizing": { "horizontal": "fill", "vertical": "hug" }
+      },
+      "repeatedStepCardTemplate": {
+        "description": "כל כרטיס צעד: כותרת (Body 2 קטן + Subtitle 1) יישור סוף-שורה, גוף עמודה עם שורות Body 2 + אייקון בכדור ירוק; תווית מספר פרק (מופע Chapter label Web/Right) מוצמדת לפינה עליונה.",
+        "layoutMode": "column",
+        "justifyContent": "center",
+        "alignItems": "flex-end",
+        "alignSelf": "stretch",
+        "gapPx": 14,
+        "padding": { "top": 32, "right": 24, "bottom": 24, "left": 24 },
+        "sizing": { "horizontal": "fill", "vertical": "hug" },
+        "borderRadiusPx": 8,
+        "fills": ["rgba(188, 224, 121, 0.08)", "#FFFFFF"],
+        "stroke": { "color": "#001D26", "weightPx": 1.5 },
+        "effect": { "boxShadow": "2px 2px 0px 0px rgba(0, 29, 38, 1)", "_figmaName": "No blur" },
+        "headerColumn": {
+          "layoutMode": "column",
+          "justifyContent": "center",
+          "alignItems": "flex-end",
+          "sizing": { "horizontal": "hug", "vertical": "hug" },
+          "stepLabel": { "textStyle": "Typography/Body 2", "fill": "#001D26" },
+          "stepTitle": { "textStyle": "Typography/Subtitle 1", "fill": "#001D26" }
+        },
+        "bodyColumn": {
+          "layoutMode": "column",
+          "alignItems": "stretch",
+          "alignSelf": "stretch",
+          "gapPx": 12,
+          "sizing": { "horizontal": "fill", "vertical": "hug" }
+        },
+        "listRow": {
+          "layoutMode": "row",
+          "justifyContent": "flex-end",
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "gapPx": 12,
+          "sizing": { "horizontal": "fill", "vertical": "hug" },
+          "note": "ב-RTL: טקסט לפני אייקון ב-DOM לפי כללי הפרויקט"
+        },
+        "listRowMultiLineVariant": {
+          "layoutId": "layout_6C3BYN",
+          "layoutMode": "row",
+          "justifyContent": "flex-end",
+          "alignSelf": "stretch",
+          "gapPx": 12
+        },
+        "iconPill": {
+          "dimensionsPx": { "w": 32, "h": 24 },
+          "paddingPx": 12,
+          "innerGapPx": 10,
+          "layoutJustify": "center",
+          "layoutAlign": "center",
+          "fill": "rgba(188, 224, 121, 0.6)",
+          "borderRadiusCss": "200px",
+          "innerVectorApproxPx": { "w": 12, "h": 10.5 }
+        },
+        "chapterLabelInstance": {
+          "componentId": "104:3059",
+          "variant": "Device=Web, Type=Right",
+          "layoutMode": "row",
+          "alignItems": "center",
+          "gapPx": 16,
+          "padding": { "top": 12, "right": 14, "bottom": 12, "left": 6 },
+          "position": "absolute",
+          "locationRelativeToParent": { "xLtr": 258.67, "y": -21 },
+          "heightPx": 42,
+          "sizingHorizontal": "hug",
+          "fills": ["#BCE079"],
+          "stroke": { "color": "#001D26", "weightPx": 1.5 },
+          "effect": { "boxShadow": "2px 2px 0px 0px rgba(0, 29, 38, 1)", "_figmaName": "No blur" },
+          "borderRadiusCss": "24px 2px 0px 24px",
+          "chapterNumberPill": {
+            "dimensionsPx": { "w": 32, "h": 32 },
+            "fill": "#839C54",
+            "textStyle": "Chapter/Small",
+            "textFill": "#FFFFFF",
+            "textAlign": "CENTER"
+          },
+          "rtlImplementationNote": "מיקום מוחלט בקובץ ב-LTR; ב-RTL יש לשקף ל-inline-end של הכרטיס או להשתמש ב-left/right פיזי לפי figma-rtl-physical-placement.mdc"
+        }
+      },
+      "decorativeStarOnLastStep": {
+        "figmaNodeId": "253:9004",
+        "parentStepCardFigmaId": "253:8990",
+        "name": "Elements",
+        "componentId": "38:996",
+        "variant": "Star 1",
+        "position": "absolute",
+        "locationRelativeToParent": { "xLtr": 122, "y": 189 },
+        "dimensionsPx": { "w": 67, "h": 66 }
+      },
+      "flowConnectors": {
+        "stroke": {
+          "color": "rgba(0, 29, 38, 0.24)",
+          "weightPx": 2,
+          "dash": [6, 6]
+        },
+        "figmaNodeIds": [
+          "253:8873",
+          "253:9127",
+          "253:9129",
+          "253:8872",
+          "253:9128",
+          "253:9130",
+          "253:9131",
+          "253:9133",
+          "253:9134"
+        ]
+      },
+      "typographyFromFrame": {
+        "Typography/Body 1": {
+          "fontFamily": "Rubik",
+          "fontWeight": 400,
+          "fontSize": 16,
+          "lineHeightEm": 1.32,
+          "letterSpacingPercent": 0.9375,
+          "textAlignHorizontal": "RIGHT"
+        },
+        "Typography/H5": {
+          "fontFamily": "Rubik",
+          "fontWeight": 700,
+          "fontSize": 24,
+          "lineHeightEm": 1.334,
+          "textAlignHorizontal": "CENTER"
+        },
+        "Typography/H6": {
+          "fontFamily": "Rubik",
+          "fontWeight": 600,
+          "fontSize": 20,
+          "lineHeightEm": 1.28,
+          "letterSpacingPercent": 0.75,
+          "textAlignHorizontal": "CENTER"
+        },
+        "Typography/Body 2": {
+          "fontFamily": "Rubik",
+          "fontWeight": 400,
+          "fontSize": 14,
+          "lineHeightEm": 1.43,
+          "letterSpacingPercent": 1.214286,
+          "textAlignHorizontal": "RIGHT"
+        },
+        "Typography/Subtitle 1": {
+          "fontFamily": "Rubik",
+          "fontWeight": 500,
+          "fontSize": 16,
+          "lineHeightEm": 1.22,
+          "letterSpacingPercent": 0.9375,
+          "textAlignHorizontal": "CENTER"
+        },
+        "Chapter/Small": {
+          "fontFamily": "Salsa",
+          "fontWeight": 400,
+          "fontSize": 16,
+          "lineHeightEm": 1.28,
+          "letterSpacingPercent": 0.9375,
+          "textAlignHorizontal": "CENTER"
+        }
+      },
+      "stepsLogicalOrder": [
+        { "order": 1, "figmaNodeId": "253:8854", "chapterLabelText": "01" },
+        { "order": 2, "figmaNodeId": "253:8840", "chapterLabelText": "02" },
+        { "order": 3, "figmaNodeId": "253:8826", "chapterLabelText": "03" },
+        { "order": 4, "figmaNodeId": "253:8914", "chapterLabelText": "04" },
+        { "order": 5, "figmaNodeId": "253:8900", "chapterLabelText": "05" },
+        { "order": 6, "figmaNodeId": "253:8878", "chapterLabelText": "06" },
+        { "order": 7, "figmaNodeId": "253:8972", "chapterLabelText": "07" },
+        { "order": 8, "figmaNodeId": "253:8954", "chapterLabelText": "08" },
+        { "order": 9, "figmaNodeId": "253:8936", "chapterLabelText": "09" },
+        { "order": 10, "figmaNodeId": "253:8990", "chapterLabelText": "10" }
+      ],
+      "noteDomVsReadingOrder": "ילדי מסגרת `253:8825` בפיגמה אינם לפי 1–10; השדה stepsLogicalOrder מתאר סדר תוכן ליישום.",
+      "padding": { "top": 60, "right": 24, "bottom": 80, "left": 24 },
+      "sectionGapPx": 80,
+      "headerToIntroGapPx": 24,
+      "goalsBlockGapPx": 48,
+      "stepsColumnGapPx": 32,
+      "stepCardPadding": { "top": 32, "right": 24, "bottom": 24, "left": 24 },
+      "stepCardInnerGapPx": 14,
+      "stepBodyRowGapPx": 12
+    },
+    "sectionMeeting": {
+      "figmaNodeId": "254:9802",
+      "figmaUrl": "https://www.figma.com/design/pCQsVHvp5kYNlIvoXTlqqf/?node-id=254-9802&m=dev",
+      "name": "Section Meeting",
+      "componentInstance": { "componentId": "253:9392", "variant": "Device=Mobile, Variant=1" },
+      "mcpLayoutIds": {
+        "root": "layout_RXBADD",
+        "imageFrame": "layout_9VD38P",
+        "contentFrame": "layout_DMU77Q",
+        "groupInfo": "layout_1PBFZ2",
+        "titleStack": "layout_R3ZXLD",
+        "accordionList": "layout_2A4IM9",
+        "collapseOpen": "layout_42XS2L",
+        "collapseResting": "layout_M88JHC",
+        "openHeaderRow": "layout_YU0B3Y",
+        "openBodyRow": "layout_32U98M",
+        "restingHeaderRow": "layout_Y5OAOZ"
+      },
+      "root": {
+        "layoutMode": "column",
+        "justifyContent": "center",
+        "alignItems": "flex-end",
+        "gapPx": 60,
+        "padding": { "top": 60, "right": 24, "bottom": 60, "left": 24 },
+        "widthPx": 359,
+        "sizing": { "horizontal": "fixed", "vertical": "hug" },
+        "fills": ["rgba(255, 178, 59, 0.08)", "#FFFFFF"],
+        "borderRadiusCss": "24px 24px 0 0",
+        "rtlMirrorNote": "בפיגמה LTR ‎alignItems: flex-end‎ מיישר לימין המסגרת; ב־RTL באתר משתמשים ב־align-items: flex-start על המיכל כדי לקבל אותו צד פיזי."
+      },
+      "collage": {
+        "parentFrame": { "figmaNodeId": "I254:9802;253:9393", "name": "Image" },
+        "areaPx": { "w": 303, "h": 454 },
+        "group": {
+          "figmaNodeId": "I254:9802;253:9394",
+          "dimensionsPx": { "w": 310.56, "h": 457.68 },
+          "offsetInParent": { "xLtr": -0.28, "y": -3.51 }
+        },
+        "imagePrimary": {
+          "figmaNodeId": "I254:9802;253:9395",
+          "imageRef": "021782672231bb5d246689cf0be717fcc8daad1f",
+          "intendedPath": "public/assets/chapter3/session-1.png",
+          "dimensionsPx": { "w": 256.65, "h": 311.52 },
+          "positionInGroup": { "xLtr": 0, "y": 0 },
+          "borderRadiusPx": 24,
+          "stroke": { "color": "#001D26", "weightPx": 1.5 },
+          "effect": { "boxShadow": "2px 2px 0px 0px rgba(0, 29, 38, 1)", "_figmaName": "No blur" }
+        },
+        "imageSecondary": {
+          "figmaNodeId": "I254:9802;253:9396",
+          "imageRef": "cb69b4a6e312cc963fe79825eb13e3da2e27eef1",
+          "intendedPath": "public/assets/chapter3/session-2.png",
+          "dimensionsPx": { "w": 209.03, "h": 186.17 },
+          "positionInGroup": { "xLtr": 101.52, "y": 271.51 },
+          "borderRadiusPx": 24,
+          "stroke": { "color": "#001D26", "weightPx": 1.5 },
+          "effect": { "boxShadow": "2px 2px 0px 0px rgba(0, 29, 38, 1)", "_figmaName": "No blur" }
+        },
+        "decorativeStar": {
+          "figmaNodeId": "I254:9802;253:9397",
+          "componentId": "104:3014",
+          "variant": "Star 2",
+          "positionInGroup": { "xLtr": 46.28, "y": 333.51 },
+          "sizePx": { "w": 50, "h": 50 },
+          "fillNote": "#FFFFFF על השכבה; מילוי כוכב אדום פנימי בקומפוננטה"
+        },
+        "decorativeEllipse": {
+          "figmaNodeId": "I254:9802;253:9398",
+          "componentId": "38:994",
+          "positionInParentImageFrame": { "xLtr": 283, "y": 213 },
+          "sizePx": { "w": 9, "h": 9 },
+          "fill": "#BCE079"
+        }
+      },
+      "contentFrame": {
+        "figmaNodeId": "I254:9802;253:9399",
+        "name": "content Frame",
+        "layoutMode": "column",
+        "alignItems": "stretch",
+        "alignSelf": "stretch",
+        "gapPx": 24,
+        "sizing": { "horizontal": "fill", "vertical": "hug" }
+      },
+      "groupInfo": {
+        "figmaNodeId": "I254:9802;253:9400",
+        "layoutMode": "column",
+        "alignItems": "stretch",
+        "gapPx": 52,
+        "note": "ב־MCP מופיע gap 52 על Group Info; ילד יחיד Container — בקוד מיושם ריווח קטן בין שורת המלצה לכותרת ו־24px בין בלוק הכותרות לאקורדיון."
+      },
+      "titleStack": {
+        "figmaNodeId": "I254:9802;253:9401",
+        "layoutMode": "column",
+        "justifyContent": "center",
+        "alignItems": "flex-end",
+        "alignSelf": "stretch",
+        "subtitle": {
+          "figmaNodeId": "I254:9802;253:9402",
+          "textStyle": "Typography/Body 1",
+          "fill": "#001D26",
+          "textAlignHorizontal": "RIGHT"
+        },
+        "title": {
+          "figmaNodeId": "I254:9802;253:9403",
+          "textStyle": "Typography/H5",
+          "fill": "#001D26",
+          "textAlignHorizontal": "RIGHT"
+        }
+      },
+      "accordionList": {
+        "figmaNodeId": "I254:9802;253:9404",
+        "layoutMode": "column",
+        "alignItems": "stretch",
+        "gapPx": 12
+      },
+      "collapseItemOpen": {
+        "componentId": "202:9282",
+        "variant": "Device=Mobile, White=False, State=Open",
+        "layoutMode": "column",
+        "paddingHorizontalPx": 16,
+        "fills": ["rgba(101, 70, 222, 0.04)", "#FFFFFF"],
+        "strokeAccent": {
+          "color": "#6546DE",
+          "physicalEdges": "LTR: 2px on right only → RTL: border-inline-start 2px"
+        },
+        "headerRow": {
+          "gapPx": 24,
+          "minHeightPx": null,
+          "icon": {
+            "sizePx": 16,
+            "borderRadius": "100px",
+            "fill": "rgba(101, 70, 222, 0.08)",
+            "componentId": "115:2831",
+            "name": "remove (minus)"
+          },
+          "title": {
+            "textStyle": "Typography/Subtitle 1",
+            "fill": "#6546DE",
+            "textAlignHorizontal": "RIGHT"
+          }
+        },
+        "body": {
+          "layoutMode": "row",
+          "justifyContent": "center",
+          "padding": { "top": 0, "right": 0, "bottom": 24, "left": 60 },
+          "rtlPaddingNote": "ב־RTL: padding-inline-start 60px (ריווח מקו הקריאה הימני), padding-inline-end 0, padding-bottom 24px",
+          "textStyle": "Typography/Body 2",
+          "fill": "#001D26"
+        }
+      },
+      "collapseItemResting": {
+        "componentId": "202:9274",
+        "variant": "Device=Mobile, White=False, State=Resting",
+        "layoutMode": "row",
+        "alignItems": "center",
+        "padding": { "verticalPx": 80, "horizontalPx": 16 },
+        "paddingImplementationNote": "בפיגמה padding אנכי 80px — בקוד שומרים min-height 80px ו-padding אנכי סביר (24px) לטאפ-טרגט בלי לנפח מסך",
+        "fills": ["rgba(101, 70, 222, 0.04)", "#FFFFFF"],
+        "stroke": { "color": "rgba(101, 70, 222, 0.08)", "weightPx": 1 },
+        "borderRadiusPx": 8,
+        "headerRow": {
+          "gapPx": 24,
+          "icon": {
+            "sizePx": 16,
+            "fill": "#FFFFFF",
+            "componentId": "115:2811",
+            "name": "add (plus)"
+          },
+          "title": {
+            "textStyle": "Typography/Body 1",
+            "fill": "#001D26",
+            "textAlignHorizontal": "RIGHT"
+          }
+        }
+      },
+      "widthPx": 359,
+      "borderRadius": "24px 24px 0 0",
+      "padding": { "top": 60, "right": 24, "bottom": 60, "left": 24 },
+      "columnGapPx": 60,
+      "imageArea": { "widthPx": 303, "heightPx": 454 },
+      "contentToAccordionGapPx": 24,
+      "groupInfoTitleGapPx": 52,
+      "accordionHeaderRtlDom": {
+        "order": ["title", "icon"],
+        "note": "כותרת ראשונה ב-DOM + flex-start בשורת RTL → כותרת בצד ימין, כפתור +/- בצד שמאל"
+      },
+      "accordionItemsCanonical": [
+        {
+          "title": "הכנת המרחב",
+          "content": "לסביבה הפיזית יש תפקיד מרכזי בהנחיית הקבוצה. כל חדר פשוט יכול להפוך למרחב משמעותי כאשר נשמרים עקרונות של קביעות, והשקעה רגשית. הגעה מוקדמת של הרכזת, סידור החדר במעגל כסאות וקבלת פנים של הרכזת לפני תחילת המפגש - כולם מהווים גורמים המפחיתים חרדה ומשרים ביטחון.\nהקביעות בסטינג תומכת בחוויה של יציבות ושייכות לאורך זמן."
+        },
+        {
+          "title": "סבב פתיחה - \"מה נשמע?\"",
+          "content": "הסבב מאפשר לכל משתתף ומשתתפת להביא קולות אישיים, חוויות ודילמות מהשבוע שחלף. ההמלצה היא להקדיש לכך עד חצי שעה, תוך שמירה על קצב המאפשר קשב הדדי ולא מעמיס על הקבוצה. זהו מרחב של הכרה הדדית, עיבוד חוויות וחיזוק תחושת הערך והשייכות של כל אחד ואחת.",
+          "_source": "User-provided screenshot / design reference"
+        },
+        {
+          "title": "הפסקה",
+          "content": "הפסקה קצרה של 10-15 דקות מהווה הזדמנות לאינטראקציה בלתי פורמלית. עבור רבים מהמשתתפים זהו מרחב למידה חברתי בפני עצמו. כיצד ליזום שיחה, להצטרף לקבוצה קטנה או לשתף פעולה במשחק ספונטני.\nתפקיד הרכזת בשלב זה הוא לשהות בנוכחות מתבוננת: לאפשר חופש חברתי, לשים לב לדינמיקות ולזהות מצבים הדורשים מענה עדין או תמיכה.",
+          "_source": "User-provided screenshot / design reference"
+        },
+        {
+          "title": "משחק",
+          "content": "המשחק מהווה שער חשוב ליצירת חיבור וחוויית קבוצה משותפת. זוהי דרך לא-מילולית להתחבר, לשחרר מתח, לצחוק ולהרגיש חלק. המשחק מייצר שוויון בין המשתתפים והמשתתפות, מאפשר לבטא יכולות מגוונות ומחזק את תחושת החוסן הקבוצתי.",
+          "_source": "User-provided screenshot / design reference"
+        },
+        {
+          "title": "פעילות",
+          "content": "לב המפגש מתמקד בפעילות תוכן או תהליך קבוצתי. הפעילות נבנית בהתאם לצרכים העולים מהקבוצה, לרמת הקשב ולהקשר החברתי-קהילתי. לעיתים הפעילות נפרשת על פני כמה מפגשים ומאפשרת תהליך מתמשך של חקירה, יצירה או שיח. רכזת הקבוצה נדרשת לגמישות- להתאים את הבחירה למצב הרוח הקבוצתי, לאירועים אקטואליים או להצטרפות משתתפים חדשים.",
+          "_source": "User-provided screenshot / design reference"
+        },
+        {
+          "title": "סיכום",
+          "content": "לב המפגש מתמקד בפעילות תוכן או תהליך קבוצתי. הפעילות נבנית בהתאם לצרכים העולים מהקבוצה, לרמת הקשב ולהקשר החברתי-קהילתי. לעיתים הפעילות נפרשת על פני כמה מפגשים ומאפשרת תהליך מתמשך של חקירה, יצירה או שיח. רכזת הקבוצה נדרשת לגמישות- להתאים את הבחירה למצב הרוח הקבוצתי, לאירועים אקטואליים או להצטרפות משתתפים חדשים.",
+          "_source": "User-provided screenshot / design reference"
+        }
+      ],
+      "_accordionItemsCanonicalNote": "Synced with src/data.js INITIAL_DATA chapter3.sessionStructure.items; Figma node 254:9802 — Hebrew copy; CMS/Firestore may override at runtime."
+    }
+  },
+  "assets": {
+    "_comment": "Hero Page Content photo + meeting collage — export from Figma",
+    "images": [
+      {
+        "role": "pageContentHeroPhoto",
+        "figmaNodeId": "253:8651",
+        "imageRef": "9061cefc7047b674f8e7eda8427a9b3cf6a9a26b",
+        "intendedPath": "public/assets/chapter3/page3-hero-photo.png",
+        "note": "Gradient overlay is separate layer in Figma — implemented in CSS"
+      },
+      {
+        "role": "sessionCollagePrimary",
+        "figmaNodeId": "I254:9802;253:9395",
+        "imageRef": "021782672231bb5d246689cf0be717fcc8daad1f",
+        "intendedPath": "public/assets/chapter3/session-1.png",
+        "exportFormatNote": "Figma MCP image export emits PNG; verify file size > 0 after download"
+      },
+      {
+        "role": "sessionCollageSecondary",
+        "figmaNodeId": "I254:9802;253:9396",
+        "imageRef": "cb69b4a6e312cc963fe79825eb13e3da2e27eef1",
+        "intendedPath": "public/assets/chapter3/session-2.png",
+        "exportFormatNote": "Figma MCP image export emits PNG; verify file size > 0 after download"
+      }
+    ],
+    "icons": [
+      {
+        "role": "responsibilityListRowArrow",
+        "figmaNodeIds": ["253:8776", "253:8781", "253:8792"],
+        "format": "SVG",
+        "files": [
+          "public/assets/chapter3/resp-list-icon-arrow.svg",
+          "public/assets/chapter3/resp-list-icon-arrow-learning.svg",
+          "public/assets/chapter3/resp-list-icon-arrow-admin.svg"
+        ],
+        "note": "מיוצא מפיגמה; כולל רקע כדורי + חץ (מותאם RTL בקובץ)"
+      },
+      {
+        "role": "pageContentHeroWave2538809",
+        "figmaNodeId": "253:8809",
+        "implementation": "BigChapterDigits (shared with Chapter 2 mobile) inside Page3HeroImageBlock.jsx"
+      },
+      {
+        "role": "decorativeStarAndLineComponents",
+        "note": "Star / Ellipse / other Elements — see pageContentHeroImage.twoLinesDecoration for dashed ring 253:8752"
+      },
+      {
+        "role": "onboardingSection3ListRowIcon",
+        "format": "IMAGE-SVG",
+        "parentFigmaNodeId": "253:8815",
+        "representativeFigmaNodeIds": ["253:8861", "253:8865", "253:8869"],
+        "note": "אותו דפוס אייקון בכל שורת רשימה בכרטיסי הצעדים; ייצוא אופציונלי ל-SVG אחד משותף"
+      },
+      {
+        "role": "onboardingSection3FlowConnectors",
+        "format": "IMAGE-SVG",
+        "figmaNodeIds": ["253:8873", "253:9127", "253:9129", "253:8872", "253:9128", "253:9130", "253:9131", "253:9133", "253:9134"],
+        "stroke": "2px dashed rgba(0, 29, 38, 0.24), dash 6 6"
+      },
+      {
+        "role": "onboardingSection3DecorativeStar",
+        "figmaNodeId": "253:9004",
+        "componentId": "38:996",
+        "variant": "Star 1",
+        "note": "על כרטיס הצעד האחרון (253:8990)"
+      },
+      {
+        "role": "sectionMeetingCollageStar",
+        "figmaNodeId": "I254:9802;253:9397",
+        "componentId": "104:3014",
+        "variant": "Star 2",
+        "implementation": "Lucide Star ב־Page3MeetingSection + CSS מיקום באחוזים"
+      },
+      {
+        "role": "sectionMeetingCollageEllipse",
+        "figmaNodeId": "I254:9802;253:9398",
+        "componentId": "38:994",
+        "implementation": "span חלול .ch3-meeting__decoDot"
+      }
+    ]
+  },
+  "sections": {
+    "root": {
+      "figmaNodeId": "253:6705",
+      "name": "Chapter 3",
+      "directChildren": ["253:6706", "253:6715", "253:6864"],
+      "childrenFrameIds": ["253:6706", "253:6715", "253:6864"]
+    },
+    "pageContentHeroImage": {
+      "figmaNodeId": "253:8650",
+      "fullSpec": "layout.pageContentHeroImage",
+      "react": "Page3HeroImageBlock.jsx (uses BigChapterDigits for numerals + red waves)",
+      "styles": "src/styles/chapter3-mobile.css (.ch3-heroImage*)"
+    },
+    "responsibilityCards": {
+      "figmaStackNodeId": "253:8655",
+      "fullSpec": "layout.responsibilityCards",
+      "react": "Page3ResponsibilityCard.jsx",
+      "styles": "src/styles/chapter3-mobile.css (.ch3-respCard*)"
+    },
+    "gapsVsChapter3": {
+      "_comment": "Elements/tokens from Figma Main content not yet matched in Chapter3.jsx",
+      "pagePurpleBezel": {
+        "token": "#46319B",
+        "status": "not_applied_on_chapter_wrapper"
+      },
+      "mainContentOverlapStack": {
+        "negativeGapPx": -24,
+        "status": "not_applied"
+      },
+      "section1DecorativeEllipses": [
+        {
+          "figmaNodeId": "253:6717",
+          "fill": "rgba(188, 224, 121, 0.12)",
+          "blurPx": 200,
+          "sizePx": { "w": 496, "h": 403 },
+          "status": "not_in_react"
+        },
+        {
+          "figmaNodeId": "253:6718",
+          "fill": "rgba(255, 178, 59, 0.16)",
+          "blurPx": 200,
+          "sizePx": { "w": 528, "h": 464 },
+          "status": "not_in_react"
+        }
+      ],
+      "heroYellowUnderlineRect": {
+        "figmaNodeId": "253:6721",
+        "fill": "#FFB23B",
+        "status": "partially_matched_different_yellow_in_theme"
+      },
+      "pageContentVerticalRhythm": {
+        "betweenImageAndCardsGapPx": 200,
+        "status": "matched_ch3-pageContent_gap",
+        "note": "Padding 40px רק על עמודת הכרטיסים — לא על בלוק התמונה (253:8650)"
+      },
+      "section3PurpleBlob": {
+        "figmaNodeId": "253:8816",
+        "fill": "rgba(101, 70, 222, 0.12)",
+        "blurPx": 200,
+        "status": "not_in_react"
+      },
+      "section3HeaderAccentLine": {
+        "figmaNodeId": "253:8820",
+        "fill": "#BCE079",
+        "sizePx": { "w": 89, "h": 8 },
+        "status": "partially_matched_orange_bar_in_code_instead_of_green_line"
+      },
+      "onboardingStepFlowConnectors": {
+        "figmaStroke": {
+          "color": "rgba(0, 29, 38, 0.24)",
+          "weightPx": 2,
+          "dash": [6, 6]
+        },
+        "exampleNodeIds": ["253:8873", "253:9127", "253:9129", "253:8872"],
+        "status": "not_matched_process_cards_only_no_svg_connectors"
+      },
+      "sectionMeetingSurfaceAndRadius": {
+        "borderRadius": "24px 24px 0 0",
+        "fillLayers": ["rgba(255, 178, 59, 0.08)", "#FFFFFF"],
+        "status": "matched_ch3-meeting_2026-03"
+      },
+      "accordionRowChrome": {
+        "collapsedStroke": "1px rgba(101, 70, 222, 0.08)",
+        "openStrokeRight": "2px solid #6546DE on right edge only",
+        "rowBorderRadiusPx": 8,
+        "collapsedVerticalPaddingPx": 80,
+        "status": "compare_to_src/components/common/Accordion.jsx"
+      },
+      "referenceAccordionTitles": {
+        "_comment": "From Figma Section Meeting — verify against CMS sessionStructure.items titles",
+        "order": [
+          "הכנת המרחב",
+          "סבב פתיחה - \"מה נשמע?\"",
+          "הפסקה",
+          "משחק",
+          "פעילות",
+          "סיכום"
+        ]
+      }
+    },
+    "hero": {
+      "figmaNodeId": "253:6719",
+      "note": "Implemented — only decoration deltas listed under gapsVsChapter3"
+    },
+    "pageContent": {
+      "figmaNodeId": "253:8649",
+      "note": "Implemented — spacing delta under layout.pageContentStack"
+    },
+    "onboarding": {
+      "figmaNodeId": "253:8815",
+      "figmaUrl": "https://www.figma.com/design/pCQsVHvp5kYNlIvoXTlqqf/?node-id=253-8815&m=dev",
+      "note": "Full design tokens: layout.onboardingSection3. Deltas vs code: gapsVsChapter3.section3PurpleBlob, section3HeaderAccentLine, onboardingStepFlowConnectors.",
+      "react": "src/components/chapter3/mobile/Page3OnboardingSection.jsx, src/components/common/ProcessCard.jsx",
+      "styles": "src/styles/chapter3-mobile.css (.ch3-onboard*)"
+    },
+    "sessionMeeting": {
+      "figmaNodeId": "254:9802",
+      "figmaUrl": "https://www.figma.com/design/pCQsVHvp5kYNlIvoXTlqqf/?node-id=254-9802&m=dev",
+      "note": "Full spec: layout.sectionMeeting. React: Page3MeetingSection.jsx, Page3SessionAccordion.jsx; styles: chapter3-mobile.css (.ch3-meeting*, .ch3-acc*)",
+      "assets": "public/assets/chapter3/session-1.png, session-2.png"
+    },
+    "cards": {
+      "figmaNodeId": null,
+      "cardTemplate": {
+        "borderRadiusPx": { "image": 16, "responsibilityOuter": 24, "step": 8 },
+        "stroke": { "color": "#001D26", "weightPx": 1.5 }
+      },
+      "instances": []
+    },
+    "buttons": {
+      "figmaNodeId": null,
+      "variants": []
+    },
+    "footerOrNext": {
+      "figmaNodeId": null,
+      "notes": "Excluded from this cache — global footer (253:6860) and Next Chapter (253:6859)."
+    }
+  },
+  "mappingToCodebase": {
+    "_comment": "Implementation targets after cache is filled",
+    "reactEntry": "src/pages/Chapter3.jsx",
+    "cmsShape": "content.chapter3",
+    "adminEditor": "src/components/admin/sections/Chapter3Section.jsx",
+    "accordionComponent": "src/components/common/Accordion.jsx",
+    "processCardComponent": "src/components/common/ProcessCard.jsx"
+  }
+}

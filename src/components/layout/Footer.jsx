@@ -9,7 +9,8 @@ const SOCIAL_LINKS = [
     { Icon: Facebook, href: 'https://www.facebook.com/reimprogram/', label: 'פייסבוק – תוכנית רעים' }
 ];
 
-const Footer = ({ data }) => {
+const Footer = ({ data, variant }) => {
+    const chapter2Mobile = variant === 'chapter2Mobile';
     const contact = data?.contact ?? {};
     const bottomLinks = data?.bottomLinks ?? [
         { text: 'מדיניות פרטיות', url: '#' },
@@ -17,15 +18,26 @@ const Footer = ({ data }) => {
     ];
     const copyright = data?.copyright ?? '© כל הזכויות שמורות לחברה למתנ"סים';
     const organization = data?.organization ?? 'תוכנית רעים מבית החברה למתנ"סים';
-    const logos = data?.logos ?? { reim: '/Logo (1).png', matnasim: '/assets/matnasimLogo.png' };
+    const logos = data?.logos ?? { reim: '/Logo (1).png', matnasim: '/matnasimLogo.png' };
 
     return (
-        <footer className="bg-[#F3F0FF] pt-10 pb-6 px-6 md:px-12 border-t border-[#5E3BEE]/5 mt-12">
-            <div className="max-w-[1600px] mx-auto">
-                
-                {/* מובייל: כרטיס לבן – לוגו רעים ליד לוגו החברה למתנ"סים בשורה אחת */}
-                <div className="md:hidden bg-white rounded-[32px] shadow-xl border border-[#2D2D44]/5 p-6 mb-8 text-center">
-                    <div className="flex flex-nowrap justify-center items-center gap-3 mb-4">
+        <footer
+            className={
+                chapter2Mobile
+                    ? 'ch2-mobile-footer mt-auto w-full shrink-0 border-0 bg-transparent px-3 pb-4 pt-4'
+                    : 'bg-[#F3F0FF] pt-10 pb-6 px-6 md:px-12 border-t border-[#5E3BEE]/5 mt-12'
+            }
+        >
+            <div className={chapter2Mobile ? 'mx-auto w-full max-w-none' : 'max-w-[1600px] mx-auto'}>
+                {/* מובייל: כרטיס — בפרק 2 בתוך העמודה הלבנה משתמשים ברקע סגול עדין (Figma Footer) */}
+                <div
+                    className={
+                        chapter2Mobile
+                            ? 'md:hidden rounded-3xl border border-[#6546DE]/12 bg-[rgba(101,70,222,0.08)] p-5 text-center'
+                            : 'md:hidden bg-white rounded-[32px] shadow-xl border border-[#2D2D44]/5 p-6 mb-8 text-center'
+                    }
+                >
+                        <div className="flex flex-nowrap justify-center items-center gap-3 mb-4">
                         <img src={logos.reim || '/Logo (1).png'} alt="רֵעִים" className="h-5 shrink-0 object-contain" />
                         <div className="h-4 w-px bg-gray-200 shrink-0" />
                         <img src="/matnasimLogo.png" alt="החברה למתנ&quot;סים" className="h-5 shrink-0 object-contain" style={{ filter: 'invert(32%) sepia(89%) saturate(1582%) hue-rotate(231deg)' }} />
@@ -60,7 +72,7 @@ const Footer = ({ data }) => {
                         <div className="flex items-center gap-4 mb-4 justify-end">
                             <img src={logos.reim || '/Logo (1).png'} alt="רֵעִים" className="h-5 object-contain" />
                             <div className="h-4 w-[1px] bg-gray-300"></div>
-                            <img src={logos.matnasim || '/assets/matnasimLogo.png'} alt="החברה למתנ&quot;סים" className="h-5 object-contain" style={{ filter: 'invert(32%) sepia(89%) saturate(1582%) hue-rotate(231deg)' }} />
+                            <img src="/matnasimLogo.png" alt="החברה למתנ&quot;סים" className="h-5 object-contain" style={{ filter: 'invert(32%) sepia(89%) saturate(1582%) hue-rotate(231deg)' }} />
                         </div>
                         <div className="text-[#2D2D44] text-sm space-y-1 font-medium">
                             <p>{organization}</p>

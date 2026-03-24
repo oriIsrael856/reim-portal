@@ -8,6 +8,7 @@ import { Lock } from 'lucide-react';
 import { Sidebar, MenuOverlay } from './components/layout/Sidebar';
 import Footer from './components/layout/Footer';
 import Header from './components/layout/Header';
+import MobilePublicLayout from './components/layout/MobilePublicLayout';
 import AdminBar from './components/admin/AdminBar';
 import LoginModal from './components/auth/LoginModal';
 
@@ -28,6 +29,26 @@ const ROUTES = {
     chapter5: { component: Chapter5,    contentKey: 'chapter5', next: 'home', prev: 'chapter4' },
     admin:    { component: AdminPanel,  requiresAuth: true },
 };
+
+/** כותרת מסך במובייל (כרום Figma) — CMS או ברירת מחדל לפי מסלול */
+function getMobileScreenTitle(page, content) {
+    if (page === 'home') return 'דף הבית';
+    const key = ROUTES[page]?.contentKey;
+    const d = key ? content[key] : null;
+    const hero = d?.hero;
+    const chromeTitle = hero?.chromeTitle && String(hero.chromeTitle).trim();
+    if (chromeTitle) return chromeTitle;
+    const tag = hero?.tag && String(hero.tag).trim();
+    if (tag) return tag;
+    const fallbacks = {
+        chapter1: 'פרק 01',
+        chapter2: '— משתתפות.ים',
+        chapter3: 'פרק 03',
+        chapter4: 'פרק 04',
+        chapter5: 'פרק 05',
+    };
+    return fallbacks[page] || '—';
+}
 
 const App = () => {
     const { content } = useFirebaseContent();
@@ -64,14 +85,25 @@ const App = () => {
             return <PageComponent content={content} version={DATA_VERSION} />;
         }
 
+        const pageProps = {
+            data: content[route.contentKey],
+            content,
+            onNext: route.next ? () => navigateTo(route.next) : undefined,
+            onPrev: route.prev ? () => navigateTo(route.prev) : undefined,
+            navigateTo,
+        };
+
         return (
-            <PageComponent
-                data={content[route.contentKey]}
-                content={content}
-                onNext={route.next ? () => navigateTo(route.next) : undefined}
-                onPrev={route.prev ? () => navigateTo(route.prev) : undefined}
-                navigateTo={navigateTo}
-            />
+            <MobilePublicLayout
+                isMenuOpen={isMenuOpen}
+                onMenuToggle={() => setIsMenuOpen((p) => !p)}
+                screenTitle={getMobileScreenTitle(currentPage, content)}
+                onExitClick={route.prev ? () => navigateTo(route.prev) : () => navigateTo('home')}
+                logoUrl={content?.header?.logo}
+                onLogoClick={() => navigateTo('home')}
+            >
+                <PageComponent {...pageProps} />
+            </MobilePublicLayout>
         );
     };
 
@@ -90,13 +122,19 @@ const App = () => {
         <div dir="rtl" className="font-['Rubik'] text-[#2D2D44] min-h-screen" style={{ background: 'var(--Purple-Dark, #46319B)' }}>
             {/* קונטיינר פנימי – פס סגול תמיד נראה למעלה, שמאל ולמטה */}
             <div
-                className="min-h-screen rounded-[12px] md:rounded-[16px] flex flex-col overflow-hidden"
+                className={
+                    currentPage !== 'admin'
+                        ? 'flex min-h-screen flex-col overflow-x-clip rounded-[12px] bg-[#46319B] md:overflow-hidden md:rounded-[16px] md:bg-gradient-to-b md:from-white md:to-[#F5F3FA]'
+                        : 'flex min-h-screen flex-col overflow-hidden rounded-[12px] md:rounded-[16px]'
+                }
                 style={{
                     marginTop: '12px',
                     marginBottom: '12px',
                     marginLeft: '12px',
                     marginRight: 0,
-                    background: 'linear-gradient(to bottom, #fff 0%, #F5F3FA 100%)'
+                    ...(currentPage !== 'admin'
+                        ? {}
+                        : { background: 'linear-gradient(to bottom, #fff 0%, #F5F3FA 100%)' }),
                 }}
             >
 
@@ -114,6 +152,7 @@ const App = () => {
             )}
 
             <Header
+                hideMobileChrome={currentPage !== 'admin'}
                 onLogoClick={() => navigateTo('home')}
                 onMenuClick={() => setIsMenuOpen((prev) => !prev)}
                 isMenuOpen={isMenuOpen}
@@ -137,7 +176,13 @@ const App = () => {
                 isAdmin={!!user}
             />
 
-            <main className="transition-all duration-500 px-4 md:px-0 md:pr-20 pt-[130px] md:pt-[116px]">
+            <main
+                className={`flex min-h-0 flex-1 flex-col transition-all duration-500 px-4 md:px-0 md:pr-20 md:pt-[116px] ${
+                    currentPage !== 'admin'
+                        ? 'pt-[max(0.75rem,env(safe-area-inset-top,0px))]'
+                        : 'pt-[130px]'
+                }`}
+            >
                 <Suspense fallback={
                     <div className="h-[60vh] flex items-center justify-center font-bold text-[#5E3BEE] animate-pulse">
                         טוען תוכן...
@@ -148,7 +193,16 @@ const App = () => {
             </main>
 
             {currentPage !== 'admin' && (
-                <div className="md:pr-20 px-0">
+                <div
+                    className={
+                        currentPage === 'chapter1' ||
+                        currentPage === 'chapter2' ||
+                        currentPage === 'chapter3' ||
+                        currentPage === 'chapter4'
+                            ? 'hidden px-0 md:block md:pr-20'
+                            : 'px-0 md:pr-20'
+                    }
+                >
                     <Footer data={content.footer} />
                 </div>
             )}

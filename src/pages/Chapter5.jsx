@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Plus } from 'lucide-react';
+import { ArrowLeft, Plus, Send, Star } from 'lucide-react';
 import SplitStickyLayout from '../components/layout/SplitStickyLayout';
 import Accordion from '../components/common/Accordion';
 import CheckCard from '../components/chapter5/CheckCard';
@@ -52,84 +52,142 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                 </section>
 
                 {/* 2. שיווק וגיוס משתתפים ומשתתפות */}
-                <section className="max-w-lg mx-auto px-4 pb-8">
-                    <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)] p-6">
-                        <h2 className="text-right mb-6">
-                            <span className="text-[#5E3BEE] font-black text-xl">שיווק וגיוס</span>
-                            <span className="block w-16 h-1 bg-[#C5E080] rounded-full mt-1 mb-2" aria-hidden />
-                            <span className="text-[#2D2D44] font-black text-xl">משתתפים ומשתתפות</span>
-                        </h2>
-                        {marketingParagraphs.map((para, i) => (
-                            <p key={i} className="text-[#2D2D44] text-base leading-relaxed text-right mb-4">
-                                {para}
-                            </p>
-                        ))}
-                        <h3 className="font-black text-lg text-[#2D2D44] text-right mb-4 mt-6">
-                            {data.marketing?.stepsTitle}
-                        </h3>
-                        <div className="rounded-2xl overflow-hidden">
-                            <Accordion items={data.marketing?.steps || []} />
+                <section className="mx-auto w-full max-w-[359px] rounded-t-[24px] bg-[linear-gradient(180deg,rgba(255,178,59,0.08)_0%,#fff_100%)] px-6 pb-[100px] pt-[60px]">
+                    <div className="flex flex-col gap-[52px]">
+                        <div className="flex flex-col gap-6">
+                            <div className="relative flex w-full justify-end">
+                                <span
+                                    aria-hidden
+                                    className="absolute right-0 top-5 h-2 w-[119px] rounded-[2px] bg-[#BCE079]"
+                                />
+                                <h2 className="relative z-[1] whitespace-pre-line text-right text-2xl font-bold leading-[1.334] text-[#001D26]">
+                                    {'שיווק וגיוס\nמשתתפים ומשתתפות'}
+                                </h2>
+                            </div>
+                            {marketingParagraphs.map((para, i) => (
+                                <p key={i} className="whitespace-pre-line text-right text-base font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26]">
+                                    {para}
+                                </p>
+                            ))}
+                        </div>
+
+                        <div className="flex flex-col gap-3">
+                            <h3 className="text-right text-xl font-semibold leading-[1.28] tracking-[0.0075em] text-[#001D26]">
+                                {data.marketing?.stepsTitle ?? 'צעדי פעולה מרכזיים:'}
+                            </h3>
+                            <div className="[&_.ch3-acc]:w-full [&_.w-full]:w-full rounded-lg">
+                                <Accordion items={data.marketing?.steps || []} />
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* 3. למי כדאי לפנות? */}
-                <section className="max-w-lg mx-auto px-4 pb-8">
-                    <h2 className="text-2xl font-black text-[#2D2D44] text-center mb-6">
-                        {data.networking?.title}
-                    </h2>
-                    <div className="space-y-4">
-                        {networkingCardsReversed.map((c, i) => (
-                            <div
-                                key={i}
-                                className="rounded-2xl overflow-hidden bg-[#F5F9ED] border-2 border-[#9AD063] p-5 pt-8 relative"
-                            >
-                                <div className="absolute -top-3 right-1/2 translate-x-1/2 w-10 h-10 rounded-xl bg-[#9AD063] flex items-center justify-center shadow-[2px_2px_0px_#2D2D44]">
-                                    <span className="text-white font-black text-lg">✓</span>
-                                </div>
-                                <div className="text-right">
-                                    <h4 className="font-black text-[#2D2D44] text-lg mb-2">{c.title}</h4>
-                                    <p className="text-[#2D2D44]/80 text-sm leading-relaxed">{c.text}</p>
-                                </div>
-                            </div>
-                        ))}
+                <section className="mx-auto w-full max-w-[359px] bg-[linear-gradient(180deg,rgba(255,178,59,0.08)_0%,#fff_100%)] px-6 pb-[100px] pt-6">
+                    <div className="flex flex-col gap-[52px]">
+                        <div className="flex w-full items-center justify-center">
+                            <h2 className="text-center text-2xl font-bold leading-[1.334] text-[#001D26]">
+                                {data.networking?.title ?? 'למי כדאי לפנות?'}
+                            </h2>
+                        </div>
+
+                        <div className="flex flex-col gap-8">
+                            {networkingCardsReversed.map((c, i) => (
+                                <article
+                                    key={i}
+                                    className="relative flex flex-col items-stretch gap-2 rounded-lg border-[1.5px] border-[#001D26] bg-[linear-gradient(180deg,rgba(188,224,121,0.08)_0%,#fff_100%)] px-6 pb-6 pt-10 shadow-[2px_2px_0_#001D26]"
+                                >
+                                    <span
+                                        aria-hidden
+                                        className="absolute -top-6 left-1/2 flex h-10 w-10 -translate-x-1/2 items-center justify-center rounded-lg border-[1.5px] border-[#001D26] bg-[#BCE079]"
+                                    >
+                                        <span className="text-base leading-none text-white">✓</span>
+                                    </span>
+
+                                    <h3 className="text-center text-base font-medium leading-[1.22] tracking-[0.009375em] text-[#001D26]">
+                                        {c.title}
+                                    </h3>
+                                    <p className="text-center text-base font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26]">
+                                        {c.text}
+                                    </p>
+                                </article>
+                            ))}
+                        </div>
                     </div>
                 </section>
 
-                {/* 4. הרכזיה */}
-                <section className="max-w-lg mx-auto px-4 pb-8">
-                    <div className="rounded-[40px] overflow-hidden bg-white border-2 border-[#2D2D44]/10 shadow-[6px_6px_0px_rgba(45,45,68,0.08)]">
-                        <div className="aspect-[4/3] bg-[#2D2D44]/5 overflow-hidden">
-                            <img
-                                src={data.resources?.library?.image}
-                                alt=""
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <div className="p-6 text-right">
-                            <h3 className="text-2xl font-black text-[#2D2D44] mb-3">
-                                {data.resources?.library?.title}
-                            </h3>
-                            <p className="text-[#2D2D44]/80 text-base leading-relaxed mb-6">
-                                {data.resources?.library?.desc}
-                            </p>
+                {/* 4+5. משאבים: הרכזיה + ניוזלטר (Figma 254:13614) */}
+                <section className="relative mx-auto flex w-full max-w-[359px] flex-col gap-6 px-6 py-20">
+                    <div
+                        aria-hidden
+                        className="pointer-events-none absolute -left-[500px] -top-[50px] h-[1040px] w-[1360px] rounded-full bg-[rgba(101,70,222,0.08)] blur-[200px]"
+                    />
+
+                    <article
+                        className="relative flex h-[460px] flex-col justify-end overflow-hidden rounded-3xl border-[1.5px] border-[#001D26] p-4"
+                        style={{
+                            backgroundImage: data.resources?.library?.image
+                                ? `url(${data.resources.library.image})`
+                                : undefined,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                        }}
+                    >
+                        <div className="flex flex-col gap-6 rounded-3xl border-[1.5px] border-[#001D26] bg-white p-4 shadow-[2px_2px_0_#001D26]">
+                            <div className="flex flex-col gap-2 text-center">
+                                <h3 className="text-2xl font-bold leading-[1.334] text-[#001D26]">
+                                    {data.resources?.library?.title ?? 'הרכזיה'}
+                                </h3>
+                                <p className="whitespace-pre-line text-center text-base font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26]">
+                                    {data.resources?.library?.desc}
+                                </p>
+                            </div>
                             <button
                                 type="button"
-                                className="w-full sm:w-auto bg-[#5E3BEE] text-white px-6 py-3 rounded-full font-bold inline-flex items-center justify-center gap-2 hover:bg-[#4a2ec6] transition-colors shadow-md"
+                                className="flex w-full items-center justify-between gap-3 rounded-[100px] border border-[#6546DE] bg-[#6546DE] px-6 py-2 text-white"
                             >
-                                {data.resources?.library?.btnText}
-                                <ArrowLeft size={20} strokeWidth={3} />
+                                <span className="text-base font-bold uppercase leading-[1.625] tracking-[0.02875em]">
+                                    {data.resources?.library?.btnText ?? 'הצגת מאגר'}
+                                </span>
+                                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
+                                    <ArrowLeft size={14} strokeWidth={2.5} />
+                                </span>
                             </button>
                         </div>
-                    </div>
-                </section>
+                    </article>
 
-                {/* 5. ניוזלטר רעים – אותן פרופורציות כמו בעמוד הבית */}
-                <section className="max-w-lg mx-auto px-4 pb-8">
-                    <NewsletterCard
-                        data={data.resources?.newsletter}
-                        className="w-full min-h-[clamp(220px,30vh,360px)] rounded-[40px] shadow-[6px_6px_0px_rgba(45,45,68,0.08)]"
-                    />
+                    <article className="relative flex h-[400px] flex-col items-center justify-between rounded-3xl border-[1.5px] border-[#001D26] bg-[#BCE079] p-4 shadow-[2px_2px_0_#001D26]">
+                        <div className="flex w-full flex-col items-center gap-3">
+                            <Star size={44} className="text-[#FFB23B]" fill="currentColor" aria-hidden />
+                            <div className="flex flex-col items-center gap-0 text-center">
+                                <p className="text-base font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26]">
+                                    השראות מיוחדות ישירות לתיבה שלך
+                                </p>
+                                <h3 className="text-[34px] font-bold leading-[1.1] tracking-[0.00735em] text-[#001D26]">
+                                    {data.resources?.newsletter?.title ?? 'ניוזלטר רעים'}
+                                </h3>
+                            </div>
+                            <p className="text-center text-base font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26]">
+                                {data.resources?.newsletter?.text ?? 'מנה חודשית מרוכזת של חדשנות, משחק ומיטב השראה מהשטח.'}
+                            </p>
+                        </div>
+
+                        <div className="relative w-full">
+                            <div className="flex h-14 w-full items-center justify-between rounded-[100px] border border-[#001D26] bg-white px-[14px] pe-[6px]">
+                                <span className="text-base font-normal leading-[1.32] tracking-[0.009375em] text-[rgba(0,29,38,0.4)]">
+                                    {data.resources?.newsletter?.placeholder ?? 'הקלידי את כתובת המייל שלך'}
+                                </span>
+                                <span className="flex h-9 items-center rounded-[100px] bg-[rgba(101,70,222,0.4)] p-1.5 text-white">
+                                    <ArrowLeft size={18} strokeWidth={2.5} />
+                                </span>
+                            </div>
+                            <Send
+                                size={20}
+                                className="pointer-events-none absolute left-1/2 top-[-24px] -translate-x-1/2 text-[rgba(101,70,222,0.6)]"
+                                aria-hidden
+                            />
+                        </div>
+                    </article>
                 </section>
 
                 {/* 6. כפתור סיום */}

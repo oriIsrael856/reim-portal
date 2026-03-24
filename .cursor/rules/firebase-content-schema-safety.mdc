@@ -1,0 +1,14 @@
+---
+description: Protect Firestore content schema and admin CMS update safety
+alwaysApply: true
+---
+
+# Firebase Content Schema Safety
+
+- Treat Firestore content at `site_content/<DATA_VERSION>` as the canonical source for site content.
+- When extending content structure, add backward-compatible defaults to `src/data.js`.
+- Avoid removing or renaming existing content keys unless a migration strategy is explicitly defined.
+- Keep updates schema-aware: respect object vs array semantics for nested paths.
+- Preserve immutable update patterns for nested structures in admin editing flows.
+- Maintain stable dot-notation key paths used by admin editors unless explicitly requested to change.
+- Prefer non-breaking schema evolution and minimize risk to existing production data.

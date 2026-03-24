@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Check, ArrowLeft, Plus, Minus, Send } from 'lucide-react';
+import { Check, ArrowLeft, Plus, Minus } from 'lucide-react';
+import AccordionRichContent from '../components/chapter2/AccordionRichContent';
 import NextChapterButton from '../components/common/NextChapterButton';
-import PrevChapterButton from '../components/common/PrevChapterButton';
+import { Chapter2MobileView } from '../components/chapter2/mobile';
 import StickyCard from '../components/common/StickyCard'; 
 // ייבוא הרכיב הארכיטקטוני החדש
 import SplitStickyLayout from '../components/layout/SplitStickyLayout'; 
@@ -38,8 +39,10 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => (
                 <span className={`text-lg md:text-xl font-bold ${isOpen ? 'text-[#5E3BEE]' : 'text-[#2D2D44]'}`}>{title}</span>
             </div>
         </button>
-        <div className={`px-6 mr-12 ml-6 text-[#2D2D44]/80 leading-relaxed overflow-hidden transition-all duration-500 ease-in-out whitespace-pre-line ${isOpen ? 'max-h-[800px] opacity-100 pb-8' : 'max-h-0 opacity-0'}`}>
-            {content}
+        <div
+            className={`px-6 me-12 ms-6 text-[#2D2D44]/80 leading-relaxed overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[800px] opacity-100 pb-8' : 'max-h-0 opacity-0'}`}
+        >
+            <AccordionRichContent>{content}</AccordionRichContent>
         </div>
     </div>
 );
@@ -212,251 +215,23 @@ const WhyTogetherSection = ({ data }) => {
 /* ==============================================================================
    הרכיב הראשי
    ============================================================================== */
-const Chapter2 = ({ data, onNext, onPrev }) => {
+const Chapter2 = ({ data, onNext, content }) => {
     if (!data) return <div className="text-center p-20 text-[#816AFE]">טוען פרק 2...</div>;
-    const hero = data.hero || {};
-    const contentBox = data.contentBox;
     const groupsIntro = data.groupsIntro;
-    const goals = contentBox?.goals || [];
 
     return (
-        <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-0 font-['Rubik']">
-            {onPrev && (
-                <div className="pt-6 pb-4 px-4">
-                    <PrevChapterButton title="לפרק הקודם" subtitle="פרק 01 - נעים להכיר" onClick={onPrev} />
-                </div>
-            )}
-
-            {/* מובייל בלבד: חלק 1 – קו מקווקו + נייר, תג 02, כותרת, קולאז' תמונות */}
-            <div className="md:hidden mx-4 mt-4 mb-12">
-                <div className="bg-white rounded-[32px] shadow-xl border border-[#2D2D44]/5 p-6 relative overflow-hidden">
-                    <div className="flex items-center gap-2 mb-6 text-[#816AFE]/60">
-                        <svg className="w-full h-4 flex-1 min-w-0" viewBox="0 0 200 8" fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="6 4"><path d="M0 4 L200 4" /></svg>
-                        <Send className="w-5 h-5 shrink-0 rotate-45" strokeWidth={2} />
-                    </div>
-                    <div className="inline-flex items-center gap-2 bg-[#C5E080] border-2 border-black px-5 py-2 rounded-full mb-6 shadow-[3px_3px_0px_black]">
-                        <span className="w-6 h-6 bg-white/50 rounded-full flex items-center justify-center text-xs font-bold border border-black/10">02</span>
-                        <span className="font-bold text-[#2D2D44]">{hero.tag}</span>
-                    </div>
-                    <h1 className="text-2xl md:text-3xl font-black text-[#2D2D44] leading-tight mb-6 text-center">
-                        מי משתתפות
-                        <br />
-                        <span className="text-[#5E3BEE] relative inline-block mt-0.5">
-                            ומשתתפים ברעים
-                            <span className="absolute bottom-1 left-0 w-full h-3 bg-[#FFB84C] opacity-50 -z-10 rounded-sm" />
-                        </span>
-                    </h1>
-                    <div className="relative min-h-[260px]">
-                        <div className="absolute top-0 right-0 w-[75%] aspect-[3/4] max-h-[220px] rounded-2xl overflow-hidden border-4 border-white shadow-xl z-10">
-                            <img src={hero.image1} alt="" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="absolute top-2 left-2 w-[38%] aspect-square max-h-[100px] rounded-xl overflow-hidden border-2 border-white shadow-lg z-20 bg-gray-100">
-                            <img src={hero.image2} alt="" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="absolute bottom-2 left-2 w-[40%] aspect-[4/3] max-h-[90px] rounded-xl overflow-hidden border-2 border-white shadow-lg z-20 bg-gray-100">
-                            <img src={hero.image3} alt="" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="absolute bottom-4 right-4 text-6xl font-black text-[#816AFE] font-['Rubik'] leading-none opacity-20 select-none">02</div>
-                    </div>
-                </div>
-            </div>
-
-            {/* מובייל בלבד: חלק 2 – למי מיועדת התכנית, תפוז, כרטיסי גילאים */}
-            {contentBox && (
-                <div className="md:hidden mx-4 mb-12">
-                    <div className="bg-[#FFF9F0] rounded-[32px] border-2 border-[#2D2D44]/10 p-6 shadow-lg">
-                        <div className="bg-[#FFB84C] rounded-[24px] border-2 border-[#2D2D44]/20 p-6 mb-6">
-                            <h2 className="text-xl font-black text-[#2D2D44] mb-3 text-center">{contentBox.audienceTitle}</h2>
-                            <p className="text-[#2D2D44] text-sm leading-relaxed whitespace-pre-line text-center">{contentBox.audienceText}</p>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            {contentBox.ageGroups.map((group, index) => (
-                                <AgeCard key={index} label={group.label} age={group.age} />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            )}
-
-            {/* מובייל בלבד: חלק 3 – מטרות תכנית רעים, לוגו, רשימת מטרות עם V */}
-            {contentBox && goals.length > 0 && (
-                <div className="md:hidden mx-4 mb-12">
-                    <div className="text-center mb-6">
-                        <h2 className="text-2xl font-black text-[#5E3BEE] inline-block relative mb-2">
-                            מטרות
-                            <span className="absolute bottom-0 left-0 w-full h-2 bg-[#C5E080]/70 -z-10 rounded-full" />
-                        </h2>
-                        <span className="block text-[#5E3BEE] font-bold text-sm mt-1">תכנית רעים</span>
-                    </div>
-                    <div className="flex flex-col gap-6">
-                        {goals.map((text, index) => (
-                            <div key={index} className="relative bg-[#FFF9F0] rounded-2xl border-2 border-[#2D2D44] p-6 pt-10 text-right shadow-[4px_4px_0px_rgba(45,45,68,0.08)]">
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-8 bg-[#C5E080] border-2 border-[#2D2D44] rounded-lg flex items-center justify-center shadow-sm z-10">
-                                    <Check size={18} strokeWidth={3} className="text-[#2D2D44]" />
-                                </div>
-                                <p className="text-[#2D2D44] font-bold text-sm leading-tight">{text}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
+        <div className="flex min-h-[100dvh] flex-col font-['Rubik'] md:block md:min-h-screen md:bg-[#FAF7FF]">
+            <Chapter2MobileView data={data} onNext={onNext} footerData={content?.footer} />
 
             {/* דסקטופ: הירו + בלוק תפוז + מטרות */}
             <HeroSection data={data.hero} />
             {data.contentBox && <div className="hidden md:block"><UnifiedOrangeSection data={data.contentBox} /></div>}
             {groupsIntro && <div className="hidden md:block mb-20"><GroupsIntroSection data={data.groupsIntro} /></div>}
-
-            {/* מובייל בלבד: חלק 4 – תיבת מטרה אחרונה, לוגו, תמונה, הקבוצות ברעים + אוכלוסיות */}
-            {groupsIntro && (
-                <div className="md:hidden mx-4 mb-12">
-                    {goals.length > 0 && (
-                        <div className="bg-[#C5E080] rounded-2xl border-2 border-[#2D2D44] px-4 py-3 mb-6 shadow-[3px_3px_0px_#2D2D44]">
-                            <p className="text-[#2D2D44] font-bold text-sm text-center leading-snug">{goals[goals.length - 1]}</p>
-                        </div>
-                    )}
-                    <div className="rounded-[24px] overflow-hidden border-2 border-[#2D2D44]/10 shadow-lg mb-6 aspect-[4/3] max-h-[280px] bg-gray-100">
-                        <img src={groupsIntro.image} alt="" className="w-full h-full object-cover" />
-                    </div>
-                    <div className="bg-white rounded-[32px] shadow-xl border border-[#2D2D44]/5 p-6 text-right">
-                        <p className="text-sm font-bold text-[#2D2D44]/60 mb-1">{groupsIntro.subheading}</p>
-                        <h2 className="text-2xl font-black text-[#2D2D44] mb-2">{groupsIntro.title}</h2>
-                        <p className="text-[#2D2D44] text-sm mb-6 leading-relaxed">{groupsIntro.intro}</p>
-                        <div className="flex flex-col gap-3 mb-6">
-                            {groupsIntro.populations.map((pop) => (
-                                <div key={pop.id} className="flex items-center justify-between bg-[#F3F0FF] hover:bg-[#EBE5FC] p-4 rounded-2xl border border-[#2D2D44]/5">
-                                    <span className="font-bold text-[#2D2D44]">{pop.id} {pop.text}</span>
-                                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm shrink-0">
-                                        <ArrowLeft size={20} className="text-[#5E3BEE]" />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <p className="text-[#2D2D44]/80 text-sm leading-relaxed">{groupsIntro.description}</p>
-                    </div>
-                </div>
-            )}
-
-            {/* מובייל בלבד: חלק 5 – קבוצה 01 אוטיסטים ואוטיסטיות: כותרת, באנר רעים, אקורדיון */}
-            {data.group01 && (
-                <div className="md:hidden mx-4 mb-12">
-                    <div className="mb-6">
-                        <p className="text-sm font-bold text-[#5E3BEE] mb-1">02</p>
-                        <h2 className="text-2xl font-black text-[#2D2D44] mb-2">{data.group01.title}</h2>
-                        {groupsIntro && (
-                            <p className="text-[#2D2D44]/80 text-sm leading-relaxed">{groupsIntro.description.split('.')[0]}.</p>
-                        )}
-                    </div>
-                    <p className="text-[#2D2D44] text-sm leading-relaxed mb-6">
-                        לעיתים המפגש עם מערכות חינוך, חברה ותעסוקה שמבוססות על נורמות אחידות, עלול להוביל לתחושת חוסר שייכות ולחוויות בדידות.
-                    </p>
-                    <div className="mb-4">
-                        <p className="text-xs font-bold text-[#816AFE] mb-1">{data.group01.id}</p>
-                        <h3 className="text-xl font-black text-[#2D2D44]">{data.group01.title}</h3>
-                    </div>
-                    <Accordion items={data.group01.items} />
-                </div>
-            )}
-
-            {/* מובייל בלבד: חלק 6 – קבוצה 02 לקויות למידה נרחבות: כותרת, באנר רעים, אקורדיון */}
-            {data.group02 && (
-                <div className="md:hidden mx-4 mb-12">
-                    <div className="mb-6">
-                        <p className="text-sm font-bold text-[#5E3BEE] mb-1">02</p>
-                        <h2 className="text-2xl font-black text-[#2D2D44] mb-2">{data.group02.title}</h2>
-                        {groupsIntro && (
-                            <p className="text-[#2D2D44]/80 text-sm leading-relaxed">{groupsIntro.description.split('.')[0]}.</p>
-                        )}
-                    </div>
-                    <p className="text-[#2D2D44] text-sm leading-relaxed mb-6">
-                        לעיתים המפגש עם מערכות חינוך, חברה ותעסוקה שמבוססות על נורמות אחידות, עלול להוביל לתחושת חוסר שייכות ולחוויות בדידות.
-                    </p>
-                    <div className="mb-4">
-                        <p className="text-xs font-bold text-[#816AFE] mb-1">{data.group02.id}</p>
-                        <h3 className="text-xl font-black text-[#2D2D44]">{data.group02.title}</h3>
-                    </div>
-                    <Accordion items={data.group02.items} />
-                </div>
-            )}
-
-            {/* דסקטופ: פרטי קבוצה 01 */}
             {data.group01 && <div className="hidden md:block"><GroupDetailsSection data={data.group01} /></div>}
-            {/* דסקטופ: פרטי קבוצה 02 */}
             {data.group02 && <div className="hidden md:block"><GroupDetailsSection data={data.group02} /></div>}
-
-            {/* מובייל בלבד: חלק 7 – באנר רעים (סגול בהיר), אקורדיון סיכום, שאלה "למה שתי האוכלוסיות יחד?" */}
-            {data.part7Accordion && data.part7Accordion.length > 0 && (
-                <div className="md:hidden mx-4 mb-12">
-                    <div className="mb-8">
-                        <Accordion items={data.part7Accordion} />
-                    </div>
-                    {data.whyTogether?.title && (
-                        <h2 className="text-xl font-black text-[#2D2D44] text-center">
-                            למה שתי האוכלוסיות{' '}
-                            <span className="text-[#C5E080] relative inline-block">
-                                יחד?
-                                <span className="absolute bottom-0 left-0 w-full h-2 bg-[#C5E080]/60 -z-10 rounded-full" />
-                            </span>
-                        </h2>
-                    )}
-                </div>
-            )}
-
-            {/* מובייל בלבד: חלק 8 – באנר לוגו, כרטיס "למרות ההבדלים... חוויות דומות" עם 3 סעיפים ו-V ירוק */}
-            {data.whyTogether?.cards?.some(c => c.type === 'list') && (() => {
-                const listCard = data.whyTogether.cards.find(c => c.type === 'list');
-                if (!listCard?.items?.length) return null;
-                return (
-                    <div className="md:hidden mx-4 mb-12">
-                        <div className="bg-[#FFFDF5] rounded-[24px] border-2 border-[#C5E080]/60 p-6 shadow-sm">
-                            <h3 className="text-lg font-black text-[#2D2D44] mb-6 text-center whitespace-pre-line leading-relaxed">{listCard.title}</h3>
-                            <div className="flex flex-col gap-4">
-                                {listCard.items.map((item, idx) => (
-                                    <div key={idx} className="flex items-center justify-between gap-4 bg-white rounded-xl border-2 border-[#C5E080]/50 p-4 pl-14 text-right relative">
-                                        <p className="text-[#2D2D44] font-medium text-sm leading-snug flex-1">{item}</p>
-                                        <div className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#C5E080] border-2 border-[#2D2D44] rounded-xl flex items-center justify-center shadow-[2px_2px_0px_#2D2D44] shrink-0">
-                                            <Check size={22} strokeWidth={3} className="text-[#2D2D44]" />
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                );
-            })()}
-
-            {/* דסקטופ: למה שתי האוכלוסיות יחד */}
             {data.whyTogether && <div className="hidden md:block"><WhyTogetherSection data={data.whyTogether} /></div>}
 
-            {/* מובייל בלבד: חלק 9 – באנר לוגו + כרטיס "חיזוק השייכות החברתית" */}
-            {data.whyTogether?.cards?.filter(c => c.type === 'text')?.[0] && (() => {
-                const card = data.whyTogether.cards.find(c => c.type === 'text');
-                if (!card) return null;
-                return (
-                    <div className="md:hidden mx-4 mb-12">
-                        <div className="bg-white rounded-[24px] border-2 border-[#2D2D44]/10 p-6 shadow-sm text-right">
-                            <h3 className="text-xl font-black text-[#2D2D44] mb-4 border-b-2 border-[#2D2D44]/10 pb-3 inline-block">{card.title}</h3>
-                            <p className="text-[#2D2D44] leading-relaxed whitespace-pre-line">{card.text}</p>
-                        </div>
-                    </div>
-                );
-            })()}
-
-            {/* מובייל בלבד: חלק 10 – באנר לוגו + כרטיס "תיקון, שוויון ושייכות" (כותרת סגולה במרכז) */}
-            {data.whyTogether?.cards?.filter(c => c.type === 'text')?.[1] && (() => {
-                const textCards = data.whyTogether.cards.filter(c => c.type === 'text');
-                const card = textCards[1];
-                if (!card) return null;
-                return (
-                    <div className="md:hidden mx-4 mb-12">
-                        <div className="bg-white rounded-[24px] border-2 border-[#2D2D44]/10 p-6 shadow-sm">
-                            <h3 className="text-xl font-black text-[#5E3BEE] mb-6 text-center">{card.title}</h3>
-                            <p className="text-[#2D2D44] leading-relaxed whitespace-pre-line text-right">{card.text}</p>
-                        </div>
-                    </div>
-                );
-            })()}
-
-            <div className="my-20 px-4">
+            <div className="my-20 hidden px-4 md:block">
                 <NextChapterButton
                     title={data.nextButton?.title ?? 'לפרק הבא'}
                     subtitle={data.nextButton?.subtitle ?? 'פרק 03 - תפקיד הרכזת'}

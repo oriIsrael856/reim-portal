@@ -1,0 +1,23 @@
+---
+description: Verify anchors for badges, numerals, titles, and row icons on RTL cards (physical vs logical edges)
+alwaysApply: false
+---
+
+# RTL cards — badge, number, title, row-icon placement
+
+When implementing or reviewing **step cards**, **hero badges**, or **list rows** on `dir="rtl"` pages:
+
+1. **Confirm which edge is canonical**  
+   If the stakeholder or Figma note says **ימין / שמאל / למעלה / למטה**, default to **physical screen edges** for **absolute** badges and corner chips (use `top` / `bottom` / `left` / `right` when that is the spec), and document exceptions.
+
+2. **Corner chapter / step chips**  
+   Check that the **specified edge of the chip** (e.g. **right** edge of the green label) coincides with the **same corner of the card** (e.g. top-right of the card padding box). Avoid `inset-inline-end` offsets unless they are intentional mirrors of a measured Figma value.
+
+3. **Titles vs badge**  
+   Ensure **headings sit on the reading side** (Hebrew: typically **physical right**) and that **`padding-inline-start` / reserved width** clears the badge so text does not run under it. Keep a **small explicit gap** (token) between badge and title block.
+
+4. **List row icons (arrow pills)**  
+   When the spec is “**physical right** edge of the green pill = card’s right inner edge”: put the **icon before the text in the DOM** and use **`justify-content: flex-start`** on the row under `dir="rtl"` (main-start = right). Do **not** use `flex-end` here — it packs the row to the **physical left**. Re-check **`align-items`** for multi-line rows (center vs start).
+
+5. **Parent `align-items` on the card column**  
+   `align-items: flex-end` vs `flex-start` **flips** which **physical** side the column content hugs under RTL. After changing it, re-check **chip**, **head**, and **body** together.

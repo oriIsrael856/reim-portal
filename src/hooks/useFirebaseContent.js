@@ -9,7 +9,7 @@ export function useFirebaseContent(version = DATA_VERSION) {
   const [loading, setLoading] = useState(true);
   const isFirstLoad = useRef(true);
 
-  // When admin saves, refresh content from Firestore so the site (e.g. homepage) shows the new data
+  // שמירה באדמין — ריענון תוכן מ-Firestore כדי שהאתר יציג נתונים עדכניים
   useEffect(() => {
     const handler = async () => {
       const data = await getContent(version);
@@ -39,7 +39,7 @@ export function useFirebaseContent(version = DATA_VERSION) {
       }
     );
 
-    // If Firestore never responds (offline, slow, or no doc), show app with local data after a short delay
+    // אם Firestore לא עונה (אופליין / איטי / אין מסמך) — אחרי השהייה קצרה מציגים INITIAL_DATA
     const timeout = setTimeout(() => {
       if (isFirstLoad.current) {
         isFirstLoad.current = false;

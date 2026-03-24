@@ -1,0 +1,13 @@
+---
+description: Preserve current app architecture and manual routing patterns
+alwaysApply: true
+---
+
+# Architecture And Routing Guardrails
+
+- Keep the current routing model based on `currentPage` state and `navigateTo(page)` in `App.jsx`.
+- Do not introduce React Router or alternate routing frameworks unless explicitly requested by the user.
+- Preserve lazy loading with `React.lazy()` and `Suspense` for page-level components.
+- Maintain existing page identifiers and navigation flow unless a task explicitly requires changing them.
+- Prefer focused component-level refactors over broad architectural rewrites.
+- Do not alter core business logic while performing UI or layout tasks.

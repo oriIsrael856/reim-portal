@@ -16,9 +16,14 @@ const Chapter1Section = ({ getValue, update }) => {
           onChange={(v) => update('chapter1.hero.tag', v)}
         />
         <SmartField
-          label="כותרת"
-          value={getValue('chapter1.hero.title')}
-          onChange={(v) => update('chapter1.hero.title', v)}
+          label="כותרת (שורה ראשונה – שחור)"
+          value={getValue('chapter1.hero.title1') || getValue('chapter1.hero.title')}
+          onChange={(v) => update('chapter1.hero.title1', v)}
+        />
+        <SmartField
+          label="כותרת (שורה שנייה – סגול + קו כתום)"
+          value={getValue('chapter1.hero.title2')}
+          onChange={(v) => update('chapter1.hero.title2', v)}
         />
         <SmartField
           label="תיאור"

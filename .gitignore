@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Firebase Admin (migration scripts) — never commit keys
+scripts/serviceAccountKey.json
+**/serviceAccount*.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,0 +1,5716 @@
+metadata:
+  name: תוכנית רעים (Copy) (Copy)
+  components:
+    '2:2465':
+      id: '2:2465'
+      key: 94dba2c89144d409441072fe619b50ac000295bf
+      name: >-
+        Dark Mode=True, Size=Small, Font Size=Medium*, Color=Default*,
+        State=Enabled
+      componentSetId: '2:2142'
+    '2:3708':
+      id: '2:3708'
+      key: c06407a8f8e0d74c89afdd2b399c5a2c663cf96d
+      name: Fill=off
+      componentSetId: '2:3707'
+    '2:413':
+      id: '2:413'
+      key: 7c1ece7a4ae4702ae3f18f8c72e2038130a17566
+      name: Type=default
+      componentSetId: '2:406'
+    '191:16305':
+      id: '191:16305'
+      key: 2cfc5ceeccde3bd470f297da936b0438aadba6dd
+      name: Device=Mobile, Type=Center
+      componentSetId: '111:1317'
+    '38:994':
+      id: '38:994'
+      key: 92a0779ebd91cb9cb2a17cefb94e75d0e8a9eeaf
+      name: 'Property 1=Ellipse '
+      componentSetId: '38:997'
+    '2:1290':
+      id: '2:1290'
+      key: b42dd28077a34d8233a83c7482e4a3d6b87126a2
+      name: Style=Outline
+      componentSetId: '2:1286'
+    '104:3014':
+      id: '104:3014'
+      key: 68dae474ac294ce054f2324ca1fd772e17248e17
+      name: Property 1=Star 2
+      componentSetId: '38:997'
+    '106:3092':
+      id: '106:3092'
+      key: ec18684d7a508b1d539b9b4d70d90dff0a4bcd46
+      name: Property 1=Wave
+      componentSetId: '38:997'
+    '104:3022':
+      id: '104:3022'
+      key: 7874a1c5cc43f6e6b0ec26fce6ca5cae9bff49bd
+      name: Property 1=two lines
+      componentSetId: '38:997'
+    '2:628':
+      id: '2:628'
+      key: 361da11d692a5f80306091d1f7cb115b0f09d2b5
+      name: Direction=left
+      componentSetId: '2:624'
+    '37:3053':
+      id: '37:3053'
+      key: dc5644ea09f03567922212656d44244f1b335496
+      name: Color=Purple, Type=Filed, State=Resting
+      componentSetId: '37:3040'
+    '120:4258':
+      id: '120:4258'
+      key: 6745e15f4982c9b12ae2b302930c579d094c7241
+      name: Iconex/Filled/Left circle
+    '37:2992':
+      id: '37:2992'
+      key: f528950c6e5b2bc4a497184cd30352e4b6af720a
+      name: Iconex/Filled/Collapse
+    '104:3059':
+      id: '104:3059'
+      key: e065a10fc84f80d098a9934237ce5e6fefd20dee
+      name: Device=Web, Type=Right
+      componentSetId: '111:1317'
+    '38:996':
+      id: '38:996'
+      key: c4af4eb7678af5a7843f0f09c839d683b1eb3ed2
+      name: Property 1=Star 1
+      componentSetId: '38:997'
+    '253:9392':
+      id: '253:9392'
+      key: 86f15a104809d0cd9bdba2a4fd1e3736cd68d08d
+      name: Device=Mobile, Variant=1
+      componentSetId: '120:5040'
+    '202:9282':
+      id: '202:9282'
+      key: 24eab4cf516996644d5a98ac87785b86d41ca1f0
+      name: Device=Mobile, White=False, State=Open
+      componentSetId: '115:2845'
+    '115:2831':
+      id: '115:2831'
+      key: 2bb4a1e9cf631fd157e76d31b9ca2f7100a6f4e3
+      name: Style=outlined
+      componentSetId: '115:2825'
+    '202:9274':
+      id: '202:9274'
+      key: 829a2f504e45570ba29edec70bbe57f90811aa52
+      name: Device=Mobile, White=False, State=Resting
+      componentSetId: '115:2845'
+    '115:2811':
+      id: '115:2811'
+      key: cc8137eb0879dce4172b83a3ba2be5d7bf67fd01
+      name: Style=outlined
+      componentSetId: '115:2805'
+    '194:16385':
+      id: '194:16385'
+      key: 9cc1649f8b0c29644615995c363b33a8a63a3d36
+      name: Device=Mobile, State=1
+      componentSetId: '120:2627'
+    '191:11488':
+      id: '191:11488'
+      key: 24413fe7801ec4e5916842854362e5fa656928c9
+      name: Property 1=Mobile
+      componentSetId: '191:11487'
+    '3:1067':
+      id: '3:1067'
+      key: 30a088102562d0c515b3867b117f507a1c47da2c
+      name: Property 1=החברה למתנסים
+      componentSetId: '3:1066'
+    '2:2091':
+      id: '2:2091'
+      key: 010c616cc413eb9c262815733591069662f7f1f8
+      name: Property 1=רעים
+      componentSetId: '3:1066'
+    '2:2273':
+      id: '2:2273'
+      key: 451587b587f568aaa4974dab2897636ad7136645
+      name: >-
+        Dark Mode=False, Size=Small, Font Size=Medium*, Color=Default*,
+        State=Enabled
+      componentSetId: '2:2142'
+    '2:1159':
+      id: '2:1159'
+      key: 7a8ac7ab05d77f43f1639f01da20368cd8185b2c
+      name: Fill=on
+      componentSetId: '2:1155'
+    '2:1166':
+      id: '2:1166'
+      key: 286d354907e23365890e53fc0f1a49bc9a5fda7f
+      name: Fill=on
+      componentSetId: '2:1162'
+    '2:1229':
+      id: '2:1229'
+      key: bcbf8a207927503a1f0dff0544f42f1d2217f5b8
+      name: Fill=True
+      componentSetId: '2:1225'
+    '2:1205':
+      id: '2:1205'
+      key: 8c13f67725a5731358aead94380249e5d29fa1dc
+      name: Fill=False
+      componentSetId: '2:1204'
+    '37:3666':
+      id: '37:3666'
+      key: 31315d088970715c6652f80f81a3fcd98a925e20
+      name: Color=Black, Type=Outline, State=1
+      componentSetId: '37:3015'
+    '37:5597':
+      id: '37:5597'
+      key: 50a904f135ae8f6b7691958f0f784764b202409d
+      name: Iconex/Light/Up Left
+    '37:5566':
+      id: '37:5566'
+      key: 8b9486b1ea098f2355f1b05ec04bc01359194001
+      name: Iconex/Light/Right circle
+    '177:6137':
+      id: '177:6137'
+      key: 27d30faefec79549b3638d3d44bbd356eeaed62a
+      name: Property 1=TransparentWhite
+      componentSetId: '177:6134'
+    '177:5629':
+      id: '177:5629'
+      key: 5e2a950a1cb2d02cda82c62bc63140e1722e46bd
+      name: Visible=NO
+      componentSetId: '177:5627'
+    '177:6004':
+      id: '177:6004'
+      key: 969c1cd1c611ca52e61f461bd9865cb39ca7c1ef
+      name: Strength=3 Bars
+      componentSetId: '177:6002'
+    '177:6049':
+      id: '177:6049'
+      key: dc4ba3f42804dfbf4583893b6df2eacec33d7387
+      name: Property 1=3 Bars
+      componentSetId: '177:6048'
+    '177:6071':
+      id: '177:6071'
+      key: 4d58622954f4e4da37b9845bf1227ed1d1e27b26
+      name: Status=Normal, Level=100
+      componentSetId: '177:6069'
+    '177:6119':
+      id: '177:6119'
+      key: c5e771c646ce875d254e956aa1d127de86fc73a1
+      name: Type=None
+      componentSetId: '177:6117'
+    '177:6128':
+      id: '177:6128'
+      key: f1ba8bccf0d2b3697103317da76d30270e66ded6
+      name: Color=Clear
+      componentSetId: '177:6124'
+  componentSets:
+    '2:2142':
+      id: '2:2142'
+      key: 698cc5711883143cf010c7a60bfe252025730c8b
+      name: IconButton
+      description: Icon buttons are commonly found in app bars and toolbars.
+    '2:3707':
+      id: '2:3707'
+      key: 7c67a961c38c7169883d8670386365ef782b63ee
+      name: Exit
+      description: ''
+    '2:406':
+      id: '2:406'
+      key: 8572e64c1db0e170fb5604cbd6da9440e95cc336
+      name: Menu
+      description: ''
+    '111:1317':
+      id: '111:1317'
+      key: 2b2b516dbe2ae0aab43b2f2aa937a629ef6422e8
+      name: Chapter label
+      description: ''
+    '38:997':
+      id: '38:997'
+      key: 1a4d8e4ead69d86fcac50b18b79588d2c6f3a578
+      name: Elements
+      description: ''
+    '2:1286':
+      id: '2:1286'
+      key: cb4dfd4de7e8750f70ea3353c96877558d875003
+      name: star
+      description: ''
+    '2:624':
+      id: '2:624'
+      key: 8bde2628eba0941fee237261d9158cc3430b055b
+      name: Arrow
+      description: ''
+    '37:3040':
+      id: '37:3040'
+      key: 2896e56379ef3734c7fef58395ad1bb7e2de6324
+      name: Buttons
+      description: ''
+    '120:5040':
+      id: '120:5040'
+      key: b8627ea7374a0ec1a2dbb442464b8ec7461103cb
+      name: Section Meeting
+      description: ''
+    '115:2845':
+      id: '115:2845'
+      key: 8d861172472f5b0ac975462b1dcbef5d4c82039d
+      name: Collapse Item
+      description: ''
+    '115:2825':
+      id: '115:2825'
+      key: 2668997458a77ba865d9386eedae1f347ed25346
+      name: remove
+      description: ''
+    '115:2805':
+      id: '115:2805'
+      key: 902c4a5a82df15fc67790d375e4cc0e24e68e510
+      name: add
+      description: ''
+    '120:2627':
+      id: '120:2627'
+      key: f33ad682bc501cb8a7254658bfa3fd488b7b7393
+      name: Next Chapter
+      description: ''
+    '191:11487':
+      id: '191:11487'
+      key: 93c31fa138d6a986e4879fafa482a571455fbaf5
+      name: Footer
+      description: ''
+    '3:1066':
+      id: '3:1066'
+      key: 7652a50139d9941095a39513b612d9bcd17f1e44
+      name: Logo
+      description: ''
+    '2:1155':
+      id: '2:1155'
+      key: 4567caf49746224b8b0e03ceb65dbe2b78c3f85d
+      name: Facebook
+      description: ''
+    '2:1162':
+      id: '2:1162'
+      key: 5a720342170246241ef020583e05d526e3a05f04
+      name: Linkedin
+      description: ''
+    '2:1225':
+      id: '2:1225'
+      key: b63dcb01e70849464af9ed8ca23decec231ec398
+      name: Instagram
+      description: ''
+    '2:1204':
+      id: '2:1204'
+      key: e880b3ecb79a542190f3509f51d18149ded722dc
+      name: X
+      description: ''
+    '37:3015':
+      id: '37:3015'
+      key: 971bd631c3559e344f97605d925c61789000bbda
+      name: Animated button
+      description: ''
+    '177:6134':
+      id: '177:6134'
+      key: 7471a976ac0e069bb7d54b8af7a57bca6bfacc7b
+      name: iPhone XStatus Bars
+      description: ''
+    '177:5627':
+      id: '177:5627'
+      key: 7fc5fca28418d26a6e30eaa2ee4d1de36913de74
+      name: Notch
+      description: ''
+    '177:6002':
+      id: '177:6002'
+      key: 3637114732aa95d042d8220e5e35278620752a02
+      name: "Network Signal /\_Light"
+      description: Network Signal Strength • Light
+    '177:6048':
+      id: '177:6048'
+      key: 58b9703588071354dfea9c2dc5784dd47d290541
+      name: WiFi Signal / Light
+      description: ''
+    '177:6069':
+      id: '177:6069'
+      key: 4313a428b39f5892b9155042349d823b0c963337
+      name: Battery / Light
+      description: ''
+    '177:6117':
+      id: '177:6117'
+      key: e0af106149409e8074dfd9f38252f57ae405ec00
+      name: Indicator
+      description: Recording Indicator
+    '177:6124':
+      id: '177:6124'
+      key: 9f77f04f6abef070af6d867a69f9fe13316e24cf
+      name: Time / Light
+      description: ''
+nodes:
+  - id: '253:6705'
+    name: Chapter 3
+    type: FRAME
+    layout: layout_B50IWL
+    fills: fill_9Q8T1Q
+    borderRadius: 16px
+    children:
+      - id: '253:6706'
+        name: Right Sidebar
+        type: FRAME
+        layout: layout_N63API
+        children:
+          - id: '253:6707'
+            name: Icon
+            type: FRAME
+            layout: layout_2Y4YG8
+            children:
+              - id: '253:6708'
+                name: IconButton
+                type: INSTANCE
+                layout: layout_PL0NEB
+                componentId: '2:2465'
+                componentProperties:
+                  - name: Instance#10144:125
+                    value: '2:3708'
+                    type: INSTANCE_SWAP
+                  - name: Dark Mode
+                    value: 'True'
+                    type: VARIANT
+                  - name: Size
+                    value: Small
+                    type: VARIANT
+                  - name: Font Size
+                    value: Medium*
+                    type: VARIANT
+                  - name: Color
+                    value: Default*
+                    type: VARIANT
+                  - name: State
+                    value: Enabled
+                    type: VARIANT
+                children:
+                  - id: I253:6708;10112:125260
+                    name: Container
+                    type: FRAME
+                    layout: layout_UG0V7D
+                    borderRadius: 48px
+                    children:
+                      - id: I253:6708;10144:143338
+                        name: Exit
+                        type: INSTANCE
+                        layout: layout_N7SK2G
+                        componentId: '2:3708'
+                        componentProperties:
+                          - name: Fill
+                            value: 'off'
+                            type: VARIANT
+                        children:
+                          - id: I253:6708;10144:143338;2:3709
+                            name: outline/checkmark-square
+                            type: GROUP
+                            layout: layout_GMLG0O
+                            children:
+                              - id: I253:6708;10144:143338;2:3725
+                                name: Union
+                                type: BOOLEAN_OPERATION
+                                layout: layout_9OXVJF
+                                fills: fill_D9SLZ9
+                                children:
+                                  - id: I253:6708;10144:143338;2:3726
+                                    name: 🎨-Icon-Сolor
+                                    type: IMAGE-SVG
+                                    layout: layout_P6EL8X
+                                    fills: fill_5IVWJI
+                                  - id: I253:6708;10144:143338;2:3727
+                                    name: 🎨-Icon-Сolor
+                                    type: IMAGE-SVG
+                                    layout: layout_GOS1NK
+                                    fills: fill_E5M3V7
+              - id: '253:6709'
+                name: Screen name
+                type: FRAME
+                layout: layout_8PLQK0
+                children:
+                  - id: '253:6710'
+                    name: Screen name text
+                    type: TEXT
+                    layout: layout_O1E3IE
+                    text: הגדרת תפקיד
+                    textStyle: Typography/Body 1
+                    fills: fill_D9SLZ9
+                  - id: '253:6711'
+                    name: Line 1
+                    type: LINE
+                    layout: layout_R68OC1
+                    strokes: stroke_9XW4LQ
+          - id: '253:6712'
+            name: Menu icon
+            type: IMAGE-SVG
+            layout: layout_4NAYZI
+      - id: '253:6715'
+        name: Main content
+        type: FRAME
+        layout: layout_1R1U7M
+        fills: fill_D9SLZ9
+        borderRadius: 24px
+        children:
+          - id: '253:6716'
+            name: Section 1
+            type: FRAME
+            layout: layout_355PJ9
+            fills: fill_D9SLZ9
+            children:
+              - id: '253:6717'
+                name: Ellipse 2
+                type: ELLIPSE
+                layout: layout_UPWYCF
+                fills: fill_FPX8G9
+                effects: effect_WDSLWH
+              - id: '253:6718'
+                name: Ellipse 3
+                type: ELLIPSE
+                layout: layout_HAPYH2
+                fills: fill_9OYINN
+                effects: effect_WDSLWH
+              - id: '253:6719'
+                name: Hero
+                type: FRAME
+                layout: layout_9FSTC7
+                children:
+                  - id: '253:6720'
+                    name: text
+                    type: FRAME
+                    layout: layout_EN8LUE
+                    children:
+                      - id: '253:6721'
+                        name: Rectangle 2
+                        type: RECTANGLE
+                        layout: layout_3I1GE6
+                        fills: fill_98ZKW3
+                      - id: '253:6723'
+                        name: Chapter label
+                        type: INSTANCE
+                        layout: layout_ONNE54
+                        fills: fill_LX8FKM
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 24px
+                        componentId: '191:16305'
+                        componentProperties:
+                          - name: Device
+                            value: Mobile
+                            type: VARIANT
+                          - name: Type
+                            value: Center
+                            type: VARIANT
+                        children:
+                          - id: I253:6723;191:16307
+                            name: Title
+                            type: TEXT
+                            layout: layout_O1E3IE
+                            text: פרק שלישי
+                            textStyle: Typography/Body 1
+                            fills: fill_E5M3V7
+                          - id: I253:6723;191:16308
+                            name: Chapter number
+                            type: FRAME
+                            layout: layout_AWNF2V
+                            fills: fill_1ECS8Z
+                            strokes: stroke_9AL5UT
+                            borderRadius: 200px
+                            children:
+                              - id: I253:6723;191:16309
+                                name: Title
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: '03'
+                                textStyle: Chapter/Small
+                                fills: fill_D9SLZ9
+                      - id: '253:6724'
+                        name: "הגדרת התפקיד:\Lרכזת רעים"
+                        type: TEXT
+                        layout: layout_IKIJ8T
+                        text: "הגדרת התפקיד:\Lרכזת רעים"
+                        textStyle: Typography/H4
+                        fills: fill_E5M3V7
+                  - id: '253:7196'
+                    name: Elements
+                    type: IMAGE-SVG
+                    layout: layout_0FWOFT
+                    fills: fill_D9SLZ9
+                    componentId: '38:994'
+                    componentProperties:
+                      - name: Show line#40:0
+                        value: 'true'
+                        type: BOOLEAN
+                      - name: Property 1
+                        value: Ellipse
+                        type: VARIANT
+                  - id: '253:7192'
+                    name: Subtitle
+                    type: TEXT
+                    layout: layout_IKIJ8T
+                    text: >-
+                      התפקיד של רכזת "רעים" משלב בין יכולות מגוונות- להחזיק
+                      קבוצה, לבנות קשרים בקהילה, לגייס משתתפות ומשתתפים חדשים
+                      ולדאוג לצדדים המנהלתיים שמחזיקים את הכל יחד.
+                    textStyle: Typography/H6
+                    fills: fill_E5M3V7
+                  - id: '253:7201'
+                    name: icon
+                    type: IMAGE-SVG
+                    layout: layout_F53QG7
+                  - id: '253:7197'
+                    name: Elements
+                    type: IMAGE-SVG
+                    layout: layout_D1J5I9
+                    fills: fill_D9SLZ9
+                    componentId: '104:3014'
+                    componentProperties:
+                      - name: Show line#40:0
+                        value: 'true'
+                        type: BOOLEAN
+                      - name: Property 1
+                        value: Star 2
+                        type: VARIANT
+          - id: '253:8649'
+            name: Page Content
+            type: FRAME
+            layout: layout_9SG27W
+            children:
+              - id: '253:8650'
+                name: Image
+                type: FRAME
+                layout: layout_SX0SJH
+                children:
+                  - id: '253:8651'
+                    name: Image
+                    type: FRAME
+                    layout: layout_OZXZD4
+                    fills: fill_JHS59Q
+                    strokes: stroke_9AL5UT
+                    effects: No blur
+                    borderRadius: 16px
+                  - id: '253:8807'
+                    name: No.
+                    type: GROUP
+                    layout: layout_USTRNM
+                    children:
+                      - id: '253:8808'
+                        name: Title
+                        type: TEXT
+                        layout: layout_CMUX7I
+                        text: '03'
+                        textStyle: style_MLINJ8
+                        fills: fill_UXNBOB
+                      - id: '253:8809'
+                        name: Elements
+                        type: INSTANCE
+                        layout: layout_ZM56QB
+                        fills: fill_D9SLZ9
+                        componentId: '106:3092'
+                        componentProperties:
+                          - name: Show line#40:0
+                            value: 'true'
+                            type: BOOLEAN
+                          - name: Property 1
+                            value: Wave
+                            type: VARIANT
+                        children:
+                          - id: I253:8809;106:3087
+                            name: Wave
+                            type: BOOLEAN_OPERATION
+                            layout: layout_QRSK2Q
+                            fills: fill_VCJ3MQ
+                            children:
+                              - id: I253:8809;106:3088
+                                name: Vector 4
+                                type: IMAGE-SVG
+                                layout: layout_ZXUFPD
+                                strokes: stroke_8V4VNW
+                              - id: I253:8809;106:3089
+                                name: Vector 5
+                                type: IMAGE-SVG
+                                layout: layout_ZXUFPD
+                                strokes: stroke_8V4VNW
+                              - id: I253:8809;106:3090
+                                name: Vector 6
+                                type: IMAGE-SVG
+                                layout: layout_ZXUFPD
+                                strokes: stroke_8V4VNW
+                  - id: '253:8752'
+                    name: Elements
+                    type: IMAGE-SVG
+                    layout: layout_B2QF3N
+                    fills: fill_D9SLZ9
+                    componentId: '104:3022'
+                    componentProperties:
+                      - name: Show line#40:0
+                        value: 'true'
+                        type: BOOLEAN
+                      - name: Property 1
+                        value: two lines
+                        type: VARIANT
+              - id: '253:8655'
+                name: Container
+                type: FRAME
+                layout: layout_RLGSEH
+                children:
+                  - id: '253:8656'
+                    name: Container
+                    type: FRAME
+                    layout: layout_59ZXDJ
+                    fills: fill_B55XRZ
+                    strokes: stroke_9AL5UT
+                    effects: No blur
+                    borderRadius: 24px
+                    children:
+                      - id: '253:8657'
+                        name: Section
+                        type: FRAME
+                        layout: layout_A4M14S
+                        children:
+                          - id: '253:8658'
+                            name: Subtitle
+                            type: TEXT
+                            layout: layout_IKIJ8T
+                            text: "האחריות\Lהיומיומית"
+                            textStyle: Typography/H5
+                            fills: fill_UXNBOB
+                      - id: '253:8659'
+                        name: Container
+                        type: FRAME
+                        layout: layout_1OAP0B
+                        children:
+                          - id: '253:8660'
+                            name: Container
+                            type: FRAME
+                            layout: layout_W8RGE2
+                            children:
+                              - id: '253:8661'
+                                name: Body Text
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: >-
+                                  להנחות קבוצה אחת לשבוע (שעה וחצי) וליצור מרחב
+                                  בטוח, קבוע ומשמעותי.
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8776'
+                                name: Icon
+                                type: IMAGE-SVG
+                                layout: layout_CWEDPS
+                                fills: fill_AKUSGD
+                                borderRadius: 200px
+                          - id: '253:8664'
+                            name: Container
+                            type: FRAME
+                            layout: layout_LLIXK1
+                            children:
+                              - id: '253:8665'
+                                name: Body Text
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: >-
+                                  לפתח תכנים ולבנות תכנית עבודה שנתית שמתאימה
+                                  לקבוצה שלך.
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8771'
+                                name: Icon
+                                type: IMAGE-SVG
+                                layout: layout_CWEDPS
+                                fills: fill_AKUSGD
+                                borderRadius: 200px
+                          - id: '253:8668'
+                            name: Container
+                            type: FRAME
+                            layout: layout_LLIXK1
+                            children:
+                              - id: '253:8669'
+                                name: Body Text
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: >-
+                                  לשמור על קשר עם גורמי הפניה ולדאוג שיותר
+                                  א.נשים יכירו את "רעים".
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8766'
+                                name: Icon
+                                type: IMAGE-SVG
+                                layout: layout_CWEDPS
+                                fills: fill_AKUSGD
+                                borderRadius: 200px
+                          - id: '253:8672'
+                            name: Container
+                            type: FRAME
+                            layout: layout_LLIXK1
+                            children:
+                              - id: '253:8673'
+                                name: Body Text
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: לשווק ולגייס משתתפות ומשתתפים חדשים לפי הצורך.
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8761'
+                                name: Icon
+                                type: IMAGE-SVG
+                                layout: layout_CWEDPS
+                                fills: fill_AKUSGD
+                                borderRadius: 200px
+                          - id: '253:8676'
+                            name: Container
+                            type: FRAME
+                            layout: layout_W8RGE2
+                            children:
+                              - id: '253:8677'
+                                name: Body Text
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: >-
+                                  להשתלב בצוות המרכז הקהילתי ובאירועים קהילתיים,
+                                  ולהכליל את הקבוצה כחלק טבעי מהמרחב.
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8756'
+                                name: Icon
+                                type: IMAGE-SVG
+                                layout: layout_CWEDPS
+                                fills: fill_AKUSGD
+                                borderRadius: 200px
+                          - id: '253:8680'
+                            name: Container
+                            type: FRAME
+                            layout: layout_LLIXK1
+                            children:
+                              - id: '253:8681'
+                                name: Body Text
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: >-
+                                  לדווח על אירועים חריגים ולשמור על קשר רציף עם
+                                  המנהלת הישירה.
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8682'
+                                name: Icon
+                                type: IMAGE-SVG
+                                layout: layout_CWEDPS
+                                fills: fill_AKUSGD
+                                borderRadius: 200px
+              - id: '253:8684'
+                name: Container
+                type: FRAME
+                layout: layout_RLGSEH
+                children:
+                  - id: '253:8685'
+                    name: Container
+                    type: FRAME
+                    layout: layout_6KKRAA
+                    fills: fill_MSEF1F
+                    strokes: stroke_9AL5UT
+                    effects: No blur
+                    borderRadius: 24px
+                    children:
+                      - id: '253:8686'
+                        name: Section
+                        type: FRAME
+                        layout: layout_A4M14S
+                        children:
+                          - id: '253:8687'
+                            name: Subtitle
+                            type: TEXT
+                            layout: layout_IKIJ8T
+                            text: "למידה\Lוהדרכה "
+                            textStyle: Typography/H5
+                            fills: fill_98ZKW3
+                      - id: '253:8688'
+                        name: Container
+                        type: FRAME
+                        layout: layout_FYRT0S
+                        children:
+                          - id: '253:8689'
+                            name: Container
+                            type: FRAME
+                            layout: layout_NMFSVR
+                            children:
+                              - id: '253:8690'
+                                name: Body Text
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: >-
+                                  לקחת חלק בהדרכות מקצועיות: אישיות, קבוצתיות
+                                  וארציות.
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8781'
+                                name: Icon
+                                type: IMAGE-SVG
+                                layout: layout_CWEDPS
+                                fills: fill_9OYINN
+                                borderRadius: 200px
+                          - id: '253:8693'
+                            name: Container
+                            type: FRAME
+                            layout: layout_LLIXK1
+                            children:
+                              - id: '253:8694'
+                                name: Body Text
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: >-
+                                  להשתתף בתהליך הפיתוח הארצי של "רעים", להביא
+                                  מהניסיון שלך מהשטח.
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8787'
+                                name: Icon
+                                type: IMAGE-SVG
+                                layout: layout_CWEDPS
+                                fills: fill_9OYINN
+                                borderRadius: 200px
+              - id: '253:8697'
+                name: Container
+                type: FRAME
+                layout: layout_FN6C7L
+                children:
+                  - id: '253:8698'
+                    name: Container
+                    type: FRAME
+                    layout: layout_P0RKP5
+                    fills: fill_EDOWFN
+                    strokes: stroke_9AL5UT
+                    effects: No blur
+                    borderRadius: 24px
+                    children:
+                      - id: '253:8699'
+                        name: Section
+                        type: FRAME
+                        layout: layout_FYRT0S
+                        children:
+                          - id: '253:8700'
+                            name: Section
+                            type: FRAME
+                            layout: layout_A4M14S
+                            children:
+                              - id: '253:8701'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: "עבודה\Lמנהלית"
+                                textStyle: Typography/H5
+                                fills: fill_VCJ3MQ
+                          - id: '253:8702'
+                            name: Section
+                            type: FRAME
+                            layout: layout_FYRT0S
+                            children:
+                              - id: '253:8703'
+                                name: Item
+                                type: FRAME
+                                layout: layout_LLIXK1
+                                children:
+                                  - id: '253:8704'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: למלא דוחות חודשיים בצורה מסודרת.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8792'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_CWEDPS
+                                    fills: fill_RZCBVE
+                                    borderRadius: 200px
+                              - id: '253:8707'
+                                name: Item
+                                type: FRAME
+                                layout: layout_LLIXK1
+                                children:
+                                  - id: '253:8708'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: לנהל נוכחות שוטפת ולעקוב אחר הועדות.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8797'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_CWEDPS
+                                    fills: fill_RZCBVE
+                                    borderRadius: 200px
+                              - id: '253:8711'
+                                name: Item
+                                type: FRAME
+                                layout: layout_LLIXK1
+                                children:
+                                  - id: '253:8712'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      לוודא גבייה שוטפת ולעבוד בשקיפות מול הנהלת
+                                      המרכז הקהילתי.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8802'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_CWEDPS
+                                    fills: fill_RZCBVE
+                                    borderRadius: 200px
+                      - id: '253:8715'
+                        name: Buttons
+                        type: INSTANCE
+                        layout: layout_TA2HF0
+                        fills: fill_UXNBOB
+                        strokes: stroke_5AOIKM
+                        borderRadius: 100px
+                        componentId: '37:3053'
+                        componentProperties:
+                          - name: Right icon2#72:13
+                            value: '37:2992'
+                            type: INSTANCE_SWAP
+                          - name: Left icon2#72:0
+                            value: '120:4258'
+                            type: INSTANCE_SWAP
+                          - name: Left icon#10:5
+                            value: 'true'
+                            type: BOOLEAN
+                          - name: Right icon#10:0
+                            value: 'false'
+                            type: BOOLEAN
+                          - name: Color
+                            value: Purple
+                            type: VARIANT
+                          - name: Type
+                            value: Filed
+                            type: VARIANT
+                          - name: State
+                            value: Resting
+                            type: VARIANT
+                        children:
+                          - id: I253:8715;37:3054
+                            name: Iconex/Filled/Left circle
+                            type: INSTANCE
+                            layout: layout_N7SK2G
+                            fills: fill_D9SLZ9
+                            componentId: '120:4258'
+                            children:
+                              - id: I253:8715;37:3054;193:7119
+                                name: Left
+                                type: GROUP
+                                layout: layout_ONT4KP
+                                children:
+                                  - id: I253:8715;37:3054;193:7120
+                                    name: Subtract
+                                    type: BOOLEAN_OPERATION
+                                    layout: layout_VTEPMR
+                                    fills: White
+                                    children:
+                                      - id: I253:8715;37:3054;193:7121
+                                        name: Rectangle 74
+                                        type: RECTANGLE
+                                        layout: layout_AUHXQQ
+                                        fills: Stroke color
+                                        borderRadius: 20px
+                                      - id: I253:8715;37:3054;193:7122
+                                        name: Arrow
+                                        type: IMAGE-SVG
+                                        layout: layout_5YUGHC
+                                        borderRadius: 1px
+                          - id: I253:8715;37:3055
+                            name: כפתור
+                            type: TEXT
+                            layout: layout_O1E3IE
+                            text: למידע נוסף בנושא
+                            textStyle: Components/Button Large
+                            fills: fill_D9SLZ9
+          - id: '253:8815'
+            name: Section 3
+            type: FRAME
+            layout: layout_ONLYR7
+            fills: fill_H5OFOO
+            children:
+              - id: '253:8816'
+                name: Ellipse 3
+                type: ELLIPSE
+                layout: layout_DYG4HD
+                fills: fill_L5CQK7
+                effects: effect_WDSLWH
+              - id: '253:8818'
+                name: Container
+                type: FRAME
+                layout: layout_VIUSYN
+                children:
+                  - id: '253:8819'
+                    name: Frame 6
+                    type: FRAME
+                    layout: layout_KFJQKR
+                    children:
+                      - id: '253:8820'
+                        name: Line
+                        type: RECTANGLE
+                        layout: layout_IXJAAQ
+                        fills: fill_LX8FKM
+                      - id: '253:8821'
+                        name: Subtitle
+                        type: TEXT
+                        layout: layout_O1E3IE
+                        text: צעדים ראשונים ברעים
+                        textStyle: Typography/Body 1
+                        fills: fill_E5M3V7
+                      - id: '253:8822'
+                        name: Title
+                        type: TEXT
+                        layout: layout_O1E3IE
+                        text: מדריך לרכזת מתחילה
+                        textStyle: Typography/H5
+                        fills: fill_E5M3V7
+                  - id: '253:8823'
+                    name: Subtitle
+                    type: TEXT
+                    layout: layout_IKIJ8T
+                    text: "תפקיד הרכזת או הרכז ברעים הוא עשיר, מגוון ומורכב. \Lכדי לסייע בכניסה חלקה לתפקיד, ריכזנו כאן את הצעדים הראשונים המומלצים:"
+                    textStyle: Typography/H6
+                    fills: fill_E5M3V7
+              - id: '253:8824'
+                name: Goals
+                type: FRAME
+                layout: layout_LEAJPW
+                children:
+                  - id: '253:8825'
+                    name: Steps
+                    type: FRAME
+                    layout: layout_JWLJQQ
+                    children:
+                      - id: '253:8854'
+                        name: Step 1
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8855'
+                            name: Step 1 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8856'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד ראשון
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8857'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: כניסה למרכז קהילתי
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8858'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8859'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8860'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      היכרות עם מנהלת המתנ"ס ועם רכזת אוכלוסיות
+                                      מיוחדות/קהילה
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8861'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8863'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8864'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_O1E3IE
+                                    text: קריאת מסמך "הגדרת תפקיד הרכזת".
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8865'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8867'
+                                name: Item
+                                type: FRAME
+                                layout: layout_4ZVIU9
+                                children:
+                                  - id: '253:8868'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      חפיפה עם רכזת ותיקה לצורך היכרות עם השטח
+                                      והקבוצה.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8869'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:8871'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:8871;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:8871;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '01'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                      - id: '253:8840'
+                        name: Step 2
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8841'
+                            name: Step 2 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8842'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד שני
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8843'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: היכרות עם מפגש רעים
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8844'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8845'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8846'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      מבנה בסיסי של מפגש: סבב פתיחה,
+                                      פעילות/משחק, הפסקה קצרה, פעילות סיום.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8847'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8849'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8850'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      קריאה במסמך הממליץ על מבנה מפגש, תוך התאמה
+                                      לאופי הקבוצה.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8851'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:8853'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:8853;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:8853;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '02'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                      - id: '253:8826'
+                        name: Step 3
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8827'
+                            name: Step 3 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8828'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד שלישי
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8829'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: למידה מהשטח ומהתיאוריה
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8830'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8831'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8832'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: ביקור במפגש קבוצתי בליווי רכזת ותיקה.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8833'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8835'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8836'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      קריאת חומר מקצועי על אוטיזם, תהליכים
+                                      קבוצתיים, דינמיקה ותפקיד המנחה.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8837'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:8839'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:8839;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:8839;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '03'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                      - id: '253:8914'
+                        name: Step 1
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8915'
+                            name: Step 1 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8916'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד רביעי
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8917'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: מיפוי שותפים ושותפות לבניית קבוצה
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8918'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8919'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8920'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      יצירת טבלת אנשי ונשות קשר: רווחה, חינוך,
+                                      מרכז קהילתי, עמותות, קבוצות הורים ורשתות
+                                      חברתיות.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8921'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8923'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8924'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: פיתוח קשרים עם שותפים ושותפות בקהילה.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8925'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8927'
+                                name: Item
+                                type: FRAME
+                                layout: layout_4ZVIU9
+                                children:
+                                  - id: '253:8928'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      בניית תכנית שיווק מקומית בשיתוף המנחה
+                                      המחוזית.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8929'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:8931'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:8931;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:8931;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '04'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                      - id: '253:8900'
+                        name: Step 2
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8901'
+                            name: Step 2 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8902'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד חמישי
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8903'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: הכנת חומרי פרסום
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8904'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8905'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8906'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: עיצוב פלאייר עם לוגו רעים והמרכז הקהילתי.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8907'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8909'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8910'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      הכנת פוסטים והפצה ברשתות החברתיות
+                                      המקומיות.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8911'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:8913'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:8913;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:8913;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '05'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                      - id: '253:8878'
+                        name: Step 3
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8879'
+                            name: Step 3 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8880'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד שישי
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8881'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: היערכות לפתיחת קבוצה
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8882'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8883'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8884'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: בחירת חדר קבוע ונעים לפעילות.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8885'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8887'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8888'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: קביעת יום ושעה קבועים בשבוע.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8889'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8891'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8892'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      פתיחת סעיף הרשמה במערכת החוגים של המרכז
+                                      הקהילתי.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8893'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8895'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8896'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: סידור מקום לאחסון ציוד (אם יש אפשרות).
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8897'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:8899'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:8899;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:8899;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '06'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                      - id: '253:8936'
+                        name: Step 3
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8937'
+                            name: Step 3 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8938'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד תשיעי
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8939'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: פתיחת הקבוצה
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8940'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8941'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8942'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: הגעה מוקדמת לסידור המרחב.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8943'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8945'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8946'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      ישיבה במעגל פתוח, פתיחת קבוצת וואטסאפ
+                                      להודעות תפוצה (מנהלות בלבד).
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8947'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8949'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8950'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      יצירת כללים בסיסיים בשיתוף המשתתפים
+                                      והמשתתפות.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8951'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:8953'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:8953;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:8953;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '09'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                      - id: '253:8954'
+                        name: Step 2
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8955'
+                            name: Step 2 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8956'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד שמיני
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8957'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: קליטת משתתפים ומשתתפות
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8958'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8959'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8960'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: שיחת טלפון מקדימה להיכרות.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8961'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8963'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8964'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: תיאום פגישה משותפת עם המשתתף/ת והמשפחה.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8965'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8967'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8968'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: מילוי טפסי פרטי היכרות.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8969'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:8971'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:8971;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:8971;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '08'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                      - id: '253:8972'
+                        name: Step 1
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8973'
+                            name: Step 1 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8974'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד שביעי
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8975'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: הכרות עם תהליכים מנהליים
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8976'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8977'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8978'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      עבודה במערכת "נתיב": אינטייקים, דוחות
+                                      נוכחות, עדכון שוטף.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8979'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8981'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8982'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      תיאום תשלומים וגבייה מול מזכירות המרכז
+                                      הקהילתי.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8983'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:8985'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:8985;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:8985;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '07'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                      - id: '253:8990'
+                        name: Step 1
+                        type: FRAME
+                        layout: layout_B2HRZA
+                        fills: fill_HHFNM2
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 8px
+                        children:
+                          - id: '253:8991'
+                            name: Step 1 Header
+                            type: FRAME
+                            layout: layout_99WWD7
+                            children:
+                              - id: '253:8992'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: צעד עשירי ואחרון
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                              - id: '253:8993'
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_O1E3IE
+                                text: תוכן ותהליך קבוצתי
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_E5M3V7
+                          - id: '253:8994'
+                            name: Section
+                            type: FRAME
+                            layout: layout_0KHSFD
+                            children:
+                              - id: '253:8995'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:8996'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: >-
+                                      בניית תכנית עבודה שנתית המשלבת חומרים
+                                      מה"רכזיה" ומהעולם הפנימי של הקבוצה.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:8997'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                              - id: '253:8999'
+                                name: Item
+                                type: FRAME
+                                layout: layout_W8RGE2
+                                children:
+                                  - id: '253:9000'
+                                    name: Body Text
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: תיעוד רציף של המפגשים ושל התהליך הקבוצתי.
+                                    textStyle: Typography/Body 2
+                                    fills: fill_E5M3V7
+                                  - id: '253:9001'
+                                    name: Icon
+                                    type: IMAGE-SVG
+                                    layout: layout_HN9NBC
+                                    fills: fill_8TCUZC
+                                    borderRadius: 200px
+                          - id: '253:9003'
+                            name: Chapter label
+                            type: INSTANCE
+                            layout: layout_JTAR3K
+                            fills: fill_LX8FKM
+                            strokes: stroke_9AL5UT
+                            effects: No blur
+                            borderRadius: 24px 2px 0px 24px
+                            componentId: '104:3059'
+                            componentProperties:
+                              - name: Device
+                                value: Web
+                                type: VARIANT
+                              - name: Type
+                                value: Right
+                                type: VARIANT
+                            children:
+                              - id: I253:9003;106:3068
+                                name: Chapter number
+                                type: FRAME
+                                layout: layout_QZXS8B
+                                fills: fill_1ECS8Z
+                                borderRadius: 200px
+                                children:
+                                  - id: I253:9003;36:1155
+                                    name: Title
+                                    type: TEXT
+                                    layout: layout_IKIJ8T
+                                    text: '10'
+                                    textStyle: Chapter/Small
+                                    fills: fill_D9SLZ9
+                          - id: '253:9004'
+                            name: Elements
+                            type: IMAGE-SVG
+                            layout: layout_IGO0CY
+                            fills: fill_D9SLZ9
+                            componentId: '38:996'
+                            componentProperties:
+                              - name: Show line#40:0
+                                value: 'true'
+                                type: BOOLEAN
+                              - name: Property 1
+                                value: Star 1
+                                type: VARIANT
+                  - id: '253:8873'
+                    name: Vector 3
+                    type: IMAGE-SVG
+                    layout: layout_C75SXY
+                    strokes: stroke_RL640L
+                    borderRadius: 2px
+                  - id: '253:9127'
+                    name: Vector 5
+                    type: IMAGE-SVG
+                    layout: layout_LE5M43
+                    strokes: stroke_RL640L
+                    borderRadius: 2px
+                  - id: '253:9129'
+                    name: Vector 7
+                    type: IMAGE-SVG
+                    layout: layout_KW6LB5
+                    strokes: stroke_RL640L
+                    borderRadius: 2px
+                  - id: '253:8872'
+                    name: Vector 4
+                    type: IMAGE-SVG
+                    layout: layout_57432H
+                    strokes: stroke_RL640L
+                    borderRadius: 2px
+                  - id: '253:9128'
+                    name: Vector 6
+                    type: IMAGE-SVG
+                    layout: layout_9RJ1RL
+                    strokes: stroke_RL640L
+                    borderRadius: 2px
+                  - id: '253:9130'
+                    name: Vector 8
+                    type: IMAGE-SVG
+                    layout: layout_7VFEY7
+                    strokes: stroke_RL640L
+                    borderRadius: 2px
+                  - id: '253:9131'
+                    name: Vector 9
+                    type: IMAGE-SVG
+                    layout: layout_SF2GYC
+                    strokes: stroke_RL640L
+                    borderRadius: 2px
+                  - id: '253:9133'
+                    name: Vector 11
+                    type: IMAGE-SVG
+                    layout: layout_I2LQIU
+                    strokes: stroke_RL640L
+                    borderRadius: 2px
+                  - id: '253:9134'
+                    name: Vector 12
+                    type: IMAGE-SVG
+                    layout: layout_ANA4SG
+                    strokes: stroke_RL640L
+                    borderRadius: 2px
+          - id: '254:9802'
+            name: Section Meeting
+            type: INSTANCE
+            layout: layout_OWRTZR
+            fills: fill_ZVITMU
+            borderRadius: 24px 24px 0px 0px
+            componentId: '253:9392'
+            componentProperties:
+              - name: Device
+                value: Mobile
+                type: VARIANT
+              - name: Variant
+                value: '1'
+                type: VARIANT
+            children:
+              - id: I254:9802;253:9393
+                name: Image
+                type: FRAME
+                layout: layout_SOCMO8
+                children:
+                  - id: I254:9802;253:9394
+                    name: Container
+                    type: GROUP
+                    layout: layout_UAFKXE
+                    borderRadius: 0px 0px 0px 0px
+                    children:
+                      - id: I254:9802;253:9395
+                        name: Image
+                        type: FRAME
+                        layout: layout_Q3QWBY
+                        fills: fill_QRIMGX
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 24px
+                      - id: I254:9802;253:9396
+                        name: Image
+                        type: FRAME
+                        layout: layout_E63QOF
+                        fills: fill_SHH3YP
+                        strokes: stroke_9AL5UT
+                        effects: No blur
+                        borderRadius: 24px
+                      - id: I254:9802;253:9397
+                        name: Elements
+                        type: IMAGE-SVG
+                        layout: layout_I6XIGV
+                        fills: fill_D9SLZ9
+                        componentId: '104:3014'
+                        componentProperties:
+                          - name: Show line#40:0
+                            value: 'true'
+                            type: BOOLEAN
+                          - name: Property 1
+                            value: Star 2
+                            type: VARIANT
+                  - id: I254:9802;253:9398
+                    name: Elements
+                    type: IMAGE-SVG
+                    layout: layout_NGFA2Z
+                    fills: fill_D9SLZ9
+                    componentId: '38:994'
+                    componentProperties:
+                      - name: Show line#40:0
+                        value: 'true'
+                        type: BOOLEAN
+                      - name: Property 1
+                        value: Ellipse
+                        type: VARIANT
+              - id: I254:9802;253:9399
+                name: content Frame
+                type: FRAME
+                layout: layout_FYRT0S
+                children:
+                  - id: I254:9802;253:9400
+                    name: Group Info
+                    type: FRAME
+                    layout: layout_KDOG2H
+                    children:
+                      - id: I254:9802;253:9401
+                        name: Container
+                        type: FRAME
+                        layout: layout_F3R13I
+                        children:
+                          - id: I254:9802;253:9402
+                            name: Subtitle
+                            type: TEXT
+                            layout: layout_O1E3IE
+                            text: המלצה
+                            textStyle: Typography/Body 1
+                            fills: fill_E5M3V7
+                          - id: I254:9802;253:9403
+                            name: Title
+                            type: TEXT
+                            layout: layout_O1E3IE
+                            text: כיצד נראה מפגש רעים?
+                            textStyle: Typography/H5
+                            fills: fill_E5M3V7
+                  - id: I254:9802;253:9404
+                    name: Container
+                    type: FRAME
+                    layout: layout_0KHSFD
+                    children:
+                      - id: I254:9802;253:9405
+                        name: Collapse Item
+                        type: INSTANCE
+                        layout: layout_0JMVAG
+                        fills: fill_B55XRZ
+                        strokes: stroke_AOGZGK
+                        borderRadius: 8px
+                        componentId: '202:9282'
+                        componentProperties:
+                          - name: Device
+                            value: Mobile
+                            type: VARIANT
+                          - name: White
+                            value: 'False'
+                            type: VARIANT
+                          - name: State
+                            value: Open
+                            type: VARIANT
+                        children:
+                          - id: I254:9802;253:9405;202:9283
+                            name: Container
+                            type: FRAME
+                            layout: layout_ICKXBE
+                            children:
+                              - id: I254:9802;253:9405;202:9284
+                                name: remove
+                                type: IMAGE-SVG
+                                layout: layout_7ZSJI7
+                                fills: fill_TJWYM9
+                                borderRadius: 100px
+                                componentId: '115:2831'
+                                componentProperties:
+                                  - name: Style
+                                    value: outlined
+                                    type: VARIANT
+                              - id: I254:9802;253:9405;202:9285
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: הכנת המרחב
+                                textStyle: Typography/Subtitle 1
+                                fills: fill_UXNBOB
+                          - id: I254:9802;253:9405;202:9286
+                            name: Frame 5
+                            type: FRAME
+                            layout: layout_HOMJ2P
+                            children:
+                              - id: I254:9802;253:9405;202:9287
+                                name: תיאור
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: "לסביבה הפיזית יש תפקיד מרכזי בהנחיית הקבוצה. כל חדר פשוט יכול להפוך למרחב משמעותי כאשר נשמרים עקרונות של קביעות, והשקעה רגשית. הגעה מוקדמת של הרכזת, סידור החדר במעגל כסאות\_ וקבלת פנים של הרכזת לפני תחילת המפגש - כולם מהווים גורמים המפחיתים חרדה ומשרים ביטחון.\nהקביעות בסטינג תומכת בחוויה של יציבות ושייכות לאורך זמן."
+                                textStyle: Typography/Body 2
+                                fills: fill_E5M3V7
+                      - id: I254:9802;253:9406
+                        name: Collapse Item
+                        type: INSTANCE
+                        layout: layout_SJVH9D
+                        fills: fill_B55XRZ
+                        strokes: stroke_XY34HC
+                        borderRadius: 8px
+                        componentId: '202:9274'
+                        componentProperties:
+                          - name: Device
+                            value: Mobile
+                            type: VARIANT
+                          - name: White
+                            value: 'False'
+                            type: VARIANT
+                          - name: State
+                            value: Resting
+                            type: VARIANT
+                        children:
+                          - id: I254:9802;253:9406;202:9275
+                            name: Container
+                            type: FRAME
+                            layout: layout_KNL38V
+                            children:
+                              - id: I254:9802;253:9406;202:9276
+                                name: add
+                                type: IMAGE-SVG
+                                layout: layout_7ZSJI7
+                                fills: fill_D9SLZ9
+                                componentId: '115:2811'
+                                componentProperties:
+                                  - name: Style
+                                    value: outlined
+                                    type: VARIANT
+                              - id: I254:9802;253:9406;202:9277
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: סבב פתיחה - "מה נשמע?"
+                                textStyle: Typography/Body 1
+                                fills: fill_E5M3V7
+                      - id: I254:9802;253:9407
+                        name: Collapse Item
+                        type: INSTANCE
+                        layout: layout_SJVH9D
+                        fills: fill_B55XRZ
+                        strokes: stroke_XY34HC
+                        borderRadius: 8px
+                        componentId: '202:9274'
+                        componentProperties:
+                          - name: Device
+                            value: Mobile
+                            type: VARIANT
+                          - name: White
+                            value: 'False'
+                            type: VARIANT
+                          - name: State
+                            value: Resting
+                            type: VARIANT
+                        children:
+                          - id: I254:9802;253:9407;202:9275
+                            name: Container
+                            type: FRAME
+                            layout: layout_KNL38V
+                            children:
+                              - id: I254:9802;253:9407;202:9276
+                                name: add
+                                type: IMAGE-SVG
+                                layout: layout_7ZSJI7
+                                fills: fill_D9SLZ9
+                                componentId: '115:2811'
+                                componentProperties:
+                                  - name: Style
+                                    value: outlined
+                                    type: VARIANT
+                              - id: I254:9802;253:9407;202:9277
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: הפסקה
+                                textStyle: Typography/Body 1
+                                fills: fill_E5M3V7
+                      - id: I254:9802;253:9408
+                        name: Collapse Item
+                        type: INSTANCE
+                        layout: layout_SJVH9D
+                        fills: fill_B55XRZ
+                        strokes: stroke_XY34HC
+                        borderRadius: 8px
+                        componentId: '202:9274'
+                        componentProperties:
+                          - name: Device
+                            value: Mobile
+                            type: VARIANT
+                          - name: White
+                            value: 'False'
+                            type: VARIANT
+                          - name: State
+                            value: Resting
+                            type: VARIANT
+                        children:
+                          - id: I254:9802;253:9408;202:9275
+                            name: Container
+                            type: FRAME
+                            layout: layout_KNL38V
+                            children:
+                              - id: I254:9802;253:9408;202:9276
+                                name: add
+                                type: IMAGE-SVG
+                                layout: layout_7ZSJI7
+                                fills: fill_D9SLZ9
+                                componentId: '115:2811'
+                                componentProperties:
+                                  - name: Style
+                                    value: outlined
+                                    type: VARIANT
+                              - id: I254:9802;253:9408;202:9277
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: משחק
+                                textStyle: Typography/Body 1
+                                fills: fill_E5M3V7
+                      - id: I254:9802;253:9409
+                        name: Collapse Item
+                        type: INSTANCE
+                        layout: layout_SJVH9D
+                        fills: fill_B55XRZ
+                        strokes: stroke_XY34HC
+                        borderRadius: 8px
+                        componentId: '202:9274'
+                        componentProperties:
+                          - name: Device
+                            value: Mobile
+                            type: VARIANT
+                          - name: White
+                            value: 'False'
+                            type: VARIANT
+                          - name: State
+                            value: Resting
+                            type: VARIANT
+                        children:
+                          - id: I254:9802;253:9409;202:9275
+                            name: Container
+                            type: FRAME
+                            layout: layout_KNL38V
+                            children:
+                              - id: I254:9802;253:9409;202:9276
+                                name: add
+                                type: IMAGE-SVG
+                                layout: layout_7ZSJI7
+                                fills: fill_D9SLZ9
+                                componentId: '115:2811'
+                                componentProperties:
+                                  - name: Style
+                                    value: outlined
+                                    type: VARIANT
+                              - id: I254:9802;253:9409;202:9277
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: פעילות
+                                textStyle: Typography/Body 1
+                                fills: fill_E5M3V7
+                      - id: I254:9802;253:9410
+                        name: Collapse Item
+                        type: INSTANCE
+                        layout: layout_SJVH9D
+                        fills: fill_B55XRZ
+                        strokes: stroke_XY34HC
+                        borderRadius: 8px
+                        componentId: '202:9274'
+                        componentProperties:
+                          - name: Device
+                            value: Mobile
+                            type: VARIANT
+                          - name: White
+                            value: 'False'
+                            type: VARIANT
+                          - name: State
+                            value: Resting
+                            type: VARIANT
+                        children:
+                          - id: I254:9802;253:9410;202:9275
+                            name: Container
+                            type: FRAME
+                            layout: layout_KNL38V
+                            children:
+                              - id: I254:9802;253:9410;202:9276
+                                name: add
+                                type: IMAGE-SVG
+                                layout: layout_7ZSJI7
+                                fills: fill_D9SLZ9
+                                componentId: '115:2811'
+                                componentProperties:
+                                  - name: Style
+                                    value: outlined
+                                    type: VARIANT
+                              - id: I254:9802;253:9410;202:9277
+                                name: Subtitle
+                                type: TEXT
+                                layout: layout_IKIJ8T
+                                text: סיכום
+                                textStyle: Typography/Body 1
+                                fills: fill_E5M3V7
+          - id: '253:6859'
+            name: Next Chapter
+            type: INSTANCE
+            layout: layout_R025C2
+            fills: fill_D9SLZ9
+            componentId: '194:16385'
+            componentProperties:
+              - name: Device
+                value: Mobile
+                type: VARIANT
+              - name: State
+                value: '1'
+                type: VARIANT
+            children:
+              - id: I253:6859;194:16387
+                name: Container
+                type: FRAME
+                layout: layout_IX0G38
+                fills: fill_BOX7ZJ
+                borderRadius: 24px
+                children:
+                  - id: I253:6859;194:16388
+                    name: Container
+                    type: FRAME
+                    layout: layout_M68FWV
+                    children:
+                      - id: I253:6859;194:16391
+                        name: text
+                        type: FRAME
+                        layout: layout_E3MYGE
+                        children:
+                          - id: I253:6859;194:16392
+                            name: Title
+                            type: TEXT
+                            layout: layout_IKIJ8T
+                            text: לפרק הבא
+                            textStyle: Typography/H5
+                            fills: fill_D9SLZ9
+                          - id: I253:6859;194:16393
+                            name: Title
+                            type: TEXT
+                            layout: layout_IKIJ8T
+                            text: פרק 04 - עבודה מנהלית
+                            textStyle: Typography/Body 1
+                            fills: fill_D9SLZ9
+                      - id: I253:6859;194:16389
+                        name: button
+                        type: IMAGE-SVG
+                        layout: layout_YJQD91
+                        fills: fill_D9SLZ9
+                        borderRadius: 12px
+          - id: '253:6860'
+            name: Footer
+            type: INSTANCE
+            layout: layout_T780RM
+            fills: fill_D9SLZ9
+            componentId: '191:11488'
+            componentProperties:
+              - name: Property 1
+                value: Mobile
+                type: VARIANT
+            children:
+              - id: I253:6860;191:11489
+                name: Container
+                type: FRAME
+                layout: layout_7ARI7W
+                fills: fill_TJWYM9
+                borderRadius: 24px
+                children:
+                  - id: I253:6860;191:11529
+                    name: Container
+                    type: FRAME
+                    layout: layout_MGB860
+                    children:
+                      - id: I253:6860;191:11530
+                        name: Header
+                        type: FRAME
+                        layout: layout_7CQ4GR
+                        children:
+                          - id: I253:6860;191:11531
+                            name: Logo
+                            type: INSTANCE
+                            layout: layout_5LLLBG
+                            componentId: '3:1067'
+                            componentProperties:
+                              - name: Property 1
+                                value: החברה למתנסים
+                                type: VARIANT
+                            children:
+                              - id: I253:6860;191:11531;3:1100
+                                name: Group
+                                type: GROUP
+                                layout: layout_A4Q960
+                                children:
+                                  - id: I253:6860;191:11531;3:1101
+                                    name: Group
+                                    type: IMAGE-SVG
+                                    layout: layout_ZNTN2Y
+                                  - id: I253:6860;191:11531;3:1281
+                                    name: Union
+                                    type: BOOLEAN_OPERATION
+                                    layout: layout_0GVJWI
+                                    fills: fill_5ENNYW
+                                    children:
+                                      - id: I253:6860;191:11531;3:1116
+                                        name: Group
+                                        type: IMAGE-SVG
+                                        layout: layout_URF5ED
+                                      - id: I253:6860;191:11531;3:1130
+                                        name: Group
+                                        type: IMAGE-SVG
+                                        layout: layout_CLSIXG
+                                      - id: I253:6860;191:11531;3:1154
+                                        name: Group
+                                        type: IMAGE-SVG
+                                        layout: layout_G55HOQ
+                          - id: I253:6860;191:11532
+                            name: Logo
+                            type: INSTANCE
+                            layout: layout_HMA4RP
+                            componentId: '2:2091'
+                            componentProperties:
+                              - name: Property 1
+                                value: רעים
+                                type: VARIANT
+                            children:
+                              - id: I253:6860;191:11532;37:4736
+                                name: Container
+                                type: FRAME
+                                layout: layout_F9R603
+                                children:
+                                  - id: I253:6860;191:11532;37:4542
+                                    name: Union
+                                    type: IMAGE-SVG
+                                    layout: layout_KASZ5G
+                                    fills: fill_5ENNYW
+                                  - id: I253:6860;191:11532;2:2090
+                                    name: Union
+                                    type: BOOLEAN_OPERATION
+                                    layout: layout_SF4IMC
+                                    fills: fill_5ENNYW
+                                    children:
+                                      - id: I253:6860;191:11532;2:2077
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_NRS57Q
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2078
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_W3O9AW
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2079
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_W3O9AW
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2080
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_I3K6R9
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2081
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_5F3NCX
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2082
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_I3K6R9
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2083
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_TPKE8K
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2084
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_W3O9AW
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2085
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_KMNZTC
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2086
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_RDFDL2
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2087
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_TPKE8K
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2088
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_UTVIZL
+                                        fills: fill_NBF90Q
+                                      - id: I253:6860;191:11532;2:2089
+                                        name: Vector
+                                        type: IMAGE-SVG
+                                        layout: layout_RDFDL2
+                                        fills: fill_NBF90Q
+                              - id: I253:6860;191:11532;37:5329
+                                name: Union
+                                type: IMAGE-SVG
+                                layout: layout_P81OU6
+                                fills: fill_5ENNYW
+                      - id: I253:6860;191:11533
+                        name: Contact Information
+                        type: TEXT
+                        layout: layout_O1E3IE
+                        text: "תוכנית רעים מבית החברה למתנ״סים\Lטלפון:\_0732870187\nפקס: 0732870387\nמייל:\_reim@matnasim.org.il"
+                        textStyle: Typography/Body 2
+                        fills: fill_E5M3V7
+                  - id: I253:6860;191:11534
+                    name: Footer Links
+                    type: FRAME
+                    layout: layout_7N3FNW
+                    fills: fill_TJWYM9
+                    borderRadius: 8px
+                    children:
+                      - id: I253:6860;191:11535
+                        name: Social Media Icon
+                        type: IMAGE-SVG
+                        layout: layout_J8SGKV
+                      - id: I253:6860;191:11540
+                        name: Footer Links
+                        type: FRAME
+                        layout: layout_WAN1CT
+                        children:
+                          - id: I253:6860;191:11541
+                            name: Footer Link
+                            type: TEXT
+                            layout: layout_O1E3IE
+                            text: תקנון אתר
+                            textStyle: Typography/Body 2
+                            fills: fill_E5M3V7
+                          - id: I253:6860;191:11542
+                            name: Footer Link
+                            type: TEXT
+                            layout: layout_O1E3IE
+                            textStyle: Typography/Body 2
+                            fills: fill_E5M3V7
+                          - id: I253:6860;191:11543
+                            name: Footer Link
+                            type: TEXT
+                            layout: layout_O1E3IE
+                            text: מדיניות פרטיות
+                            textStyle: Typography/Body 2
+                            fills: fill_E5M3V7
+                      - id: I253:6860;191:11544
+                        name: Footer Copyright
+                        type: TEXT
+                        layout: layout_8LXJ9M
+                        text: Ⓒ כל הזכויות שמורות לחברה למתנ״סים
+                        textStyle: Typography/Body 2
+                        fills: fill_YTQCA8
+          - id: '253:6861'
+            name: Top bar
+            type: FRAME
+            layout: layout_GVOL1J
+            fills: fill_FE9IOD
+            strokes: stroke_3H29E2
+            effects: effect_U17EMW
+            borderRadius: 200px
+            children:
+              - id: '253:6863'
+                name: Logo
+                type: INSTANCE
+                layout: layout_26XH34
+                componentId: '2:2091'
+                componentProperties:
+                  - name: Property 1
+                    value: רעים
+                    type: VARIANT
+                children:
+                  - id: I253:6863;37:4736
+                    name: Container
+                    type: FRAME
+                    layout: layout_JQGOEO
+                    children:
+                      - id: I253:6863;37:4542
+                        name: Union
+                        type: IMAGE-SVG
+                        layout: layout_GJUVL8
+                        fills: fill_UXNBOB
+                      - id: I253:6863;2:2090
+                        name: Union
+                        type: BOOLEAN_OPERATION
+                        layout: layout_DEDNLX
+                        fills: fill_NBF90Q
+                        children:
+                          - id: I253:6863;2:2077
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_IFMVRI
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2078
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_VBOYTZ
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2079
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_VBOYTZ
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2080
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_BCN7PE
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2081
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_7F8WYF
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2082
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_BCN7PE
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2083
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_KBFFQW
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2084
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_VBOYTZ
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2085
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_ONOWF3
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2086
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_GMVBR3
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2087
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_KBFFQW
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2088
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_CQYIKT
+                            fills: fill_NBF90Q
+                          - id: I253:6863;2:2089
+                            name: Vector
+                            type: IMAGE-SVG
+                            layout: layout_GMVBR3
+                            fills: fill_NBF90Q
+                  - id: I253:6863;37:5329
+                    name: Union
+                    type: IMAGE-SVG
+                    layout: layout_NITAJ6
+                    fills: fill_UXNBOB
+      - id: '253:6864'
+        name: iPhone XStatus Bars
+        type: INSTANCE
+        layout: layout_3GPFOY
+        componentId: '177:6137'
+        componentProperties:
+          - name: Property 1
+            value: TransparentWhite
+            type: VARIANT
+        children:
+          - id: I253:6864;0:529
+            name: Notch
+            type: INSTANCE
+            layout: layout_VAU0GG
+            componentId: '177:5629'
+            componentProperties:
+              - name: Visible
+                value: 'NO'
+                type: VARIANT
+          - id: I253:6864;0:530
+            name: Status Icons
+            type: IMAGE-SVG
+            layout: layout_PHWLLV
+          - id: I253:6864;0:534
+            name: Indicator
+            type: INSTANCE
+            layout: layout_S9GO7K
+            componentId: '177:6119'
+            componentProperties:
+              - name: Type
+                value: None
+                type: VARIANT
+          - id: I253:6864;0:535
+            name: Time / Light
+            type: IMAGE-SVG
+            layout: layout_V0HBCY
+            borderRadius: 20px
+            componentId: '177:6128'
+            componentProperties:
+              - name: Color
+                value: Clear
+                type: VARIANT
+globalVars:
+  styles:
+    layout_B50IWL:
+      mode: column
+      alignItems: center
+      padding: 48px 0px 12px
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 375
+        height: 812
+    fill_9Q8T1Q:
+      - '#46319B'
+    layout_N63API:
+      mode: row
+      justifyContent: space-between
+      alignItems: flex-end
+      gap: 10px
+      padding: 0px 24px 0px 16px
+      sizing:
+        horizontal: fixed
+        vertical: hug
+      dimensions:
+        width: 375
+    layout_2Y4YG8:
+      mode: row
+      justifyContent: space-between
+      alignItems: center
+      gap: 236px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_PL0NEB:
+      mode: column
+      alignItems: center
+      sizing:
+        horizontal: hug
+        vertical: hug
+    layout_UG0V7D:
+      mode: row
+      alignItems: center
+      padding: 4px
+      sizing:
+        horizontal: hug
+        vertical: hug
+    layout_N7SK2G:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 24
+        height: 24
+    layout_GMLG0O:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 4
+        'y': 3
+      dimensions:
+        width: 18
+        height: 18
+    layout_9OXVJF:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 18
+        height: 18
+    fill_D9SLZ9:
+      - '#FFFFFF'
+    layout_P6EL8X:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 18
+        height: 18
+    fill_5IVWJI:
+      - '#D9D9D9'
+    layout_GOS1NK:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 12.09
+        height: 8.71
+    fill_E5M3V7:
+      - '#001D26'
+    layout_8PLQK0:
+      mode: row
+      justifyContent: flex-end
+      alignItems: center
+      gap: 8px
+      sizing:
+        horizontal: hug
+        vertical: fixed
+      dimensions:
+        height: 48
+    layout_O1E3IE:
+      mode: none
+      sizing:
+        horizontal: hug
+        vertical: hug
+    Typography/Body 1:
+      fontFamily: Rubik
+      fontWeight: 400
+      fontSize: 16
+      lineHeight: 1.3200000524520874em
+      letterSpacing: 0.937500037252903%
+      textAlignHorizontal: CENTER
+      textAlignVertical: TOP
+    layout_R68OC1:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 11
+        height: 0
+    stroke_9XW4LQ:
+      colors:
+        - '#FFFFFF'
+      strokeWeight: 2px
+    layout_4NAYZI:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 145
+        'y': 0
+      dimensions:
+        width: 84
+        height: 48
+    layout_U24V9O:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 84
+        height: 48
+    layout_0P6LAQ:
+      mode: column
+      alignItems: center
+      sizing:
+        horizontal: hug
+        vertical: hug
+      locationRelativeToParent:
+        x: 26
+        'y': 8
+    layout_C5ZOAO:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 3
+        'y': 6
+      dimensions:
+        width: 18
+        height: 12
+    layout_XNAX77:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 18
+        height: 12
+    layout_1R1U7M:
+      mode: column
+      overflowScroll:
+        - 'y'
+      gap: '-24px'
+      sizing:
+        horizontal: fixed
+        vertical: fill
+      dimensions:
+        width: 359
+    layout_355PJ9:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 8px
+      padding: 120px 24px 0px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_UPWYCF:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -83
+        'y': 67
+      dimensions:
+        width: 496
+        height: 403
+    fill_FPX8G9:
+      - rgba(188, 224, 121, 0.12)
+    effect_WDSLWH:
+      filter: blur(200px)
+    layout_HAPYH2:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -146
+        'y': 455
+      dimensions:
+        width: 528
+        height: 464
+    fill_9OYINN:
+      - rgba(255, 178, 59, 0.16)
+    layout_9FSTC7:
+      mode: column
+      alignItems: center
+      alignSelf: stretch
+      gap: 24px
+      padding: 24px 0px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_EN8LUE:
+      mode: column
+      justifyContent: center
+      alignItems: center
+      gap: 16px
+      sizing:
+        horizontal: fixed
+        vertical: hug
+      dimensions:
+        width: 303
+    layout_3I1GE6:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 68
+        'y': 114
+      dimensions:
+        width: 167
+        height: 12
+    fill_98ZKW3:
+      - '#FFB23B'
+    layout_ONNE54:
+      mode: column
+      justifyContent: flex-end
+      alignItems: center
+      gap: 16px
+      padding: 8px 24px 4px
+      sizing:
+        horizontal: hug
+        vertical: hug
+    fill_LX8FKM:
+      - '#BCE079'
+    stroke_9AL5UT:
+      colors:
+        - '#001D26'
+      strokeWeight: 1.5px
+    No blur:
+      boxShadow: 2px 2px 0px 0px rgba(0, 29, 38, 1)
+    layout_AWNF2V:
+      mode: column
+      justifyContent: center
+      alignItems: stretch
+      gap: 10px
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 46
+        'y': -19
+      dimensions:
+        width: 28
+        height: 28
+    fill_1ECS8Z:
+      - '#839C54'
+    layout_IKIJ8T:
+      mode: none
+      sizing:
+        horizontal: fill
+        vertical: hug
+    Chapter/Small:
+      fontFamily: Salsa
+      fontWeight: 400
+      fontSize: 16
+      lineHeight: 1.2799999713897705em
+      letterSpacing: 0.937500037252903%
+      textAlignHorizontal: CENTER
+      textAlignVertical: CENTER
+    Typography/H4:
+      fontFamily: Rubik
+      fontWeight: 700
+      fontSize: 34
+      lineHeight: 1.1000000448787914em
+      letterSpacing: 0.7352941176470588%
+      textAlignHorizontal: CENTER
+      textAlignVertical: TOP
+    layout_0FWOFT:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 284
+        'y': -11
+      dimensions:
+        width: 8
+        height: 8
+    layout_858MWY:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: -0.12
+        'y': 0
+      dimensions:
+        width: 8
+        height: 8
+    Typography/H6:
+      fontFamily: Rubik
+      fontWeight: 600
+      fontSize: 20
+      lineHeight: 1.2799999237060546em
+      letterSpacing: 0.7500000298023224%
+      textAlignHorizontal: CENTER
+      textAlignVertical: TOP
+    layout_F53QG7:
+      mode: row
+      justifyContent: center
+      alignItems: center
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 286.4
+        'y': 137.4
+      dimensions:
+        width: 21.35
+        height: 21.35
+    layout_PGOAUK:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 21.35
+        height: 21.35
+    layout_Y1SO2T:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 1.78
+        'y': 1.78
+      dimensions:
+        width: 17.73
+        height: 16.92
+    layout_3P4K8T:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 17.73
+        height: 16.92
+    layout_D1J5I9:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 21
+        'y': 24
+      dimensions:
+        width: 32
+        height: 32
+    layout_SU25GJ:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: -0.16
+        'y': 0
+      dimensions:
+        width: 32
+        height: 32
+    fill_VCJ3MQ:
+      - '#C4213B'
+    layout_9SG27W:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      padding: 105px 0px 0px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_SX0SJH:
+      mode: column
+      justifyContent: center
+      alignItems: center
+      alignSelf: stretch
+      gap: 11px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 700
+    layout_OZXZD4:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 311
+        height: 600
+    fill_JHS59Q:
+      - type: GRADIENT_LINEAR
+        gradient: >-
+          linear-gradient(162deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255,
+          0.6) 94%)
+      - type: IMAGE
+        imageRef: 9061cefc7047b674f8e7eda8427a9b3cf6a9a26b
+        scaleMode: FILL
+        objectFit: cover
+        isBackground: false
+        imageDownloadArguments:
+          needsCropping: false
+          requiresImageDimensions: false
+    layout_USTRNM:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 216
+        'y': 538
+      dimensions:
+        width: 94
+        height: 102
+    layout_CMUX7I:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 94
+        height: 102
+    style_MLINJ8:
+      fontFamily: Salsa
+      fontWeight: 400
+      fontSize: 80
+      lineHeight: 1.2799999237060546em
+      letterSpacing: 0.10450819507241249%
+      textAlignHorizontal: LEFT
+      textAlignVertical: TOP
+    fill_UXNBOB:
+      - '#6546DE'
+    layout_ZM56QB:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 42
+      dimensions:
+        width: 54
+        height: 31
+    layout_QRSK2Q:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: -0.02
+        'y': -0.03
+      dimensions:
+        width: 54.05
+        height: 26.89
+    layout_ZXUFPD:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 52.93
+        height: 12.77
+    stroke_8V4VNW:
+      colors:
+        - '#6546DE'
+      strokeWeight: 1.1147540807724px
+    layout_B2QF3N:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 119
+        'y': -13
+      dimensions:
+        width: 122
+        height: 122
+    layout_YDHW7Q:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: -0.65
+        'y': 0
+      dimensions:
+        width: 122
+        height: 122
+    stroke_HNHB3P:
+      colors:
+        - rgba(0, 29, 38, 0.24)
+      strokeWeight: 2px
+      strokeDashes:
+        - 4
+        - 4
+    layout_53WVPB:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 20.12
+        'y': 20.77
+      dimensions:
+        width: 80.47
+        height: 80.47
+    layout_RLGSEH:
+      mode: column
+      justifyContent: center
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 200px
+      padding: 0px 40px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 700
+    layout_59ZXDJ:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 14px
+      padding: 32px 24px 24px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 520
+    fill_B55XRZ:
+      - rgba(101, 70, 222, 0.04)
+      - '#FFFFFF'
+    layout_A4M14S:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 4px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    Typography/H5:
+      fontFamily: Rubik
+      fontWeight: 700
+      fontSize: 24
+      lineHeight: 1.3339999516805012em
+      textAlignHorizontal: CENTER
+      textAlignVertical: TOP
+    layout_1OAP0B:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 8px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_W8RGE2:
+      mode: row
+      justifyContent: flex-end
+      alignItems: center
+      alignSelf: stretch
+      gap: 12px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    Typography/Body 2:
+      fontFamily: Rubik
+      fontWeight: 400
+      fontSize: 14
+      lineHeight: 1.429999896458217em
+      letterSpacing: 1.2142857270581382%
+      textAlignHorizontal: RIGHT
+      textAlignVertical: TOP
+    layout_CWEDPS:
+      mode: row
+      justifyContent: center
+      alignItems: center
+      gap: 10px
+      padding: 4px 8px
+      sizing:
+        horizontal: hug
+        vertical: hug
+    fill_AKUSGD:
+      - rgba(101, 70, 222, 0.16)
+    layout_7ZSJI7:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 16
+        height: 16
+    layout_1BN8HK:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 2.67
+        'y': 3.33
+      dimensions:
+        width: 10.67
+        height: 9.33
+    layout_RFZE5S:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 10.67
+        height: 9.33
+    layout_LLIXK1:
+      mode: row
+      justifyContent: center
+      alignItems: center
+      alignSelf: stretch
+      gap: 12px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_6KKRAA:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 24px
+      padding: 32px 24px 40px 40px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 520
+    fill_MSEF1F:
+      - rgba(255, 178, 59, 0.04)
+      - '#FFFFFF'
+    layout_FYRT0S:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 24px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_NMFSVR:
+      mode: row
+      justifyContent: center
+      alignSelf: stretch
+      gap: 12px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_FN6C7L:
+      mode: column
+      overflowScroll:
+        - 'y'
+      justifyContent: center
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 200px
+      padding: 0px 40px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 700
+    layout_P0RKP5:
+      mode: column
+      justifyContent: space-between
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 100px
+      padding: 32px 24px 24px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 520
+    fill_EDOWFN:
+      - rgba(196, 33, 59, 0.04)
+      - '#FFFFFF'
+    fill_RZCBVE:
+      - rgba(196, 33, 59, 0.16)
+    layout_TA2HF0:
+      mode: row
+      justifyContent: center
+      alignItems: center
+      alignSelf: stretch
+      gap: 12px
+      padding: 8px 12px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    stroke_5AOIKM:
+      colors:
+        - '#6546DE'
+    layout_ONT4KP:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 2
+        'y': 2
+      dimensions:
+        width: 20
+        height: 20
+    layout_VTEPMR:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 20
+        height: 20
+    White:
+      - '#FFFFFF'
+    layout_AUHXQQ:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 20
+        height: 20
+    Stroke color:
+      - '#2B3F6C'
+    layout_5YUGHC:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 8
+        height: 6
+    layout_A0Q51G:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: -0.0
+        'y': -0.0
+      dimensions:
+        width: 3
+        height: 6
+    stroke_5JSV0Y:
+      colors:
+        - '#FCF7F4'
+      strokeWeight: 1.5px
+    layout_6DXR4U:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 1
+        'y': 3
+      dimensions:
+        width: 7
+        height: 0
+    Components/Button Large:
+      fontFamily: Rubik
+      fontWeight: 700
+      fontSize: 16
+      lineHeight: 1.625em
+      letterSpacing: 2.875000052154064%
+      textCase: UPPER
+      textAlignHorizontal: LEFT
+      textAlignVertical: TOP
+    layout_ONLYR7:
+      mode: column
+      justifyContent: center
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 80px
+      padding: 60px 24px 80px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    fill_H5OFOO:
+      - rgba(101, 70, 222, 0.08)
+      - '#FFFFFF'
+    layout_DYG4HD:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -341
+        'y': 2393
+      dimensions:
+        width: 916
+        height: 756
+    fill_L5CQK7:
+      - rgba(101, 70, 222, 0.12)
+    layout_VIUSYN:
+      mode: column
+      justifyContent: center
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 24px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_KFJQKR:
+      mode: column
+      justifyContent: center
+      alignItems: center
+      alignSelf: stretch
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_IXJAAQ:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 41
+        'y': 42
+      dimensions:
+        width: 89
+        height: 8
+    layout_LEAJPW:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 48px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_JWLJQQ:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 32px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_B2HRZA:
+      mode: column
+      justifyContent: center
+      alignItems: flex-end
+      alignSelf: stretch
+      gap: 14px
+      padding: 32px 24px 24px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    fill_HHFNM2:
+      - rgba(188, 224, 121, 0.08)
+      - '#FFFFFF'
+    layout_99WWD7:
+      mode: column
+      justifyContent: center
+      alignItems: flex-end
+      sizing:
+        horizontal: hug
+        vertical: hug
+    Typography/Subtitle 1:
+      fontFamily: Rubik
+      fontWeight: 500
+      fontSize: 16
+      lineHeight: 1.2200000286102295em
+      letterSpacing: 0.937500037252903%
+      textAlignHorizontal: RIGHT
+      textAlignVertical: TOP
+    layout_0KHSFD:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 12px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_HN9NBC:
+      mode: row
+      justifyContent: center
+      alignItems: center
+      gap: 10px
+      padding: 12px
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 32
+        height: 24
+    fill_8TCUZC:
+      - rgba(188, 224, 121, 0.6)
+    layout_IRI6NT:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 18
+        height: 18
+    layout_K07RRL:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 3
+        'y': 3.75
+      dimensions:
+        width: 12
+        height: 10.5
+    layout_ARLEJN:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 12
+        height: 10.5
+    layout_4ZVIU9:
+      mode: row
+      justifyContent: flex-end
+      alignSelf: stretch
+      gap: 12px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_JTAR3K:
+      mode: row
+      alignItems: center
+      gap: 16px
+      padding: 12px 14px 12px 6px
+      sizing:
+        horizontal: hug
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 258.67
+        'y': -21
+      dimensions:
+        height: 42
+    layout_QZXS8B:
+      mode: column
+      justifyContent: center
+      alignItems: stretch
+      gap: 10px
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 32
+        height: 32
+    layout_IGO0CY:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 122
+        'y': 189
+      dimensions:
+        width: 67
+        height: 66
+    layout_M2HBTW:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: -0.17
+        'y': 0
+      dimensions:
+        width: 67
+        height: 66
+    layout_C75SXY:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -21.78
+        'y': 212.67
+      dimensions:
+        width: 109.54
+        height: 142.95
+    stroke_RL640L:
+      colors:
+        - rgba(0, 29, 38, 0.24)
+      strokeWeight: 2px
+      strokeDashes:
+        - 6
+        - 6
+    layout_LE5M43:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -1.68
+        'y': 692.82
+      dimensions:
+        width: 195.68
+        height: 170.02
+    layout_KW6LB5:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -48.42
+        'y': 1253.2
+      dimensions:
+        width: 156.92
+        height: 158.35
+    layout_57432H:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -31
+        'y': 470
+      dimensions:
+        width: 131.46
+        height: 131.04
+    layout_9RJ1RL:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 53.71
+        'y': 1014.83
+      dimensions:
+        width: 150.82
+        height: 150.81
+    layout_7VFEY7:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -21.78
+        'y': 1552.67
+      dimensions:
+        width: 109.54
+        height: 142.95
+    layout_SF2GYC:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -1.68
+        'y': 2078.82
+      dimensions:
+        width: 195.68
+        height: 170.02
+    layout_I2LQIU:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: -31
+        'y': 1834
+      dimensions:
+        width: 131.46
+        height: 131.04
+    layout_ANA4SG:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 43.71
+        'y': 2331.83
+      dimensions:
+        width: 150.82
+        height: 150.81
+    layout_OWRTZR:
+      mode: column
+      justifyContent: center
+      alignItems: flex-end
+      gap: 60px
+      padding: 60px 24px
+      sizing:
+        horizontal: fixed
+        vertical: hug
+      dimensions:
+        width: 359
+    fill_ZVITMU:
+      - rgba(255, 178, 59, 0.08)
+      - '#FFFFFF'
+    layout_SOCMO8:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 303
+        height: 454
+    layout_UAFKXE:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: -0.28
+        'y': -3.51
+      dimensions:
+        width: 310.56
+        height: 457.68
+    layout_Q3QWBY:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 256.65
+        height: 311.52
+    fill_QRIMGX:
+      - type: IMAGE
+        imageRef: 021782672231bb5d246689cf0be717fcc8daad1f
+        scaleMode: FILL
+        objectFit: cover
+        isBackground: false
+        imageDownloadArguments:
+          needsCropping: false
+          requiresImageDimensions: false
+    layout_E63QOF:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 101.52
+        'y': 271.51
+      dimensions:
+        width: 209.03
+        height: 186.17
+    fill_SHH3YP:
+      - type: IMAGE
+        imageRef: cb69b4a6e312cc963fe79825eb13e3da2e27eef1
+        scaleMode: FILL
+        objectFit: cover
+        isBackground: false
+        imageDownloadArguments:
+          needsCropping: false
+          requiresImageDimensions: false
+    layout_I6XIGV:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 46.28
+        'y': 333.51
+      dimensions:
+        width: 50
+        height: 50
+    layout_JMCZ86:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: -0.25
+        'y': 0
+      dimensions:
+        width: 50
+        height: 50
+    layout_NGFA2Z:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 283
+        'y': 213
+      dimensions:
+        width: 9
+        height: 9
+    layout_3MMNW5:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: -0.13
+        'y': 0
+      dimensions:
+        width: 9
+        height: 9
+    layout_KDOG2H:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 52px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_F3R13I:
+      mode: column
+      justifyContent: center
+      alignItems: flex-end
+      alignSelf: stretch
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_0JMVAG:
+      mode: column
+      justifyContent: center
+      alignItems: stretch
+      alignSelf: stretch
+      padding: 0px 16px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    stroke_AOGZGK:
+      colors:
+        - '#6546DE'
+      strokeWeight: 0px 2px 0px 0px
+    layout_ICKXBE:
+      mode: row
+      alignItems: center
+      alignSelf: stretch
+      gap: 24px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+    fill_TJWYM9:
+      - rgba(101, 70, 222, 0.08)
+    layout_FIQBIC:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 3.33
+        'y': 7.33
+      dimensions:
+        width: 9.33
+        height: 1.33
+    layout_HOMJ2P:
+      mode: row
+      justifyContent: center
+      alignItems: center
+      alignSelf: stretch
+      gap: 10px
+      padding: 0px 0px 24px 60px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_SJVH9D:
+      mode: row
+      alignItems: center
+      alignSelf: stretch
+      padding: 80px 16px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+    stroke_XY34HC:
+      colors:
+        - rgba(101, 70, 222, 0.08)
+      strokeWeight: 1px
+    layout_KNL38V:
+      mode: row
+      alignItems: center
+      gap: 24px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_HX7CF3:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 3.33
+        'y': 3.33
+      dimensions:
+        width: 9.33
+        height: 9.33
+    layout_R025C2:
+      mode: column
+      justifyContent: center
+      alignItems: stretch
+      alignSelf: stretch
+      padding: 60px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 380
+    layout_IX0G38:
+      mode: column
+      justifyContent: center
+      alignItems: stretch
+      alignSelf: stretch
+      padding: 0px 24px
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 200
+    fill_BOX7ZJ:
+      - rgba(101, 70, 222, 0.6)
+    layout_M68FWV:
+      mode: column
+      justifyContent: center
+      alignItems: center
+      alignSelf: stretch
+      gap: 24px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_E3MYGE:
+      mode: column
+      justifyContent: center
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 4px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_YJQD91:
+      mode: row
+      alignItems: center
+      gap: 80px
+      padding: 12px
+      sizing:
+        horizontal: hug
+        vertical: hug
+    layout_8BEC2D:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 4
+        'y': 5
+      dimensions:
+        width: 16
+        height: 14
+    layout_NYKGGI:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 16
+        height: 14
+    layout_T780RM:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 40px
+      padding: 0px 16px 16px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_7ARI7W:
+      mode: column
+      alignItems: stretch
+      alignSelf: stretch
+      gap: 24px
+      padding: 24px 16px 16px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_MGB860:
+      mode: column
+      alignItems: center
+      alignSelf: stretch
+      gap: 24px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_7CQ4GR:
+      mode: row
+      justifyContent: center
+      gap: 24px
+      sizing:
+        horizontal: hug
+        vertical: hug
+    layout_5LLLBG:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 104.38
+        height: 25
+    layout_A4Q960:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 104.38
+        height: 25
+    layout_ZNTN2Y:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 71.79
+        'y': 2.08
+      dimensions:
+        width: 32.59
+        height: 20.83
+    layout_ZQXNBG:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 20.57
+        'y': 8.77
+      dimensions:
+        width: 5.62
+        height: 5.45
+    fill_5ENNYW:
+      - rgba(101, 70, 222, 0.87)
+    layout_QBFYIW:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 17.72
+        'y': 14.81
+      dimensions:
+        width: 5.14
+        height: 5.54
+    layout_G9SRY0:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 17.34
+        'y': 3.32
+      dimensions:
+        width: 5.11
+        height: 4.94
+    layout_RAL1F2:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 4.09
+        'y': 11.95
+      dimensions:
+        width: 3.23
+        height: 4.26
+    layout_0TYEQF:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 4.09
+        'y': 3.61
+      dimensions:
+        width: 3.23
+        height: 3.91
+    layout_1V0622:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 23.83
+        'y': 14.87
+      dimensions:
+        width: 4.8
+        height: 5.14
+    layout_RBCQH4:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 8.21
+        'y': 14.39
+      dimensions:
+        width: 3.74
+        height: 4.65
+    layout_VY0QGI:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 7.92
+        'y': 1.68
+      dimensions:
+        width: 3.72
+        height: 4.2
+    layout_I62FOI:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 23.6
+        'y': 3.59
+      dimensions:
+        width: 5.28
+        height: 5.13
+    layout_M41191:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 12.63
+        'y': 15.74
+      dimensions:
+        width: 4.35
+        height: 5.09
+    layout_HADT11:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 12.29
+        'y': 0
+      dimensions:
+        width: 4.33
+        height: 4.54
+    layout_HCRTES:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 1.95
+        'y': 7.92
+      dimensions:
+        width: 2.56
+        height: 3.31
+    layout_ZLCPSE:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 8.68
+      dimensions:
+        width: 1.33
+        height: 1.76
+    layout_5GR0U6:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 27.15
+        'y': 9.36
+      dimensions:
+        width: 5.44
+        height: 5.67
+    layout_0GVJWI:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 67.27
+        height: 25
+    layout_URF5ED:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 67.17
+        height: 6.44
+    layout_J7EVAM:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 1.47
+      dimensions:
+        width: 4.74
+        height: 4.91
+    fill_QHMX7D:
+      - '#524F4F'
+    layout_UHS8V3:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 5.65
+        'y': 1.49
+      dimensions:
+        width: 2.24
+        height: 3.17
+    layout_7UM2MB:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 8.9
+        'y': 1.12
+      dimensions:
+        width: 4.79
+        height: 5.29
+    layout_6BJ7XV:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 14.51
+        'y': 0.43
+      dimensions:
+        width: 3.23
+        height: 2.37
+    layout_IQZIKJ:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 18.41
+        'y': 1.49
+      dimensions:
+        width: 2.5
+        height: 4.89
+    layout_LGZMNA:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 22.12
+        'y': 1.46
+      dimensions:
+        width: 5.24
+        height: 4.98
+    layout_OZ3ZT7:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 28.55
+        'y': 1.4
+      dimensions:
+        width: 4.85
+        height: 4.97
+    layout_LIMOZO:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 34.16
+        'y': 0
+      dimensions:
+        width: 3.94
+        height: 6.38
+    layout_5WP92T:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 41.11
+        'y': 1.46
+      dimensions:
+        width: 4.49
+        height: 4.92
+    layout_JEDUFR:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 46.58
+        'y': 1.46
+      dimensions:
+        width: 3.65
+        height: 4.92
+    layout_B696H1:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 51.39
+        'y': 1.46
+      dimensions:
+        width: 4.26
+        height: 4.92
+    layout_278F7H:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 56.22
+        'y': 1.46
+      dimensions:
+        width: 5.09
+        height: 4.92
+    layout_I13JNY:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 62.68
+        'y': 1.46
+      dimensions:
+        width: 4.49
+        height: 4.92
+    layout_CLSIXG:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 67.27
+        height: 6.74
+    layout_A3GFP4:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0.1
+      dimensions:
+        width: 3.27
+        height: 4.98
+    layout_FSAOBL:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 2.79
+        'y': 2.48
+      dimensions:
+        width: 1.95
+        height: 3.83
+    layout_QU9GPX:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 5.23
+        'y': 3.15
+      dimensions:
+        width: 2.79
+        height: 3.6
+    layout_2NYZQ1:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 7.54
+        'y': 2.78
+      dimensions:
+        width: 2.83
+        height: 3.42
+    layout_1FD07P:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 9.9
+        'y': 1.4
+      dimensions:
+        width: 4.34
+        height: 3.82
+    layout_245JWV:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 15.11
+        'y': 0.16
+      dimensions:
+        width: 1.82
+        height: 4.92
+    layout_ICI45K:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 16.45
+        'y': 2.35
+      dimensions:
+        width: 4.18
+        height: 2.81
+    layout_QGRFJ7:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 20.15
+        'y': 2.17
+      dimensions:
+        width: 5.08
+        height: 3.84
+    layout_GOCBUL:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 24.75
+        'y': 0.16
+      dimensions:
+        width: 1.81
+        height: 4.92
+    layout_BBPLGU:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 27.86
+        'y': 0.16
+      dimensions:
+        width: 1.01
+        height: 4.92
+    layout_58ARBN:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 30.74
+        'y': 2.08
+      dimensions:
+        width: 2.88
+        height: 4.63
+    layout_QNFTZJ:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 33.15
+        'y': 0
+      dimensions:
+        width: 2.75
+        height: 5.08
+    layout_OKRGQ2:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 36.9
+        'y': 0.16
+      dimensions:
+        width: 1.01
+        height: 4.92
+    layout_M8J7P2:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 38.3
+        'y': 3.26
+      dimensions:
+        width: 2.88
+        height: 3.45
+    layout_2VOFAI:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 40.7
+        'y': 2.35
+      dimensions:
+        width: 4.18
+        height: 2.81
+    layout_6LVJNE:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 44.41
+        'y': 0.16
+      dimensions:
+        width: 1.81
+        height: 4.92
+    layout_I7GA35:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 47.51
+        'y': 0.16
+      dimensions:
+        width: 1.01
+        height: 4.92
+    layout_LSRC9A:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 51.12
+        'y': 0.1
+      dimensions:
+        width: 3.27
+        height: 4.98
+    layout_GY8MKP:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 53.91
+        'y': 0
+      dimensions:
+        width: 2.75
+        height: 5.08
+    layout_Q1R2D0:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 56.73
+        'y': 3.26
+      dimensions:
+        width: 2.88
+        height: 3.45
+    layout_FIMKGF:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 59.14
+        'y': 4.08
+      dimensions:
+        width: 1.99
+        height: 1
+    layout_VBSP0G:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 60.07
+        'y': 4.08
+      dimensions:
+        width: 1.99
+        height: 1
+    layout_RGQVCM:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 61.59
+        'y': 0.65
+      dimensions:
+        width: 5.68
+        height: 4.49
+    layout_G55HOQ:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 67.01
+        height: 3.98
+    layout_RA5LCC:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0.94
+      dimensions:
+        width: 2.21
+        height: 3.03
+    layout_5J4VIT:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 1.94
+        'y': 1.28
+      dimensions:
+        width: 2.43
+        height: 1.64
+    layout_U4G8MY:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 4.1
+        'y': 0.8
+      dimensions:
+        width: 1.67
+        height: 2.07
+    layout_AG8H7J:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 5.5
+        'y': 1.17
+      dimensions:
+        width: 2.96
+        height: 2.24
+    layout_8SOW13:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 8.18
+        'y': 1.28
+      dimensions:
+        width: 2.04
+        height: 1.64
+    layout_MJ0KVN:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 11.25
+        'y': 1.35
+      dimensions:
+        width: 0.58
+        height: 0.58
+    layout_M8F5MS:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 12.53
+        'y': 1.61
+      dimensions:
+        width: 1.25
+        height: 2.16
+    layout_H1NSUU:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 14.12
+        'y': 1.31
+      dimensions:
+        width: 1.81
+        height: 2.49
+    layout_H7VJXK:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 15.66
+        'y': 1.13
+      dimensions:
+        width: 2.21
+        height: 2.68
+    layout_RJR0ZY:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 17.59
+        'y': 1.28
+      dimensions:
+        width: 2.43
+        height: 1.64
+    layout_0OEZSB:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 19.75
+        'y': 1.17
+      dimensions:
+        width: 2.56
+        height: 2.24
+    layout_5LLL54:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 23.34
+        'y': 1.35
+      dimensions:
+        width: 0.58
+        height: 0.58
+    layout_UI7U9T:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 24.98
+        'y': 1.14
+      dimensions:
+        width: 2.23
+        height: 2.42
+    layout_KOV9VC:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 27.66
+        'y': 0
+      dimensions:
+        width: 1.06
+        height: 2.87
+    layout_27MU47:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 28.44
+        'y': 1.52
+      dimensions:
+        width: 3.87
+        height: 1.37
+    layout_JFSA2H:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 32.04
+        'y': 0.66
+      dimensions:
+        width: 1.14
+        height: 2.21
+    layout_XU0N02:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 33.75
+        'y': 0
+      dimensions:
+        width: 0.59
+        height: 2.87
+    layout_SC8AK0:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 48.04
+        'y': 0.14
+      dimensions:
+        width: 9.7
+        height: 3.45
+    layout_GWZP9Q:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0.62
+      dimensions:
+        width: 1.92
+        height: 2.1
+    layout_GV8R7C:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 2.13
+        'y': 0
+      dimensions:
+        width: 1.68
+        height: 2.73
+    layout_NKTEUX:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 4.05
+        'y': 0.64
+      dimensions:
+        width: 0.96
+        height: 1.35
+    layout_P76KNV:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 5.39
+        'y': 0.62
+      dimensions:
+        width: 1.92
+        height: 2.1
+    layout_YTWYEE:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 7.67
+        'y': 0.65
+      dimensions:
+        width: 2.04
+        height: 2.8
+    layout_8H0HGC:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 46.4
+        'y': 1.35
+      dimensions:
+        width: 0.58
+        height: 0.58
+    layout_ISBAY2:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 37.08
+        'y': 0.76
+      dimensions:
+        width: 8.24
+        height: 2.1
+    layout_6BVLDA:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 1.92
+        height: 2.1
+    layout_3JFV0O:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 2.21
+        'y': 0
+      dimensions:
+        width: 1.56
+        height: 2.1
+    layout_ZBC4GT:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 4.14
+        'y': 0
+      dimensions:
+        width: 1.82
+        height: 2.1
+    layout_0WYAJE:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 6.07
+        'y': 0
+      dimensions:
+        width: 2.17
+        height: 2.1
+    layout_9M9V3D:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 58.9
+        'y': 1.35
+      dimensions:
+        width: 0.58
+        height: 0.58
+    layout_CT7IXV:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 60.67
+        'y': 0.77
+      dimensions:
+        width: 2.03
+        height: 2.1
+    layout_IPSGY3:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 62.88
+        'y': 0.79
+      dimensions:
+        width: 1.77
+        height: 2.08
+    layout_VRBQ9X:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 64.87
+        'y': 0.76
+      dimensions:
+        width: 2.14
+        height: 2.1
+    layout_HMA4RP:
+      mode: row
+      justifyContent: flex-end
+      alignItems: stretch
+      gap: 10px
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 92.42
+        height: 25
+    layout_F9R603:
+      mode: column
+      alignSelf: stretch
+      gap: 1.25px
+      sizing:
+        horizontal: hug
+        vertical: fill
+    layout_KASZ5G:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fill
+      dimensions:
+        width: 45.27
+    layout_SF4IMC:
+      mode: none
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 4.85
+    layout_NRS57Q:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 4.15
+        height: 3.89
+    fill_NBF90Q:
+      - '#797D83'
+    layout_W3O9AW:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 0.88
+        height: 3.84
+    layout_I3K6R9:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 3.36
+        height: 3.84
+    layout_5F3NCX:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 2.93
+        height: 4.85
+    layout_TPKE8K:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 0.88
+        height: 2.27
+    layout_KMNZTC:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 3.86
+        height: 3.84
+    layout_RDFDL2:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 3.26
+        height: 3.84
+    layout_UTVIZL:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 3.38
+        height: 3.84
+    layout_P81OU6:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fill
+      dimensions:
+        width: 37.08
+    layout_7N3FNW:
+      mode: column
+      alignItems: center
+      alignSelf: stretch
+      gap: 16px
+      padding: 16px 24px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_J8SGKV:
+      mode: row
+      justifyContent: center
+      alignItems: center
+      gap: 9px
+      sizing:
+        horizontal: fixed
+        vertical: hug
+      dimensions:
+        width: 240
+    layout_J56R8P:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 6
+        'y': 3
+      dimensions:
+        width: 11
+        height: 18
+    layout_DW25ME:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 11
+        height: 18
+    layout_RYTV5N:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 3
+        'y': 3
+      dimensions:
+        width: 18
+        height: 18
+    layout_2P59GS:
+      mode: row
+      alignItems: stretch
+      padding: 6px
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 32
+        height: 32
+    layout_JTC9BW:
+      mode: none
+      sizing:
+        horizontal: fill
+        vertical: fill
+    layout_WAN1CT:
+      mode: row
+      justifyContent: center
+      alignItems: center
+      alignSelf: stretch
+      gap: 8px
+      sizing:
+        horizontal: fill
+        vertical: hug
+    layout_8LXJ9M:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: hug
+      dimensions:
+        width: 240
+    fill_YTQCA8:
+      - rgba(0, 29, 38, 0.6)
+    layout_GVOL1J:
+      mode: row
+      justifyContent: space-between
+      alignItems: center
+      gap: 10px
+      padding: 14px 8px
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 12
+        'y': 12
+      dimensions:
+        width: 335
+        height: 56
+    fill_FE9IOD:
+      - rgba(255, 255, 255, 0.4)
+    stroke_3H29E2:
+      colors:
+        - rgba(0, 29, 38, 0.08)
+      strokeWeight: 1px
+    effect_U17EMW:
+      boxShadow: 0px 4px 24px 0px rgba(101, 70, 222, 0.04)
+    layout_26XH34:
+      mode: row
+      justifyContent: flex-end
+      alignItems: stretch
+      gap: 10.666666984558105px
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 108.67
+        height: 31.94
+    layout_JQGOEO:
+      mode: column
+      alignSelf: stretch
+      gap: 5.333333492279053px
+      sizing:
+        horizontal: hug
+        vertical: fill
+    layout_GJUVL8:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fill
+      dimensions:
+        width: 50.79
+    layout_DEDNLX:
+      mode: none
+      sizing:
+        horizontal: fill
+        vertical: fixed
+      dimensions:
+        height: 5.41
+    layout_IFMVRI:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 4.63
+        height: 4.33
+    layout_VBOYTZ:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 0.98
+        height: 4.28
+    layout_BCN7PE:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 3.75
+        height: 4.28
+    layout_7F8WYF:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 3.26
+        height: 5.41
+    layout_KBFFQW:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 0.98
+        height: 2.53
+    layout_ONOWF3:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 4.3
+        height: 4.28
+    layout_GMVBR3:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 3.64
+        height: 4.28
+    layout_CQYIKT:
+      mode: none
+      sizing: {}
+      dimensions:
+        width: 3.77
+        height: 4.28
+    layout_NITAJ6:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fill
+      dimensions:
+        width: 47.38
+    layout_3GPFOY:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      position: absolute
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 375
+        height: 44
+    layout_VAU0GG:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 0
+      dimensions:
+        width: 375
+        height: 30
+    layout_PHWLLV:
+      mode: row
+      alignItems: center
+      gap: 4px
+      sizing:
+        horizontal: hug
+        vertical: hug
+      locationRelativeToParent:
+        x: 292
+        'y': 16
+    layout_LPQ8RX:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 20
+        height: 14
+    layout_BLC6IU:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 11
+        'y': 4
+      dimensions:
+        width: 3
+        height: 8
+    fill_430DRF:
+      - '#D1D1D6'
+    layout_XH2NT5:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 6.5
+        'y': 6
+      dimensions:
+        width: 3
+        height: 6
+    layout_IOGS11:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 2
+        'y': 7.5
+      dimensions:
+        width: 3
+        height: 4.5
+    layout_ZZVZ2Z:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 15.5
+        'y': 2
+      dimensions:
+        width: 3
+        height: 10
+    fill_WUI1KK:
+      - rgba(255, 255, 255, 0.18)
+    layout_TZ14MU:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 16
+        height: 14
+    layout_RTG5KZ:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 5.94
+        'y': 8.94
+      dimensions:
+        width: 4.37
+        height: 3.06
+    layout_AWEQF1:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 3.46
+        'y': 5.47
+      dimensions:
+        width: 9.32
+        height: 3.31
+    layout_YEY9WB:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 1
+        'y': 2
+      dimensions:
+        width: 14.25
+        height: 4.32
+    layout_RL2R3W:
+      mode: none
+      sizing:
+        horizontal: fixed
+        vertical: fixed
+      dimensions:
+        width: 25
+        height: 14
+    layout_DM0JBR:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 24
+        'y': 5
+      dimensions:
+        width: 1
+        height: 4
+    fill_SR3SK9:
+      - rgba(255, 255, 255, 0.6)
+    layout_8FSVLY:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 0
+        'y': 1
+      dimensions:
+        width: 23
+        height: 12
+    layout_8OT9MF:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 2
+        'y': 3
+      dimensions:
+        width: 19
+        height: 8
+    layout_S9GO7K:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 298
+        'y': 8
+      dimensions:
+        width: 6
+        height: 6
+    layout_V0HBCY:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 21
+        'y': 12
+      dimensions:
+        width: 54
+        height: 21
+    layout_RXV0TB:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 11
+        'y': 3
+      dimensions:
+        width: 33
+        height: 15
+    layout_CGWA8K:
+      mode: none
+      sizing: {}
+      locationRelativeToParent:
+        x: 2
+        'y': 2
+      dimensions:
+        width: 28.43
+        height: 11.09

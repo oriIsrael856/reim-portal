@@ -27,6 +27,16 @@ const Chapter4Section = ({ getValue, update }) => {
           onUpdate={(v) => update('chapter4.nativSystem.principles', v)}
           icon={ListIcon}
         />
+        <SmartField
+          label="נתיב - תמיכה והדרכה (טקסט)"
+          value={getValue('chapter4.nativSystem.support')}
+          onChange={(v) => update('chapter4.nativSystem.support', v)}
+        />
+        <SmartField
+          label="נתיב - קישור כפתור (URL)"
+          value={getValue('chapter4.nativSystem.ctaUrl')}
+          onChange={(v) => update('chapter4.nativSystem.ctaUrl', v)}
+        />
         <ImageField label="תמונה Hero" value={getValue('chapter4.hero.image')} onChange={(v) => update('chapter4.hero.image', v)} />
       </div>
 

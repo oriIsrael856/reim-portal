@@ -1,0 +1,1141 @@
+/**
+ * Chapter 3 — mobile (Figma node 253:6705 / Main content 253:6715)
+ * Token values mirror docs/figma-cache-page3.json — keep in sync when cache updates.
+ */
+
+.ch3-mobile {
+  /* —— Page frame (layout.pageFrame) —— */
+  --ch3-page-max-width: 375px;
+  --ch3-page-bezel: #46319b;
+  --ch3-page-pad-top: 48px;
+  --ch3-page-pad-bottom: 12px;
+
+  /* —— Main content sheet (layout.mainContentColumn) —— */
+  --ch3-main-max-width: 359px;
+  --ch3-main-radius: 24px;
+  --ch3-main-bg: #ffffff;
+  --ch3-section-overlap-y: -24px;
+
+  /* —— Palette (colors.palette + colors.text) —— */
+  --ch3-ink: #001d26;
+  --ch3-purple-brand: #6546de;
+  --ch3-green-tag: #bce079;
+  --ch3-green-tag-dark: #839c54;
+  --ch3-yellow-accent: #ffb23b;
+  --ch3-green-soft: rgba(188, 224, 121, 0.12);
+  --ch3-yellow-soft: rgba(255, 178, 59, 0.16);
+  --ch3-purple-tint: rgba(101, 70, 222, 0.08);
+  --ch3-purple-tint-strong: rgba(101, 70, 222, 0.12);
+  --ch3-step-card-fill-top: rgba(188, 224, 121, 0.08);
+  --ch3-list-icon-bg: rgba(101, 70, 222, 0.16);
+  --ch3-step-icon-bg: rgba(188, 224, 121, 0.6);
+  --ch3-card-surface-purple: rgba(101, 70, 222, 0.04);
+  --ch3-card-surface-learning: rgba(255, 178, 59, 0.04);
+  --ch3-card-surface-admin: rgba(196, 33, 59, 0.04);
+  --ch3-resp-card-min-h: 520px;
+  --ch3-resp-cards-vertical-gap: 200px;
+  --ch3-resp-card-gap-purple: 14px;
+  --ch3-resp-card-gap-learning: 24px;
+  --ch3-resp-admin-main-gap: 100px;
+  --ch3-resp-admin-title-list-gap: 24px;
+  --ch3-resp-title-admin: #c4213b;
+  --ch3-meeting-surface-top: rgba(255, 178, 59, 0.08);
+  --ch3-accordion-row: rgba(101, 70, 222, 0.04);
+  --ch3-accordion-icon-open: rgba(101, 70, 222, 0.08);
+  --ch3-accordion-border-collapsed: rgba(101, 70, 222, 0.08);
+  --ch3-red-card-title: #c4213b;
+
+  /* —— Borders (colors.borders.cardStroke) —— */
+  --ch3-card-stroke: #001d26;
+  --ch3-card-stroke-width: 1.5px;
+
+  /* —— Typography (typography.styles) —— */
+  --ch3-font-rubik: var(--font-rubik, 'Rubik', sans-serif);
+  --ch3-font-salsa: var(--font-salsa, 'Salsa', cursive);
+  --ch3-type-chapter-small-size: 16px;
+  --ch3-type-chapter-small-lh: 1.28;
+  --ch3-type-chapter-small-ls: 0.009375em;
+  --ch3-type-h4-size: 34px;
+  --ch3-type-h4-weight: 700;
+  --ch3-type-h4-lh: 1.1;
+  --ch3-type-h4-ls: 0.00735294em;
+  --ch3-type-h5-size: 24px;
+  --ch3-type-h5-weight: 700;
+  --ch3-type-h5-lh: 1.334;
+  --ch3-type-h6-size: 20px;
+  --ch3-type-h6-weight: 600;
+  --ch3-type-h6-lh: 1.28;
+  --ch3-type-h6-ls: 0.0075em;
+  --ch3-type-subtitle1-size: 16px;
+  --ch3-type-subtitle1-weight: 500;
+  --ch3-type-subtitle1-lh: 1.22;
+  --ch3-type-subtitle1-ls: 0.009375em;
+  --ch3-type-body1-size: 16px;
+  --ch3-type-body1-weight: 400;
+  --ch3-type-body1-lh: 1.32;
+  --ch3-type-body1-ls: 0.009375em;
+  --ch3-type-body2-size: 14px;
+  --ch3-type-body2-weight: 400;
+  --ch3-type-body2-lh: 1.43;
+  --ch3-type-body2-ls: 0.01214286em;
+  --ch3-type-display-chapter-size: 80px;
+  --ch3-type-display-chapter-lh: 1.28;
+  --ch3-type-display-chapter-ls: 0.00104508em;
+  --ch3-type-button-lg-size: 16px;
+  --ch3-type-button-lg-weight: 700;
+  --ch3-type-button-lg-lh: 1.625;
+  --ch3-type-button-lg-ls: 0.02875em;
+
+  /* —— Layout sections (layout.*) —— */
+  --ch3-s1-pad-top: 120px;
+  --ch3-s1-pad-x: 24px;
+  --ch3-s1-stack-gap: 8px;
+  --ch3-hero-inner-gap: 24px;
+  --ch3-hero-text-max: 303px;
+  --ch3-page-content-gap-y: 200px;
+  --ch3-page-content-pad-x: 40px;
+  --ch3-page-content-min-h: 700px;
+  /* Figma 253:8650 Image (Page Content hero photo block) */
+  --ch3-p3hi-outer-h: 700px;
+  --ch3-p3hi-column-gap: 11px;
+  --ch3-p3hi-parent-w: 359px;
+  --ch3-p3hi-photo-w: 311px;
+  --ch3-p3hi-photo-h: 600px;
+  --ch3-p3hi-photo-radius: 16px;
+  --ch3-p3hi-gradient: linear-gradient(162deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 94%);
+  --ch3-p3hi-deco-size: 122px;
+  --ch3-p3hi-deco-inset-start: 119px;
+  --ch3-p3hi-deco-top: -13px;
+  --ch3-p3hi-deco-stroke-w: 2px;
+  --ch3-p3hi-deco-dash: 4px;
+  --ch3-p3hi-deco-border: rgba(0, 29, 38, 0.24);
+  /* Badge: physical left (Hebrew “שמאל”) — do not use inset-inline-* here; see .cursor/rules/figma-rtl-physical-placement.mdc */
+  --ch3-p3hi-badge-inset-left: 49px;
+  --ch3-p3hi-badge-bottom: 60px;
+  --ch3-onboard-pad-top: 60px;
+  --ch3-onboard-pad-x: 24px;
+  --ch3-onboard-pad-bottom: 80px;
+  --ch3-onboard-section-gap: 80px;
+  --ch3-onboard-header-gap: 24px;
+  --ch3-onboard-goals-gap: 48px;
+  --ch3-onboard-steps-gap: 32px;
+  --ch3-step-card-pad-t: 32px;
+  --ch3-step-card-pad-x: 24px;
+  --ch3-step-card-pad-b: 24px;
+  --ch3-step-card-inner-gap: 14px;
+  --ch3-step-body-gap: 12px;
+  /* Onboarding Section 3 — chapter label chip (Figma 104:3059 Web / Right) */
+  --ch3-onboard-chip-bg: #bce079;
+  --ch3-onboard-chip-stroke: #001d26;
+  --ch3-onboard-chip-shadow: 2px 2px 0 0 rgba(0, 29, 38, 1);
+  --ch3-onboard-chip-radius: 24px 2px 0 24px;
+  --ch3-onboard-chip-pad-top: 12px;
+  --ch3-onboard-chip-pad-end: 14px;
+  --ch3-onboard-chip-pad-bottom: 12px;
+  --ch3-onboard-chip-pad-start: 6px;
+  --ch3-onboard-chip-num-bg: #839c54;
+  --ch3-onboard-chip-top: -21px;
+  /* Physical top-right: chip’s right edge = card padding-box right (see figma-rtl-badge-and-title-anchor.mdc) */
+  --ch3-onboard-chip-approx-width: 56px;
+  --ch3-step-card-head-gap-from-chip: 10px;
+  --ch3-meeting-radius: 24px 24px 0 0;
+  --ch3-meeting-pad-t: 60px;
+  --ch3-meeting-pad-x: 24px;
+  --ch3-meeting-pad-b: 60px;
+  --ch3-meeting-col-gap: 60px;
+  --ch3-meeting-image-w: 303px;
+  --ch3-meeting-image-h: 454px;
+  --ch3-meeting-content-gap: 24px;
+  --ch3-meeting-head-gap: 8px;
+  --ch3-meeting-deco-star-size: 50px;
+  --ch3-meeting-deco-dot: 9px;
+  --ch3-acc-row-gap: 24px;
+  --ch3-acc-list-gap: 12px;
+  --ch3-acc-icon-hit: 16px;
+  --ch3-acc-panel-pad-start: 60px;
+  --ch3-acc-panel-pad-bottom: 24px;
+  --ch3-image-radius: 16px;
+  --ch3-card-outer-radius: 24px;
+  --ch3-step-card-radius: 8px;
+
+  /* —— Decorations (sections.gapsVsChapter3) —— */
+  --ch3-ellipse-green-w: 496px;
+  --ch3-ellipse-green-h: 403px;
+  --ch3-ellipse-orange-w: 528px;
+  --ch3-ellipse-orange-h: 464px;
+  --ch3-blur-ambient: 200px;
+  --ch3-header-accent-w: 89px;
+  --ch3-header-accent-h: 8px;
+  --ch3-connector-color: rgba(0, 29, 38, 0.24);
+  --ch3-connector-weight: 2px;
+  --ch3-connector-dash: 6;
+
+  /* —— Effects (effects.shadows.chapterLabelDrop) —— */
+  --ch3-label-shadow: 2px 2px 0 0 rgba(0, 29, 38, 1);
+
+  /* —— Accordion row (sections.gapsVsChapter3.accordionRowChrome) —— */
+  --ch3-accordion-radius: 8px;
+  /* Figma resting row uses 80px vertical padding; min-height preserves tap target without empty space */
+  --ch3-accordion-pad-y-collapsed: 16px;
+  --ch3-accordion-min-h-collapsed: 80px;
+  --ch3-accordion-pad-x: 16px;
+}
+
+.ch3-mobile__bezel {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--ch3-page-max-width);
+  margin-inline: auto;
+  min-height: 100%;
+  padding: var(--ch3-page-pad-top) 0 var(--ch3-page-pad-bottom);
+  background: var(--ch3-page-bezel);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ch3-mobile__sheet {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--ch3-main-max-width);
+  background: var(--ch3-main-bg);
+  border-radius: var(--ch3-main-radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-section-overlap-y);
+  overflow: visible;
+}
+
+.ch3-mobile__section {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ch3-mobile__section--overlap {
+  margin-top: 0;
+}
+
+/* —— Section 1 hero —— */
+.ch3-s1 {
+  padding: var(--ch3-s1-pad-top) var(--ch3-s1-pad-x) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-s1-stack-gap);
+  overflow: hidden;
+}
+
+.ch3-s1__blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: var(--ch3-main-radius) var(--ch3-main-radius) 0 0;
+}
+
+.ch3-s1__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(var(--ch3-blur-ambient));
+}
+
+.ch3-s1__blob--green {
+  width: var(--ch3-ellipse-green-w);
+  height: var(--ch3-ellipse-green-h);
+  background: var(--ch3-green-soft);
+  inset-inline-start: -83px;
+  top: 67px;
+}
+
+.ch3-s1__blob--orange {
+  width: var(--ch3-ellipse-orange-w);
+  height: var(--ch3-ellipse-orange-h);
+  background: var(--ch3-yellow-soft);
+  inset-inline-start: -146px;
+  top: 455px;
+}
+
+.ch3-s1__hero {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ch3-hero-inner-gap);
+  padding: var(--ch3-hero-inner-gap) 0;
+  max-width: 100%;
+}
+
+.ch3-s1__heroText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: var(--ch3-hero-text-max);
+  width: 100%;
+  position: relative;
+}
+
+.ch3-s1__title--secondary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.ch3-s1__titleBottom {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+}
+
+.ch3-s1__titleBottom::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 12px;
+  background: var(--ch3-yellow-accent);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.ch3-chapterLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 8px 24px 8px;
+  background: var(--ch3-green-tag);
+  border: var(--ch3-card-stroke-width) solid var(--ch3-card-stroke);
+  border-radius: 24px;
+  box-shadow: var(--ch3-label-shadow);
+  position: relative;
+  z-index: 1;
+}
+
+.ch3-chapterLabel__text {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-body1-size);
+  font-weight: var(--ch3-type-body1-weight);
+  line-height: var(--ch3-type-body1-lh);
+  letter-spacing: var(--ch3-type-body1-ls);
+  color: var(--ch3-ink);
+  text-align: center;
+}
+
+.ch3-chapterLabel__num {
+  font-family: var(--ch3-font-salsa);
+  font-size: var(--ch3-type-chapter-small-size);
+  line-height: var(--ch3-type-chapter-small-lh);
+  letter-spacing: var(--ch3-type-chapter-small-ls);
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ch3-green-tag-dark);
+  border: var(--ch3-card-stroke-width) solid var(--ch3-card-stroke);
+  border-radius: 200px;
+  color: var(--ch3-main-bg);
+  text-align: center;
+}
+
+.ch3-s1__title {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-h4-size);
+  font-weight: var(--ch3-type-h4-weight);
+  line-height: var(--ch3-type-h4-lh);
+  letter-spacing: var(--ch3-type-h4-ls);
+  color: var(--ch3-ink);
+  text-align: center;
+  white-space: pre-line;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.ch3-s1__desc {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-h6-size);
+  font-weight: var(--ch3-type-h6-weight);
+  line-height: var(--ch3-type-h6-lh);
+  letter-spacing: var(--ch3-type-h6-ls);
+  color: var(--ch3-ink);
+  text-align: center;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.ch3-s1__star {
+  color: var(--ch3-ink);
+  opacity: 0.4;
+}
+
+/* —— Page content: image (253:8650) + cards (padding 40px על הכרטיסים בלבד) —— */
+.ch3-pageContent {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--ch3-page-content-gap-y);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ch3-pageContent__cards {
+  padding: 0 var(--ch3-page-content-pad-x);
+  box-sizing: border-box;
+}
+
+/* Figma 253:8650 — column 700px, תמונה 311×600 במרכז, דקורציות absolute לפי הורה */
+.ch3-heroImage {
+  position: relative;
+  width: 100%;
+  max-width: var(--ch3-p3hi-parent-w);
+  margin-inline: auto;
+  min-height: var(--ch3-p3hi-outer-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--ch3-p3hi-column-gap);
+  box-sizing: border-box;
+}
+
+.ch3-heroImage__photoWrap {
+  position: relative;
+  z-index: 1;
+  width: var(--ch3-p3hi-photo-w);
+  max-width: 100%;
+  aspect-ratio: 311 / 600;
+  flex-shrink: 0;
+}
+
+.ch3-heroImage__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--ch3-p3hi-photo-radius);
+  border: var(--ch3-card-stroke-width) solid var(--ch3-card-stroke);
+  box-shadow: var(--ch3-label-shadow);
+  overflow: hidden;
+  background: #e0e0e0;
+}
+
+.ch3-heroImage__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.ch3-heroImage__gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--ch3-p3hi-gradient);
+  border-radius: inherit;
+}
+
+.ch3-heroImage__deco {
+  position: absolute;
+  z-index: 2;
+  width: var(--ch3-p3hi-deco-size);
+  height: var(--ch3-p3hi-deco-size);
+  inset-inline-start: var(--ch3-p3hi-deco-inset-start);
+  top: var(--ch3-p3hi-deco-top);
+  border: var(--ch3-p3hi-deco-stroke-w) dashed var(--ch3-p3hi-deco-border);
+  border-radius: 50%;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.ch3-heroImage__badge {
+  position: absolute;
+  z-index: 3;
+  left: var(--ch3-p3hi-badge-inset-left);
+  right: auto;
+  bottom: var(--ch3-p3hi-badge-bottom);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.ch3-cardStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-resp-cards-vertical-gap);
+  width: 100%;
+}
+
+/* Figma 253:8656 / 253:8685 / 253:8698 — גובה אחיד 520px, רקע ו-padding לפי וריאנט */
+.ch3-respCard {
+  box-sizing: border-box;
+  min-height: var(--ch3-resp-card-min-h);
+  border-radius: var(--ch3-card-outer-radius);
+  border: var(--ch3-card-stroke-width) solid var(--ch3-card-stroke);
+  box-shadow: var(--ch3-label-shadow);
+  padding: 32px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-resp-card-gap-purple);
+}
+
+.ch3-respCard--purple {
+  background: linear-gradient(180deg, var(--ch3-card-surface-purple) 0%, #ffffff 100%);
+}
+
+.ch3-respCard--learning {
+  padding: 32px 24px 40px 40px;
+  gap: var(--ch3-resp-card-gap-learning);
+  background: linear-gradient(180deg, var(--ch3-card-surface-learning) 0%, #ffffff 100%);
+}
+
+.ch3-respCard--admin {
+  gap: var(--ch3-resp-admin-main-gap);
+  justify-content: space-between;
+  background: linear-gradient(180deg, var(--ch3-card-surface-admin) 0%, #ffffff 100%);
+}
+
+.ch3-respCard__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-resp-admin-title-list-gap);
+  flex: 1;
+  min-height: 0;
+}
+
+.ch3-respCard__title {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-h5-size);
+  font-weight: var(--ch3-type-h5-weight);
+  line-height: var(--ch3-type-h5-lh);
+  text-align: end;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.ch3-respCard__title--purple {
+  color: var(--ch3-purple-brand);
+}
+
+.ch3-respCard__title--learning {
+  color: var(--ch3-yellow-accent);
+}
+
+.ch3-respCard__title--admin {
+  color: var(--ch3-resp-title-admin);
+}
+
+.ch3-respCard__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ch3-respCard__row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.ch3-respCard__rowIcon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.ch3-respCard__text {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-body2-size);
+  font-weight: var(--ch3-type-body2-weight);
+  line-height: var(--ch3-type-body2-lh);
+  letter-spacing: var(--ch3-type-body2-ls);
+  color: var(--ch3-ink);
+  text-align: start;
+  flex: 1;
+  min-width: 0;
+}
+
+.ch3-respCard__cta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* כפתור 253:8715 — Purple Filed, Components/Button Large */
+.ch3-respCard__btn {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-button-lg-size);
+  font-weight: var(--ch3-type-button-lg-weight);
+  line-height: var(--ch3-type-button-lg-lh);
+  letter-spacing: var(--ch3-type-button-lg-ls);
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: var(--ch3-main-bg);
+  background: var(--ch3-purple-brand);
+  border: 1px solid var(--ch3-purple-brand);
+  border-radius: 100px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* —— Onboarding —— */
+.ch3-onboard {
+  position: relative;
+  padding: var(--ch3-onboard-pad-top) var(--ch3-onboard-pad-x) var(--ch3-onboard-pad-bottom);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-onboard-section-gap);
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--ch3-purple-tint) 0%, #ffffff 100%);
+}
+
+.ch3-onboard__blob {
+  position: absolute;
+  /* Figma node 253:8816 — scaled position inside section (not absolute doc Y) */
+  width: 916px;
+  height: 756px;
+  max-width: 220%;
+  border-radius: 50%;
+  background: var(--ch3-purple-tint-strong);
+  filter: blur(var(--ch3-blur-ambient));
+  inset-inline-start: -50%;
+  bottom: -15%;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.ch3-onboard__introColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--ch3-onboard-header-gap);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.ch3-onboard__headerFrame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  gap: 8px;
+  padding-top: 52px;
+  box-sizing: border-box;
+}
+
+.ch3-onboard__accentLine {
+  position: absolute;
+  width: var(--ch3-header-accent-w);
+  height: var(--ch3-header-accent-h);
+  background: var(--ch3-green-tag);
+  border-radius: 2px;
+  left: 41px;
+  top: 42px;
+}
+
+.ch3-onboard__kicker {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-body1-size);
+  font-weight: var(--ch3-type-body1-weight);
+  line-height: var(--ch3-type-body1-lh);
+  letter-spacing: var(--ch3-type-body1-ls);
+  color: var(--ch3-ink);
+  text-align: end;
+  align-self: stretch;
+  margin: 0;
+}
+
+.ch3-onboard__title {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-h5-size);
+  font-weight: var(--ch3-type-h5-weight);
+  line-height: var(--ch3-type-h5-lh);
+  color: var(--ch3-ink);
+  text-align: center;
+  margin: 0;
+  align-self: stretch;
+}
+
+.ch3-onboard__intro {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-h6-size);
+  font-weight: var(--ch3-type-h6-weight);
+  line-height: var(--ch3-type-h6-lh);
+  letter-spacing: var(--ch3-type-h6-ls);
+  color: var(--ch3-ink);
+  text-align: center;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.ch3-onboard__goals {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--ch3-onboard-goals-gap);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.ch3-onboard__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-onboard-steps-gap);
+  width: 100%;
+}
+
+.ch3-stepCard {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: var(--ch3-step-card-radius);
+  border: var(--ch3-card-stroke-width) solid var(--ch3-card-stroke);
+  box-shadow: var(--ch3-label-shadow);
+  padding: var(--ch3-step-card-pad-t) var(--ch3-step-card-pad-x) var(--ch3-step-card-pad-b);
+  display: flex;
+  flex-direction: column;
+  /* RTL: flex-start on cross axis = physical right — titles + list hug the correct edge */
+  align-items: flex-start;
+  gap: var(--ch3-step-card-inner-gap);
+  background: linear-gradient(180deg, var(--ch3-step-card-fill-top) 0%, #ffffff 100%);
+}
+
+.ch3-stepCard__chapterChip {
+  position: absolute;
+  top: var(--ch3-onboard-chip-top);
+  right: 0;
+  left: auto;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: var(--ch3-onboard-chip-pad-top) var(--ch3-onboard-chip-pad-end) var(--ch3-onboard-chip-pad-bottom)
+    var(--ch3-onboard-chip-pad-start);
+  min-height: 42px;
+  box-sizing: border-box;
+  background: var(--ch3-onboard-chip-bg);
+  border: var(--ch3-card-stroke-width) solid var(--ch3-onboard-chip-stroke);
+  border-radius: var(--ch3-onboard-chip-radius);
+  box-shadow: var(--ch3-onboard-chip-shadow);
+}
+
+.ch3-stepCard__chapterChipPill {
+  width: 32px;
+  height: 32px;
+  border-radius: 200px;
+  background: var(--ch3-onboard-chip-num-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ch3-stepCard__chapterChipNum {
+  font-family: var(--ch3-font-salsa);
+  font-size: var(--ch3-type-chapter-small-size);
+  font-weight: 400;
+  line-height: var(--ch3-type-chapter-small-lh);
+  letter-spacing: var(--ch3-type-chapter-small-ls);
+  color: #ffffff;
+  text-align: center;
+}
+
+.ch3-stepCard__head {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  align-items: flex-start;
+  gap: 6px;
+  /* RTL: inline-start = right — reserve chip width + small gap so titles don’t sit under the badge */
+  padding-inline-start: calc(var(--ch3-onboard-chip-approx-width) + var(--ch3-step-card-head-gap-from-chip));
+  box-sizing: border-box;
+}
+
+.ch3-stepCard__stepLabel {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-body2-size);
+  font-weight: var(--ch3-type-body2-weight);
+  line-height: var(--ch3-type-body2-lh);
+  color: var(--ch3-ink);
+  text-align: start;
+  margin: 0;
+  max-width: 100%;
+}
+
+.ch3-stepCard__stepTitle {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-subtitle1-size);
+  font-weight: var(--ch3-type-subtitle1-weight);
+  line-height: var(--ch3-type-subtitle1-lh);
+  letter-spacing: var(--ch3-type-subtitle1-ls);
+  color: var(--ch3-ink);
+  text-align: start;
+  margin: 0;
+  max-width: 100%;
+}
+
+.ch3-stepCard--last {
+  min-height: 260px;
+  padding-bottom: 88px;
+}
+
+/* Figma 253:9004 — anchor from bottom so short 2-line cards still fit */
+.ch3-stepCard__decoStar {
+  position: absolute;
+  left: 122px;
+  bottom: 28px;
+  width: 56px;
+  height: 56px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ch3-stepCard__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-step-body-gap);
+  align-self: stretch;
+}
+
+/* RTL row: flex-start = physical right — icon first so green pill’s right edge aligns with card content right */
+.ch3-stepCard__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  align-self: stretch;
+}
+
+.ch3-stepCard__itemIcon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 24px;
+  box-sizing: border-box;
+  border-radius: 200px;
+  background: var(--ch3-step-icon-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ch3-ink);
+}
+
+.ch3-stepCard__itemText {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-body2-size);
+  font-weight: var(--ch3-type-body2-weight);
+  line-height: var(--ch3-type-body2-lh);
+  letter-spacing: var(--ch3-type-body2-ls);
+  color: var(--ch3-ink);
+  text-align: start;
+  flex: 1;
+  min-width: 0;
+}
+
+.ch3-stepConnector {
+  align-self: center;
+  min-height: 48px;
+  width: 0;
+  /* 2px dashed rgba(0,29,38,0.24) — dash rhythm ~6px (browser-dependent) */
+  border-inline-end: 2px dashed var(--ch3-connector-color);
+}
+
+/* —— Meeting + accordion —— */
+.ch3-meeting {
+  border-radius: var(--ch3-meeting-radius);
+  padding: var(--ch3-meeting-pad-t) var(--ch3-meeting-pad-x) var(--ch3-meeting-pad-b);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ch3-meeting-col-gap);
+  background: linear-gradient(180deg, var(--ch3-meeting-surface-top) 0%, #ffffff 100%);
+  max-width: var(--ch3-main-max-width);
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+.ch3-meeting__collage {
+  position: relative;
+  width: var(--ch3-meeting-image-w);
+  height: var(--ch3-meeting-image-h);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.ch3-meeting__decoStar {
+  position: absolute;
+  left: calc(46.28 / 303 * 100%);
+  top: calc(333.51 / 454 * 100%);
+  width: var(--ch3-meeting-deco-star-size);
+  height: var(--ch3-meeting-deco-star-size);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.ch3-meeting__decoDot {
+  position: absolute;
+  left: calc(283 / 303 * 100%);
+  top: calc(213 / 454 * 100%);
+  width: var(--ch3-meeting-deco-dot);
+  height: var(--ch3-meeting-deco-dot);
+  border-radius: 50%;
+  background: var(--ch3-green-tag);
+  z-index: 4;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.ch3-meeting__content {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: var(--ch3-meeting-content-gap);
+  width: 100%;
+}
+
+.ch3-meeting__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ch3-meeting-head-gap);
+  align-self: stretch;
+}
+
+.ch3-meeting__img {
+  position: absolute;
+  border-radius: 24px;
+  border: var(--ch3-card-stroke-width) solid var(--ch3-card-stroke);
+  box-shadow: var(--ch3-label-shadow);
+  overflow: hidden;
+}
+
+.ch3-meeting__img--a {
+  width: 84%;
+  aspect-ratio: 256.65 / 311.52;
+  inset-inline-end: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.ch3-meeting__img--b {
+  width: 69%;
+  aspect-ratio: 209.03 / 186.17;
+  inset-inline-start: 0;
+  bottom: 0;
+  z-index: 3;
+}
+
+.ch3-meeting__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* RTL: text-align:start = inline-start = physical right (end would bunch copy on the left) */
+.ch3-meeting__rec {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-body1-size);
+  font-weight: var(--ch3-type-body1-weight);
+  line-height: var(--ch3-type-body1-lh);
+  letter-spacing: var(--ch3-type-body1-ls);
+  color: var(--ch3-ink);
+  text-align: start;
+  margin: 0;
+  align-self: stretch;
+  width: 100%;
+}
+
+.ch3-meeting__title {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-h5-size);
+  font-weight: var(--ch3-type-h5-weight);
+  line-height: var(--ch3-type-h5-lh);
+  color: var(--ch3-ink);
+  text-align: start;
+  margin: 0;
+  align-self: stretch;
+  width: 100%;
+}
+
+.ch3-acc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-acc-list-gap);
+  width: 100%;
+  align-self: stretch;
+}
+
+.ch3-acc__item {
+  border-radius: var(--ch3-accordion-radius);
+  margin-bottom: 0;
+  border: 1px solid transparent;
+}
+
+.ch3-acc__item--open {
+  background: linear-gradient(180deg, var(--ch3-accordion-row) 0%, #ffffff 100%);
+  border: 1px solid var(--ch3-accordion-border-collapsed);
+  border-inline-start: 2px solid var(--ch3-purple-brand);
+}
+
+.ch3-acc__item--closed {
+  background: linear-gradient(180deg, var(--ch3-accordion-row) 0%, #ffffff 100%);
+  border: 1px solid var(--ch3-accordion-border-collapsed);
+}
+
+/* RTL row: title at inline-start (physical right), +/- at inline-end (physical left) — space-between pins both edges */
+.ch3-acc__btn {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ch3-acc-list-gap);
+  padding: var(--ch3-accordion-pad-y-collapsed) var(--ch3-accordion-pad-x);
+  min-height: var(--ch3-accordion-min-h-collapsed);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: start;
+  box-sizing: border-box;
+}
+
+.ch3-acc__item--open .ch3-acc__btn {
+  padding: 16px;
+  min-height: unset;
+}
+
+.ch3-acc__item--closed .ch3-acc__btn {
+  padding: 24px 16px;
+}
+
+.ch3-acc__title {
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-subtitle1-size);
+  font-weight: var(--ch3-type-subtitle1-weight);
+  line-height: var(--ch3-type-subtitle1-lh);
+  letter-spacing: var(--ch3-type-subtitle1-ls);
+  color: var(--ch3-ink);
+  flex: 1;
+  min-width: 0;
+  text-align: start;
+}
+
+.ch3-acc__item--open .ch3-acc__title {
+  color: var(--ch3-purple-brand);
+}
+
+.ch3-acc__item--closed .ch3-acc__title {
+  font-size: var(--ch3-type-body1-size);
+  font-weight: var(--ch3-type-body1-weight);
+  line-height: var(--ch3-type-body1-lh);
+  letter-spacing: var(--ch3-type-body1-ls);
+}
+
+.ch3-acc__icon {
+  width: var(--ch3-acc-icon-hit);
+  height: var(--ch3-acc-icon-hit);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.ch3-acc__icon--open {
+  background: var(--ch3-accordion-icon-open);
+  color: var(--ch3-purple-brand);
+}
+
+.ch3-acc__icon--closed {
+  background: #ffffff;
+  color: var(--ch3-ink);
+  border: 1px solid var(--ch3-accordion-border-collapsed);
+}
+
+.ch3-acc__panel {
+  padding-block-start: 0;
+  padding-block-end: var(--ch3-acc-panel-pad-bottom);
+  padding-inline-start: var(--ch3-acc-panel-pad-start);
+  padding-inline-end: 0;
+  font-family: var(--ch3-font-rubik);
+  font-size: var(--ch3-type-body2-size);
+  font-weight: var(--ch3-type-body2-weight);
+  line-height: var(--ch3-type-body2-lh);
+  letter-spacing: var(--ch3-type-body2-ls);
+  color: var(--ch3-ink);
+  text-align: start;
+  white-space: pre-line;
+  box-sizing: border-box;
+}
+
+.ch3-mobile__next {
+  padding: 24px 16px 32px;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+/* —— Chapter 3 desktop onboarding (Section 253:8815 — same tokens as .ch3-onboard) —— */
+.ch3-desktop-onboard {
+  position: relative;
+  background: linear-gradient(180deg, var(--ch3-purple-tint) 0%, #ffffff 100%);
+}
+
+.ch3-desktop-onboard__blob {
+  position: absolute;
+  width: 916px;
+  height: 756px;
+  max-width: min(916px, 160vw);
+  border-radius: 50%;
+  background: rgba(101, 70, 222, 0.12);
+  filter: blur(var(--ch3-blur-ambient));
+  inset-inline-start: -25%;
+  top: 5%;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.ch3-desktop-onboard__intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ch3-onboard-header-gap);
+}
+
+.ch3-desktop-onboard__headerFrame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  gap: 8px;
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 52px;
+}

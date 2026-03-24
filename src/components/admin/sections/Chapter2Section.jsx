@@ -67,6 +67,11 @@ const Chapter2Section = ({ getValue, update }) => {
           onChange={(v) => update('chapter2.hero.title', v)}
         />
         <SmartField
+          label="כותרת בשורת הכרום (מובייל)"
+          value={getValue('chapter2.hero.chromeTitle')}
+          onChange={(v) => update('chapter2.hero.chromeTitle', v)}
+        />
+        <SmartField
           label="תיאור"
           value={getValue('chapter2.hero.subtitle')}
           onChange={(v) => update('chapter2.hero.subtitle', v)}
@@ -101,6 +106,18 @@ const Chapter2Section = ({ getValue, update }) => {
         }
         icon={Users}
       />
+
+      <div className="bg-white p-8 rounded-[32px] shadow-sm space-y-4">
+        <h3 className="font-black text-xl">כותרת בלוק המטרות (מובייל)</h3>
+        <p className="text-sm text-gray-600">
+          מוצג מעל רשימת המטרות. אפשר שורה חדשה עם Enter או <code className="text-xs bg-gray-100 px-1 rounded">\n</code> בטקסט.
+        </p>
+        <SmartField
+          label="כותרת (למשל: מטרות + שורה שנייה)"
+          value={getValue('chapter2.contentBox.goalsTitle')}
+          onChange={(v) => update('chapter2.contentBox.goalsTitle', v)}
+        />
+      </div>
 
       <UniversalCardEditor
         title="מטרות התוכנית"

@@ -1,61 +1,1468 @@
 @import "tailwindcss";
 
-/* אנימציית ציפה לקישוטים (מטוסי נייר) */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-.animate-float-slow {
-  animation: float 5s ease-in-out infinite;
+/* ========================================
+  1. DESIGN TOKENS (Figma Variables)
+  ======================================== */
+/* Colors + Typography (Tailwind @theme is not supported by your tooling here) */
+:root {
+  --color-brand-purple: #46319B;
+  /* Figma Purple/4 — כותרות H5 */
+  --color-heading-h5: #6546DE;
+  --color-surface: #FFFFFF; /* המשטח הלבן שעליו יושב התוכן */
+  /* כרטיסי תוכן — רקע סגול כמעט לבן */
+  --color-surface-lilac: #F4EFFF;
+  --color-text-main: #1F2937; /* טקסט כהה גנרי לקריאות נוחה */
+  --color-text-muted: #6B7280; /* לאלמנטים אפורים כמו שנתקל בהם בהמשך */
+
+  --font-rubik: 'Rubik', sans-serif;
+  --font-salsa: 'Salsa', cursive;
+
+  /* Layout & Borders */
+  --radius-container: 16px; /* נשלף מפאנל ה-Properties בפיגמה */
+
+  /* --- Chapter 2 Mobile (Figma 194:16426 / 194:16436) --- */
+  /* Figma Copy: 194:16426 "Chapter 2" (purple rail) + 194:16436 "Main content" (white card) */
+  --ch2-page-bg: #46319b;
+  --ch2-mobile-page-pad-top: 48px;
+  --ch2-mobile-page-pad-bottom: 12px;
+  --ch2-mobile-page-max-width: 375px;
+  /* Fill viewport below app header; bottom bar ≈ inner margin + 12px purple strip */
+  --ch2-mobile-chrome-top: 132px;
+  --ch2-mobile-chrome-bottom: 32px;
+  --ch2-main-max-width: 359px;
+  /* ריווח „מעט” מתחת לאייקון התפריט לפני הלוגו והתוכן; השטח הלבן נשאר מיושר לתחתית התפריט */
+  --ch2-mobile-chrome-logo-gap-after-menu: 10px;
+  /* גובה רצועת הלוגו: ריווח + גלולית 56px + padding תחתון — חייב להתאים ל-padding של header-band */
+  --ch2-mobile-chrome-logo-band-height: calc(
+    var(--ch2-mobile-chrome-logo-gap-after-menu) + 56px + 8px
+  );
+  /* ריווח מתחת לגלולית / רצועת הלוגו ומעל תווית הפרק (למשל „פרק שני”) */
+  --ch2-mobile-gap-logo-to-chapter: 14px;
+  /* padding-top ל-body כשהתפריט פתוח (אין גלולית) — רק אוויר מתחת לשורת התפריט */
+  --ch2-mobile-body-pad-menu-open: calc(var(--ch2-mobile-chrome-logo-gap-after-menu) + 8px);
+  --ch2-main-radius: 24px;
+  --ch2-main-shadow: 0px 4px 24px rgba(101, 70, 222, 0.04);
+  --ch2-text-primary: #001d26;
+  --ch2-text-purple: #6546de;
+  --ch2-text-red: #c4213b;
+  --ch2-surface: #ffffff;
+  --ch2-lime: #bce079;
+  --ch2-olive: #839c54;
+  --ch2-orange: #ffb23b;
+  --ch2-section2-border-top: 2px solid #ffb23b;
+  --ch2-section2-bg: linear-gradient(
+    180deg,
+    rgba(255, 178, 59, 0.08) 0%,
+    #ffffff 100%
+  );
+  --ch2-image-border: 1.5px solid #001d26;
+  --ch2-glow-purple: rgba(101, 70, 222, 0.12);
+  --ch2-glow-orange: rgba(255, 178, 59, 0.08);
+  --ch2-type-h4-size: 34px;
+  --ch2-type-h4-lh: 1.1;
+  --ch2-type-h4-ls: 0.00735294em;
+  --ch2-type-body-size: 16px;
+  --ch2-type-body-lh: 1.32;
+  --ch2-type-body-ls: 0.009375em;
+  --ch2-type-h5-size: 24px;
+  --ch2-type-h5-lh: 1.334;
+  --ch2-type-display-chapter: 80px;
+  --ch2-hero-stack-h: 560px;
+  --ch2-gap-text-block: 16px;
+  --ch2-gap-main-vertical: 8px;
+
+  /* Section overlap — Main content column gap -24px (layout_L5PV5Q) */
+  --ch2-section-overlap-y: -24px;
+
+  /* Section 1 — Figma 194:16437 (layout_BHDVF9 / ZCDEKN / 03OB72 / 3U64B4) */
+  --ch2-section1-padding: 120px 24px 0;
+  --ch2-section1-stack-gap: 8px;
+  --ch2-section1-pb: 2rem;
+  --ch2-hero-text-col-max-w: 303px;
+  --ch2-hero-text-col-gap: 16px;
+  --ch2-chapter-label-pad: 8px 24px 4px;
+  --ch2-chapter-label-inner-gap: 16px;
+  --ch2-chapter-label-radius: 24px;
+  --ch2-chapter-label-shadow: 2px 2px 0 0 rgba(0, 29, 38, 1);
+  --ch2-chapter-badge-size: 28px;
+
+  /* Section 2 — Figma 202:3293 (layout_V2KLW3 / 9KE32Z / 8OEVU9 / 8BBKT9 / TQW9XA) */
+  --ch2-section2-padding-top: 60px;
+  --ch2-section2-padding-inline: 24px;
+  --ch2-section2-padding-bottom: 60px;
+  --ch2-section2-title-to-block-gap: 12px;
+  --ch2-section2-body-to-age-gap: 14px;
+  --ch2-section2-description-note-gap: 8px;
+  --ch2-section2-card-padding: 24px;
+  --ch2-section2-card-radius: 24px;
+  --ch2-section2-age-stack-gap: 12px;
+  --ch2-type-subtitle-lh: 1.22;
+  --ch2-type-subtitle-weight: 500;
+  --ch2-type-h6-size: 20px;
+  --ch2-type-h6-lh: 1.28;
+  --ch2-type-h6-ls: 0.0075em;
+  --ch2-type-h6-weight: 600;
+  --ch2-age-cell-border: var(--ch2-image-border);
+  --ch2-age-cell-shadow: var(--ch2-chapter-label-shadow);
+  --ch2-age-cell-gradient: linear-gradient(
+    180deg,
+    rgba(101, 70, 222, 0.04) 0%,
+    #ffffff 100%
+  );
+  --ch2-age-badge-bg: rgba(101, 70, 222, 0.16);
+  --ch2-age-badge-radius: 0 16px 0 16px;
+  --ch2-age-chapter-medium-size: 40px;
+  --ch2-age-chapter-medium-lh: 1.28;
+  --ch2-age-chapter-medium-ls: 0.00375em;
+  --ch2-age-cell-radius: 8px;
+  --ch2-age-cell-padding: 14px 0 12px;
+  --ch2-age-cell-label-to-meta-gap: 8px;
+  --ch2-age-meta-pull: -16px;
+
+  /* Section 3 — Figma 202:3339 (layout_FVZ8T4 / WCKC54 / 8NZX7P / VH25ZL) */
+  --ch2-section3-bg: var(--ch2-section2-bg);
+  --ch2-section3-padding-top: 60px;
+  --ch2-section3-padding-inline: 24px;
+  --ch2-section3-padding-bottom: 80px;
+  --ch2-section3-header-to-goals-gap: 40px;
+  --ch2-section3-goals-stack-gap: 32px;
+  --ch2-section3-title-line-w: 80px;
+  --ch2-section3-title-line-h: 8px;
+  --ch2-section3-card-padding: 32px 0 16px;
+  --ch2-section3-card-radius: 8px;
+  --ch2-section3-card-border: 1.5px solid #001d26;
+  --ch2-section3-card-shadow: 2px 2px 0 0 rgba(0, 29, 38, 1);
+  --ch2-section3-card-bg: linear-gradient(
+    180deg,
+    rgba(188, 224, 121, 0.08) 0%,
+    #ffffff 100%
+  );
+  --ch2-section3-icon-size: 40px;
+  --ch2-section3-icon-offset-y: -20px;
+  --ch2-section3-icon-border: 1.5px solid #001d26;
+
+  /* Section 4 — Figma 202:3379 (layout_D48Q1O / RTX1G7 / FRCMUP / SABD2X) */
+  --ch2-section4-bg: var(--ch2-section2-bg);
+  --ch2-section4-padding-y: 60px;
+  --ch2-section4-padding-x: 24px;
+  --ch2-section4-radius-t: 24px;
+  --ch2-section4-image-to-content-gap: 40px;
+  --ch2-section4-image-h: 205px;
+  --ch2-section4-image-radius: 24px;
+  --ch2-section4-group-gap: 24px;
+  /* layout_XWEJ9W: עמודת כותרת ללא gap מפורש בין כותרת משנה ל-H5 */
+  --ch2-section4-heading-inner-gap: 0px;
+  /* layout_67U9QM / I2UB9S: שם אוכלוסייה ומספר באותה שורה */
+  --ch2-section4-item-inline-gap: 8px;
+  --ch2-section4-body-stack-gap: 16px;
+  --ch2-section4-pop-list-gap: 12px;
+  --ch2-section4-item-padding: 8px 12px 8px 8px;
+  --ch2-section4-item-radius: 8px;
+  --ch2-section4-item-border: 1px solid rgba(101, 70, 222, 0.08);
+  --ch2-section4-item-bg: linear-gradient(
+    180deg,
+    rgba(101, 70, 222, 0.08) 0%,
+    #ffffff 100%
+  );
+  --ch2-section4-item-shadow: 2px 2px 0 0 rgba(0, 29, 38, 1);
+  --ch2-section4-item-row-gap: 24px;
+  --ch2-section4-icon-w: 40px;
+  --ch2-section4-icon-h: 32px;
+  --ch2-type-chapter-small-size: 16px;
+  --ch2-type-chapter-small-lh: 1.28;
+  --ch2-type-chapter-small-ls: 0.009375em;
+
+  /* Section 5 — Group accordions — Figma 202:10011 (tokens aligned to Ch2 mobile system; verify vs file when API available) */
+  --ch2-section5-bg: linear-gradient(180deg, rgba(101, 70, 222, 0.04) 0%, #ffffff 55%);
+  --ch2-section5-padding-y: 60px;
+  --ch2-section5-padding-x: 24px;
+  --ch2-section5-between-groups-gap: 56px;
+  --ch2-section5-eyebrow-to-title-gap: 4px;
+  --ch2-section5-title-block-gap: 24px;
+  --ch2-section5-snippet-to-accordion-gap: 24px;
+  --ch2-section5-accordion-stack-gap: 12px;
+  --ch2-section5-accordion-radius: var(--ch2-section4-item-radius);
+  --ch2-section5-accordion-border: var(--ch2-section4-item-border);
+  --ch2-section5-accordion-border-open: 1px solid rgba(101, 70, 222, 0.12);
+  --ch2-section5-accordion-r-accent: 2px solid var(--ch2-text-purple);
+  --ch2-section5-accordion-bg: var(--ch2-surface);
+  --ch2-section5-trigger-pad-y: 16px;
+  --ch2-section5-trigger-pad-inline: 16px;
+  --ch2-section5-trigger-gap: 16px;
+  --ch2-section5-body-pad-inline: 16px;
+  --ch2-section5-body-pad-bottom: 16px;
+  --ch2-section5-body-offset-start: 20px;
+  --ch2-section5-icon-frame-size: 32px;
+  --ch2-section5-body-color: rgba(0, 29, 38, 0.9);
+
+  /* Section 6 — Figma 202:10011 (file C2NkiNoHtXbBcYwBG3u0Ad Copy) */
+  --ch2-section6-padding: 80px 24px 0;
+  /* Sticky stack (local scrollport — not Figma) */
+  --ch2-why-sticky-offset-base: 16px;
+  --ch2-why-sticky-stack-step: 16px;
+  --ch2-why-sticky-viewport-max-h: min(92dvh, 960px);
+  /* Outer card: opaque base + tint (overlap must not show through) */
+  --ch2-why-card-fill: var(--ch2-surface);
+  --ch2-why-card-tint: linear-gradient(180deg, rgba(255, 178, 59, 0.1) 0%, rgba(255, 255, 255, 0) 58%);
+  /* Room after last card + easier handoff to document scroll */
+  --ch2-why-stack-padding-bottom: clamp(100px, 28vh, 220px);
+  --ch2-why-sticky-exit-runway: clamp(72px, 16vh, 160px);
+  --ch2-why-card-gap: 40px;
+  --ch2-why-card-radius: 24px;
+  --ch2-why-card-border: var(--ch2-image-border);
+  --ch2-why-card-shadow: 2px 2px 0 0 rgba(0, 29, 38, 1);
+  --ch2-why-card-padding: 40px 24px;
+  --ch2-why-card-inner-gap-list: 24px;
+  --ch2-why-card-inner-gap-text: 14px;
+  /* Inner list rows — opaque base + lime tint */
+  --ch2-why-row-fill: var(--ch2-surface);
+  --ch2-why-row-tint: linear-gradient(180deg, rgba(188, 224, 121, 0.14) 0%, rgba(255, 255, 255, 0) 70%);
+  --ch2-why-row-border: 1.5px solid #001d26;
+  --ch2-why-row-radius: 8px;
+  --ch2-why-row-padding: 12px;
+  --ch2-why-row-gap: 12px;
+  --ch2-why-check-box: 32px;
+  --ch2-why-check-radius: 6px;
+  --ch2-why-check-border: 1px solid #001d26;
+  --ch2-why-body2-size: 14px;
+  --ch2-why-body2-lh: 1.43;
+  --ch2-why-body2-ls: 0.012142857em;
+  --ch2-why-lime-bar-w: 183px;
+  --ch2-why-lime-bar-h: 8px;
+  /* Sticky card stack — scroll runway between sticky slots (not Figma) */
+  --ch2-why-sticky-runway: clamp(160px, 34vh, 340px);
 }
 
-/* Hero: slow bounce for left paper plane */
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.animate-\[bounce_3s_infinite\] {
-  animation: bounce 3s infinite;
-}
-.animate-\[bounce_4s_infinite\] {
-  animation: bounce 4s infinite;
-}
-.animate-\[bounce_5s_infinite\] {
-  animation: bounce 5s infinite;
+/* ========================================
+  2. BASE LAYER (Global HTML/Body Resets)
+  ======================================== */
+@layer base {
+  html, body {
+    font-family: var(--font-rubik);
+    background: var(--color-brand-purple);
+    min-height: 100%;
+  }
+
+  #root {
+    min-height: 100%;
+  }
+
+  h5 {
+    color: var(--color-heading-h5);
+  }
 }
 
-html,
-body {
-  font-family: 'Rubik', sans-serif;
-  min-height: 100%;
-  background: var(--Purple-Dark, #46319B);
-}
+/* ========================================
+  3. UTILITIES & ANIMATIONS
+  ======================================== */
+@layer utilities {
+  /* --- Float Animations --- */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  .animate-float-slow {
+    animation: float 5s ease-in-out infinite;
+  }
 
-#root {
-  min-height: 100%;
-}
+  /* --- Hero Bounce Animations --- */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-\[bounce_3s_infinite\] {
+    animation: bounce 3s infinite;
+  }
+  .animate-\[bounce_4s_infinite\] {
+    animation: bounce 4s infinite;
+  }
+  .animate-\[bounce_5s_infinite\] {
+    animation: bounce 5s infinite;
+  }
 
-/* הסתרת scrollbar בתצוגות קטנות – קרוסלה וכל אלמנט עם .no-scrollbar */
-.no-scrollbar,
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.no-scrollbar::-webkit-scrollbar,
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-@media (max-width: 767px) {
+  /* --- Scrollbar Hiding --- */
+  /* הוחל איחוד של החוקים למניעת קוד כפול (DRY) */
   .no-scrollbar,
   .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;    /* Firefox */
   }
   .no-scrollbar::-webkit-scrollbar,
   .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+    display: none;            /* Chrome, Safari and Opera */
+  }
+}
+
+/* ========================================
+  4. CHAPTER 2 MOBILE — Section 2 (202:3293)
+  ======================================== */
+@layer components {
+  /* --- Chapter 2 Mobile — Section 1 (194:16437) --- */
+  .ch2-mobile-section1 {
+    position: relative;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section1-stack-gap);
+    padding: var(--ch2-section1-padding);
+    padding-bottom: var(--ch2-section1-pb);
+  }
+
+  .ch2-mobile-hero__text-col {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    width: 100%;
+    max-width: var(--ch2-hero-text-col-max-w);
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    gap: var(--ch2-hero-text-col-gap);
+  }
+
+  /** Typography/H4 — כותרת Hero; טקסט מגיע מ-CMS (hero.title) */
+  .ch2-mobile-type-h4 {
+    margin: 0;
+    width: 100%;
+    font-family: var(--font-rubik);
+    font-weight: 700;
+    font-size: var(--ch2-type-h4-size);
+    line-height: var(--ch2-type-h4-lh);
+    letter-spacing: var(--ch2-type-h4-ls);
+    color: var(--ch2-text-primary);
+    text-align: center;
+    white-space: pre-line;
+  }
+
+  /** Chapter label — instance 191:16305 Mobile / Center */
+  .ch2-mobile-chapter-label {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ch2-mobile-chapter-label__stack {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--ch2-chapter-label-inner-gap);
+    margin-top: calc(var(--ch2-chapter-badge-size) / 2 + 2px);
+    border-radius: var(--ch2-chapter-label-radius);
+    border: var(--ch2-image-border);
+    background-color: var(--ch2-lime);
+    padding: var(--ch2-chapter-label-pad);
+    box-shadow: var(--ch2-chapter-label-shadow);
+  }
+
+  .ch2-mobile-chapter-label__badge {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    display: flex;
+    width: var(--ch2-chapter-badge-size);
+    height: var(--ch2-chapter-badge-size);
+    transform: translate(-50%, -50%);
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 29, 38, 0.35);
+    background-color: var(--ch2-olive);
+  }
+
+  .ch2-mobile-chapter-label__digit {
+    font-family: var(--font-salsa);
+    font-weight: 400;
+    font-size: var(--ch2-type-chapter-small-size);
+    line-height: var(--ch2-type-chapter-small-lh);
+    letter-spacing: var(--ch2-type-chapter-small-ls);
+    color: var(--ch2-surface);
+  }
+
+  .ch2-mobile-chapter-label__tag {
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: center;
+  }
+
+  .ch2-mobile-hero__collage {
+    position: relative;
+    width: 100%;
+    min-height: min(72vw, 280px);
+    max-height: var(--ch2-hero-stack-h);
+    margin-top: 0.25rem;
+  }
+
+  /* מסגרת חיצונית: מילוי גרדיאנט, קו עליון 2px #FFB23B, padding 60×24 */
+  .ch2-mobile-section2 {
+    margin-top: var(--ch2-section-overlap-y);
+    border-top: var(--ch2-section2-border-top);
+    border-radius: var(--ch2-main-radius) var(--ch2-main-radius) 0 0;
+    background: var(--ch2-section2-bg);
+    padding: var(--ch2-section2-padding-top) var(--ch2-section2-padding-inline)
+      var(--ch2-section2-padding-bottom);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* כרטיס כתום יחיד: כל התוכן + כרטיסי גיל (Figma 202:3294) */
+  .ch2-mobile-section2__title-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section2-title-to-block-gap);
+    padding: var(--ch2-section2-card-padding);
+    border-radius: var(--ch2-section2-card-radius);
+    background-color: var(--ch2-orange);
+    border: var(--ch2-image-border);
+    box-shadow: var(--ch2-chapter-label-shadow);
+  }
+
+  .ch2-mobile-section2__title {
+    font-family: var(--font-rubik);
+    font-weight: 700;
+    font-size: var(--ch2-type-h5-size);
+    line-height: var(--ch2-type-h5-lh);
+    color: var(--ch2-text-primary);
+    text-align: center;
+  }
+
+  /* בלוק תחתון: מחסנית טקסט (gap 8) + מרווח 14 לפני גילאים */
+  .ch2-mobile-section2__lower {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section2-body-to-age-gap);
+  }
+
+  .ch2-mobile-section2__body-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section2-description-note-gap);
+  }
+
+  .ch2-mobile-section2__body {
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: center;
+    white-space: pre-line;
+  }
+
+  .ch2-mobile-section2__note {
+    font-family: var(--font-rubik);
+    font-weight: var(--ch2-type-subtitle-weight);
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-subtitle-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: center;
+  }
+
+  /* עמודת כרטיסי גיל — gap 12 (layout_8BBKT9), לא רשת 2×2 */
+  .ch2-mobile-section2__age-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section2-age-stack-gap);
+    width: 100%;
+  }
+
+  /* כרטיס גיל בודד (layout_TQW9XA) */
+  .ch2-mobile-age-cell {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
+    border-radius: var(--ch2-age-cell-radius);
+    border: var(--ch2-age-cell-border);
+    background: var(--ch2-age-cell-gradient);
+    box-shadow: var(--ch2-age-cell-shadow);
+    padding: var(--ch2-age-cell-padding);
+  }
+
+  .ch2-mobile-age-cell__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--ch2-age-cell-label-to-meta-gap);
+  }
+
+  .ch2-mobile-age-cell__label {
+    font-family: var(--font-rubik);
+    font-size: var(--ch2-type-h6-size);
+    font-weight: var(--ch2-type-h6-weight);
+    line-height: var(--ch2-type-h6-lh);
+    letter-spacing: var(--ch2-type-h6-ls);
+    color: var(--ch2-text-primary);
+    text-align: center;
+  }
+
+  .ch2-mobile-age-cell__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ch2-mobile-age-cell__badge {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--ch2-age-badge-radius);
+    background: var(--ch2-age-badge-bg);
+    padding: 2px 10px;
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: center;
+  }
+
+  .ch2-mobile-age-cell__range {
+    margin-top: var(--ch2-age-meta-pull);
+    font-family: var(--font-salsa);
+    font-weight: 400;
+    font-size: var(--ch2-age-chapter-medium-size);
+    line-height: var(--ch2-age-chapter-medium-lh);
+    letter-spacing: var(--ch2-age-chapter-medium-ls);
+    color: var(--ch2-text-purple);
+    text-align: center;
+  }
+
+  /* --- Chapter 2 Mobile — Section 3 (202:3339) מטרות תכנית רעים --- */
+  .ch2-mobile-section3 {
+    margin-top: var(--ch2-section-overlap-y);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section3-header-to-goals-gap);
+    background: var(--ch2-section3-bg);
+    padding: var(--ch2-section3-padding-top) var(--ch2-section3-padding-inline)
+      var(--ch2-section3-padding-bottom);
+  }
+
+  .ch2-mobile-section3__header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  .ch2-mobile-section3__title {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding-top: 0;
+    font-family: var(--font-rubik);
+    font-weight: 700;
+    font-size: var(--ch2-type-h5-size);
+    line-height: var(--ch2-type-h5-lh);
+    text-align: center;
+    color: var(--ch2-text-primary);
+  }
+
+  /** שורה עליונה: סגול + פס ירוק מתחת (רוחב לפי המילה בלבד) */
+  .ch2-mobile-section3__title-line1 {
+    position: relative;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    padding-bottom: calc(var(--ch2-section3-title-line-h) + 6px);
+    color: var(--ch2-text-purple);
+  }
+
+  .ch2-mobile-section3__title-line1::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--ch2-section3-title-line-h);
+    border-radius: 2px;
+    background-color: var(--ch2-lime);
+  }
+
+  /** שורה שנייה: צבע גוף כהה (יורש מה-h2 אם לא מוגדר) */
+  .ch2-mobile-section3__title-line2 {
+    display: block;
+    width: 100%;
+    color: var(--ch2-text-primary);
+    font-weight: 700;
+    font-size: var(--ch2-type-h5-size);
+    line-height: var(--ch2-type-h5-lh);
+  }
+
+  .ch2-mobile-section3__goals {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section3-goals-stack-gap);
+    width: 100%;
+  }
+
+  .ch2-mobile-section3__card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    padding: var(--ch2-section3-card-padding);
+    border-radius: var(--ch2-section3-card-radius);
+    border: var(--ch2-section3-card-border);
+    background: var(--ch2-section3-card-bg);
+    box-shadow: var(--ch2-section3-card-shadow);
+  }
+
+  .ch2-mobile-section3__icon-wrap {
+    position: absolute;
+    left: 50%;
+    top: var(--ch2-section3-icon-offset-y);
+    z-index: 1;
+    display: flex;
+    width: var(--ch2-section3-icon-size);
+    height: var(--ch2-section3-icon-size);
+    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: var(--ch2-section3-icon-border);
+    background-color: var(--ch2-lime);
+  }
+
+  .ch2-mobile-section3__goal-text {
+    margin: 0;
+    max-width: 100%;
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: center;
+    white-space: pre-line;
+  }
+
+  /* --- Chapter 2 Mobile — Section 4 (202:3379) הקבוצות ברעים --- */
+  .ch2-mobile-section4 {
+    margin-top: var(--ch2-section-overlap-y);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section4-image-to-content-gap);
+    border-radius: var(--ch2-section4-radius-t) var(--ch2-section4-radius-t) 0 0;
+    background: var(--ch2-section4-bg);
+    padding: var(--ch2-section4-padding-y) var(--ch2-section4-padding-x);
+  }
+
+  .ch2-mobile-section4__image-wrap {
+    position: relative;
+    width: 100%;
+    height: var(--ch2-section4-image-h);
+    overflow: hidden;
+    border-radius: var(--ch2-section4-image-radius);
+    border: var(--ch2-image-border);
+    box-shadow: var(--ch2-section4-item-shadow);
+    background-color: #e5e7eb;
+  }
+
+  .ch2-mobile-section4__image {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .ch2-mobile-section4__group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section4-group-gap);
+  }
+
+  .ch2-mobile-section4__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+    gap: var(--ch2-section4-heading-inner-gap);
+    text-align: right;
+  }
+
+  .ch2-mobile-section4__subheading {
+    margin: 0;
+    width: 100%;
+    align-self: stretch;
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: right;
+  }
+
+  .ch2-mobile-section4__title {
+    margin: 0;
+    width: 100%;
+    align-self: stretch;
+    font-family: var(--font-rubik);
+    font-weight: 700;
+    font-size: var(--ch2-type-h5-size);
+    line-height: var(--ch2-type-h5-lh);
+    color: var(--ch2-text-primary);
+    text-align: right;
+  }
+
+  .ch2-mobile-section4__body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section4-body-stack-gap);
+  }
+
+  .ch2-mobile-section4__lead {
+    margin: 0;
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: right;
+  }
+
+  .ch2-mobile-section4__pops {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section4-pop-list-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ch2-mobile-section4__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    gap: var(--ch2-section4-item-row-gap);
+    padding: var(--ch2-section4-item-padding);
+    border-radius: var(--ch2-section4-item-radius);
+    border: var(--ch2-section4-item-border);
+    background: var(--ch2-section4-item-bg);
+    box-shadow: var(--ch2-section4-item-shadow);
+  }
+
+  .ch2-mobile-section4__item-text {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--ch2-section4-item-inline-gap);
+    text-align: right;
+  }
+
+  .ch2-mobile-section4__item-label {
+    min-width: 0;
+    flex: 1 1 auto;
+    font-family: var(--font-rubik);
+    font-weight: var(--ch2-type-subtitle-weight);
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-subtitle-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: right;
+  }
+
+  .ch2-mobile-section4__item-id {
+    flex-shrink: 0;
+    font-family: var(--font-salsa);
+    font-weight: 400;
+    font-size: var(--ch2-type-chapter-small-size);
+    line-height: var(--ch2-type-chapter-small-lh);
+    letter-spacing: var(--ch2-type-chapter-small-ls);
+    color: var(--ch2-text-primary);
+  }
+
+  /* layout_K7QSNL: 40×32, רקע rgba(101,70,222,0.16) — fill_5M26ZG */
+  .ch2-mobile-section4__icon {
+    display: flex;
+    box-sizing: border-box;
+    height: var(--ch2-section4-icon-h);
+    width: var(--ch2-section4-icon-w);
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    border-radius: 9999px;
+    background: var(--ch2-age-badge-bg);
+  }
+
+  .ch2-mobile-section4__description {
+    margin: 0;
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: right;
+  }
+
+  /* --- Chapter 2 Mobile — Section 5 group details + accordions (202:10011) --- */
+  .ch2-mobile-section5 {
+    margin-top: var(--ch2-section-overlap-y);
+    box-sizing: border-box;
+    background: var(--ch2-section5-bg);
+    padding: var(--ch2-section5-padding-y) var(--ch2-section5-padding-x);
+  }
+
+  .ch2-mobile-section5__group + .ch2-mobile-section5__group {
+    margin-top: var(--ch2-section5-between-groups-gap);
+  }
+
+  .ch2-mobile-section5__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--ch2-section5-eyebrow-to-title-gap);
+    margin-bottom: var(--ch2-section5-title-block-gap);
+  }
+
+  .ch2-mobile-section5__eyebrow {
+    margin: 0;
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: right;
+  }
+
+  .ch2-mobile-section5__title {
+    margin: 0;
+    font-family: var(--font-rubik);
+    font-weight: 700;
+    font-size: var(--ch2-type-h5-size);
+    line-height: var(--ch2-type-h5-lh);
+    color: var(--ch2-text-primary);
+    text-align: right;
+  }
+
+  .ch2-mobile-section5__snippet {
+    margin: 0 0 var(--ch2-section5-snippet-to-accordion-gap);
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: rgba(0, 29, 38, 0.85);
+    text-align: right;
+  }
+
+  .ch2-mobile-section5-accordion {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: var(--ch2-section5-accordion-stack-gap);
+  }
+
+  .ch2-mobile-section5-accordion__item {
+    overflow: hidden;
+    border-radius: var(--ch2-section5-accordion-radius);
+    border: var(--ch2-section5-accordion-border);
+    background-color: var(--ch2-section5-accordion-bg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ch2-mobile-section5-accordion__item--open {
+    border: var(--ch2-section5-accordion-border-open);
+    border-right: var(--ch2-section5-accordion-r-accent);
+    box-shadow: none;
+  }
+
+  .ch2-mobile-section5-accordion__trigger {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: var(--ch2-section5-trigger-gap);
+    padding: var(--ch2-section5-trigger-pad-y) var(--ch2-section5-trigger-pad-inline);
+    text-align: right;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font: inherit;
+  }
+
+  .ch2-mobile-section5-accordion__icon-wrap {
+    display: flex;
+    height: var(--ch2-section5-icon-frame-size);
+    width: var(--ch2-section5-icon-frame-size);
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: transparent;
+  }
+
+  .ch2-mobile-section5-accordion__icon-wrap--open {
+    background: rgba(101, 70, 222, 0.08);
+  }
+
+  .ch2-mobile-section5-accordion__label {
+    flex: 1;
+    font-family: var(--font-rubik);
+    font-weight: var(--ch2-type-subtitle-weight);
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-subtitle-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    text-align: right;
+  }
+
+  .ch2-mobile-section5-accordion__label--open {
+    color: var(--ch2-text-purple);
+  }
+
+  .ch2-mobile-section5-accordion__label--closed {
+    color: var(--ch2-text-primary);
+  }
+
+  .ch2-mobile-section5-accordion__body {
+    padding: 0 var(--ch2-section5-body-pad-inline) var(--ch2-section5-body-pad-bottom)
+      var(--ch2-section5-body-offset-start);
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-body-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-section5-body-color);
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+  }
+
+  .ch2-mobile-section5-accordion__body--collapsed {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+  }
+
+  .ch2-mobile-section5-accordion__body--open {
+    max-height: 800px;
+    opacity: 1;
+  }
+
+  .ch2-mobile-section5-accordion__body-inner {
+    padding-inline-end: 8px;
+  }
+
+  /* --- Chapter 2 Mobile — Section 6 (Figma 202:10011, Copy file) --- */
+  .ch2-mobile-section6 {
+    position: relative;
+    margin-top: var(--ch2-section-overlap-y);
+    box-sizing: border-box;
+    background-color: #ffffff;
+    padding: var(--ch2-section6-padding);
+    overflow: hidden;
+  }
+
+  .ch2-mobile-why-lead {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 32px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .ch2-mobile-why-lead__lime-bar {
+    position: absolute;
+    top: 52px;
+    left: 50%;
+    width: var(--ch2-why-lime-bar-w);
+    max-width: 85%;
+    height: var(--ch2-why-lime-bar-h);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    background-color: var(--ch2-lime);
+  }
+
+  .ch2-mobile-why-lead__title {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    max-width: 20rem;
+    font-family: var(--font-rubik);
+    font-weight: 700;
+    font-size: var(--ch2-type-h5-size);
+    line-height: var(--ch2-type-h5-lh);
+    color: var(--ch2-text-primary);
+  }
+
+  /* --- Figma 194:16426 / 194:16436 (Copy) — purple page + white main column --- */
+  .ch2-mobile-page {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    flex: 1 1 0%;
+    min-height: calc(100dvh - var(--ch2-mobile-chrome-top) - var(--ch2-mobile-chrome-bottom));
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: var(--ch2-page-bg);
+    padding-top: var(--ch2-mobile-page-pad-top);
+    padding-bottom: var(--ch2-mobile-page-pad-bottom);
+  }
+
+  /**
+   * Chapter 2 mobile: sticky Figma chrome — safe-area inside purple bar; no duplicate global Header padding.
+   */
+  .ch2-mobile-page--figma-chrome {
+    --ch2-mobile-chrome-top: 0px;
+    padding-top: 0;
+    min-height: calc(100dvh - var(--ch2-mobile-chrome-bottom));
+  }
+
+  .ch2-mobile-sticky-chrome {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    max-width: var(--ch2-mobile-page-max-width);
+    align-self: stretch;
+    margin-inline: auto;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  .ch2-mobile-sticky-chrome__stack {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .ch2-mobile-sticky-chrome__purple {
+    width: 100%;
+    background-color: var(--ch2-page-bg);
+  }
+
+  .ch2-mobile-sticky-chrome__purple-inner {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    max-width: var(--ch2-mobile-page-max-width);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-inline: auto;
+    padding-inline-start: 16px;
+    padding-inline-end: 24px;
+    padding-top: max(8px, env(safe-area-inset-top, 0px));
+    /* תפריט חופף ללבן — אין ריפוד סגול מתחת לצ׳יפ */
+    padding-bottom: 0;
+  }
+
+  .ch2-mobile-sticky-chrome__chrome-top-row {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .ch2-mobile-sticky-chrome__menu-row {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 6;
+    /* קצה תחתון האייקון = קצה עליון הרצועה הלבנה — בלי חפיפה */
+    margin-bottom: 0;
+  }
+
+  .ch2-mobile-sticky-chrome__title {
+    margin: 0;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.32;
+    letter-spacing: var(--ch2-type-body-ls, 0.009375em);
+    color: #ffffff;
+    text-align: start;
+  }
+
+  .ch2-mobile-menu-frame {
+    position: relative;
+    z-index: inherit;
+    display: block;
+    width: 84px;
+    height: 48px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    box-shadow: none;
+    pointer-events: auto;
+  }
+
+  .ch2-mobile-menu-frame__btn {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    border-radius: inherit;
+    background: transparent;
+    cursor: pointer;
+    transition: filter 0.2s ease;
+  }
+
+  .ch2-mobile-menu-frame__btn:hover {
+    filter: brightness(0.97);
+  }
+
+  .ch2-mobile-menu-frame__icon {
+    display: block;
+    width: 84px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .ch2-mobile-menu-frame--open {
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: none;
+  }
+
+  /* אזור לוגו: בלי רצועה לבנה מלאה (מלבן) — רק הגלולית המעוגלת נראית */
+  .ch2-mobile-sticky-chrome__header-band {
+    width: 100%;
+    max-width: var(--ch2-main-max-width);
+    box-sizing: border-box;
+    border-radius: 0;
+    background-color: transparent;
+    padding: var(--ch2-mobile-chrome-logo-gap-after-menu) 12px 8px;
+    margin-inline: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ch2-mobile-menu-icon-btn {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: transparent;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .ch2-mobile-menu-icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .ch2-mobile-top-bar-pill {
+    position: absolute;
+    z-index: 30;
+    inset-inline: 12px;
+    top: 12px;
+  }
+
+  .ch2-mobile-top-bar-pill--sticky {
+    position: relative;
+    z-index: 1;
+    inset: auto;
+    top: auto;
+  }
+
+  .ch2-mobile-top-bar-pill--figma-16482 {
+    width: 100%;
+    max-width: 335px;
+    margin-inline: auto;
+  }
+
+  .ch2-mobile-main-content--below-sticky-chrome .ch2-mobile-main-content__body {
+    padding-inline: 0;
+    /* מקום לגלולית שנשארת בשכבת הכרום מעל הלבן */
+    padding-top: var(--ch2-mobile-chrome-logo-band-height);
+  }
+
+  .ch2-mobile-page[data-menu-open='true'] .ch2-mobile-main-content--below-sticky-chrome .ch2-mobile-main-content__body {
+    padding-top: var(--ch2-mobile-body-pad-menu-open);
+  }
+
+  .ch2-mobile-main-content--below-sticky-chrome .ch2-mobile-section1 {
+    padding-top: var(--ch2-mobile-gap-logo-to-chapter);
+  }
+
+  .ch2-mobile-top-bar-pill__btn {
+    display: flex;
+    width: 100%;
+    min-height: 56px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 29, 38, 0.04);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .ch2-mobile-top-bar-pill__btn:hover {
+    background-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .ch2-mobile-top-bar-pill--figma-16482 .ch2-mobile-top-bar-pill__btn {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 335px;
+    min-height: 56px;
+    height: 56px;
+    padding: 14px 8px;
+    border-radius: 200px;
+    border: 1px solid rgba(0, 29, 38, 0.05);
+    background-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: none;
+  }
+
+  .ch2-mobile-top-bar-pill--figma-16482 .ch2-mobile-top-bar-pill__btn:hover {
+    background-color: rgba(255, 255, 255, 0.22);
+  }
+
+  .ch2-mobile-top-bar-pill__logo {
+    height: clamp(1.25rem, 5vw, 1.75rem);
+    width: auto;
+    object-fit: contain;
+  }
+
+  .ch2-mobile-main-content {
+    display: flex;
+    width: 100%;
+    max-width: var(--ch2-main-max-width);
+    flex: 1 1 auto;
+    min-height: 0;
+    flex-direction: column;
+    border-radius: var(--ch2-main-radius);
+    background-color: var(--ch2-surface);
+    box-shadow: var(--ch2-main-shadow);
+    box-sizing: border-box;
+  }
+
+  /* Figma: קצה עליון של main = קצה תחתון של אייקון התפריט; הלבן נמשך מתחת לרצועת הלוגו (header-band מעליו ב-z-index) */
+  .ch2-mobile-main-content.ch2-mobile-main-content--below-sticky-chrome {
+    position: relative;
+    z-index: 1;
+    margin-top: calc(-1 * var(--ch2-mobile-chrome-logo-band-height));
+    border-radius: 0 0 var(--ch2-main-radius) var(--ch2-main-radius);
+    padding-top: 0;
+    padding-inline: 12px;
+    box-shadow: var(--ch2-main-shadow);
+  }
+
+  .ch2-mobile-main-content__body {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  /* Clip horizontal bleed; vertical not hidden so nested scrollports work */
+  .ch2-mobile-main-surface {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  .ch2-mobile-why-sticky-region {
+    position: relative;
+    isolation: isolate;
+    max-height: var(--ch2-why-sticky-viewport-max-h);
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* `contain` trapped wheel/touch at end — use auto so parent page keeps scrolling */
+    overscroll-behavior-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: var(--ch2-surface);
+  }
+
+  .ch2-mobile-why-stack {
+    position: relative;
+    display: block;
+    padding-bottom: var(--ch2-why-stack-padding-bottom);
+    box-sizing: border-box;
+  }
+
+  .ch2-mobile-why-sticky-slot {
+    position: sticky;
+    z-index: calc(1 + var(--why-sticky-index));
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: var(--ch2-why-sticky-runway);
+    top: calc(
+      var(--ch2-why-sticky-offset-base) +
+        (var(--why-sticky-index) * var(--ch2-why-sticky-stack-step))
+    );
+  }
+
+  .ch2-mobile-why-sticky-slot:last-child {
+    margin-bottom: var(--ch2-why-sticky-exit-runway);
+  }
+
+  .ch2-mobile-why-card {
+    box-sizing: border-box;
+    border-radius: var(--ch2-why-card-radius);
+    border: var(--ch2-why-card-border);
+    box-shadow: var(--ch2-why-card-shadow);
+    background-color: var(--ch2-why-card-fill);
+    background-image: var(--ch2-why-card-tint);
+    background-repeat: no-repeat;
+  }
+
+  .ch2-mobile-why-card--list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ch2-why-card-inner-gap-list);
+    padding: var(--ch2-why-card-padding);
+  }
+
+  .ch2-mobile-why-card--text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ch2-why-card-inner-gap-text);
+    padding: var(--ch2-why-card-padding);
+    text-align: start;
+  }
+
+  .ch2-mobile-why-card__title--list {
+    margin: 0;
+    text-align: center;
+    font-family: var(--font-rubik);
+    font-weight: 700;
+    font-size: var(--ch2-type-h5-size);
+    line-height: var(--ch2-type-h5-lh);
+    color: var(--ch2-text-primary);
+    white-space: pre-line;
+  }
+
+  .ch2-mobile-why-card__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ch2-mobile-why-card__row {
+    display: flex;
+    align-items: center;
+    gap: var(--ch2-why-row-gap);
+    border-radius: var(--ch2-why-row-radius);
+    border: var(--ch2-why-row-border);
+    background-color: var(--ch2-why-row-fill);
+    background-image: var(--ch2-why-row-tint);
+    background-repeat: no-repeat;
+    padding: var(--ch2-why-row-padding);
+    text-align: start;
+    box-sizing: border-box;
+  }
+
+  .ch2-mobile-why-card__row-text {
+    flex: 1;
+    margin: 0;
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-why-body2-size);
+    line-height: var(--ch2-why-body2-lh);
+    letter-spacing: var(--ch2-why-body2-ls);
+    color: var(--ch2-text-primary);
+  }
+
+  .ch2-mobile-why-card__check {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--ch2-why-check-box);
+    height: var(--ch2-why-check-box);
+    border-radius: var(--ch2-why-check-radius);
+    border: var(--ch2-why-check-border);
+    background-color: var(--ch2-lime);
+    color: #001d26;
+  }
+
+  /* Typography/Subtitle 1 — Figma cards 2–3 titles */
+  .ch2-mobile-why-card__title--text1,
+  .ch2-mobile-why-card__title--text2 {
+    margin: 0;
+    font-family: var(--font-rubik);
+    font-weight: var(--ch2-type-subtitle-weight);
+    font-size: var(--ch2-type-body-size);
+    line-height: var(--ch2-type-subtitle-lh);
+    letter-spacing: var(--ch2-type-body-ls);
+    color: var(--ch2-text-primary);
+    text-align: start;
+  }
+
+  /* Typography/Body 2 */
+  .ch2-mobile-why-card__body {
+    margin: 0;
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: var(--ch2-why-body2-size);
+    line-height: var(--ch2-why-body2-lh);
+    letter-spacing: var(--ch2-why-body2-ls);
+    color: var(--ch2-text-primary);
+    white-space: pre-line;
   }
 }

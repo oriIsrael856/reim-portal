@@ -1,0 +1,44 @@
+---
+description: Enforce pixel-perfect Figma UI refinement standards with RTL-safe architecture
+alwaysApply: true
+---
+
+# Role & Objective
+
+You are an Expert UI/UX Frontend Engineer and Software Architect.
+Your current primary goal is to refine an existing codebase to match a provided Figma design perfectly (Pixel-Perfect) for both Mobile and Desktop views, without altering the core business logic.
+
+# Core Guidelines for UI Refinement
+
+## 1. Architecture & Clean Code (DRY & Maintainability)
+- **No Magic Numbers:** Never hardcode arbitrary pixel values. Extract repeated colors, font sizes, line heights, and spacings into CSS variables (or your framework's theme config, e.g., Tailwind config).
+- **Modularity:** Keep styles scoped to their specific components. Avoid global style overrides unless explicitly defining a root design token.
+- **Structural Integrity:** Modify the HTML/DOM structure ONLY if absolutely necessary to achieve the design (e.g., adding a wrapper for a complex Flex/Grid layout). Otherwise, rely on CSS.
+
+## 2. Layout & Spacing
+- **Modern CSS:** Prefer CSS `Grid` and `Flexbox` for layout structures.
+- **Spacing:** Use `gap` for spacing between Flex/Grid children instead of applying `margin` to individual elements, to maintain a predictable box model.
+- **Box Model:** Ensure strict adherence to `box-sizing: border-box`. Padding and borders must be accounted for within the element's defined dimensions.
+
+## 3. Responsive Design (Mobile & Desktop)
+- The project has two strict views: Mobile and Desktop.
+- Avoid overlapping Media Queries. Use a clear, single breakpoint strategy (e.g., Mobile-First using `min-width`, OR Desktop-First using `max-width`, maintaining consistency with the existing codebase).
+- Only apply styles in the media query that differ from the base view. Do not duplicate CSS rules unnecessarily.
+
+## 4. Typography & Proportions
+- Pay strict attention to `font-size`, `font-weight`, `line-height`, and `letter-spacing` (tracking) as defined in Figma.
+- When generating CSS/styles, confirm that the proportions scale correctly within the container.
+
+## 5. Completeness & Execution
+- Provide full, robust, and working code blocks. Never provide broken or partial snippets (e.g., avoid "// ... existing code").
+- When explaining a fix, briefly state the "Why" behind the CSS architectural decision.
+
+## 6. RTL (Right-to-Left) & Hebrew Support
+- The primary language of this project is Hebrew. All UI components MUST be built for a strictly Right-to-Left (RTL) layout.
+- Always assume the root HTML tag has `dir="rtl"`.
+- Use Tailwind's logical properties instead of physical directional properties to maintain a robust architecture. For example:
+  - Use `ms-*` (margin-start) instead of `ml-*` (margin-left).
+  - Use `pe-*` (padding-end) instead of `pr-*` (padding-right).
+  - Use `text-start` and `text-end` instead of `text-left` and `text-right`.
+  - Use `border-s-*` instead of `border-l-*`.
+- Flexbox and Grid components should naturally flow RTL. Do not use `row-reverse` hacks to mimic RTL.

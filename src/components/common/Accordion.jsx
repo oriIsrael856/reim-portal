@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
-const AccordionItem = ({ title, content, isOpen, onClick }) => {
+const AccordionItem = ({ title, content, isOpen, onClick, collapsedIconSrc }) => {
     return (
         <div 
             className={`
@@ -11,20 +11,31 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => {
                     : 'bg-white/80 hover:bg-white border border-transparent'}
             `}
         >
-            <button 
+            <button
+                type="button"
+                dir="rtl"
                 onClick={onClick}
-                className="w-full flex items-center justify-between p-6 text-right outline-none"
+                className="flex w-full items-center justify-between gap-3 p-6 text-start outline-none"
             >
-                <span className={`text-lg md:text-xl font-bold ${isOpen ? 'text-[#5E3BEE]' : 'text-[#2D2D44]'}`}>
+                <span
+                    className={`min-w-0 flex-1 text-start text-lg font-bold md:text-xl ${isOpen ? 'text-[#5E3BEE]' : 'text-[#2D2D44]'}`}
+                >
                     {title}
                 </span>
-                
-                {/* מעגל האייקון */}
-                <div className={`
+
+                {/* מעגל האייקון — RTL row: title inline-end (ימין), אייקון inline-start (שמאל) */}
+                <div
+                    className={`
                     w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300
                     ${isOpen ? 'bg-[#5E3BEE]/10 text-[#5E3BEE]' : 'bg-[#2D2D44]/5 text-[#2D2D44]'}
                 `}>
-                    {isOpen ? <Minus size={18} /> : <Plus size={18} />}
+                    {isOpen ? (
+                        <Minus size={18} />
+                    ) : collapsedIconSrc ? (
+                        <img src={collapsedIconSrc} alt="" width={16} height={16} className="block h-4 w-4 object-contain" />
+                    ) : (
+                        <Plus size={18} />
+                    )}
                 </div>
             </button>
 
@@ -41,7 +52,7 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => {
     );
 };
 
-const Accordion = ({ items }) => {
+const Accordion = ({ items, collapsedIconSrc }) => {
     // מנהל איזה פריט פתוח כרגע (null = הכל סגור)
     const [openIndex, setOpenIndex] = useState(0); // ברירת מחדל: הראשון פתוח
 
@@ -59,6 +70,7 @@ const Accordion = ({ items }) => {
                     content={item.content}
                     isOpen={openIndex === index}
                     onClick={() => handleItemClick(index)}
+                    collapsedIconSrc={collapsedIconSrc}
                 />
             ))}
         </div>

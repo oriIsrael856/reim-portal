@@ -1,8 +1,9 @@
 import React from 'react';
-import { ArrowLeft, ThumbsUp, Send, Instagram, Facebook, Linkedin } from 'lucide-react';
+import { ArrowLeft, ThumbsUp, Send, Hand } from 'lucide-react';
 import StickyCard from '../components/common/StickyCard';
 import NextChapterButton from '../components/common/NextChapterButton';
 import PrevChapterButton from '../components/common/PrevChapterButton';
+import Footer from '../components/layout/Footer';
 
 // רכיב עזר: עיגול ירוק עם חץ
 const GreenArrowCircle = ({ direction = 'left' }) => (
@@ -10,58 +11,110 @@ const GreenArrowCircle = ({ direction = 'left' }) => (
         w-12 h-12 rounded-full bg-[#C5E080] border-2 border-black 
         flex items-center justify-center shadow-[3px_3px_0px_black]
         transform transition-transform hover:scale-110 flex-shrink-0
-        ${direction === 'right' ? 'rotate-180' : ''}
+        ${direction === 'left' ? 'rotate-180' : ''}
     `}>
         <ArrowLeft size={22} color="#2D2D44" strokeWidth={2.5} />
     </div>
 );
 
-const Chapter1 = ({ data, onNext, onPrev }) => {
+const Chapter1 = ({ data, content, onNext, onPrev }) => {
     if (!data) return null;
 
     return (
-        <div className="bg-[#F8F7FF] min-h-screen font-['Rubik']">
+        <div className="min-h-screen bg-[#F3F0FF] font-['Rubik']">
             {onPrev && (
                 <div className="pt-24 pb-4">
                     <PrevChapterButton title="חזור לדף הבית" onClick={onPrev} />
                 </div>
             )}
 
-            {/* מובייל בלבד: חלק ראשון – כרטיס לבן עם תג, כותרת ותמונות */}
-            <div className="md:hidden mx-4 mt-4 mb-12">
-                <div className="bg-white rounded-[32px] shadow-xl border border-[#2D2D44]/5 p-6 relative overflow-hidden">
-                    {/* תג פרק + אייקון */}
-                    <div className="flex items-center justify-center gap-2 mb-6">
-                        <div className="inline-flex items-center gap-2 bg-[#C5E080] border-2 border-black px-4 py-2 rounded-full shadow-[3px_3px_0px_black]">
-                            <span className="font-black text-[#2D2D44] font-['Rubik'] text-lg">01</span>
-                            <span className="font-bold text-[#2D2D44] text-sm">{data.hero.tag}</span>
+            {/* מובייל: כרטיס לבן — תג וכותרת בלבד */}
+            <div className="mx-4 mb-12 mt-4 md:hidden">
+                <div className="relative overflow-visible rounded-[32px] border-2 border-[#2D2D44]/20 bg-white p-6 pb-8 shadow-xl">
+                    {/* תג פרק + אייקונים (כמו בעיצוב) */}
+                    <div className="mb-6 flex flex-wrap items-center justify-center gap-3">
+                        <div className="inline-flex items-center gap-2 rounded-full border-2 border-black bg-[#C5E080] px-4 py-2 shadow-[3px_3px_0px_black]">
+                            <span className="font-[family-name:var(--font-salsa)] text-lg font-black text-[#2D2D44]">01</span>
+                            <span className="text-sm font-bold text-[#2D2D44]">{data.hero.tag}</span>
                         </div>
-                        <ThumbsUp fill="#EBE5FC" stroke="#816AFE" size={28} className="shrink-0 -rotate-12" />
+                        <ThumbsUp fill="#EBE5FC" stroke="#816AFE" size={26} className="-rotate-12 shrink-0" />
+                        <Hand className="h-7 w-7 shrink-0 text-[#816AFE] opacity-90" strokeWidth={2} />
                     </div>
-                    {/* כותרת */}
-                    <h1 className="text-center mb-8">
-                        <span className="text-3xl font-black text-[#2D2D44]">{data.hero.title1}</span>
+                    {/* כותרת: שורה 1 שחורה, שורה 2 סגול + פס כתום עבה */}
+                    <h1 className="mb-2 text-center font-['Rubik']">
+                        <span className="text-3xl font-black leading-tight text-black">{data.hero.title1}</span>
                         <br />
-                        <span className="text-3xl font-black text-[#FFB84C] relative inline-block mt-1">
+                        <span className="relative mt-3 inline-block pb-2 text-3xl font-black text-[#6546DE]">
                             {data.hero.title2}
-                            <span className="absolute bottom-1 left-0 w-full h-3 bg-[#FFB84C] opacity-40 -z-10 rounded-sm" />
+                            <span
+                                className="absolute bottom-0 left-0 right-0 h-[5px] rounded-sm bg-[#FF7A00]"
+                                aria-hidden
+                            />
                         </span>
                     </h1>
-                    {/* קישוטים */}
-                    <div className="absolute top-32 left-4 w-2 h-2 bg-[#FF5C5C] rounded-full" />
-                    <div className="absolute top-36 right-4 flex items-center gap-1 text-[#816AFE]">
-                        <svg className="w-10 h-10 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 2"><path d="M5 19 L19 5 M19 5 L19 12 M19 5 L12 5" /></svg>
-                        <Send className="w-5 h-5 rotate-45" strokeWidth={2.5} />
+                    {/* מטוס נייר + נקודה אדומה */}
+                    <div className="absolute left-5 top-28 h-2 w-2 rounded-full bg-[#FF5C5C]" />
+                    <div className="absolute right-5 top-32 flex items-center gap-0.5 text-[#816AFE]">
+                        <svg className="h-9 w-9 opacity-75" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4 2">
+                            <path d="M5 19 L19 5 M19 5 L19 12 M19 5 L12 5" />
+                        </svg>
+                        <Send className="h-5 w-5 rotate-45" strokeWidth={2.5} />
                     </div>
-                    {/* תמונות */}
-                    <div className="relative mt-6 min-h-[280px]">
-                        <div className="relative w-[85%] aspect-[4/3] rounded-2xl overflow-hidden border-4 border-white shadow-xl mx-auto rotate-[-2deg] z-10">
-                            <img src={data.hero.image1} alt="" className="w-full h-full object-cover" />
+
+                    {/* קולאז' — ברוחב כמעט מלא של הכרטיס הלבן; קטנה ~40% מרוחב הגדולה; 01 משמאל למטה */}
+                    <div className="relative mt-8 w-full pb-16 pt-1">
+                        {/* תמונה גדולה — כמעט מלא רוחב המיכל הלבן, פינות מעוגלות + מסגרת */}
+                        <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[20px] border-2 border-[#2D2D44]/35 bg-gray-100 shadow-sm">
+                            <img src={data.hero.image1} alt="" className="h-full w-full object-cover" />
                         </div>
-                        <div className="absolute bottom-0 left-2 w-[55%] aspect-[3/4] max-h-[180px] rounded-2xl overflow-hidden border-4 border-white shadow-xl rotate-[5deg] z-20 bg-gray-100">
-                            <img src={data.hero.image2} alt="" className="w-full h-full object-cover" />
+
+                        {/* מספר עמוד — משמאל למטה בחלל הריק (מעל התמונה הגדולה, משמאל לקטנה) */}
+                        <div
+                            dir="ltr"
+                            className="pointer-events-none absolute bottom-[6%] left-0 z-[15] select-none font-[family-name:var(--font-salsa)] text-[clamp(3.75rem,20vw,6rem)] font-black leading-none"
+                            aria-hidden
+                        >
+                            {/* שלושה גלים אדומים — שכבה אחת על כל המספר 01 */}
+                            <span className="relative inline-block text-[#816AFE]">
+                                01
+                                <svg
+                                    className="pointer-events-none absolute left-[-2%] top-[14%] h-[72%] w-[104%] text-[#E53935]"
+                                    viewBox="0 0 100 44"
+                                    fill="none"
+                                    preserveAspectRatio="none"
+                                    aria-hidden
+                                >
+                                    <path
+                                        d="M0 7 Q16 3 34 7 T68 7 T100 7"
+                                        stroke="currentColor"
+                                        strokeWidth="2.2"
+                                        strokeLinecap="round"
+                                        vectorEffect="non-scaling-stroke"
+                                    />
+                                    <path
+                                        d="M0 22 Q20 17 38 22 T72 22 T100 22"
+                                        stroke="currentColor"
+                                        strokeWidth="2.2"
+                                        strokeLinecap="round"
+                                        vectorEffect="non-scaling-stroke"
+                                    />
+                                    <path
+                                        d="M0 37 Q16 33 34 37 T70 37 T100 37"
+                                        stroke="currentColor"
+                                        strokeWidth="2.2"
+                                        strokeLinecap="round"
+                                        vectorEffect="non-scaling-stroke"
+                                    />
+                                </svg>
+                            </span>
                         </div>
-                        <div className="absolute bottom-4 right-4 text-7xl font-black text-[#816AFE] font-['Rubik'] leading-none opacity-20 select-none">01</div>
+
+                        {/* תמונה קטנה — ~40% מרוחב הגדולה, חופפת לפינה ימין-תחתונה, רוטציה קלה */}
+                        <div className="absolute -bottom-1 right-0 z-20 w-[40%] min-w-[118px] max-w-[152px] origin-bottom-right rotate-[8deg] rounded-[14px] border-2 border-[#2D2D44]/35 bg-white p-1.5 shadow-md">
+                            <div className="aspect-[3/4] overflow-hidden rounded-[10px] bg-gray-100">
+                                <img src={data.hero.image2} alt="" className="h-full w-full object-cover" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,43 +122,47 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
             {/* מובייל בלבד: חלק שני – התוכנית, טקסט מלא, פוטר */}
             {data.cards?.[0] && (
                 <div className="md:hidden mx-4 mb-12">
-                    <div className="bg-white rounded-[32px] shadow-xl border border-[#2D2D44]/5 p-6 text-right">
-                        <h2 className="text-3xl font-black text-[#816AFE] mb-4">{data.cards[0].title}</h2>
-                        <h3 className="text-lg font-bold text-[#2D2D44] mb-6 leading-normal">{data.cards[0].subtitle}</h3>
-                        <p className="text-[#2D2D44] leading-relaxed whitespace-pre-line mb-8">
+                    <div className="rounded-[32px] border-2 border-[#2D2D44]/20 bg-[var(--color-surface-lilac)] p-6 text-right shadow-xl">
+                        <h2 className="mb-4 text-3xl font-black text-[var(--color-heading-h5)]">{data.cards[0].title}</h2>
+                        <h3 className="mb-6 text-lg font-bold leading-normal text-[var(--color-heading-h5)]">
+                            {data.cards[0].subtitle}
+                        </h3>
+                        <p className="mb-0 text-[#2D2D44] leading-relaxed whitespace-pre-line">
                             {data.cards[0].text}
-                        </p>
-                        <p className="text-sm text-[#2D2D44]/70 border-t border-[#2D2D44]/10 pt-4">
-                            התכנית מופעלת על ידי החברה למתנ&quot;סים
                         </p>
                     </div>
                 </div>
             )}
 
-            {/* מובייל בלבד: חלק שלישי – מאיפה באנו ולאן אנחנו הולכות */}
+            {/* מובייל בלבד: חלק שלישי — עיצוב כמו כרטיס «התוכנית» */}
             {data.cards?.[1] && (
-                <div className="md:hidden mx-4 mb-12">
-                    <div className="bg-white rounded-[32px] shadow-xl border border-[#2D2D44]/5 p-6 text-right">
-                        <h2 className="text-2xl font-black text-[#816AFE] mb-8">{data.cards[1].title}</h2>
-                        <div className="space-y-8">
+                <div className="mx-4 mb-12 md:hidden">
+                    <div className="rounded-[32px] border-2 border-[#2D2D44]/20 bg-[var(--color-surface-lilac)] p-6 text-right shadow-xl">
+                        <h2 className="mb-6 text-right text-3xl font-black text-[var(--color-heading-h5)]">
+                            {data.cards[1].title}
+                        </h2>
+                        <div className="flex flex-col gap-8">
                             <div>
-                                <div className="flex items-center gap-3 mb-3">
+                                {/* RTL: כותרת מימין, אייקון משמאל לכותרת */}
+                                <div className="mb-3 flex w-full flex-row items-center justify-start gap-3" dir="rtl">
+                                    <h3 className="text-lg font-bold text-[var(--color-heading-h5)]">{data.cards[1].sec1Title}</h3>
                                     <GreenArrowCircle direction="left" />
-                                    <h3 className="text-xl font-black text-[#816AFE]">{data.cards[1].sec1Title}</h3>
                                 </div>
-                                <p className="text-[#2D2D44] leading-relaxed whitespace-pre-line pr-2">{data.cards[1].sec1Text}</p>
+                                <p className="whitespace-pre-line pr-1 leading-relaxed text-[#2D2D44]">
+                                    {data.cards[1].sec1Text}
+                                </p>
                             </div>
                             <div>
-                                <div className="flex items-center gap-3 mb-3">
+                                {/* RTL: כותרת, אייקון מימין לכותרת */}
+                                <div className="mb-3 flex w-full flex-row items-center justify-start gap-3" dir="rtl">
                                     <GreenArrowCircle direction="right" />
-                                    <h3 className="text-xl font-black text-[#816AFE]">{data.cards[1].sec2Title}</h3>
+                                    <h3 className="text-lg font-bold text-[var(--color-heading-h5)]">{data.cards[1].sec2Title}</h3>
                                 </div>
-                                <p className="text-[#2D2D44] leading-relaxed whitespace-pre-line pr-2">{data.cards[1].sec2Text}</p>
+                                <p className="whitespace-pre-line pr-1 leading-relaxed text-[#2D2D44]">
+                                    {data.cards[1].sec2Text}
+                                </p>
                             </div>
                         </div>
-                        <p className="text-sm text-[#2D2D44]/70 border-t border-[#2D2D44]/10 pt-6 mt-8">
-                            התכנית מופעלת על ידי החברה למתנ&quot;סים, במסגרת המחלקה לאנשים ונשים עם מוגבלות, ובשיתוף משרד הרווחה.
-                        </p>
                     </div>
                 </div>
             )}
@@ -121,16 +178,19 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
                     {/* תג + מספר */}
                     <div className="inline-flex items-center gap-2 bg-[#C5E080] border-2 border-black px-4 py-1.5 rounded-full mb-8 shadow-[3px_3px_0px_black]">
                         <span className="font-bold text-[#2D2D44] tracking-wide text-sm">{data.hero.tag}</span>
-                        <div className="bg-white/30 px-2 rounded-full text-xs font-bold border border-black/10">01</div>
+                        <div className="rounded-full border border-black/10 bg-white/30 px-2 font-[family-name:var(--font-salsa)] text-xs font-bold">01</div>
                     </div>
                     
-                    {/* כותרת ראשית */}
-                    <h1 className="text-5xl md:text-6xl font-black text-[#2D2D44] leading-[1] mb-4">
-                        {data.hero.title1}
+                    {/* כותרת ראשית — Rubik */}
+                    <h1 className="mb-4 font-['Rubik'] text-5xl font-black leading-[1] text-[#2D2D44] md:text-6xl">
+                        <span className="text-black">{data.hero.title1}</span>
                         <br />
-                        <span className="text-[#816AFE] relative inline-block">
+                        <span className="relative inline-block pb-2 text-[#816AFE]">
                             {data.hero.title2}
-                            <span className="absolute bottom-3 left-0 w-full h-4 bg-[#FFD028] -z-10 rounded-sm"></span>
+                            <span
+                                className="absolute bottom-0 left-0 right-0 h-1 rounded-full bg-[#F97316]"
+                                aria-hidden
+                            />
                         </span>
                     </h1>
 
@@ -168,8 +228,8 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
                             </div>
                         </div>
 
-                        {/* מספר 01 רקע */}
-                        <div className="absolute bottom-10 right-20 text-[180px] font-black text-[#816AFE] font-['Rubik'] leading-none opacity-10 select-none -z-0">
+                        {/* מספר 01 רקע — משמאל */}
+                        <div className="absolute bottom-10 left-10 font-[family-name:var(--font-salsa)] text-[180px] font-black leading-none text-[#816AFE] opacity-10 select-none -z-0 md:left-20">
                             01
                         </div>
                     </div>
@@ -181,7 +241,7 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
                             <h2 className="text-4xl md:text-5xl font-black text-[#816AFE] mb-6 text-center md:text-right">
                                 {data.cards[0].title}
                             </h2>
-                            <h3 className="text-xl md:text-2xl font-bold text-[#2D2D44] mb-8 leading-normal">
+                            <h3 className="mb-8 text-xl font-bold leading-normal text-[var(--color-brand-purple)] md:text-2xl">
                                 {data.cards[0].subtitle}
                             </h3>
                             <p className="text-lg leading-relaxed text-[#2D2D44] opacity-90 whitespace-pre-line border-r-4 border-[#EBE5FC] pr-6 pl-6">
@@ -190,26 +250,26 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
                         </StickyCard>
 
                         {/* כרטיס 2 – נדבק מתחת לראשון (אפקט stacking) */}
-                        <StickyCard top="480px">
-                            <h2 className="text-4xl md:text-5xl font-black text-[#816AFE] mb-12 text-center">
+                        <StickyCard top="480px" innerClassName="border-[#2D2D44]/20 bg-[var(--color-surface-lilac)] shadow-xl">
+                            <h2 className="mb-10 text-right text-4xl font-black text-[var(--color-heading-h5)] md:text-5xl">
                                 {data.cards[1].title}
                             </h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 flex-grow">
+                            <div className="grid flex-grow grid-cols-1 gap-12 md:grid-cols-2">
                                 <div className="flex flex-col gap-4">
-                                    <div className="flex items-center gap-3">
+                                    <div className="flex w-full flex-row items-center justify-start gap-3" dir="rtl">
+                                        <h3 className="text-2xl font-bold text-[var(--color-heading-h5)]">{data.cards[1].sec1Title}</h3>
                                         <GreenArrowCircle direction="left" />
-                                        <h3 className="text-2xl font-black text-[#816AFE]">{data.cards[1].sec1Title}</h3>
                                     </div>
-                                    <p className="text-lg leading-relaxed text-[#2D2D44] pr-[40px]">
+                                    <p className="text-lg leading-relaxed text-[#2D2D44] md:pr-2">
                                         {data.cards[1].sec1Text}
                                     </p>
                                 </div>
-                                <div className="flex flex-col gap-4 md:text-left" dir="rtl">
-                                    <div className="flex items-center gap-3 md:flex-row-reverse">
+                                <div className="flex flex-col gap-4" dir="rtl">
+                                    <div className="flex w-full flex-row items-center justify-start gap-3" dir="rtl">
                                         <GreenArrowCircle direction="right" />
-                                        <h3 className="text-2xl font-black text-[#816AFE]">{data.cards[1].sec2Title}</h3>
+                                        <h3 className="text-2xl font-bold text-[var(--color-heading-h5)]">{data.cards[1].sec2Title}</h3>
                                     </div>
-                                    <p className="text-lg leading-relaxed text-[#2D2D44] pr-[40px] md:pr-0 md:pl-[40px] md:text-left">
+                                    <p className="text-lg leading-relaxed text-[#2D2D44] md:pl-2 md:text-right">
                                         {data.cards[1].sec2Text}
                                     </p>
                                 </div>
@@ -220,8 +280,18 @@ const Chapter1 = ({ data, onNext, onPrev }) => {
                 </div>
             </div>
 
-            {/* כפתור לפרק הבא */}
-            <div className="w-full pb-20">
+            {/* כפתור לפרק הבא + פוטר: מובייל בתוך המשטח הלבן הראשי */}
+            <div className="w-full pb-20 md:hidden">
+                <NextChapterButton 
+                    title="לפרק הבא"
+                    subtitle="פרק 02 - מי משתתפות ומשתתפים ברעים"
+                    onClick={onNext}
+                />
+                {content?.footer ? <Footer data={content.footer} variant="chapter2Mobile" /> : null}
+            </div>
+
+            {/* כפתור לפרק הבא — דסקטופ */}
+            <div className="hidden w-full pb-20 md:block">
                 <NextChapterButton 
                     title="לפרק הבא"
                     subtitle="פרק 02 - מי משתתפות ומשתתפים ברעים"

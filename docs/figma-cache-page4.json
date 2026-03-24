@@ -1,0 +1,425 @@
+{
+  "_meta": {
+    "title": "Figma design cache — Page 4 (פרק 4 · עבודה מנהלית)",
+    "figmaFileUrlPrimary": "https://www.figma.com/design/pCQsVHvp5kYNlIvoXTlqqf/%D7%AA%D7%95%D7%9B%D7%A0%D7%99%D7%AA-%D7%A8%D7%A2%D7%99%D7%9D--Copy---Copy-?node-id=254-10541&m=dev",
+    "fileKeyPrimary": "pCQsVHvp5kYNlIvoXTlqqf",
+    "rootNodeId": "254:10541",
+    "rootNodeIdUrlForm": "254-10541",
+    "rootFrameName": "Chapter 4",
+    "extractedAt": "2026-03-24T00:00:00Z",
+    "extractionStatus": "started",
+    "extractionNote": "Initial cache from Figma MCP get_figma_data(node 254:10541). Shell + main column structure, section node map, layout globalVars, FAQ titles, file-card spec. Expand with asset exports and desktop frames when available.",
+    "mapsToApp": "src/pages/Chapter4.jsx (mobile + desktop), src/data.js chapter4",
+    "doNotHallucinate": "Hebrew strings under contentCanonical.* mirror Figma text nodes; align CMS/Firestore separately. Numeric layout values taken from MCP globalVars in this pass."
+  },
+  "_cacheExtractionProtocol": {
+    "title": "Rules for extending this cache",
+    "seeAlso": ".cursor/rules/figma-cache-extraction.mdc",
+    "figmaSourceThisPass": {
+      "method": "Figma MCP get_figma_data",
+      "root": "254:10541",
+      "nodes": [
+        "254:10541",
+        "254:10551",
+        "254:10552",
+        "254:11231",
+        "254:12080",
+        "254:12236",
+        "254:12264",
+        "254:12359"
+      ]
+    }
+  },
+  "_extractionScope": {
+    "figmaTarget": "Mobile frame `Chapter 4` 375×812 under 254:10541",
+    "mainContent": {
+      "figmaNodeId": "254:10551",
+      "name": "Main content",
+      "note": "White column 359px wide, vertical scroll, sections overlap gap -24px vs parent (same pattern as Chapter 3 main sheet)."
+    },
+    "excludedFigmaNodes": [
+      {
+        "figmaNodeId": "254:10542",
+        "name": "Right Sidebar",
+        "reason": "Back control, screen title, hamburger — app mobile chrome."
+      },
+      {
+        "figmaNodeId": "254:10540",
+        "name": "iPhone XStatus Bars",
+        "reason": "Status bar — out of chapter scope (if present as sibling in file)."
+      }
+    ]
+  },
+  "_rtl": {
+    "layoutDirection": "rtl",
+    "documentDir": "rtl",
+    "faqCollapseRow": {
+      "figmaDomOrder": "Component `202:9288` row: `add` icon first, then `Subtitle` text (LTR component order).",
+      "siteImplementationNote": "For RTL parity with Chapter 3 accordion: prefer title then +/- in DOM + logical flex (`justify-content: space-between`, `dir=\"rtl\"`) so title sits physical right and control physical left."
+    },
+    "nativPrincipleRows": {
+      "figmaLayout": "`layout_95K4IZ`: row, justifyContent flex-end, gap 12px — Body Text then Icon (icon on physical left in RTL).",
+      "note": "Matches Hebrew reading: text block anchored inline-end, bullet icon inline-start."
+    }
+  },
+  "layout": {
+    "pageFrame": {
+      "figmaNodeId": "254:10541",
+      "widthPx": 375,
+      "heightPx": 812,
+      "background": "#46319B",
+      "padding": { "top": 48, "right": 0, "bottom": 12, "left": 0 },
+      "alignItems": "center"
+    },
+    "mainContentColumn": {
+      "figmaNodeId": "254:10551",
+      "widthPx": 359,
+      "borderRadiusPx": 24,
+      "fill": "#FFFFFF",
+      "overflowScrollY": true,
+      "gapBetweenSectionsPx": -24,
+      "note": "Negative gap stacks overlapping rounded sections like Chapter 3."
+    },
+    "section1Hero": {
+      "figmaNodeId": "254:10552",
+      "name": "Section 1",
+      "padding": { "top": 120, "right": 24, "bottom": 0, "left": 24 },
+      "stackGapPx": 8,
+      "heroInner": {
+        "figmaNodeId": "254:10555",
+        "name": "Hero",
+        "padding": { "vertical": 24 },
+        "gapPx": 60,
+        "textColumn": {
+          "widthPx": 303,
+          "gapPx": 16,
+          "yellowRule": { "widthPx": 220, "heightPx": 12, "fill": "#FFB23B" }
+        }
+      },
+      "bigChapterDigits": {
+        "figmaNodeId": "254:12072",
+        "name": "No.",
+        "position": "absolute",
+        "box": { "x": 24, "y": 476, "width": 95, "height": 102 },
+        "digitText": "04",
+        "digitColor": "#6546DE",
+        "textStyle": "Chapter display ~80px Salsa (see globalVars style_6ZLLZD in MCP dump)",
+        "waveComponentId": "106:3092",
+        "waveFill": "#C4213B",
+        "waveStroke": "#6546DE"
+      },
+      "ambientEllipses": [
+        {
+          "name": "Ellipse 2",
+          "approx": { "width": 496, "height": 403, "fill": "rgba(255, 178, 59, 0.12)", "blurPx": 200 }
+        },
+        {
+          "name": "Ellipse 3",
+          "approx": { "width": 528, "height": 464, "fill": "rgba(101, 70, 222, 0.16)", "blurPx": 200 }
+        }
+      ],
+      "featureCardsStrip": {
+        "figmaNodeId": "254:11231",
+        "name": "Cards",
+        "mode": "row",
+        "overflowScrollX": true,
+        "justifyContent": "flex-end",
+        "alignItems": "flex-end",
+        "gapPx": 8,
+        "cardInstance": "254:11274",
+        "cardLayout": {
+          "widthPx": 240,
+          "heightPx": 180,
+          "paddingPx": 24,
+          "borderRadiusPx": 16,
+          "stroke": "rgba(101, 70, 222, 0.16) 1.5px",
+          "innerColumnGapPx": 16,
+          "titleSubtitleGapPx": 4,
+          "floatingCornerIcon": {
+            "note": "Absolute `layout_HT4LQS`: height 36, offset approx x -36 y 27 from card, purple tint fill #6546DE, inner icon white stroke"
+          }
+        },
+        "figmaCardOrderVisual": [
+          { "title": "נהלים וטפסים", "subtitle": "נהלי העבודה בתכנית רעים" },
+          { "title": "הועדות", "subtitle": "איך זה עובד?" },
+          { "title": "מערכת נתיב", "subtitle": "הנחיות לרכזת" }
+        ],
+        "mapsToData": "content.chapter4.features — order in Figma strip differs from array order in data.js; preserve CMS order or re-sort in UI explicitly when matching Figma."
+      }
+    },
+    "sectionNativ": {
+      "figmaName": "Section Meeting",
+      "figmaNodeId": "254:12080",
+      "note": "Figma label `Section Meeting` maps to app `nativSystem` block (not chapter 3 meeting).",
+      "borderRadius": "24px 24px 0 0",
+      "padding": { "top": 60, "right": 24, "bottom": 60, "left": 24 },
+      "gapPx": 80,
+      "background": "linear-gradient vertical: rgba(255, 178, 59, 0.08) → #FFFFFF",
+      "contentFrame": {
+        "gapPx": 24,
+        "groupInfo": {
+          "gapPx": 52,
+          "textAlignEndStack": true,
+          "label": "הנחיות לרכזת",
+          "title": "מערכת נתיב"
+        },
+        "principlesList": { "gapPx": 12, "itemRowGapPx": 12 },
+        "iconPill": { "sizePx": 44, "paddingPx": 12, "borderRadiusPx": 200, "fill": "rgba(188, 224, 121, 0.6)" }
+      },
+      "screenshotFrame": {
+        "figmaNodeId": "254:12081",
+        "name": "Image",
+        "borderRadiusPx": 24,
+        "stroke": "#001D26 1.5px",
+        "effect": "2px 2px 0 0 rgba(0,29,38,1)",
+        "padding": { "vertical": 60, "horizontal": 50 },
+        "imageAreaHeightPx": 64,
+        "imageRefs": ["e0c654e8dfd9a6cc0ab0cf3ac3fcc04e04bb9973", "be74ae36d8f638dd729963a151c30eabe7258dae"],
+        "assetExportTo": "public/assets/chapter4/ (TBD filename — export via MCP or REST)"
+      }
+    },
+    "sectionCommitteesAndFaq": {
+      "figmaNodeId": "254:12236",
+      "name": "Section 2",
+      "borderTopStroke": "#FFB23B 2px (physical top)",
+      "padding": { "top": 24, "right": 24, "bottom": 100, "left": 24 },
+      "gapPx": 24,
+      "background": "same as sectionNativ fill_SV75PC",
+      "purpleTitleCard": {
+        "figmaNodeId": "254:12237",
+        "fill": "#6546DE",
+        "text": "הועדות",
+        "textColor": "#FFFFFF",
+        "borderRadiusPx": 24,
+        "paddingPx": 24,
+        "gapPx": 24,
+        "effect": "2px 2px 0 0 rgba(0,29,38,1)"
+      },
+      "committeesCopy": {
+        "introGapPx": 40,
+        "stepCardsGapPx": 32,
+        "stepCard": {
+          "borderRadiusPx": 8,
+          "padding": { "top": 32, "right": 16, "bottom": 24, "left": 16 },
+          "gapPx": 8,
+          "background": "gradient rgba(188,224,121,0.08) → #FFFFFF",
+          "stroke": "#001D26 1.5px",
+          "chapterChip": {
+            "componentId": "104:3059",
+            "variant": "Web / Right",
+            "position": "absolute",
+            "approx": { "x": 110, "y": -21, "height": 42 },
+            "note": "Same chip pattern as Chapter 3 onboarding — physical top-right."
+          }
+        },
+        "figmaStepChildOrder": ["Step 2 id04", "Step 4 id03", "Step 3 id02", "Step 1 id01"],
+        "appNote": "Chapter4.jsx uses reverse() on steps for display — verify visual order vs Figma after refactor."
+      },
+      "faqHeader": {
+        "figmaNodeId": "254:12261",
+        "paddingTopPx": 24,
+        "alignItems": "flex-end",
+        "kicker": "כל מה שרצית לשאול",
+        "title": "שאלות ותשובות"
+      },
+      "faqList": {
+        "componentSet": "125:2673",
+        "collapseItem": "202:9288",
+        "itemVerticalPaddingPx": 80,
+        "itemHorizontalPaddingPx": 16,
+        "rowGapPx": 12,
+        "border": "1px rgba(101,70,222,0.08)",
+        "borderRadiusPx": 8,
+        "restingFill": "#FFFFFF"
+      }
+    },
+    "sectionFiles": {
+      "figmaNodeId": "254:12359",
+      "name": "Section Meeting",
+      "note": "Second `Section Meeting` frame in file = נהלים וטפסים / file cards.",
+      "padding": { "top": 60, "right": 0, "bottom": 60, "left": 0 },
+      "paddingEndNote": "padding right 0, left 0 in layout_35862J — inner title block uses padding-inline",
+      "gapPx": 24,
+      "titleBlock": {
+        "figmaNodeId": "254:12361",
+        "paddingInlineStartPx": 32,
+        "title": "נהלים וטפסים"
+      },
+      "cardsRow": {
+        "overflowScrollX": true,
+        "justifyContent": "flex-end",
+        "gapPx": 12,
+        "leadingSpacerWidthPx": 180,
+        "cardInstance": "254:12416",
+        "cardSize": { "widthPx": 280, "heightPx": 360 },
+        "cardPadding": { "top": 8, "right": 8, "bottom": 14, "left": 8 },
+        "innerGapPx": 16,
+        "thumb": { "borderRadiusPx": 12, "imageRef": "ece298d0ec2c16f10310d45724b276a6035cb503" },
+        "rowFooter": { "justifyContent": "flex-end", "gapPx": 10, "paddingInlineEndPx": 12 }
+      }
+    }
+  },
+  "colors": {
+    "pageBezel": "#46319B",
+    "ink": "#001D26",
+    "white": "#FFFFFF",
+    "purpleBrand": "#6546DE",
+    "greenTag": "#BCE079",
+    "greenTagDark": "#839C54",
+    "yellowAccent": "#FFB23B",
+    "redAccent": "#C4213B",
+    "purpleStrokeSoft": "rgba(101, 70, 222, 0.16)",
+    "purpleFillSoft": "rgba(101, 70, 222, 0.08)",
+    "orangeSectionTint": "rgba(255, 178, 59, 0.08)",
+    "stepCardGradientTop": "rgba(188, 224, 121, 0.08)"
+  },
+  "typography": {
+    "_comment": "Mirrors MCP text styles used on this frame (subset).",
+    "body1": { "fontFamily": "Rubik", "fontWeight": 400, "fontSizePx": 16, "lineHeight": 1.32, "letterSpacingPercent": 0.9375 },
+    "subtitle1": { "fontFamily": "Rubik", "fontWeight": 500, "fontSizePx": 16, "lineHeight": 1.22, "letterSpacingPercent": 0.9375 },
+    "body2": { "fontFamily": "Rubik", "fontWeight": 400, "fontSizePx": 14, "lineHeight": 1.43, "letterSpacingPercent": 1.2143 },
+    "h4": { "fontFamily": "Rubik", "fontWeight": 700, "fontSizePx": 34, "lineHeight": 1.1, "letterSpacingPercent": 0.7353 },
+    "h5": { "fontFamily": "Rubik", "fontWeight": 700, "fontSizePx": 24, "lineHeight": 1.334 },
+    "h6": { "fontFamily": "Rubik", "fontWeight": 600, "fontSizePx": 20, "lineHeight": 1.28, "letterSpacingPercent": 0.75 },
+    "chapterSmall": { "fontFamily": "Salsa", "fontWeight": 400, "fontSizePx": 16, "lineHeight": 1.28, "letterSpacingPercent": 0.9375 }
+  },
+  "contentCanonical": {
+    "hero": {
+      "chapterLabel": "פרק רביעי",
+      "chapterNumber": "04",
+      "title": "עבודה מנהלית"
+    },
+    "nativSystem": {
+      "label": "הנחיות לרכזת",
+      "title": "מערכת נתיב",
+      "descriptionIntro": "נתיב היא מערכת ממוחשבת לניהול ותיעוד המשתתפים והמשתתפות. היא מאפשרת מעקב שוטף ותמונת מצב עדכנית של כל קבוצה.",
+      "principlesHeadingLine": "עקרונות העבודה בנתיב:",
+      "principles": [
+        "עדכון שוטף: כניסה ויציאה של משתתפים ומשתתפות.",
+        "נוכחות: מילוי דוח בסוף כל מפגש (או לכל המאוחר עד ה-1 בחודש).",
+        "דיווחים חודשיים: המנחה המחוזית ומנהלת התכנית מקבלות דו\"ח מרכזי.",
+        "עזיבות: יש לעדכן במערכת, לציין תאריך וסיבה, וליידע את העו\"ס ומנהלנית רעים."
+      ],
+      "_cmsNote": "Last principle uses Figma copy `מנהלנית`; data.js has `מנהלת רעים` — resolve with content owner.",
+      "supportHeading": "תמיכה והדרכה:",
+      "supportBodyFigma": "רכזות חדשות עוברות הדרכה מסודרת עם אחראי הנתיב, שמהווה כתובת לכל שאלה טכנית בהמשך.",
+      "_supportBodyDataJsNote": "data.js: `אחראי נתיב` and ends with `בהמשך` (no `טכנית`)."
+    },
+    "committees": {
+      "title": "הועדות",
+      "intro": "תכנית רעים מוכרת ומסובסדת על ידי משרד הרווחה. כדי להשתתף, יש צורך בוועדה המאשרת את המימון.",
+      "stepsLabel": "שלבי התהליך:",
+      "steps": [
+        { "id": "01", "title": "פנייה לרווחה", "body": "המועמד/ת או הוריו/ה פונים לעו\"ס ברווחה. במידת הצורך, הרכזת מסייעת." },
+        { "id": "02", "title": "אישור ברשות המקומית", "body": "הבקשה עוברת לאישור זכאות ולגזבר/ית." },
+        { "id": "03", "title": "אישור בתכנית רעים", "body": "מנהלת התכנית מאשרת." },
+        { "id": "04", "title": "אישור סופי במשרד הרווחה", "body": "הבקשה מוזנת במערכת \"מס\"ר\" ונשלח מייל עדכון לרכזת." }
+      ],
+      "_cmsNote": "Figma uses `תכנית` in some strings; data.js uses `תוכנית` in places — normalize.",
+      "footer": "בסיום התהליך, המימון מאושר, והמשתתף/ת מצטרף/ת רשמית."
+    },
+    "faq": {
+      "kicker": "כל מה שרצית לשאול",
+      "title": "שאלות ותשובות",
+      "accordionTitles": [
+        "איך נדע שהוועדה אושרה?",
+        "האם כל הסכום מגיע למתנ\"ס?",
+        "מה לגבי גבייה?",
+        "מהו תוקף הוועדה?",
+        "מה קורה אם משתתף לא יכול לשלם?",
+        "איך לנהל גבייה?",
+        "חשוב לדעת"
+      ]
+    },
+    "files": {
+      "title": "נהלים וטפסים",
+      "introFigma": "בקבצים המצורפים ניתן למצוא את נהלי העבודה בתכנית רעים: הנהלים נועדו לסייע בעבודה השוטפת, להעניק סדר וביטחון להתנהלות בתוך המרכז הקהילתי ומחוצה לו.",
+      "_introCodeNote": "Chapter4.jsx PROCEDURES_INTRO uses `בתוכנית` and slightly different wording — align when implementing Figma parity."
+    }
+  },
+  "assets": {
+    "_exportQueue": [
+      {
+        "figmaNodeId": "254:12081",
+        "purpose": "Nativ screenshot / mock inside gradient frame",
+        "imageRefs": ["e0c654e8dfd9a6cc0ab0cf3ac3fcc04e04bb9973", "be74ae36d8f638dd729963a151c30eabe7258dae"]
+      },
+      {
+        "figmaNodeId": "254:12370",
+        "purpose": "File card thumbnails (repeat per card)",
+        "imageRefs": ["ece298d0ec2c16f10310d45724b276a6035cb503"]
+      }
+    ],
+    "exportedIcons": {
+      "publicDir": "public/assets/chapter4/icons",
+      "figmaFile": "pCQsVHvp5kYNlIvoXTlqqf",
+      "parentFrame": "254:10541",
+      "items": [
+        {
+          "file": "feature-strip-files.svg",
+          "figmaNodeId": "I254:11232;254:11277",
+          "use": "Hero strip card — נהלים וטפסים (instance swap 2:1532)"
+        },
+        {
+          "file": "feature-strip-committees.svg",
+          "figmaNodeId": "I254:11233;254:11277",
+          "use": "Hero strip card — הועדות (instance swap 2:982)"
+        },
+        {
+          "file": "feature-strip-corner-arrow.svg",
+          "figmaNodeId": "I254:11232;254:11282",
+          "use": "Purple floating control on feature cards (same for all three cards)"
+        },
+        {
+          "file": "feature-strip-nativ-brand.png",
+          "figmaNodeId": "I254:11234;254:11278;120:6276",
+          "imageRef": "a9631c8ad81178d4df29a4e71cf2dc3d4ab6c4a2",
+          "use": "מערכת נתיב logo tile inside card (raster)"
+        },
+        {
+          "file": "hero-deco-star-a.svg",
+          "figmaNodeId": "254:11222",
+          "use": "Hero decoration"
+        },
+        {
+          "file": "hero-deco-star-b.svg",
+          "figmaNodeId": "254:11224",
+          "use": "Hero decoration"
+        },
+        {
+          "file": "nativ-principle-bullet.svg",
+          "figmaNodeId": "254:12096",
+          "use": "Nativ principle row icon (same graphic on 254:12100, 254:12104, 254:12108)"
+        },
+        {
+          "file": "nativ-screenshot-corner.svg",
+          "figmaNodeId": "254:12083",
+          "use": "Badge on nativ mock frame"
+        },
+        {
+          "file": "nativ-section-mock.png",
+          "figmaNodeId": "254:12082",
+          "imageRef": "e0c654e8dfd9a6cc0ab0cf3ac3fcc04e04bb9973",
+          "use": "Nativ section screenshot / mock (primary image fill)"
+        },
+        {
+          "file": "faq-row-plus.svg",
+          "figmaNodeId": "I254:12264;125:2629;202:9290",
+          "use": "FAQ collapse row + control (component 115:2811 outlined)"
+        },
+        {
+          "file": "file-card-download-pill.svg",
+          "figmaNodeId": "I254:12370;254:12429",
+          "use": "File card row purple download pill (repeat per file card)"
+        },
+        {
+          "file": "file-card-thumb-placeholder.png",
+          "figmaNodeId": "I254:12370;254:12417",
+          "imageRef": "ece298d0ec2c16f10310d45724b276a6035cb503",
+          "use": "File card thumbnail placeholder"
+        }
+      ],
+      "_note": "MCP download initially wrote under the user profile `public/`; copies live in the repo at `public/assets/chapter4/icons/`."
+    }
+  }
+}

@@ -20,34 +20,34 @@ const HomeHero = ({ data }) => {
             }}
         >
             {/* --- LEFT PLANE ASSEMBLY --- */}
-            <div className="absolute top-[15%] left-[5%] md:left-[12%] z-10 hidden lg:block pointer-events-none select-none">
+            <div className="absolute top-[10%] left-[5%] md:left-[12%] z-10 pointer-events-none select-none scale-75 md:scale-100">
                 {/* Trail (Above and behind the plane) */}
                 <img
                     src="/assets/Vector 3.png"
                     alt="trail"
-                    className="absolute -top-12 -right-8 w-24 opacity-60 -z-10 -translate-x-20 scale-x-100"
+                    className="absolute -top-12 -right-8 w-24 opacity-60 -z-10"
                 />
                 {/* Plane (Rotated to face down-right towards the title) */}
                 <img
-                    src="/assets/Vector 2 (1).png"
+                    src="/assets/Vector 1.png"
                     alt="plane"
-                    className="relative z-10 w-16 rotate-[20deg] animate-[bounce_4s_infinite] mt-15"
+                    className="relative z-10 w-16 rotate-[20deg] animate-[bounce_4s_infinite]"
                 />
             </div>
 
             {/* --- RIGHT PLANE ASSEMBLY --- */}
-            <div className="absolute top-[40%] right-[5%] md:right-[12%] z-10 hidden lg:block pointer-events-none select-none">
+            <div className="absolute top-[40%] right-[5%] md:right-[12%] z-10 pointer-events-none select-none scale-75 md:scale-100">
                 {/* Trail (Below and behind the plane, flipped horizontally using -scale-x-100) */}
                 <img
                     src="/assets/Vector 3.png"
                     alt="trail"
-                    className="absolute -bottom-10 -left-12 w-24 opacity-60 -z-10 scale-x-100 rotate-12"
+                    className="absolute -bottom-10 -left-12 w-24 opacity-60 -z-10 -scale-x-100 rotate-12"
                 />
                 {/* Plane (Rotated to face up-left towards the title) */}
                 <img
-                    src="/assets/Vector 1.png"
+                    src="/assets/Vector 2 (1).png"
                     alt="plane"
-                    className="relative z-10 w-16 -rotate-[5deg] animate-[bounce_5s_infinite] -mt-20 -translate-x-23"
+                    className="relative z-10 w-16 -rotate-[15deg] animate-[bounce_5s_infinite]"
                 />
             </div>
 
@@ -71,11 +71,11 @@ const HomeHero = ({ data }) => {
             </div>
 
             {/* Fallback: star + dot when no SVG – keep for small screens / no assets */}
-            <div className="absolute right-[10%] text-[#FFD028] z-10 hidden md:block" style={{ top: 'clamp(2rem, 12vh, 4rem)' }}>
+            <div className="absolute right-[10%] text-[#FFD028] z-10 block md:block" style={{ top: 'clamp(2rem, 12vh, 4rem)' }}>
                 <Star fill="currentColor" className="animate-pulse" style={{ width: 'clamp(16px, 1.2vw, 24px)', height: 'clamp(16px, 1.2vw, 24px)' }} />
             </div>
-            <div className="absolute left-[15%] bg-[#FF5C5C] rounded-full hidden md:block z-10" style={{ top: 'clamp(4rem, 18vh, 6rem)', width: 'clamp(6px, 0.5vw, 10px)', height: 'clamp(6px, 0.5vw, 10px)' }} />
-            <svg className="absolute left-[8%] text-[#7DD3FC] opacity-90 md:hidden z-10" style={{ top: 'clamp(4rem, 14vh, 5rem)', width: 'clamp(24px, 5vw, 36px)', height: 'clamp(24px, 5vw, 36px)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 19l-7-7 7-7M19 12H5"/></svg>
+            <div className="absolute left-[15%] bg-[#FF5C5C] rounded-full block md:block z-10" style={{ top: 'clamp(4rem, 18vh, 6rem)', width: 'clamp(6px, 0.5vw, 10px)', height: 'clamp(6px, 0.5vw, 10px)' }} />
+            <svg className="hidden absolute left-[8%] text-[#7DD3FC] opacity-90 z-10" style={{ top: 'clamp(4rem, 14vh, 5rem)', width: 'clamp(24px, 5vw, 36px)', height: 'clamp(24px, 5vw, 36px)' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 19l-7-7 7-7M19 12H5"/></svg>
 
             {/* דסקטופ: גלריית תמונות – רווח ברור מהכותרת כדי שהתמונות לא יעלו על הטקסט */}
             <div

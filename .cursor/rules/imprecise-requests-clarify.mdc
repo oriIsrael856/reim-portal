@@ -1,0 +1,41 @@
+---
+description: When UI or product requests are vague, ask clarifying questions and align on shared vocabulary before implementing
+alwaysApply: true
+---
+
+# Imprecise requests — clarify first, then implement
+
+When the user’s request is **short, subjective, or could mean several things** (e.g. “higher”, “like Figma”, “fix the header”, “it’s wrong”), **do not guess a large refactor**. Prefer a **short alignment pass**, then implement.
+
+## 1. Ask a few targeted questions (English replies per `technical-english-default.mdc`)
+
+Use **2–5 concrete questions**, for example:
+
+- **Which surface?** (e.g. purple toolbar vs white main card vs logo pill vs global `Header.jsx` vs Chapter 2 mobile only.)
+- **Which direction / relationship?** (move **up** on screen, reduce **gap** between A and B, **overlap** more, **sticky** behavior, etc.)
+- **Reference?** Figma **node id** and frame name, or a **screenshot** with “this / not this”.
+- **Constraint?** “Must not change desktop”, “must keep CMS strings”, “no second toolbar”, etc.
+
+It is **good** to say: *“I can interpret this as A or B — which do you want?”*
+
+## 2. Establish shared vocabulary
+
+Offer **labels** the user can reuse next time, tied to this repo when known:
+
+- Example: *“White column = `.ch2-mobile-main-content`; menu chip = `.ch2-mobile-menu-frame`; purple row = `.ch2-mobile-sticky-chrome__purple-inner`.”*
+
+If they don’t know class names, **screenshot + arrow** or **one sentence** (“the gap under the hamburger”) is enough.
+
+## 3. Confirm acceptance in one line
+
+Before or after a small change, mirror back:
+
+- *“Done when: no purple strip between the menu chip and the white card’s top edge.”*
+
+## 4. If they already tuned a value
+
+If they say *“I set X to 104px and it’s good”*, treat that as **ground truth**: optionally **commit that value** (or a CSS variable) and document **which property** it was (`padding-top` vs `margin-top`, etc.) in a comment or spec note.
+
+## 5. Language
+
+Follow **`technical-english-default.mdc`**: assistant replies in **technical English** unless the user explicitly asks for another language for that reply. The user may write in Hebrew; questions and summaries stay clear and short.
