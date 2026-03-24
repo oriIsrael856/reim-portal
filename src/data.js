@@ -26,7 +26,12 @@ export const INITIAL_DATA = {
             title2: "תוכנית רעים",
             logoText: "רעים",
             tagline: "שווה להיות ביחד",
-            images: ["/img1.jpg", "/img2.jpg", "/img3.jpg", "/img4.jpg", "/img5.jpg"]
+            images: [
+                "/assets/home/home-hero-1.png",
+                "/assets/home/home-hero-2.png",
+                "/assets/home/home-hero-3.png",
+                "/assets/home/home-hero-4.png"
+            ]
         },
         intro: {
             title: "התחלה חדשה בפתח",
@@ -41,7 +46,10 @@ export const INITIAL_DATA = {
             subtitle: "השראות מיוחדות ישירות לתיבה שלך",
             text: "מנה חודשית מרוכזת של חדשות, משחק ומיטב ההשראה מהשטח.",
             placeholder: "הקלידי את כתובת המייל שלך",
-            images: { left: "/Image (2).png", right: "/Image (4).png" }
+            images: {
+                left: "/assets/home/home-newsletter-left.png",
+                right: "/assets/home/home-newsletter-right.png"
+            }
         },
         carouselHeader: {
             label: "כל מה שכדאי לדעת",
@@ -129,7 +137,7 @@ export const INITIAL_DATA = {
             ],
             description:
                 "שתי האוכלוסיות מביאות עמן שונות נוירולוגית והתפתחותית, שמשפיעה על תהליכי למידה, תקשורת, חיברות ועיבוד מידע. השונות הזו אינה פתולוגיה אלא ביטוי למגוון האנושי. עם זאת, לעיתים המפגש עם מערכות חינוך, חברה ותעסוקה שמבוססות על נורמות אחידות, עלול להוביל לתחושת חוסר שייכות ולחוויות בדידות.",
-            image: "/group-pillar.jpg"
+            image: "/assets/chapter2/groups-intro-main.png"
         },
         group01: {
             id: "קבוצה 01",
@@ -339,7 +347,11 @@ export const INITIAL_DATA = {
         hero: {
             tag: "פרק חמישי ואחרון",
             title: "כלים מעשיים",
-            images: ["/tools-main.jpg", "/tools-side1.jpg", "/tools-side2.jpg"]
+            images: [
+                "/assets/chapter5/chapter5-hero-main.png",
+                "/assets/chapter5/chapter5-hero-side1.png",
+                "/assets/chapter5/chapter5-library-bg.png"
+            ]
         },
         marketing: {
             title: "שיווק וגיוס משתתפים ומשתתפות",
@@ -369,7 +381,7 @@ export const INITIAL_DATA = {
                 title: "הרכזיה",
                 desc: "מאגר פעילויות ומשחקים שפותח לאורך השנים על ידי רכזות ורכזים. מעל 600 פעילויות, ממוין לפי נושאים, מותאם במיוחד לאופי הייחודי של קבוצות רעים.",
                 btnText: "הצגת מאגר",
-                image: "/library-tubes.jpg"
+                image: "/assets/chapter5/chapter5-library-bg.png"
             },
             newsletter: {
                 title: "ניוזלטר רעים",
@@ -377,7 +389,7 @@ export const INITIAL_DATA = {
                 text: "מנה חודשית מרוכזת של חדשנות, משחק ומיטב ההשראה מהשטח.",
                 placeholder: "הקלידי את כתובת המייל שלך"
             },
-            sideImage: "/people-boxes.jpg"
+            sideImage: "/assets/chapter5/chapter5-hero-side1.png"
         }
     },
 
