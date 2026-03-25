@@ -27,28 +27,42 @@ export const INITIAL_DATA = {
             logoText: "רעים",
             tagline: "שווה להיות ביחד",
             images: [
-                "/assets/home/home-hero-1.png",
-                "/assets/home/home-hero-2.png",
-                "/assets/home/home-hero-3.png",
-                "/assets/home/home-hero-4.png"
-            ]
+                "/assets/home/home-hero-collage-main-5712da.png",
+                "/assets/home/home-hero-collage-mid-7cb686.png",
+                "/assets/home/home-hero-collage-side-4fa4c2.png",
+                "/assets/home/home-hero-collage-main-5712da.png"
+            ],
+            /** Figma 36:1025 desktop collage — absolute layout ref 1445×500 */
+            desktopCollage: {
+                farRight: "/assets/desktop/home/reim-desktop-hero-photo-stack-far-right-441733.png",
+                leftSquare: "/assets/desktop/home/reim-desktop-hero-photo-left-square-7cb686.png",
+                centerSquare: "/assets/desktop/home/reim-desktop-hero-photo-center-square-1916d4.png",
+                centerLeftTall: "/assets/desktop/home/reim-desktop-hero-photo-center-left-tall-1d62ac.png",
+                centerRightTall: "/assets/desktop/home/reim-desktop-hero-photo-center-right-tall-4fa4c2.png"
+            }
         },
         intro: {
             title: "התחלה חדשה בפתח",
             subtitle: "אז, איפה מתחילים?",
             text:
                 "תפקיד הרכזת ברעים הוא תפקיד משמעותי וייחודי:\n" +
-                "להוביל קבוצה של משתתפים ומשתתפות מהמגוון האוטיסטי או עם לקויות למידה נרחבות, ליצירת חיי חברה, תחושת שייכות לקבוצה וקהילה.\n\n" +
-                "האוגדן שלפניך מרכז את כל המידע הדרוש לתחילת הדרך."
+                "להוביל קבוצה של משתתפים ומשתתפות מהמגוון האוטיסטי או עם לקויות למידה נרחבות, ליצירת חיי חברה, תחושת שייכות לקבוצה ולקהילה.\n\n" +
+                "האוגדן שלפניך מרכז את כל המידע הדרוש לתחילת הדרך: הרקע על התכנית, מטרותיה, המשתתפים והמשתתפות, לצד כלים פרקטיים לניהול שוטף, שיווק, עבודה מנהלית ותהליכים מקצועיים. מטרתו להעניק תמונה רחבה וברורה, לחזק את תחושת הביטחון בתפקיד ולשמש כתובת לחזור אליה לאורך כל הדרך."
+        },
+        /** Figma 191:11486 — שורת תמונות מעל הקרוסלה */
+        photoGrid: {
+            left:  "/assets/home/home-title-44-3391.png",
+            right: "/assets/home/home-title-46-3670-7eca69.png"
         },
         newsletter: {
             title: "ניוזלטר רעים",
             subtitle: "השראות מיוחדות ישירות לתיבה שלך",
-            text: "מנה חודשית מרוכזת של חדשות, משחק ומיטב ההשראה מהשטח.",
+            text: "מנה חודשית מרוכזת של חדשנות, משחק ומיטב השראה מהשטח.",
             placeholder: "הקלידי את כתובת המייל שלך",
             images: {
-                left: "/assets/home/home-newsletter-left.png",
-                right: "/assets/home/home-newsletter-right.png"
+                // Figma Section 2 side tiles: right (44:3391) + left (46:3670)
+                left: "/assets/home/home-title-46-3670-7eca69.png",
+                right: "/assets/home/home-title-44-3391.png",
             }
         },
         carouselHeader: {
@@ -386,7 +400,7 @@ export const INITIAL_DATA = {
             newsletter: {
                 title: "ניוזלטר רעים",
                 subtitle: "השראות מיוחדות ישירות לתיבה שלך",
-                text: "מנה חודשית מרוכזת של חדשנות, משחק ומיטב ההשראה מהשטח.",
+                text: "מנה חודשית מרוכזת של חדשנות, משחק ומיטב השראה מהשטח.",
                 placeholder: "הקלידי את כתובת המייל שלך"
             },
             sideImage: "/assets/chapter5/chapter5-hero-side1.png"

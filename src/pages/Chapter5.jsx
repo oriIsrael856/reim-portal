@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Plus, Send, Star } from 'lucide-react';
+import { ArrowLeft, Plus } from 'lucide-react';
 import SplitStickyLayout from '../components/layout/SplitStickyLayout';
 import Accordion from '../components/common/Accordion';
 import CheckCard from '../components/chapter5/CheckCard';
@@ -156,38 +156,18 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                         </div>
                     </article>
 
-                    <article className="relative flex h-[400px] flex-col items-center justify-between rounded-3xl border-[1.5px] border-[#001D26] bg-[#BCE079] p-4 shadow-[2px_2px_0_#001D26]">
-                        <div className="flex w-full flex-col items-center gap-3">
-                            <Star size={44} className="text-[#FFB23B]" fill="currentColor" aria-hidden />
-                            <div className="flex flex-col items-center gap-0 text-center">
-                                <p className="text-base font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26]">
-                                    השראות מיוחדות ישירות לתיבה שלך
-                                </p>
-                                <h3 className="text-[34px] font-bold leading-[1.1] tracking-[0.00735em] text-[#001D26]">
-                                    {data.resources?.newsletter?.title ?? 'ניוזלטר רעים'}
-                                </h3>
-                            </div>
-                            <p className="text-center text-base font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26]">
-                                {data.resources?.newsletter?.text ?? 'מנה חודשית מרוכזת של חדשנות, משחק ומיטב השראה מהשטח.'}
-                            </p>
-                        </div>
-
-                        <div className="relative w-full">
-                            <div className="flex h-14 w-full items-center justify-between rounded-[100px] border border-[#001D26] bg-white px-[14px] pe-[6px]">
-                                <span className="text-base font-normal leading-[1.32] tracking-[0.009375em] text-[rgba(0,29,38,0.4)]">
-                                    {data.resources?.newsletter?.placeholder ?? 'הקלידי את כתובת המייל שלך'}
-                                </span>
-                                <span className="flex h-9 items-center rounded-[100px] bg-[rgba(101,70,222,0.4)] p-1.5 text-white">
-                                    <ArrowLeft size={18} strokeWidth={2.5} />
-                                </span>
-                            </div>
-                            <Send
-                                size={20}
-                                className="pointer-events-none absolute left-1/2 top-[-24px] -translate-x-1/2 text-[rgba(101,70,222,0.6)]"
-                                aria-hidden
-                            />
-                        </div>
-                    </article>
+                    <NewsletterCard
+                        data={{
+                            subtitle: data.resources?.newsletter?.subtitle ?? 'השראות מיוחדות ישירות לתיבה שלך',
+                            title: data.resources?.newsletter?.title ?? 'ניוזלטר רעים',
+                            text:
+                                data.resources?.newsletter?.text ??
+                                'מנה חודשית מרוכזת של חדשנות, משחק ומיטב השראה מהשטח.',
+                            placeholder:
+                                data.resources?.newsletter?.placeholder ?? 'הקלידי את כתובת המייל שלך',
+                        }}
+                        className="w-full"
+                    />
                 </section>
 
                 {/* 6. כפתור סיום */}

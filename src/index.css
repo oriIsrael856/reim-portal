@@ -20,6 +20,26 @@
   /* Layout & Borders */
   --radius-container: 16px; /* נשלף מפאנל ה-Properties בפיגמה */
 
+  /* --- Home desktop Hero (Figma 36:1025) --- */
+  --home-desktop-hero-pad-top: 60px;
+  --home-desktop-hero-pad-bottom: 172px;
+  --home-desktop-hero-pad-x: min(200px, 10.42vw);
+  --home-desktop-hero-text-max-w: 795px;
+  --home-desktop-hero-text-stack-gap: 9px;
+  --home-desktop-hero-subtitle-size: 24px;
+  --home-desktop-hero-subtitle-line: 1.334;
+  --home-desktop-hero-title-size: 60px;
+  --home-desktop-hero-title-line: 1;
+  --home-desktop-hero-title-tracking: -0.008333em;
+  --home-desktop-hero-collage-h: 500px;
+  --home-desktop-hero-photo-radius: 24px;
+  --home-desktop-hero-yellow-bar-w: 323px;
+  --home-desktop-hero-yellow-bar-h: 20px;
+  --home-desktop-hero-yellow-bar-left: 190.5px;
+  --home-desktop-hero-yellow-bar-top: 144px;
+  --home-desktop-hero-blur-purple: rgba(101, 70, 222, 0.12);
+  --home-desktop-hero-blur-amber: rgba(255, 178, 59, 0.08);
+
   /* --- Chapter 2 Mobile (Figma 194:16426 / 194:16436) --- */
   /* Figma Copy: 194:16426 "Chapter 2" (purple rail) + 194:16436 "Main content" (white card) */
   --ch2-page-bg: #46319b;
@@ -32,9 +52,19 @@
   --ch2-main-max-width: 359px;
   /* ריווח „מעט” מתחת לאייקון התפריט לפני הלוגו והתוכן; השטח הלבן נשאר מיושר לתחתית התפריט */
   --ch2-mobile-chrome-logo-gap-after-menu: 10px;
-  /* גובה רצועת הלוגו: ריווח + גלולית 56px + padding תחתון — חייב להתאים ל-padding של header-band */
+  /* Figma 191:9436 “Top bar” — logo pill (home + global mobile chrome) */
+  --ch2-mobile-logo-pill-max-w: 335px;
+  --ch2-mobile-logo-pill-h: 56px;
+  --ch2-mobile-logo-pill-pad-y: 14px;
+  --ch2-mobile-logo-pill-pad-x: 8px;
+  --ch2-mobile-logo-pill-fill: rgba(255, 255, 255, 0.4);
+  --ch2-mobile-logo-pill-stroke: rgba(0, 29, 38, 0.08);
+  --ch2-mobile-logo-pill-shadow: 0px 4px 24px 0px rgba(101, 70, 222, 0.04);
+  --ch2-mobile-logo-img-h: 31.94px;
+  --ch2-mobile-logo-img-max-w: 108.67px;
+  /* גובה רצועת הלוגו: ריווח + גלולית + padding תחתון — חייב להתאים ל-padding של header-band */
   --ch2-mobile-chrome-logo-band-height: calc(
-    var(--ch2-mobile-chrome-logo-gap-after-menu) + 56px + 8px
+    var(--ch2-mobile-chrome-logo-gap-after-menu) + var(--ch2-mobile-logo-pill-h) + 8px
   );
   /* ריווח מתחת לגלולית / רצועת הלוגו ומעל תווית הפרק (למשל „פרק שני”) */
   --ch2-mobile-gap-logo-to-chapter: 14px;
@@ -1228,7 +1258,7 @@
 
   .ch2-mobile-top-bar-pill--figma-16482 {
     width: 100%;
-    max-width: 335px;
+    max-width: var(--ch2-mobile-logo-pill-max-w);
     margin-inline: auto;
   }
 
@@ -1269,16 +1299,16 @@
   .ch2-mobile-top-bar-pill--figma-16482 .ch2-mobile-top-bar-pill__btn {
     box-sizing: border-box;
     width: 100%;
-    max-width: 335px;
-    min-height: 56px;
-    height: 56px;
-    padding: 14px 8px;
+    max-width: var(--ch2-mobile-logo-pill-max-w);
+    min-height: var(--ch2-mobile-logo-pill-h);
+    height: var(--ch2-mobile-logo-pill-h);
+    padding: var(--ch2-mobile-logo-pill-pad-y) var(--ch2-mobile-logo-pill-pad-x);
     border-radius: 200px;
-    border: 1px solid rgba(0, 29, 38, 0.05);
-    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--ch2-mobile-logo-pill-stroke);
+    background-color: var(--ch2-mobile-logo-pill-fill);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    box-shadow: none;
+    box-shadow: var(--ch2-mobile-logo-pill-shadow);
   }
 
   .ch2-mobile-top-bar-pill--figma-16482 .ch2-mobile-top-bar-pill__btn:hover {
@@ -1287,6 +1317,15 @@
 
   .ch2-mobile-top-bar-pill__logo {
     height: clamp(1.25rem, 5vw, 1.75rem);
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Figma 191:9438 Logo instance — overrides generic clamp for sticky chrome pill only */
+  .ch2-mobile-top-bar-pill--figma-16482 .ch2-mobile-top-bar-pill__logo {
+    height: var(--ch2-mobile-logo-img-h);
+    max-height: var(--ch2-mobile-logo-img-h);
+    max-width: var(--ch2-mobile-logo-img-max-w);
     width: auto;
     object-fit: contain;
   }
@@ -1464,5 +1503,15 @@
     letter-spacing: var(--ch2-why-body2-ls);
     color: var(--ch2-text-primary);
     white-space: pre-line;
+  }
+}
+
+/* Desktop: mobile shell tokens cap main at 359px — breaks full-width chapters + viewport `position: sticky`. */
+@media (min-width: 768px) {
+  .ch2-mobile-main-content.ch2-mobile-main-surface.ch2-mobile-main-content--below-sticky-chrome {
+    max-width: none !important;
+    width: 100% !important;
+    overflow: visible !important;
+    flex: 0 0 auto !important;
   }
 }

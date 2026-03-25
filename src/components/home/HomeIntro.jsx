@@ -1,31 +1,142 @@
 import React from 'react';
-import { Send } from 'lucide-react';
+
+/** Split CMS intro.text: first block = lead (Body 1 + Subtitle 1), after \\n\\n = Body 1 (Figma 191:9393). */
+function splitIntroText(text) {
+    if (!text || typeof text !== 'string') {
+        return { lead1: '', lead2: '', body: '' };
+    }
+    const parts = text.split(/\n\n+/);
+    const head = (parts[0] || '').trim();
+    const body = parts.slice(1).join('\n\n').trim();
+    const headLines = head.split('\n').map((s) => s.trim()).filter(Boolean);
+    const lead1 = headLines[0] || '';
+    const lead2 = headLines.slice(1).join('\n') || '';
+    return { lead1, lead2, body };
+}
 
 const HomeIntro = ({ data }) => {
+    const { lead1, lead2, body } = splitIntroText(data?.text);
+
     return (
-        <div className="relative w-full mx-auto z-20" style={{ maxWidth: 'min(1100px, 92vw)', paddingLeft: '0', paddingRight: '0', marginTop: 'clamp(1.5rem, 4vh, 3rem)', marginBottom: 'clamp(1rem, 4vh, 2rem)' }}>
-            <div className="absolute left-1/2 transform -translate-x-1/2 z-20" style={{ top: '-1.25rem' }}>
-                <div className="bg-[#FFB84C] md:bg-[#FFD028] rounded-lg rotate-12 shadow-[2px_2px_0px_rgba(0,0,0,0.1)] border-2 border-white" style={{ padding: 'clamp(0.25rem, 1vw, 0.5rem)' }}>
-                    <Send className="text-white transform rotate-45" style={{ width: 'clamp(14px, 2vw, 20px)', height: 'clamp(14px, 2vw, 20px)' }} fill="white" />
+        <section
+            className="relative z-20 w-full"
+            style={{
+                /* Figma 191:9393 outer padding; tint lives on HomePage wrapper */
+                paddingTop: 'clamp(2.5rem, 10vw, 5rem)',
+                paddingBottom: 'clamp(2rem, 6vw, 3.75rem)',
+            }}
+        >
+            <div className="relative z-10 mx-auto w-full" style={{ maxWidth: 'min(1100px, 92vw)' }}>
+                {/* ממורכז על רוחב המסגרת הסגולה; מעט מעל הכותרת וחופף את השפה העליונה */}
+                <div
+                    className="pointer-events-none absolute z-30 w-[clamp(5.75rem, 30vw, 9rem)] select-none"
+                    style={{
+                        top: 0,
+                        left: '50%',
+                        transform: 'translate(-50%, -48%)',
+                    }}
+                    aria-hidden
+                >
+                    <img
+                        src="/assets/home/home-intro-plane.svg"
+                        alt=""
+                        className="h-auto w-full object-contain"
+                        width={136}
+                        height={78}
+                    />
+                </div>
+
+                <div
+                    className="relative z-10 mx-auto w-full text-center text-white md:max-w-full"
+                    style={{
+                        borderRadius: '24px',
+                        border: '1.5px solid #001D26',
+                        boxShadow: '2px 2px 0 0 #001D26',
+                        backgroundColor: '#6546DE',
+                        /* מקום לזנב/מטוס שחופף מלמעלה */
+                        padding: 'clamp(2.75rem, 9vw, 3.25rem) 24px 32px',
+                    }}
+                >
+                    <div className="flex flex-col items-center gap-4 font-['Rubik']">
+                        <header className="flex w-full flex-col items-center gap-1">
+                            {data?.subtitle ? (
+                                <p
+                                    className="text-white"
+                                    style={{
+                                        fontSize: '16px',
+                                        lineHeight: 1.32,
+                                        letterSpacing: '0.009375em',
+                                        fontWeight: 400,
+                                    }}
+                                >
+                                    {data.subtitle}
+                                </p>
+                            ) : null}
+                            {data?.title ? (
+                                <h2
+                                    className="text-white"
+                                    style={{
+                                        fontSize: '24px',
+                                        lineHeight: 1.334,
+                                        fontWeight: 700,
+                                    }}
+                                >
+                                    {data.title}
+                                </h2>
+                            ) : null}
+                        </header>
+
+                        {(lead1 || lead2) && (
+                            <div className="flex w-full flex-col gap-1">
+                                {lead1 ? (
+                                    <p
+                                        className="text-white"
+                                        style={{
+                                            fontSize: '16px',
+                                            lineHeight: 1.32,
+                                            letterSpacing: '0.009375em',
+                                            fontWeight: 400,
+                                        }}
+                                    >
+                                        {lead1}
+                                    </p>
+                                ) : null}
+                                {lead2 ? (
+                                    <p
+                                        className="text-white"
+                                        style={{
+                                            fontSize: '16px',
+                                            lineHeight: 1.22,
+                                            letterSpacing: '0.009375em',
+                                            fontWeight: 500,
+                                        }}
+                                    >
+                                        {lead2}
+                                    </p>
+                                ) : null}
+                            </div>
+                        )}
+
+                        {body ? (
+                            <div className="flex w-full flex-col gap-2">
+                                <p
+                                    className="text-white"
+                                    style={{
+                                        fontSize: '16px',
+                                        lineHeight: 1.32,
+                                        letterSpacing: '0.009375em',
+                                        fontWeight: 400,
+                                    }}
+                                >
+                                    {body}
+                                </p>
+                            </div>
+                        ) : null}
+                    </div>
                 </div>
             </div>
-
-            {/* הכרטיס הסגול – באותו רוחב בסיסי כמו ניוזלטר (צר יותר), ארוך יותר בגובה; הטקסט מתפרס על כל הרוחב */}
-            <div className="w-[72%] max-w-[300px] mx-auto md:w-full md:max-w-full">
-                <div className="bg-[#5E3BEE] text-white rounded-2xl text-center shadow-xl relative overflow-hidden" style={{ padding: 'clamp(1.25rem, 5vh, 2.5rem) clamp(1rem, 4%, 3rem)', minHeight: 'clamp(260px, 55vh, 420px)' }}>
-                <div className="relative z-10 font-['Rubik'] mx-auto" style={{ maxWidth: '100%' }}>
-                    <h3 className="text-purple-200 font-bold tracking-widest uppercase" style={{ fontSize: 'clamp(0.55rem, 1.2vw, 0.65rem)', marginBottom: '0.25rem' }}>{data.subtitle}</h3>
-                    <h2 className="font-black mb-2" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.9rem)' }}>{data.title}</h2>
-                    <p className="leading-snug opacity-90 font-light whitespace-pre-line mx-auto" style={{ fontSize: 'clamp(0.7rem, 1.4vw, 0.9rem)' }}>
-                        {data.text}
-                    </p>
-                </div>
-
-                <div className="absolute top-[-50%] left-[-10%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-white/5 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute bottom-[-50%] right-[-10%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] bg-[#FFD028]/10 rounded-full blur-3xl pointer-events-none" />
-            </div>
-            </div>
-        </div>
+        </section>
     );
 };
+
 export default HomeIntro;

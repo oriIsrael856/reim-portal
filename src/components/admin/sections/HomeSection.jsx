@@ -43,10 +43,31 @@ const HomeSection = ({ getValue, update }) => {
           onChange={(v) => update('home.intro.title', v)}
         />
         <SmartField
+          label="אינטרו - תת־כותרת (מעל הכותרת)"
+          value={getValue('home.intro.subtitle') || ''}
+          onChange={(v) => update('home.intro.subtitle', v)}
+        />
+        <SmartField
           label="אינטרו - טקסט"
           value={getValue('home.intro.text')}
           onChange={(v) => update('home.intro.text', v)}
         />
+        <h3 className="font-black text-xl mb-4 mt-8">גריד תמונות (מעל הקרוסלה — Figma 191:11486)</h3>
+        <p className="text-[#2D2D44]/70 text-sm mb-4">
+          עמודה רחבה (שמאל בפיגמה) ועמודה צרה; רווח 16px, מסגרת וצל כמו בעיצוב.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <ImageField
+            label="תמונה — עמודה רחבה"
+            value={getValue('home.photoGrid.left') ?? getValue('home.photoGrid')?.left}
+            onChange={(v) => update('home.photoGrid.left', v)}
+          />
+          <ImageField
+            label="תמונה — עמודה צרה"
+            value={getValue('home.photoGrid.right') ?? getValue('home.photoGrid')?.right}
+            onChange={(v) => update('home.photoGrid.right', v)}
+          />
+        </div>
         <h3 className="font-black text-xl mb-4 mt-8">תמונות Hero (קרוסלה)</h3>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {[0, 1, 2, 3, 4].map((i) => (
@@ -61,7 +82,31 @@ const HomeSection = ({ getValue, update }) => {
       </div>
 
       <div className="bg-white p-8 rounded-[32px] shadow-sm">
-        <h3 className="font-black text-xl mb-4">ניוזלטר – תמונות</h3>
+        <h3 className="font-black text-xl mb-4">ניוזלטר – טקסטים (כרטיס Figma 191:9424)</h3>
+        <p className="text-[#2D2D44]/70 text-sm mb-4">
+          כל השדות נשמרים ב-Firestore; בהמשך ניתן לחבר את שליחת המייל לרשימת תפוצה.
+        </p>
+        <SmartField
+          label="תת־כותרת (מעל הכותרת)"
+          value={getValue('home.newsletter.subtitle') || ''}
+          onChange={(v) => update('home.newsletter.subtitle', v)}
+        />
+        <SmartField
+          label="כותרת"
+          value={getValue('home.newsletter.title') || ''}
+          onChange={(v) => update('home.newsletter.title', v)}
+        />
+        <SmartField
+          label="טקסט גוף"
+          value={getValue('home.newsletter.text') || ''}
+          onChange={(v) => update('home.newsletter.text', v)}
+        />
+        <SmartField
+          label="מציין מקום בשדה המייל"
+          value={getValue('home.newsletter.placeholder') || ''}
+          onChange={(v) => update('home.newsletter.placeholder', v)}
+        />
+        <h3 className="font-black text-xl mb-4 mt-8">ניוזלטר – תמונות (דסקטופ)</h3>
         <p className="text-[#2D2D44]/70 text-sm mb-4">תמונות משני צדי כרטיס הניוזלטר בעמוד הבית.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ImageField

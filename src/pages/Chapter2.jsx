@@ -3,6 +3,7 @@ import { Check, ArrowLeft, Plus, Minus } from 'lucide-react';
 import AccordionRichContent from '../components/chapter2/AccordionRichContent';
 import NextChapterButton from '../components/common/NextChapterButton';
 import { Chapter2MobileView } from '../components/chapter2/mobile';
+import Chapter2DesktopAudienceSection from '../components/chapter2/Chapter2DesktopAudienceSection';
 import StickyCard from '../components/common/StickyCard'; 
 // ייבוא הרכיב הארכיטקטוני החדש
 import SplitStickyLayout from '../components/layout/SplitStickyLayout'; 
@@ -10,16 +11,6 @@ import SplitStickyLayout from '../components/layout/SplitStickyLayout';
 /* ==============================================================================
    1. רכיבי עזר (ללא שינוי)
    ============================================================================== */
-const AgeCard = ({ label, age }) => (
-    <div className="bg-white rounded-xl border-2 border-[#2D2D44] p-4 text-center shadow-[4px_4px_0px_rgba(45,45,68,0.1)] flex flex-col items-center justify-center min-h-[110px] transform hover:-translate-y-1 transition-transform duration-300">
-        <h3 className="font-black text-[#2D2D44] text-xl mb-1">{label}</h3>
-        <div className="bg-[#EBE5FC] px-3 py-0.5 rounded-md mb-1">
-            <span className="text-xs font-bold text-[#2D2D44]/70">גילאי</span>
-        </div>
-        <div className="text-[#5E3BEE] font-black text-3xl font-['Rubik'] leading-none">{age}</div>
-    </div>
-);
-
 const GoalCard = ({ text }) => (
     <div className="relative bg-[#F8F9FA] rounded-[16px] border-2 border-[#2D2D44] p-6 pt-10 text-center flex items-center justify-center min-h-[120px] group hover:bg-white transition-all duration-300">
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[#C5E080] border-2 border-[#2D2D44] rounded-lg flex items-center justify-center rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-sm z-10">
@@ -84,24 +75,23 @@ const HeroSection = ({ data }) => (
 );
 
 const UnifiedOrangeSection = ({ data }) => (
-    <div className="w-full max-w-[1300px] mx-auto px-4 mb-20 relative z-20">
-        <div className="bg-[#FFF9F0] rounded-[40px] border-[3px] border-[#2D2D44] p-6 md:p-12 shadow-[10px_10px_0px_#2D2D44]">
-            <div className="bg-[#FFB84C] rounded-[30px] border-[2px] border-[#2D2D44] p-8 md:p-12 mb-16 shadow-[4px_4px_0px_rgba(45,45,68,0.1)]">
+    <div className="relative z-20 mb-20 w-full">
+        <Chapter2DesktopAudienceSection data={data} />
+        <div className="mx-auto mt-16 max-w-[1300px] px-4">
+            <div className="rounded-[40px] border-[3px] border-[#2D2D44] bg-[#FFF9F0] p-6 shadow-[10px_10px_0px_#2D2D44] md:p-12">
                 <div className="text-center">
-                    <h2 className="text-3xl md:text-4xl font-black text-[#2D2D44] mb-4">{data.audienceTitle}</h2>
-                    <p className="text-[#2D2D44] font-medium text-lg md:text-lg max-w-4xl mx-auto leading-relaxed mb-10 whitespace-pre-line">{data.audienceText}</p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
-                        {data.ageGroups.map((group, index) => <AgeCard key={index} label={group.label} age={group.age} />)}
+                    <div className="relative mb-12 inline-block">
+                        <h2 className="relative z-10 text-3xl font-black text-[#2D2D44] md:text-4xl">
+                            מטרות <br />
+                            <span className="text-[#5E3BEE]">תכנית רעים</span>
+                        </h2>
+                        <div className="absolute top-9 left-0 -z-0 h-3 w-full rotate-[-1deg] rounded-full bg-[#C5E080]/50" />
                     </div>
-                </div>
-            </div>
-            <div className="text-center">
-                <div className="inline-block relative mb-12">
-                    <h2 className="text-3xl md:text-4xl font-black text-[#2D2D44] relative z-10">מטרות <br /><span className="text-[#5E3BEE]">תכנית רעים</span></h2>
-                    <div className="absolute top-9 left-0 w-full h-3 bg-[#C5E080]/50 -z-0 rounded-full transform -rotate-1"></div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-10 max-w-6xl mx-auto">
-                    {data.goals.map((item, index) => <GoalCard key={index} text={item} />)}
+                    <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-3">
+                        {data.goals.map((item, index) => (
+                            <GoalCard key={index} text={item} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

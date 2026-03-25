@@ -27,7 +27,7 @@ export default function MobilePublicLayout({
                 logoUrl={logoUrl}
                 onLogoClick={onLogoClick}
             />
-            <div className="ch2-mobile-main-content ch2-mobile-main-surface ch2-mobile-main-content--below-sticky-chrome flex min-h-0 w-full max-w-none flex-1 flex-col md:!mt-0 md:!max-w-none md:!min-h-0 md:!w-full md:!flex-none md:!rounded-none md:!border-0 md:!bg-transparent md:!p-0 md:!shadow-none">
+            <div className="ch2-mobile-main-content ch2-mobile-main-surface ch2-mobile-main-content--below-sticky-chrome flex min-h-0 w-full max-w-none flex-1 flex-col md:!mt-0 md:!max-w-none md:!min-h-0 md:!w-full md:!flex-none md:!overflow-visible md:!rounded-none md:!border-0 md:!bg-transparent md:!p-0 md:!shadow-none">
                 {children}
             </div>
         </div>

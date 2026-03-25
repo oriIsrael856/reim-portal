@@ -1,51 +1,106 @@
-import React from 'react';
-import { ArrowLeft, Star } from 'lucide-react';
+import React, { useState } from 'react';
 
 /**
- * כרטיס ניוזלטר – פרופורציות אחידות לעמוד הבית ופרק 5.
- * מקבל: { title, subtitle, text, placeholder }
+ * כרטיס ניוזלטר — Figma Home 191:9424 (מבנה + מידות + אייקונים מיוצאים).
+ * data: { title, subtitle, text, placeholder } — כולם ניתנים לעריכה ב-CMS.
+ * TODO: חיבור לרשימת תפוצה (שליחת email ל-endpoint / שירות).
  */
+const ASSETS = {
+    star1: '/assets/home/home-newsletter-star1.svg',
+    star2: '/assets/home/home-newsletter-star2.svg',
+    plane: '/assets/home/home-newsletter-plane.svg',
+    submit: '/assets/home/home-newsletter-submit.svg',
+};
+
 const NewsletterCard = ({ data, className = '' }) => {
+    const [email, setEmail] = useState('');
+
     if (!data) return null;
 
+    const placeholder = data.placeholder || 'הקלידי את כתובת המייל שלך';
+
     return (
-        <div
-            className={`bg-[#C5E080] rounded-2xl border-2 border-[#2D2D44] shadow-[3px_3px_0px_#2D2D44] flex flex-col items-center justify-center text-center relative overflow-y-auto ${className}`}
-            style={{
-                padding: 'clamp(0.5rem, 2vw, 1.25rem) clamp(0.5rem, 1.8vw, 1rem)'
-            }}
+        <article
+            className={`relative box-border flex h-[400px] flex-col justify-between overflow-visible rounded-[24px] border-[1.5px] border-[#001D26] bg-[#BCE079] p-4 shadow-[2px_2px_0_#001D26] ${className}`}
         >
-            <div className="relative flex-shrink-0" style={{ marginBottom: 'clamp(0.4rem, 1vw, 0.6rem)' }}>
-                <Star className="text-[#FFD028] fill-[#FFD028] animate-spin-slow" style={{ width: 'clamp(16px, 2.2vw, 24px)', height: 'clamp(16px, 2.2vw, 24px)' }} />
-                <div className="absolute top-0 w-1.5 h-1.5 bg-white rounded-full" style={{ left: 'clamp(0.9rem, 1.8vw, 1.4rem)' }} />
+            {/* מטוס + זנב — מיקום מדויק יחסית לפריים 400px (Figma y:225, x:90) */}
+            <img
+                src={ASSETS.plane}
+                alt=""
+                className="pointer-events-none absolute z-[1] h-auto w-[48px] max-w-[30%] select-none"
+                style={{
+                    top: '56.25%',
+                    left: '25.2%',
+                }}
+                width={92}
+                height={87}
+                aria-hidden
+            />
+
+            <div className="relative z-[2] flex w-full flex-col items-center gap-3">
+                <img src={ASSETS.star1} alt="" width={44} height={44} className="shrink-0" aria-hidden />
+                <div className="flex w-full flex-col items-center gap-0 text-center">
+                    {data.subtitle ? (
+                        <p
+                            className="text-[#001D26]"
+                            style={{
+                                fontSize: '16px',
+                                lineHeight: 1.32,
+                                letterSpacing: '0.009375em',
+                                fontWeight: 400,
+                            }}
+                        >
+                            {data.subtitle}
+                        </p>
+                    ) : null}
+                    <h3
+                        className="text-[#001D26]"
+                        style={{
+                            fontSize: '34px',
+                            lineHeight: 1.1,
+                            letterSpacing: '0.00735294em',
+                            fontWeight: 700,
+                        }}
+                    >
+                        {data.title}
+                    </h3>
+                </div>
+                <p
+                    className="w-full text-center text-[#001D26]"
+                    style={{
+                        fontSize: '16px',
+                        lineHeight: 1.32,
+                        letterSpacing: '0.009375em',
+                        fontWeight: 400,
+                    }}
+                >
+                    {data.text}
+                </p>
             </div>
-            {/* תת-כותרת – פי ~1.5 */}
-            <p className="font-bold text-[#2D2D44] opacity-80 flex-shrink-0" style={{ fontSize: 'clamp(0.9rem, 1.65vw, 1.1rem)', marginBottom: 'clamp(0.4rem, 1vw, 0.7rem)' }}>{data.subtitle}</p>
-            {/* כותרת ראשית – פי ~3 */}
-            <h3 className="font-black text-[#2D2D44] flex-shrink-0" style={{ fontSize: 'clamp(1.8rem, 3.3vw, 4.5rem)', marginBottom: 'clamp(0.7rem, 1.4vw, 1rem)' }}>{data.title}</h3>
-            {/* טקסט גוף – פי ~1.5 */}
-            <p className="text-[#2D2D44] font-medium leading-snug flex-shrink-0" style={{ fontSize: 'clamp(0.95rem, 1.65vw, 1.2rem)', marginBottom: 'clamp(1.1rem, 2.7vh, 1.7rem)', maxWidth: '92%' }}>
-                {data.text}
-            </p>
-            <div className="flex justify-center items-center gap-1 flex-shrink-0" style={{ marginBottom: 'clamp(1rem, 2.5vh, 1.5rem)' }}>
-                <svg className="opacity-70 text-[#5E3BEE]" style={{ width: 'clamp(32px, 5vw, 48px)', height: 'clamp(32px, 5vw, 48px)' }} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4,3">
-                    <path d="M15,85 Q50,15 85,85" />
-                    <path d="M80,75 L85,85 L75,87" />
-                </svg>
-                <Star className="text-[#5E3BEE] opacity-60" style={{ width: 'clamp(12px, 1.8vw, 18px)', height: 'clamp(12px, 1.8vw, 18px)' }} fill="currentColor" />
+
+            <div className="relative z-[2] flex justify-center">
+                <img src={ASSETS.star2} alt="" width={40} height={40} className="shrink-0" aria-hidden />
             </div>
-            <div className="relative w-full flex-shrink-0" style={{ maxWidth: 'min(220px, 95%)' }}>
+
+            <div className="relative z-[2] flex w-full min-h-[52px] items-center justify-between gap-3 rounded-[100px] border border-[#001D26] bg-white py-2 ps-1.5 pe-[14px]">
                 <input
                     type="email"
-                    placeholder={data.placeholder || 'הקלידי את כתובת המייל שלך'}
-                    className="w-full bg-white/90 border-2 border-[#2D2D44]/15 focus:border-[#2D2D44] rounded-full text-right outline-none placeholder-gray-500 shadow-inner transition-all"
-                    style={{ padding: 'clamp(0.55rem, 1.1vw, 0.7rem) clamp(0.7rem, 2vw, 1rem)', fontSize: 'clamp(0.95rem, 1.65vw, 1.2rem)' }}
+                    name="newsletter-email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={placeholder}
+                    className="min-w-0 flex-1 border-0 bg-transparent text-end text-base font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26] outline-none placeholder:text-[rgba(0,29,38,0.4)]"
                 />
-                <button type="button" className="absolute left-1.5 top-1/2 -translate-y-1/2 bg-[#A090E0] rounded-full border-2 border-[#2D2D44]/30 hover:scale-105 transition-transform flex items-center justify-center shadow-md" style={{ width: 'clamp(26px, 3.5vw, 32px)', height: 'clamp(26px, 3.5vw, 32px)' }} aria-label="שליחה">
-                    <ArrowLeft style={{ width: 'clamp(12px, 1.5vw, 16px)', height: 'clamp(12px, 1.5vw, 16px)' }} color="white" />
+                <button
+                    type="button"
+                    className="flex h-9 shrink-0 items-center justify-center rounded-[32px] p-1.5"
+                    aria-label="שליחה"
+                >
+                    <img src={ASSETS.submit} alt="" width={36} height={36} aria-hidden />
                 </button>
             </div>
-        </div>
+        </article>
     );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeHero from '../components/home/HomeHero';
 import HomeIntro from '../components/home/HomeIntro';
+import HomeIntroDesktop from '../components/home/HomeIntroDesktop';
 import HomeCarousel from '../components/home/HomeCarousel';
 import HomeNewsletter from '../components/home/HomeNewsletter';
 import NextChapterButton from '../components/common/NextChapterButton';
@@ -11,20 +12,34 @@ const HomePage = ({ data, navigateTo }) => {
             {/* 1. Hero */}
             <HomeHero data={data.hero} />
 
-            {/* קונטיינר: התחלה חדשה בפתח + קרוסלה – רווח ברור בין החץ הירוק לתמונות */}
+            {/* Section 1 (Figma 36:1035): mobile */}
             <div
-                className="w-full rounded-2xl md:rounded-[28px] mt-3 md:mt-4 mb-6 md:mb-10 overflow-hidden"
+                className="md:hidden w-full rounded-2xl mt-3 mb-6 overflow-hidden"
                 style={{
-                    background: '#EBE8FC',
+                    background: 'rgba(101, 70, 222, 0.08)',
                     border: '2px solid var(--Purple-Dark, #46319B)',
-                    padding: 'clamp(1rem, 4vh, 2rem) clamp(1rem, 4%, 2rem)'
+                    padding: 'clamp(1rem, 4vh, 2rem) clamp(1rem, 4%, 2rem)',
                 }}
             >
-                {/* 2. Intro Box – התחלה חדשה בפתח */}
                 <HomeIntro data={data.intro} />
+                <div className="mt-8 w-full min-w-0">
+                    <HomeCarousel items={data.carousel} navigateTo={navigateTo} carouselHeader={data.carouselHeader} />
+                </div>
+            </div>
 
-                {/* 3. Carousel */}
-                <HomeCarousel items={data.carousel} navigateTo={navigateTo} carouselHeader={data.carouselHeader} />
+            {/* Section 1 desktop */}
+            <div
+                className="relative mt-4 mb-10 hidden w-full flex-col items-center justify-start gap-0 self-stretch overflow-visible pt-[120px] pb-[100px] ps-6 pe-6 md:flex md:ps-12 md:pe-12 lg:ps-[200px] lg:pe-[200px]"
+                style={{ background: 'rgba(101, 70, 222, 0.08)' }}
+            >
+                <HomeIntroDesktop data={data.intro} />
+                <div className="mt-10 w-full min-w-0 max-w-full md:mt-14">
+                    <HomeCarousel
+                        items={data.carousel}
+                        navigateTo={navigateTo}
+                        carouselHeader={data.carouselHeader}
+                    />
+                </div>
             </div>
 
             {/* 4. כפתור מעבר לפרק הראשון */}
@@ -39,7 +54,7 @@ const HomePage = ({ data, navigateTo }) => {
             )}
 
             {/* 5. Newsletter Section */}
-            <HomeNewsletter data={data.newsletter} />
+            <HomeNewsletter data={data.newsletter} photoGrid={data.photoGrid} />
         </div>
     );
 };
