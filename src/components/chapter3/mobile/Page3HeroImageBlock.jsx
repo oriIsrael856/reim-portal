@@ -1,10 +1,8 @@
 import React from 'react';
-import { BigChapterDigits } from '../../chapter2/mobile';
+import ChapterDigitSvg from '../../common/ChapterDigitSvg';
 
-/**
- * Figma `253:8650` Image — photo 311×600, gradient overlay, deco ring, chapter digits + red waves (same pattern as Ch.2 `BigChapterDigits`)
- */
-export default function Page3HeroImageBlock({ imageSrc, chapterNumber, alt }) {
+/** Figma `253:8650` — photo with gradient overlay, deco ring, and chapter digit glyph. */
+export default function Page3HeroImageBlock({ imageSrc, alt }) {
     if (!imageSrc) return null;
 
     return (
@@ -17,12 +15,7 @@ export default function Page3HeroImageBlock({ imageSrc, chapterNumber, alt }) {
             </div>
             <div className="ch3-heroImage__deco" aria-hidden />
             <div className="ch3-heroImage__badge">
-                <BigChapterDigits
-                    digits={chapterNumber || '03'}
-                    fixedSize
-                    weightClass="font-normal"
-                    className="ch3-heroImage__digits z-[4]"
-                />
+                <ChapterDigitSvg digits="03" className="ch3-heroImage__digits z-[4] w-[clamp(80px,18vw,130px)]" />
             </div>
         </div>
     );

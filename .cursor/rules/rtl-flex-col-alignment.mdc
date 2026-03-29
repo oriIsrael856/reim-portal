@@ -1,0 +1,42 @@
+---
+description: RTL flex-col cross-axis alignment — items-start vs items-end are reversed from LTR expectations
+alwaysApply: true
+---
+
+# RTL `flex-col` Alignment
+
+In a `flex-col` container with `dir="rtl"` (or RTL writing mode), the **cross axis follows the inline direction**, so `align-items` values are physically reversed:
+
+| Class | LTR result | RTL result |
+|-------|-----------|-----------|
+| `items-start` | physical LEFT | **physical RIGHT ✓** |
+| `items-end` | physical RIGHT | **physical LEFT ✗** |
+
+## Rule
+
+To right-align children in an RTL `flex-col` → use **`items-start`**  
+To left-align children in an RTL `flex-col` → use **`items-end`**
+
+```jsx
+{/* ❌ WRONG — looks right-aligned in LTR, but left-aligned in RTL */}
+<div className="flex flex-col items-end" dir="rtl">
+  <p>שאלות ותשובות</p>
+</div>
+
+{/* ✅ CORRECT — right-aligned in RTL */}
+<div className="flex flex-col items-start" dir="rtl">
+  <p>שאלות ותשובות</p>
+</div>
+```
+
+## RTL `flex-row`: DOM order = visual position
+
+In `flex-row` with RTL, the **first DOM child appears on the physical right**. Never use `flex-row-reverse` to fake RTL — reorder elements in JSX instead.
+
+```jsx
+{/* RTL row: icon renders on the LEFT, text on the RIGHT (correct) */}
+<div className="flex flex-row gap-3" dir="rtl">
+  <p className="flex-1 text-right">question text</p>  {/* → physical right */}
+  <div>icon</div>                                      {/* → physical left */}
+</div>
+```

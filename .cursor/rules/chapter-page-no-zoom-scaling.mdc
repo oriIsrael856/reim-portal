@@ -1,0 +1,54 @@
+---
+description: Chapter page desktop layout — do not use zoom to scale sections; use proportional responsive CSS instead
+globs: src/pages/Chapter*.jsx
+alwaysApply: false
+---
+
+# Chapter Page Layout: No `zoom` Scaling
+
+## Problem with `zoom`
+
+Using CSS `zoom` to shrink a large Figma artboard into smaller viewports creates a **size mismatch** between sections:
+
+- Section with `zoom: 0.8` → 34px title renders visually as 27px
+- Adjacent section without zoom → 34px title renders at 34px
+- Result: the zoomed section appears smaller than Figma and inconsistent with the rest of the page
+
+## Correct Approach: Proportional CSS
+
+The Figma artboard is **1824px wide**. Map fixed pixel values to proportional equivalents:
+
+| Figma value | CSS equivalent | Formula |
+|-------------|---------------|---------|
+| `px-[200px]` (section padding) | `px-[11%]` or `paddingInline: 'clamp(24px, 11%, 200px)'` | 200/1824 ≈ 11% |
+| `w-[1424px]` (max content width) | `max-w-[1424px] mx-auto w-full` | cap on wide screens |
+
+## Content Area Context
+
+`<main>` has `md:pr-20` = **80px right sidebar**. So within `<main>`, `w-full` = viewport − 80px. Percentage padding is relative to that content width, not the full viewport.
+
+## Desktop Wrapper Template
+
+```jsx
+{/* ✅ No zoom — responsive desktop layout */}
+<div className="hidden md:block w-full">
+  <div className="relative w-full">
+    {/* Hero, feature cards, etc. */}
+
+    {/* Section with proportional horizontal padding */}
+    <section className="... px-[11%]">
+      {/* Cap content on very wide screens */}
+      <div className="w-full max-w-[1424px] mx-auto">
+        {/* content */}
+      </div>
+    </section>
+  </div>
+</div>
+```
+
+## What to Remove if Zoom Exists
+
+- All `CH4_DESKTOP_*` constants and the `getChapter4DesktopScale` function
+- `desktopScale` state + `useEffect` resize listener
+- `style={{ zoom: ..., width: 'calc(100% + Xpx)' }}` wrapper div
+- `overflow-x-hidden` on the outer wrapper (no longer needed)

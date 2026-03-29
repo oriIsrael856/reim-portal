@@ -4,19 +4,34 @@ import NextChapterButton from '../components/common/NextChapterButton';
 import PrevChapterButton from '../components/common/PrevChapterButton';
 import StickyCard from '../components/common/StickyCard';
 import SplitStickyLayout from '../components/layout/SplitStickyLayout';
-import ProcessCard from '../components/common/ProcessCard';
+import Chapter3OnboardingStepCard from '../components/chapter3/Chapter3OnboardingStepCard';
+import { Chapter3OnboardingHeading } from '../components/chapter3/Chapter3OnboardingHeading';
 import Accordion from '../components/common/Accordion';
 import { Chapter3MobileView } from '../components/chapter3/mobile';
+import { INITIAL_DATA } from '../data';
 import '../styles/chapter3-mobile.css';
+import '../styles/chapter3-desktop.css';
+
+/** Firestore may omit `onboarding`; merge defaults so desktop + mobile show steps (schema-safe). */
+function mergeChapter3Onboarding(fromCms) {
+    const base = INITIAL_DATA.chapter3.onboarding;
+    if (fromCms == null || typeof fromCms !== 'object') return base;
+    return {
+        ...base,
+        ...fromCms,
+        steps: Array.isArray(fromCms.steps) && fromCms.steps.length > 0 ? fromCms.steps : base.steps,
+    };
+}
 
 const Chapter3 = ({ data, content, onNext, onPrev }) => {
     if (!data) return <div className="text-center p-20 text-[#816AFE] font-bold">טוען נתוני פרק 3...</div>;
+
+    const mergedData = { ...data, onboarding: mergeChapter3Onboarding(data.onboarding) };
 
     const StickyHeader = (
         <div className="flex flex-col items-start pl-4 md:pl-10">
             <div className="inline-flex items-center gap-2 bg-[#C5E080] border-2 border-black px-4 py-1.5 rounded-full mb-8 shadow-[3px_3px_0px_black] transform -rotate-1">
                 <span className="font-bold text-[#2D2D44] tracking-wide text-sm">{data.hero?.tag}</span>
-                <div className="bg-white/40 px-2 rounded-full text-xs font-bold border border-black/10">03</div>
             </div>
 
             <h1 className="text-5xl md:text-7xl font-black text-[#2D2D44] leading-[1.1] mb-8 text-right">
@@ -45,7 +60,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                 </div>
             )}
 
-            <Chapter3MobileView data={data} onNext={onNext} footerData={content?.footer} />
+            <Chapter3MobileView data={mergedData} onNext={onNext} footerData={content?.footer} />
 
             <div className="hidden md:block">
                 <SplitStickyLayout stickyContent={StickyHeader}>
@@ -56,9 +71,26 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                                 alt="רכזת רעים"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
-                            <div className="absolute bottom-6 left-6 flex flex-col items-center">
-                                <span className="text-6xl font-black text-[#5E3BEE] font-['Rubik'] leading-none drop-shadow-sm bg-white/80 px-4 rounded-xl backdrop-blur-sm">
-                                    03
+                            {/* Desktop hero chapter numeral — Figma 120:3733 + red waves stretched across “03” */}
+                            <div
+                                className="pointer-events-none absolute bottom-6 right-6 z-10 select-none"
+                                aria-hidden
+                            >
+                                <span dir="ltr" className="relative inline-block">
+                                    <p className="relative z-0 m-0 whitespace-nowrap font-[family-name:var(--font-salsa)] text-[120px] font-normal leading-[1.28] tracking-[0.15px] text-[#6546DE]">
+                                        03
+                                    </p>
+                                    <svg
+                                        className="pointer-events-none absolute left-[-2%] top-[14%] h-[72%] w-[104%] text-[#EF4444]"
+                                        viewBox="0 0 100 44"
+                                        fill="none"
+                                        preserveAspectRatio="none"
+                                        aria-hidden
+                                    >
+                                        <path d="M0 7 Q16 3 34 7 T68 7 T100 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                                        <path d="M0 22 Q20 17 38 22 T72 22 T100 22" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                                        <path d="M0 37 Q16 33 34 37 T70 37 T100 37" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                                    </svg>
                                 </span>
                             </div>
                         </div>
@@ -99,31 +131,54 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                         ))}
                 </SplitStickyLayout>
 
-                {data.onboarding && (
-                    <div className="ch3-desktop-onboard relative mt-32 w-full overflow-hidden border-t border-[#001d26]/10">
+                {mergedData.onboarding?.steps?.length > 0 && (
+                    <div className="ch3-desktop-onboard relative mt-32 w-full overflow-x-clip overflow-y-visible border-t border-[#001d26]/10">
                         <div className="ch3-desktop-onboard__blob pointer-events-none absolute" aria-hidden />
-                        <div className="relative z-[1] mx-auto max-w-[1600px] px-6 py-16 md:px-12 md:py-24">
-                            <div className="ch3-desktop-onboard__intro mx-auto mb-12 max-w-3xl md:mb-16">
-                                <div className="ch3-desktop-onboard__headerFrame relative">
-                                    <div className="ch3-onboard__accentLine" aria-hidden />
-                                    <p className="ch3-onboard__kicker">{data.onboarding.titleTop}</p>
-                                    <h2 className="ch3-onboard__title text-3xl md:text-4xl">{data.onboarding.titleBottom}</h2>
-                                </div>
-                                <p className="ch3-onboard__intro mt-6 text-lg md:text-xl">{data.onboarding.description}</p>
+                        <div className="ch3-desktop-onboard__inner relative z-[1] mx-auto max-w-[1600px] px-6 py-16 md:px-12 md:py-24">
+                            <div className="ch3-desktop-onboard__intro mx-auto mb-12 max-w-[1000px] md:mb-16">
+                                <Chapter3OnboardingHeading
+                                    id="ch3-desktop-onboard-title"
+                                    titleTop={mergedData.onboarding.titleTop}
+                                    titleBottom={mergedData.onboarding.titleBottom}
+                                    titleBottomAccent={mergedData.onboarding.titleBottomAccent}
+                                    frameClassName="ch3-desktop-onboard__headerFrame"
+                                    titleClassName="ch3-desktop-onboard__title"
+                                />
+                                <p className="ch3-onboard__intro ch3-desktop-onboard__description">
+                                    {mergedData.onboarding.description}
+                                </p>
                             </div>
 
-                            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-8 md:gap-y-10 lg:grid-cols-3 xl:grid-cols-4">
-                                {data.onboarding.steps.map((step, index) => (
-                                    <div key={step.id ?? index} className="h-full min-h-0">
-                                        <ProcessCard
-                                            number={step.id}
-                                            step={step.step}
-                                            title={step.title}
-                                            items={step.items}
-                                            showStar={index === data.onboarding.steps.length - 1}
-                                        />
-                                    </div>
-                                ))}
+                            <div className="ch3-desktop-onboard__goals">
+                                {(() => {
+                                    const steps = mergedData.onboarding.steps ?? [];
+                                    const rows = [];
+                                    for (let i = 0; i < steps.length; i += 3) {
+                                        rows.push(steps.slice(i, i + 3));
+                                    }
+                                    return rows.map((row, rowIndex) => (
+                                        <div
+                                            key={`ch3-onboard-row-${rowIndex}`}
+                                            className={
+                                                row.length === 1
+                                                    ? 'ch3-desktop-onboard__stepsRow ch3-desktop-onboard__stepsRow--single'
+                                                    : 'ch3-desktop-onboard__stepsRow'
+                                            }
+                                        >
+                                            {row.map((step, index) => {
+                                                const globalIndex = rowIndex * 3 + index;
+                                                return (
+                                                    <div key={step.id ?? globalIndex} className="ch3-desktop-onboard__stepCell h-full min-h-0">
+                                                        <Chapter3OnboardingStepCard
+                                                            step={step}
+                                                            isLast={globalIndex === steps.length - 1}
+                                                        />
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    ));
+                                })()}
                             </div>
                         </div>
                     </div>

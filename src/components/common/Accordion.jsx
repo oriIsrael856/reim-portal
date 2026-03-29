@@ -1,50 +1,51 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
-const AccordionItem = ({ title, content, isOpen, onClick, collapsedIconSrc }) => {
+const AccordionItem = ({ title, content, isOpen, onClick }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const active = isOpen || isHovered;
+
     return (
-        <div 
-            className={`
-                mb-4 rounded-xl transition-all duration-300 overflow-hidden
-                ${isOpen 
-                    ? 'bg-white shadow-[0px_4px_20px_rgba(129,106,254,0.1)] border-r-4 border-[#816AFE]' 
-                    : 'bg-white/80 hover:bg-white border border-transparent'}
-            `}
+        <div
+            className="w-full overflow-hidden rounded-[8px] transition-all duration-200"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{
+                background: active
+                    ? 'rgba(101,70,222,0.08)'
+                    : 'linear-gradient(90deg,rgba(101,70,222,0.04) 0%,rgba(101,70,222,0.04) 100%),linear-gradient(90deg,#fff 0%,#fff 100%)',
+                border: '1px solid rgba(101,70,222,0.08)',
+                borderRight: active ? '2px solid #6546DE' : undefined,
+            }}
         >
             <button
                 type="button"
                 dir="rtl"
                 onClick={onClick}
-                className="flex w-full items-center justify-between gap-3 p-6 text-start outline-none"
+                className="flex w-full items-center outline-none transition-all duration-200"
+                style={{ minHeight: '80px', paddingInline: active ? '40px' : '24px', gap: '24px' }}
             >
                 <span
-                    className={`min-w-0 flex-1 text-start text-lg font-bold md:text-xl ${isOpen ? 'text-[#5E3BEE]' : 'text-[#2D2D44]'}`}
+                    className="flex-1 min-w-0 text-[24px] leading-[1.334] text-right transition-all duration-200"
+                    style={{ color: active ? '#6546DE' : '#001d26', fontWeight: active ? 700 : 400 }}
                 >
                     {title}
                 </span>
-
-                {/* מעגל האייקון — RTL row: title inline-end (ימין), אייקון inline-start (שמאל) */}
-                <div
-                    className={`
-                    w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300
-                    ${isOpen ? 'bg-[#5E3BEE]/10 text-[#5E3BEE]' : 'bg-[#2D2D44]/5 text-[#2D2D44]'}
-                `}>
-                    {isOpen ? (
-                        <Minus size={18} />
-                    ) : collapsedIconSrc ? (
-                        <img src={collapsedIconSrc} alt="" width={16} height={16} className="block h-4 w-4 object-contain" />
-                    ) : (
-                        <Plus size={18} />
-                    )}
-                </div>
+                {isOpen ? (
+                    <div className="shrink-0 flex items-center justify-center size-[24px] rounded-full bg-[rgba(101,70,222,0.08)]">
+                        <Minus size={16} className="text-[#6546DE]" />
+                    </div>
+                ) : (
+                    <Plus
+                        size={24}
+                        className="shrink-0 transition-colors duration-200"
+                        style={{ color: isHovered ? '#6546DE' : '#001d26' }}
+                    />
+                )}
             </button>
-
-            {/* תוכן נפתח */}
-            <div 
-                className={`
-                    px-6 text-[#2D2D44]/80 leading-relaxed overflow-hidden transition-all duration-500 ease-in-out
-                    ${isOpen ? 'max-h-[500px] opacity-100 pb-6' : 'max-h-0 opacity-0'}
-                `}
+            <div
+                className={`whitespace-pre-line text-[20px] font-semibold leading-[1.28] tracking-[0.15px] text-right text-[#001d26] overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}
+                style={isOpen ? { paddingBottom: '40px', paddingInline: '40px' } : {}}
             >
                 {content}
             </div>
@@ -52,25 +53,18 @@ const AccordionItem = ({ title, content, isOpen, onClick, collapsedIconSrc }) =>
     );
 };
 
-const Accordion = ({ items, collapsedIconSrc }) => {
-    // מנהל איזה פריט פתוח כרגע (null = הכל סגור)
-    const [openIndex, setOpenIndex] = useState(0); // ברירת מחדל: הראשון פתוח
-
-    const handleItemClick = (index) => {
-        // אם לוחצים על פריט פתוח -> סוגרים אותו, אחרת -> פותחים את החדש
-        setOpenIndex(openIndex === index ? null : index);
-    };
+const Accordion = ({ items }) => {
+    const [openIndex, setOpenIndex] = useState(null);
 
     return (
-        <div className="w-full max-w-4xl mx-auto">
+        <div className="w-full flex flex-col gap-[16px]">
             {items.map((item, index) => (
                 <AccordionItem
                     key={index}
                     title={item.title}
                     content={item.content}
                     isOpen={openIndex === index}
-                    onClick={() => handleItemClick(index)}
-                    collapsedIconSrc={collapsedIconSrc}
+                    onClick={() => setOpenIndex((prev) => (prev === index ? null : index))}
                 />
             ))}
         </div>

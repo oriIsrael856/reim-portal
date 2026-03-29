@@ -4,6 +4,7 @@ import AccordionRichContent from '../components/chapter2/AccordionRichContent';
 import NextChapterButton from '../components/common/NextChapterButton';
 import { Chapter2MobileView } from '../components/chapter2/mobile';
 import Chapter2DesktopAudienceSection from '../components/chapter2/Chapter2DesktopAudienceSection';
+import Chapter2DesktopHeroSection from '../components/chapter2/Chapter2DesktopHeroSection';
 import StickyCard from '../components/common/StickyCard'; 
 // ייבוא הרכיב הארכיטקטוני החדש
 import SplitStickyLayout from '../components/layout/SplitStickyLayout'; 
@@ -48,29 +49,87 @@ const Accordion = ({ items }) => {
    2. הסקשנים הגדולים
    ============================================================================== */
 
-const HeroSection = ({ data }) => (
-    <div className="relative pt-10 pb-12 text-center max-w-[1400px] mx-auto px-4 hidden md:block">
-        <div className="hidden lg:block pointer-events-none">
-            {/* שמאל למעלה – תמונה גדולה */}
-            <div className="absolute top-8 left-12 w-72 h-56 rotate-[-6deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[8px_8px_0px_#2D2D44] z-10 bg-gray-200"><img src={data.image1} alt="" className="w-full h-full object-cover" /></div>
-            {/* שמאל למטה – תמונה קטנה מרובעת, חופפת ליד התמונה הגדולה */}
-            <div className="absolute top-44 left-28 w-[240px] h-[240px] rotate-[8deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[6px_6px_0px_#2D2D44] z-20 bg-gray-200"><img src={data.image4} alt="" className="w-full h-full object-cover" /></div>
-            {/* ימין למעלה */}
-            <div className="absolute top-0 right-24 w-56 h-44 rotate-[4deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[-6px_6px_0px_#2D2D44] z-10 bg-gray-200"><img src={data.image2} alt="" className="w-full h-full object-cover" /></div>
-            {/* ימין למטה – חופף לתמונה הימנית העליונה */}
-            <div className="absolute top-36 right-12 w-64 h-48 rotate-[-3deg] rounded-3xl overflow-hidden border-[3px] border-[#2D2D44] shadow-[-6px_6px_0px_#2D2D44] z-20 bg-gray-200"><img src={data.image3} alt="" className="w-full h-full object-cover" /></div>
-        </div>
-        <div className="relative z-20 mt-10 lg:mt-32">
-            <div className="inline-flex items-center gap-2 bg-[#C5E080] border-2 border-black px-5 py-1.5 rounded-full mb-6 shadow-[3px_3px_0px_black] transform -rotate-1">
-                <span className="font-bold text-[#2D2D44]">{data.tag}</span>
-                <div className="w-6 h-6 bg-white/40 rounded-full flex items-center justify-center text-xs font-bold border border-black/10">02</div>
+/**
+ * Figma 114:2495 / 114:2497 — two-line styled title.
+ * Only applies when the CMS string matches the expected Hebrew phrase exactly (after
+ * stripping bidi marks / ZWSP).  Any other CMS value falls through to the plain h1.
+ */
+const Ch2TabletHeroTitle = ({ title }) => {
+    const normalized = typeof title === 'string'
+        ? title.replace(/[\u200e\u200f\u202a-\u202e\ufeff]/g, '').replace(/\s+/g, ' ').trim()
+        : '';
+    const display = normalized || 'מי משתתפות ומשתתפים ברעים';
+    const isExpectedPhrase = /^מי\s+משתתפות\s+ומשתתפים\s+ברעים$/u.test(normalized);
+    const parts = isExpectedPhrase
+        ? { line1Black: 'מי ', line1Purple: 'משתתפות', line2Purple: 'ומשתתפים', line2Black: ' ברעים' }
+        : null;
+
+    if (!parts) {
+        return (
+            <h1 className="mb-4 px-2 text-5xl leading-[1.1] font-black whitespace-pre-line text-[#2D2D44] md:text-7xl" dir="rtl">
+                {display}
+            </h1>
+        );
+    }
+
+    return (
+        <h1
+            className="mb-4 flex flex-col items-center gap-0 px-2 text-5xl leading-none font-bold tracking-[-0.5px] whitespace-nowrap text-[#2D2D44] md:text-7xl"
+            dir="rtl"
+            style={{ fontFamily: 'var(--font-rubik), Rubik, sans-serif' }}
+        >
+            <span className="flex flex-row flex-wrap items-end justify-center leading-none">
+                <span className="text-[var(--ch2-text-primary)]">{parts.line1Black}</span>
+                <span className="relative inline-block text-[var(--ch2-text-purple)]">
+                    <span className="relative z-[1]">{parts.line1Purple}</span>
+                    <span
+                        className="pointer-events-none absolute start-1/2 bottom-0 z-0 h-[length:var(--ch2-desktop-hero-yellow-bar-h)] w-[min(var(--ch2-desktop-hero-yellow-bar-line1-w),calc(100%+1.5rem))] max-w-[95vw] -translate-x-1/2 bg-[var(--ch2-orange)]"
+                        aria-hidden
+                    />
+                </span>
+            </span>
+            <span className="flex flex-row flex-wrap items-end justify-center leading-none">
+                <span className="relative inline-block text-[var(--ch2-text-purple)]">
+                    <span className="relative z-[1]">{parts.line2Purple}</span>
+                    <span
+                        className="pointer-events-none absolute start-1/2 bottom-0 z-0 h-[length:var(--ch2-desktop-hero-yellow-bar-h)] w-[min(var(--ch2-desktop-hero-yellow-bar-line2-w),calc(100%+1.5rem))] max-w-[95vw] -translate-x-1/2 bg-[var(--ch2-orange)]"
+                        aria-hidden
+                    />
+                </span>
+                <span className="text-[var(--ch2-text-primary)]">{parts.line2Black}</span>
+            </span>
+        </h1>
+    );
+};
+
+
+const HeroSection = ({ data, chapterNumber }) => (
+    <div className="hidden md:block">
+        {/* md–<lg: unchanged tablet layout */}
+        <div className="relative mx-auto max-w-[1400px] px-4 pt-10 pb-12 text-center lg:hidden">
+            <div className="relative z-20 mt-10">
+                <div className="mb-6 inline-flex -rotate-1 transform items-center gap-2 rounded-full border-2 border-black bg-[#C5E080] px-5 py-1.5 shadow-[3px_3px_0px_black]">
+                    <span className="font-bold text-[#2D2D44]">{data.tag}</span>
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full border border-black/10 bg-white/40 text-xs font-bold">
+                        {chapterNumber ?? '02'}
+                    </div>
+                </div>
+                <Ch2TabletHeroTitle title={data.title} />
+                <div className="mt-10 flex gap-4 overflow-x-auto px-4 pb-4 no-scrollbar snap-x">
+                    {[data.image1, data.image2, data.image3, data.image4].map((img, i) => (
+                        <div
+                            key={i}
+                            className="h-48 w-64 shrink-0 snap-center overflow-hidden rounded-2xl border-2 border-black bg-gray-200 shadow-[4px_4px_0px_black]"
+                        >
+                            <img src={img} alt="" className="h-full w-full object-cover" />
+                        </div>
+                    ))}
+                </div>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black text-[#2D2D44] leading-[1.1] mb-4">מי משתתפות <br /><span className="text-[#5E3BEE] relative inline-block">ומשתתפים ברעים<span className="absolute bottom-2 left-0 w-full h-4 bg-[#FFB84C] -z-10 rounded-sm transform -rotate-1"></span></span></h1>
-            <div className="flex lg:hidden gap-4 overflow-x-auto mt-10 pb-4 px-4 snap-x no-scrollbar">
-                {[data.image1, data.image2, data.image3, data.image4].map((img, i) => (<div key={i} className="w-64 h-48 rounded-2xl border-2 border-black overflow-hidden snap-center flex-shrink-0 bg-gray-200 shadow-[4px_4px_0px_black]"><img src={img} className="w-full h-full object-cover" /></div>))}
-            </div>
         </div>
-        <div className="absolute bottom-10 left-10 text-[140px] font-black text-[#5E3BEE]/10 font-['Rubik'] hidden md:block select-none -z-10">02</div>
+
+        {/* lg+: Figma 106:3191 — extracted to Chapter2DesktopHeroSection */}
+        <Chapter2DesktopHeroSection data={data} chapterNumber={chapterNumber} />
     </div>
 );
 
@@ -214,7 +273,7 @@ const Chapter2 = ({ data, onNext, content }) => {
             <Chapter2MobileView data={data} onNext={onNext} footerData={content?.footer} />
 
             {/* דסקטופ: הירו + בלוק תפוז + מטרות */}
-            <HeroSection data={data.hero} />
+            <HeroSection data={data.hero} chapterNumber={data.chapterNumber} />
             {data.contentBox && <div className="hidden md:block"><UnifiedOrangeSection data={data.contentBox} /></div>}
             {groupsIntro && <div className="hidden md:block mb-20"><GroupsIntroSection data={data.groupsIntro} /></div>}
             {data.group01 && <div className="hidden md:block"><GroupDetailsSection data={data.group01} /></div>}

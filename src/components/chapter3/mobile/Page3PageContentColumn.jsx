@@ -11,7 +11,6 @@ export default function Page3PageContentColumn({ hero, responsibilities, chapter
             {hero?.image ? (
                 <Page3HeroImageBlock
                     imageSrc={hero.image}
-                    chapterNumber={chapterNumber}
                     alt={hero.titleBottom ? `תמונה — ${hero.titleBottom}` : 'פרק 3'}
                 />
             ) : null}

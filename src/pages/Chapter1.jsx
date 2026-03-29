@@ -1,11 +1,13 @@
 import React from 'react';
 import { ArrowLeft, ThumbsUp, Send, Hand } from 'lucide-react';
+import ChapterDigitSvg from '../components/common/ChapterDigitSvg';
 import NextChapterButton from '../components/common/NextChapterButton';
 import Chapter1DesktopCollage from '../components/chapter1/Chapter1DesktopCollage';
 import Chapter1DesktopTitleColumn from '../components/chapter1/Chapter1DesktopTitleColumn';
 import Chapter1DesktopStackedCards from '../components/chapter1/Chapter1DesktopStackedCards';
 import PrevChapterButton from '../components/common/PrevChapterButton';
 import Footer from '../components/layout/Footer';
+import { useChapter1StickyTitle } from '../hooks/useChapter1StickyTitle';
 
 // רכיב עזר: עיגול ירוק עם חץ
 const GreenArrowCircle = ({ direction = 'left' }) => (
@@ -19,11 +21,15 @@ const GreenArrowCircle = ({ direction = 'left' }) => (
     </div>
 );
 
+const CH1_TITLE_STICKY_TOP = 132;
+
 const Chapter1 = ({ data, content, onNext, onPrev }) => {
+    const { ref: stickyReleaseRef, isSticky: heroTitleSticky } = useChapter1StickyTitle(data?.cards?.[1]?.sec1Title);
+
     if (!data) return null;
 
     return (
-        <div className="min-h-screen bg-[#F3F0FF] font-['Rubik']">
+        <div className="min-h-screen bg-[#F3F0FF] font-['Rubik'] md:bg-[#FFF9F0]">
             {onPrev && (
                 <div className="pt-24 pb-4">
                     <PrevChapterButton title="חזור לדף הבית" onClick={onPrev} />
@@ -70,46 +76,8 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
                             <img src={data.hero.image1} alt="" className="h-full w-full object-cover" />
                         </div>
 
-                        {/* מספר עמוד — משמאל למטה בחלל הריק (מעל התמונה הגדולה, משמאל לקטנה) */}
-                        <div
-                            dir="ltr"
-                            className="pointer-events-none absolute bottom-[6%] left-0 z-[15] select-none font-[family-name:var(--font-salsa)] text-[clamp(3.75rem,20vw,6rem)] font-black leading-none"
-                            aria-hidden
-                        >
-                            {/* שלושה גלים אדומים — שכבה אחת על כל המספר 01 */}
-                            <span className="relative inline-block text-[#816AFE]">
-                                01
-                                <svg
-                                    className="pointer-events-none absolute left-[-2%] top-[14%] h-[72%] w-[104%] text-[#E53935]"
-                                    viewBox="0 0 100 44"
-                                    fill="none"
-                                    preserveAspectRatio="none"
-                                    aria-hidden
-                                >
-                                    <path
-                                        d="M0 7 Q16 3 34 7 T68 7 T100 7"
-                                        stroke="currentColor"
-                                        strokeWidth="2.2"
-                                        strokeLinecap="round"
-                                        vectorEffect="non-scaling-stroke"
-                                    />
-                                    <path
-                                        d="M0 22 Q20 17 38 22 T72 22 T100 22"
-                                        stroke="currentColor"
-                                        strokeWidth="2.2"
-                                        strokeLinecap="round"
-                                        vectorEffect="non-scaling-stroke"
-                                    />
-                                    <path
-                                        d="M0 37 Q16 33 34 37 T70 37 T100 37"
-                                        stroke="currentColor"
-                                        strokeWidth="2.2"
-                                        strokeLinecap="round"
-                                        vectorEffect="non-scaling-stroke"
-                                    />
-                                </svg>
-                            </span>
-                        </div>
+                        {/* מספר פרק — משמאל למטה בחלל הריק */}
+                        <ChapterDigitSvg digits="01" className="absolute bottom-[6%] left-0 z-[15] w-[clamp(80px,20vw,130px)]" />
 
                         {/* תמונה קטנה — ~40% מרוחב הגדולה, חופפת לפינה ימין-תחתונה, רוטציה קלה */}
                         <div className="absolute -bottom-1 right-0 z-20 w-[40%] min-w-[118px] max-w-[152px] origin-bottom-right rotate-[8deg] rounded-[14px] border-2 border-[#2D2D44]/35 bg-white p-1.5 shadow-md">
@@ -169,15 +137,25 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
                 </div>
             )}
 
-            {/* דסקטופ: Figma — קולאז' למעלה; מתחתיו עמודת כותרת 106:3070 דביקה + כרטיסים מוערמים 106:3100 */}
-            <div className="relative mx-auto mb-20 hidden max-w-[1800px] px-6 md:block md:px-16 md:pt-16">
-                <Chapter1DesktopCollage hero={data.hero} />
-                <div className="flex flex-row items-start gap-10 lg:gap-14">
-                    <div className="sticky top-[132px] z-40 w-full shrink-0 self-start md:w-5/12">
-                        <Chapter1DesktopTitleColumn data={data} />
+            {/* דסקטופ: padding אופקי מאוזן; שורת קולאז'+כותרת ממורכרת ב-lg כדי שלא ייווצר רווח ריק גדול מימין */}
+            <div className="relative mx-auto mb-20 hidden w-full max-w-[1800px] px-6 pt-16 md:block md:px-10 lg:px-12 xl:px-16">
+                <div
+                    className="flex flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:justify-center lg:gap-6 xl:gap-8"
+                    dir="ltr"
+                >
+                    <div className="flex w-full min-w-0 flex-col gap-24 md:gap-32 lg:w-auto lg:max-w-[min(680px,52vw)] lg:shrink-0 lg:gap-40 xl:gap-48">
+                        <Chapter1DesktopCollage hero={data.hero} />
+                        <div className="min-w-0 w-full">
+                            <Chapter1DesktopStackedCards data={data} stickyReleaseRef={stickyReleaseRef} />
+                        </div>
                     </div>
-                    <div className="min-w-0 flex-1 md:w-7/12">
-                        <Chapter1DesktopStackedCards data={data} />
+                    <div
+                        className={`w-full min-w-0 shrink-0 lg:max-w-[520px] lg:z-40 lg:flex lg:flex-col lg:items-end lg:pt-1 lg:self-start ${
+                            heroTitleSticky ? 'lg:sticky' : 'lg:relative'
+                        }`}
+                        style={{ top: heroTitleSticky ? CH1_TITLE_STICKY_TOP : undefined }}
+                    >
+                        <Chapter1DesktopTitleColumn data={data} />
                     </div>
                 </div>
             </div>
