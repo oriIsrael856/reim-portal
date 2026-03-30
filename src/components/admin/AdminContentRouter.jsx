@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuSection from './sections/MenuSection';
+import HeaderSection from './sections/HeaderSection';
 import HomeSection from './sections/HomeSection';
 import Chapter1Section from './sections/Chapter1Section';
 import Chapter2Section from './sections/Chapter2Section';
@@ -10,12 +11,13 @@ import FooterSection from './sections/FooterSection';
 
 /**
  * Decides which admin section to render based on the active tab.
- * All chapter/footer editors are now split into dedicated components.
  */
 const AdminContentRouter = ({ activeTab, getValue, update }) => {
   switch (activeTab) {
     case 'menu':
       return <MenuSection getValue={getValue} update={update} />;
+    case 'header':
+      return <HeaderSection getValue={getValue} update={update} />;
     case 'home':
       return <HomeSection getValue={getValue} update={update} />;
     case 'chapter1':
@@ -36,4 +38,3 @@ const AdminContentRouter = ({ activeTab, getValue, update }) => {
 };
 
 export default AdminContentRouter;
-

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { saveContent } from '../services/contentService';
 import { getNestedValue, setNestedValue } from '../utils/objectHelpers';
 
@@ -7,6 +7,7 @@ import { getNestedValue, setNestedValue } from '../utils/objectHelpers';
  * - Holds a mutable draft copy of the site content
  * - Tracks dirty state and save progress
  * - Exposes simple helpers for nested get/set via dot-notation paths
+ * - Syncs draft from server when `initialContent` prop updates (prevents stale edits)
  */
 export function useAdminDraft(initialContent, version) {
   const [draft, setDraft] = useState(initialContent || {});
@@ -14,6 +15,15 @@ export function useAdminDraft(initialContent, version) {
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState(null);
   const [lastSavedAt, setLastSavedAt] = useState(null);
+
+  // Sync draft whenever the server pushes a fresh snapshot — but only when there
+  // are no local unsaved changes, to avoid clobbering in-progress edits.
+  useEffect(() => {
+    if (!hasUnsavedChanges && initialContent) {
+      setDraft(initialContent);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialContent]);
 
   const getValue = useCallback(
     (path) => getNestedValue(draft, path),
@@ -32,7 +42,11 @@ export function useAdminDraft(initialContent, version) {
   }, []);
 
   const save = useCallback(async () => {
-    if (!version) return;
+    if (!version) {
+      const err = new Error('גרסת תוכן חסרה — לא ניתן לשמור');
+      setError(err);
+      throw err;
+    }
     setIsSaving(true);
     setError(null);
     try {
@@ -59,4 +73,3 @@ export function useAdminDraft(initialContent, version) {
     lastSavedAt,
   };
 }
-
