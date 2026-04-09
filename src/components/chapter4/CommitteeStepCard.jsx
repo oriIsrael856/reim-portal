@@ -6,13 +6,13 @@ import React from 'react';
  * Desktop-only step card used in the "הועדות" purple block (Section 2, node 125:2392).
  * Receives a `step` prop with shape: { id: string, title: string, desc: string }.
  *
- * Sizing: flex-1 (flex: 1 1 0%) — all cards grow and shrink equally from a shared zero basis,
+ * Sizing: flex-1 — all cards grow and shrink equally from a shared zero basis,
  * guaranteeing identical widths regardless of title length.
  * Badge: absolutely centred via left-1/2 + -translate-x-1/2 (direction-agnostic).
- * leading-[0] on the badge text wrapper collapses its line-box so the Salsa numeral
- * sits precisely at the vertical centre of the 32px circle (Figma rendering technique).
+ * pt-[22px]: minimum to clear the badge bottom edge (badge extends 19.5px into card).
+ * `spacingStyle`: optional scaled padding/gap from parent useComponentStyle (Figma ratio vs viewport).
  */
-export default function CommitteeStepCard({ step }) {
+export default function CommitteeStepCard({ step, spacingStyle }) {
     if (!step) return null;
     const id = step.id ?? '';
     const title = step.title ?? '';
@@ -20,19 +20,20 @@ export default function CommitteeStepCard({ step }) {
 
     return (
         <div
-            className="relative flex flex-1 flex-col items-center justify-center gap-[8px] rounded-[8px] border-[1.5px] border-[#001d26] px-[16px] pb-[24px] pt-[32px] shadow-[2px_2px_0px_0px_#001d26]"
+            className="relative flex flex-1 flex-col items-center justify-center rounded-[8px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0px_0px_#001d26]"
             style={{
+                ...spacingStyle,
                 backgroundImage:
                     'linear-gradient(90deg, rgba(188, 224, 121, 0.08) 0%, rgba(188, 224, 121, 0.08) 100%), linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%)',
             }}
         >
-            {/* Title — Figma 125:2466: 20px semibold */}
-            <p className="relative shrink-0 text-center text-[20px] font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26]">
+            {/* Title — proportional to viewport width (Figma: 18px / 1424px frame = 1.26vw) */}
+            <p className="relative shrink-0 text-center text-[clamp(12px,1.26vw,18px)] font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26]">
                 {title}
             </p>
 
-            {/* Desc — Figma 125:2469: 16px regular, min-w-full centers text within card */}
-            <p className="relative shrink-0 w-full text-center text-[16px] font-normal leading-[1.32] tracking-[0.15px] text-[#001d26]">
+            {/* Desc — proportional to viewport width (Figma: 14px / 1424px frame = 0.98vw) */}
+            <p className="relative shrink-0 w-full text-center text-[clamp(11px,0.98vw,14px)] font-normal leading-[1.32] tracking-[0.15px] text-[#001d26]">
                 {desc}
             </p>
 

@@ -1,8 +1,7 @@
 import React from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { Star } from 'lucide-react';
 import NextChapterButton from '../components/common/NextChapterButton';
 import PrevChapterButton from '../components/common/PrevChapterButton';
-import StickyCard from '../components/common/StickyCard';
 import SplitStickyLayout from '../components/layout/SplitStickyLayout';
 import Chapter3OnboardingStepCard from '../components/chapter3/Chapter3OnboardingStepCard';
 import { Chapter3OnboardingHeading } from '../components/chapter3/Chapter3OnboardingHeading';
@@ -23,118 +22,215 @@ function mergeChapter3Onboarding(fromCms) {
     };
 }
 
+/**
+ * Per-card color scheme for the three responsibility cards.
+ * Matches Figma 120:3737 (purple), 120:4098 (yellow), 120:4140 (red).
+ * icon: per-color SVG pill arrow from /assets/chapter3/.
+ */
+const RESPONSIBILITY_SCHEMES = [
+    {
+        titleClass: 'text-text-purple',
+        cardBg: 'rgba(101,70,222,0.04)',
+        icon: '/assets/chapter3/resp-list-icon-arrow.svg',
+    },
+    {
+        titleClass: 'text-brand-yellow',
+        cardBg: 'rgba(255,178,59,0.04)',
+        icon: '/assets/chapter3/resp-list-icon-arrow-learning.svg',
+    },
+    {
+        titleClass: 'text-brand-red',
+        cardBg: 'rgba(196,33,59,0.04)',
+        icon: '/assets/chapter3/resp-list-icon-arrow-admin.svg',
+    },
+];
+
 const Chapter3 = ({ data, content, onNext, onPrev }) => {
-    if (!data) return <div className="text-center p-20 text-[#816AFE] font-bold">טוען נתוני פרק 3...</div>;
+    if (!data) return <div className="text-center p-20 text-text-purple font-bold">טוען נתוני פרק 3...</div>;
 
     const mergedData = { ...data, onboarding: mergeChapter3Onboarding(data.onboarding) };
 
+    /* ── Sticky right sidebar — Figma 120:3759 ── */
     const StickyHeader = (
-        <div className="flex flex-col items-start pl-4 md:pl-10">
-            <div className="inline-flex items-center gap-2 bg-[#C5E080] border-2 border-black px-4 py-1.5 rounded-full mb-8 shadow-[3px_3px_0px_black] transform -rotate-1">
-                <span className="font-bold text-[#2D2D44] tracking-wide text-sm">{data.hero?.tag}</span>
+        <div className="flex flex-col items-start gap-[2.19vw]">
+
+            {/* Chapter label chip — Figma 120:3761 */}
+            <div className="flex items-center gap-[16px] bg-[#bce079] border-[1.5px] border-[#001d26] rounded-tl-[24px] rounded-bl-[24px] rounded-tr-[2px] shadow-[2px_2px_0_0_#001d26] h-[42px] ps-[6px] pe-[14px] py-[12px]">
+                <div className="bg-[#839c54] w-[32px] h-[32px] rounded-full flex items-center justify-center shrink-0">
+                    <span className="font-salsa text-[16px] leading-[1.28] tracking-[0.15px] text-white">03</span>
+                </div>
+                <span className="font-rubik text-[20px] leading-[1.28] tracking-[0.15px] text-[#001d26] whitespace-nowrap">
+                    {data.hero?.tag ?? 'פרק שלישי'}
+                </span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-black text-[#2D2D44] leading-[1.1] mb-8 text-right">
-                {data.hero?.titleTop}
-                <br />
-                <span className="text-[#5E3BEE] relative inline-block mt-2">
-                    {data.hero?.titleBottom}
-                    <span className="absolute bottom-2 left-0 w-full h-4 bg-[#FFB84C] -z-10 rounded-sm transform -rotate-1"></span>
-                </span>
-            </h1>
+            {/* Title + yellow underline bar — Figma 120:4019 */}
+            <div className="relative">
+                {/* Yellow bar — Figma 120:3760: top-103px, physical-left=85px in 367px frame.
+                    Decorative overlay uses physical left (acceptable per CLAUDE.md for deco).
+                    left=23.16% ≈ 85/367 relative to sidebar container. */}
+                <div
+                    className="absolute bg-[#ffb23b] h-[17px] w-[291px]"
+                    style={{ top: '103px', left: '23.16%' }}
+                    aria-hidden
+                />
+                <h1
+                    className="font-rubik font-bold text-[clamp(36px,3.29vw,60px)] leading-none tracking-[-0.5px] text-[#001d26] text-start relative"
+                    dir="auto"
+                >
+                    <span>{data.hero?.titleTop ?? 'הגדרת תפקיד:'}</span>
+                    <br aria-hidden="true" />
+                    <span className="text-[#6546de]">{data.hero?.titleBottom ?? 'רכזת רעים'}</span>
+                </h1>
+            </div>
 
-            <p className="text-xl md:text-2xl text-[#2D2D44] font-medium leading-relaxed max-w-lg text-right">
+            {/* Description — Figma 120:4017: 24px Rubik Regular, leading 1.334 */}
+            <p className="font-rubik font-normal text-[24px] leading-[1.334] text-[#001d26] text-start">
                 {data.hero?.description}
             </p>
-
-            <div className="absolute top-40 -right-10 text-6xl text-[#EF4444] animate-pulse hidden md:block">✶</div>
-            <div className="absolute bottom-0 left-10 text-4xl text-[#C5E080] hidden md:block">✦</div>
         </div>
     );
 
     return (
-        <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-0 font-['Rubik']">
+        <div className="min-h-screen bg-white pt-24 pb-0 font-rubik">
             {onPrev && (
                 <div className="pt-6 pb-4 px-4">
                     <PrevChapterButton title="לפרק הקודם" subtitle="פרק 02 - המשתתפים" onClick={onPrev} />
                 </div>
             )}
 
+            {/* Mobile */}
             <Chapter3MobileView data={mergedData} onNext={onNext} footerData={content?.footer} />
 
+            {/* Desktop */}
             <div className="hidden md:block">
-                <SplitStickyLayout stickyContent={StickyHeader}>
-                    <StickyCard top="100px">
-                        <div className="relative w-full h-full min-h-[500px] rounded-[20px] overflow-hidden bg-gray-100 border-4 border-white shadow-inner group">
-                            <img
-                                src={data.hero?.image}
-                                alt="רכזת רעים"
-                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            />
-                            {/* Desktop hero chapter numeral — Figma 120:3733 + red waves stretched across “03” */}
+
+                {/* ── Section 1 — Figma 120:3721 ──
+                    Frame: 1824×3705px. justify-between, px-200px gutters, item-spacing=0.
+                    Content: 852px (46.71vw). Sidebar: 367px (20.12vw).
+                    Gap between cols = 1824-200×2-852-367=205px (justify-between, no explicit gap). */}
+                <SplitStickyLayout
+                    stickyContent={StickyHeader}
+                    className="max-w-none px-[clamp(80px,10.965vw,200px)] justify-between"
+                    sidebarClassName="shrink-0 w-[clamp(180px,20.12vw,367px)]"
+                    contentClassName="shrink-0 w-[clamp(320px,46.71vw,852px)] flex flex-col gap-0 pb-0 pt-[5.75vw]"
+                >
+                    {/* ── Sticky hero image — Figma 120:3725: 900/1824=49.34vw sticky */}
+                    <div className="sticky top-0 h-[49.34vw] w-full flex items-center justify-center z-10">
+                        {/* Figma 120:3729 — 852×600px → aspect-ratio for fluid height */}
+                        <div className="relative w-full max-w-[852px] aspect-[852/600]">
+                            <div className="absolute inset-0 rounded-[24px] border-[1.5px] border-border-default shadow-[2px_2px_0_0_#001d26] overflow-hidden">
+                                <img
+                                    src={data.hero?.image}
+                                    alt="רכזת רעים"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+
+                            {/* "03" — Figma 120:3733: right 161/852=18.9%.
+                                dir="ltr" island → end-[18.9%] = physical right in LTR.
+                                translate-x/y-full hangs the element off the bottom-right corner. */}
                             <div
-                                className="pointer-events-none absolute bottom-6 right-6 z-10 select-none"
+                                className="pointer-events-none absolute z-20 end-[18.9%] translate-x-full translate-y-full"
+                                style={{ bottom: '33.67%' }}
+                                dir="ltr"
                                 aria-hidden
                             >
-                                <span dir="ltr" className="relative inline-block">
-                                    <p className="relative z-0 m-0 whitespace-nowrap font-[family-name:var(--font-salsa)] text-[120px] font-normal leading-[1.28] tracking-[0.15px] text-[#6546DE]">
-                                        03
-                                    </p>
-                                    <svg
-                                        className="pointer-events-none absolute left-[-2%] top-[14%] h-[72%] w-[104%] text-[#EF4444]"
-                                        viewBox="0 0 100 44"
-                                        fill="none"
-                                        preserveAspectRatio="none"
-                                        aria-hidden
-                                    >
-                                        <path d="M0 7 Q16 3 34 7 T68 7 T100 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-                                        <path d="M0 22 Q20 17 38 22 T72 22 T100 22" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-                                        <path d="M0 37 Q16 33 34 37 T70 37 T100 37" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
-                                    </svg>
+                                <span className="block font-salsa text-[120px] leading-[1.28] tracking-[0.15px] text-[#6546de] whitespace-nowrap">
+                                    03
                                 </span>
                             </div>
-                        </div>
-                    </StickyCard>
 
-                    {data.responsibilities &&
-                        data.responsibilities.map((card, index) => (
-                            <StickyCard key={index} top={`${140 + index * 40}px`}>
-                                <div className="flex flex-col h-full justify-center p-4">
-                                    <h3
-                                        className={`text-3xl md:text-4xl font-black mb-8 text-center ${card.titleColor || 'text-[#2D2D44]'}`}
+                            {/* Wave — Figma 120:3735: start-[9.97%] in RTL = 85px from right, w-76 h-44 */}
+                            <div
+                                className="pointer-events-none absolute z-20 start-[9.97%] w-[76px] h-[44px]"
+                                style={{ bottom: '15.1%' }}
+                                aria-hidden
+                            >
+                                <svg className="w-full h-full text-brand-red" viewBox="0 0 76 44" fill="none">
+                                    <path d="M0 7 Q10 3 20 7 T40 7 T60 7 T76 7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                                    <path d="M0 22 Q11 17 22 22 T44 22 T66 22 T76 22" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                                    <path d="M0 37 Q10 33 20 37 T40 37 T60 37 T76 37" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* ── Responsibility cards — Figma 120:3736, 120:4097, 120:4139
+                        Outer: 900/1824=49.34vw sticky, px 40/1824=2.19vw.
+                        Inner: 520/1824=28.51vw, pe 80/1824=4.39vw, ps 60/1824=3.29vw, py 40/1824=2.19vw, gap 24/1824=1.32vw */}
+                    {(data.responsibilities ?? []).map((card, index) => {
+                        const scheme = RESPONSIBILITY_SCHEMES[index] ?? RESPONSIBILITY_SCHEMES[0];
+                        return (
+                            <div
+                                key={index}
+                                className="sticky top-0 h-[49.34vw] w-full flex items-center px-[2.19vw]"
+                                style={{ zIndex: 10 + index + 1 }}
+                            >
+                                {/* Inner card — proportional: h-28.51vw pe-4.39vw ps-3.29vw py-2.19vw gap-1.32vw
+                                    Card 0 (6 items): no justify-center, smaller font to fit content.
+                                    Cards 1-2 (2-3 items): justify-center so short content sits mid-card. */}
+                                <div
+                                    className={`w-full h-[28.51vw] rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0_0_#001d26] flex flex-col gap-[1.32vw] pe-[4.39vw] ps-[3.29vw] py-[2.19vw] overflow-hidden${index > 0 ? ' justify-center' : ''}`}
+                                    style={{ backgroundImage: `linear-gradient(90deg, ${scheme.cardBg}, ${scheme.cardBg}), linear-gradient(90deg, #fff, #fff)` }}
+                                >
+                                    {/* Card title — Figma H4: 34px Bold, leading 1.1, tracking 0.25px */}
+                                    <p
+                                        className={`font-rubik font-bold text-[34px] leading-[1.1] tracking-[0.25px] text-start shrink-0 ${scheme.titleClass}`}
+                                        dir="auto"
                                     >
                                         {card.title}
-                                    </h3>
-                                    <ul className="flex flex-col gap-4 pr-4">
-                                        {card.items.map((item, idx) => (
-                                            <li key={idx} className="flex items-start gap-3 text-lg text-[#2D2D44] leading-snug">
-                                                <div className="mt-1 flex-shrink-0 bg-[#EBE5FC] p-1 rounded-full text-[#5E3BEE]">
-                                                    <ArrowLeft size={16} strokeWidth={3} />
-                                                </div>
-                                                <span>{item}</span>
-                                            </li>
+                                    </p>
+
+                                    {/* Items list — card 0 uses 16px (many items), cards 1-2 use 20px */}
+                                    <div className="flex flex-col gap-[1.32vw] w-full">
+                                        {(card.items ?? []).map((item, idx) => (
+                                            <div key={idx} className="flex items-center gap-[12px]">
+                                                {/* Icon first = physical right in RTL (Figma 32×24 pill arrow) */}
+                                                <img
+                                                    src={scheme.icon}
+                                                    alt=""
+                                                    aria-hidden
+                                                    className="shrink-0 w-[32px] h-[24px]"
+                                                />
+                                                <p
+                                                    className={`flex-1 min-w-0 font-rubik font-normal leading-[1.28] tracking-[0.15px] text-[#001d26] text-start${index === 0 ? ' text-[16px]' : ' text-[20px]'}`}
+                                                    dir="auto"
+                                                >
+                                                    {item}
+                                                </p>
+                                            </div>
                                         ))}
-                                    </ul>
+                                    </div>
+
+                                    {/* CTA button (card 3 only) — Figma 120:4179: aligned to end (physical right in RTL) */}
                                     {card.action && (
-                                        <div className="mt-8 text-center">
+                                        <div className="flex justify-start mt-auto shrink-0">
                                             <button
                                                 type="button"
-                                                className="bg-[#5E3BEE] text-white px-6 py-3 rounded-full font-bold hover:bg-[#4a2ec6] transition-colors shadow-md flex items-center gap-2 mx-auto transition-transform hover:scale-105"
+                                                className="flex items-center gap-[12px] bg-brand-purple border border-brand-purple rounded-full px-[12px] py-[8px]"
                                             >
-                                                {card.action.text}
-                                                <ArrowLeft size={18} />
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
+                                                    <circle cx="12" cy="12" r="10" fill="white" fillOpacity="0.3" />
+                                                    <path d="M15 12H9M12 9l-3 3 3 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                                <span className="font-rubik font-bold text-[16px] leading-[26px] tracking-[0.46px] uppercase text-text-on-dark whitespace-nowrap">
+                                                    {card.action.text}
+                                                </span>
                                             </button>
                                         </div>
                                     )}
                                 </div>
-                            </StickyCard>
-                        ))}
+                            </div>
+                        );
+                    })}
                 </SplitStickyLayout>
 
+                {/* ── Section 3: Onboarding steps — Figma 120:4317 ── */}
                 {mergedData.onboarding?.steps?.length > 0 && (
                     <div className="ch3-desktop-onboard relative mt-32 w-full overflow-x-clip overflow-y-visible border-t border-[#001d26]/10">
                         <div className="ch3-desktop-onboard__blob pointer-events-none absolute" aria-hidden />
-                        <div className="ch3-desktop-onboard__inner relative z-[1] mx-auto max-w-[1600px] px-6 py-16 md:px-12 md:py-24">
+                        <div className="ch3-desktop-onboard__inner relative z-[1] mx-auto max-w-[1600px] px-[clamp(80px,10.42vw,200px)] py-16 md:py-24">
                             <div className="ch3-desktop-onboard__intro mx-auto mb-12 max-w-[1000px] md:mb-16">
                                 <Chapter3OnboardingHeading
                                     id="ch3-desktop-onboard-title"
@@ -184,33 +280,83 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                     </div>
                 )}
 
+                {/* ── Session structure section — Figma 120:5039
+                    Frame: 1824×1068px. px-200px gutters (10.965vw), py-120px (6.58vw), gap-120px (6.58vw).
+                    DOM-first = accordion (physical right in RTL), image collage (physical left).
+                    Image col: 400px (21.93vw), self-stretch + min-h so images aren't clipped.
+                    Accordion col: 904px (49.56vw), gap-40px between heading and items. ── */}
                 {data.sessionStructure && (
-                    <div className="w-full bg-white py-32 px-6 overflow-hidden border-t border-gray-100">
-                        <div className="max-w-[1400px] mx-auto">
-                            <div className="mb-20 w-full text-start">
-                                <span className="mb-2 block text-sm font-bold uppercase tracking-widest text-[#5E3BEE]">
-                                    {data.sessionStructure.recommendation}
-                                </span>
-                                <h2 className="text-4xl font-black text-[#2D2D44] md:text-5xl">
-                                    {data.sessionStructure.title}
-                                </h2>
+                    <div className="w-full bg-white py-[clamp(60px,6.58vw,120px)] px-[clamp(80px,10.965vw,200px)] border-t border-[#001d26]/10 overflow-x-hidden">
+
+                        {/* Figma items-center: accordion centered vertically relative to image column height */}
+                        <div className="flex flex-row flex-nowrap items-center gap-[clamp(40px,6.58vw,120px)]">
+
+                            {/* Accordion column — 904/1824 = 49.56vw — Figma 120:4940 */}
+                            <div className="flex flex-col gap-[40px] w-[clamp(400px,49.56vw,904px)] shrink-0">
+                                {/* Heading — Figma 120:4942: 16px Regular + 34px Bold, both black, right-aligned.
+                                    items-start = physical right in RTL flex-col */}
+                                <div className="flex flex-col items-start text-start">
+                                    <p className="font-rubik font-normal text-[16px] leading-[1.32] tracking-[0.15px] text-text-default">
+                                        {data.sessionStructure.recommendation}
+                                    </p>
+                                    <h2 className="font-rubik font-bold text-[34px] leading-[1.1] tracking-[0.25px] text-text-default">
+                                        {data.sessionStructure.title}
+                                    </h2>
+                                </div>
+                                <Accordion items={data.sessionStructure.items} />
                             </div>
 
-                            <div className="flex flex-col lg:flex-row items-start gap-16 md:gap-24">
-                                <div className="w-full lg:w-5/12 relative min-h-[500px] hidden md:block">
-                                    <div className="absolute top-0 right-0 w-[85%] aspect-video rounded-[30px] overflow-hidden border-[3px] border-[#2D2D44] shadow-[12px_12px_0px_rgba(45,45,68,0.1)] rotate-[-3deg] hover:rotate-0 transition-transform duration-500 z-20">
-                                        <img src={data.sessionStructure.images[0]} alt="פיצה" className="w-full h-full object-cover" />
-                                    </div>
-                                    <div className="absolute -bottom-10 left-0 w-[70%] aspect-video rounded-[30px] overflow-hidden border-[3px] border-[#2D2D44] shadow-[12px_12px_0px_rgba(45,45,68,0.1)] rotate-[4deg] hover:rotate-0 transition-transform duration-500 z-30">
-                                        <img src={data.sessionStructure.images[1]} alt="מעגל" className="w-full h-full object-cover" />
+                            {/* Image collage — 400/1824 = 21.93vw — Figma 120:4935
+                                self-stretch fills row height; min-h ensures room for both images.
+                                All child positions use calc(50% ± Nvw) relative to this container.
+                                Pixel offsets from Figma converted: px/1824×100=vw */}
+                            <div
+                                className="relative shrink-0 self-stretch w-[clamp(240px,21.93vw,400px)]"
+                                style={{ minHeight: 'clamp(500px,45.39vw,828px)' }}
+                            >
+                                {/* Image 1: 400×500px, -4deg — Figma 120:4936
+                                    Center: x=50%, y=calc(50% - 4.37vw) [79.66/1824] */}
+                                <div
+                                    className="absolute -translate-x-1/2 -translate-y-1/2"
+                                    style={{ left: '50%', top: 'calc(50% - 4.37vw)' }}
+                                >
+                                    <div className="-rotate-[4deg]">
+                                        <div className="w-[clamp(200px,21.93vw,400px)] aspect-[400/500] rounded-[24px] border-[1.5px] border-border-default shadow-[2px_2px_0_0_#001d26] overflow-hidden">
+                                            <img src={data.sessionStructure.images[0]} alt="" className="w-full h-full object-cover" />
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div className="w-full lg:w-7/12">
-                                    <div className="bg-[#FDFBFF] p-2 md:p-8 rounded-[40px] border-2 border-[#816AFE]/5 shadow-sm">
-                                        <Accordion items={data.sessionStructure.items} />
+                                {/* Image 2: 300×260px, +6deg — Figma 120:4937
+                                    Center: x=calc(50% + 1.07vw) [19.59/1824], y=calc(50% + 16.90vw) [308.15/1824] */}
+                                <div
+                                    className="absolute -translate-x-1/2 -translate-y-1/2"
+                                    style={{ left: 'calc(50% + 1.07vw)', top: 'calc(50% + 16.90vw)' }}
+                                >
+                                    <div className="rotate-[6deg]">
+                                        <div className="w-[clamp(150px,16.45vw,300px)] aspect-[300/260] rounded-[24px] border-[1.5px] border-border-default shadow-[2px_2px_0_0_#001d26] overflow-hidden">
+                                            <img src={data.sessionStructure.images[1]} alt="" className="w-full h-full object-cover" />
+                                        </div>
                                     </div>
                                 </div>
+
+                                {/* Star decoration — Figma 120:4938: 50×50, lime
+                                    x=calc(50% - 9.21vw) [168/1824], y=calc(50% + 14.09vw) [257/1824] */}
+                                <div
+                                    className="absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                                    aria-hidden
+                                    style={{ left: 'calc(50% - 9.21vw)', top: 'calc(50% + 14.09vw)' }}
+                                >
+                                    <Star size={50} strokeWidth={1.5} fill="#bce079" color="#bce079" />
+                                </div>
+
+                                {/* Dot decoration — Figma 120:4939: 9×9, lime
+                                    x=calc(50% - 11.18vw) [203.5/1824], y=calc(50% + 12.20vw) [222.5/1824] */}
+                                <div
+                                    className="absolute -translate-x-1/2 -translate-y-1/2 size-[9px] rounded-full bg-brand-lime pointer-events-none"
+                                    aria-hidden
+                                    style={{ left: 'calc(50% - 11.18vw)', top: 'calc(50% + 12.20vw)' }}
+                                />
                             </div>
                         </div>
                     </div>
@@ -218,8 +364,8 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
 
                 <div className="my-32 px-4 max-w-4xl mx-auto">
                     <NextChapterButton
-                        title="סיימנו את פרק 3"
-                        subtitle="פרק 04 - עבודה מנהלית"
+                        title={data.nextButton?.title ?? 'סיימנו את פרק 3'}
+                        subtitle={data.nextButton?.subtitle ?? 'פרק 04 - עבודה מנהלית'}
                         onClick={onNext}
                     />
                 </div>

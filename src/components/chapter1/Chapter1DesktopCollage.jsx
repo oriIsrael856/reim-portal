@@ -29,10 +29,11 @@ export default function Chapter1DesktopCollage({ hero }) {
                     <div
                         className="absolute overflow-hidden rounded-[24px] border-[1.5px] border-[#001D26] shadow-[2px_2px_0_#001D26]"
                         style={{
-                            left: `${(480 / W) * 100}%`,
-                            top: `${(164 / H) * 100}%`,
-                            width: `${(372.09 / W) * 100}%`,
-                            height: `${(452.19 / H) * 100}%`,
+                            left: `${(501 / W) * 100}%`,
+                            top: `${(180 / H) * 100}%`,
+                            width: `${(330 / W) * 100}%`,
+                            height: `${(420 / H) * 100}%`,
+                            transform: 'rotate(-6deg)',
                         }}
                     >
                         <img src={hero.image2} alt="" className="h-full w-full object-cover" decoding="async" />

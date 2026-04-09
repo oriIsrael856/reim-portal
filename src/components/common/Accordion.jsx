@@ -1,9 +1,29 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
-const AccordionItem = ({ title, content, isOpen, onClick }) => {
+const AccordionItem = ({ title, content, isOpen, onClick, viewportCh5Styles }) => {
     const [isHovered, setIsHovered] = useState(false);
     const active = isOpen || isHovered;
+
+    const ch5 = viewportCh5Styles?.ch5AccordionBtnMinHeight ? viewportCh5Styles : null;
+
+    const pad = ch5 ? (active ? ch5.ch5AccordionBtnPadActive : ch5.ch5AccordionBtnPadInactive) : null;
+
+    const buttonStyle = ch5
+        ? {
+              minHeight: ch5.ch5AccordionBtnMinHeight.minHeight,
+              gap: pad.gap,
+              paddingInlineStart: pad.paddingInlineStart,
+              paddingInlineEnd: pad.paddingInlineEnd,
+          }
+        : { minHeight: '80px', paddingInline: active ? '40px' : '24px', gap: '24px' };
+
+    const contentOpenStyle = ch5
+        ? {
+              ...ch5.ch5AccordionContentPad,
+              fontSize: ch5.ch5AccordionContentFont.fontSize,
+          }
+        : { paddingBottom: '40px', paddingInline: '40px' };
 
     return (
         <div
@@ -23,11 +43,15 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => {
                 dir="rtl"
                 onClick={onClick}
                 className="flex w-full items-center outline-none transition-all duration-200"
-                style={{ minHeight: '80px', paddingInline: active ? '40px' : '24px', gap: '24px' }}
+                style={buttonStyle}
             >
                 <span
-                    className="flex-1 min-w-0 text-[24px] leading-[1.334] text-right transition-all duration-200"
-                    style={{ color: active ? '#6546DE' : '#001d26', fontWeight: active ? 700 : 400 }}
+                    className={`flex-1 min-w-0 leading-[1.334] text-right transition-all duration-200 ${ch5 ? '' : 'text-[24px]'}`}
+                    style={{
+                        ...(ch5 ? { fontSize: ch5.ch5AccordionTitleFont.fontSize } : {}),
+                        color: active ? '#6546DE' : '#001d26',
+                        fontWeight: active ? 700 : 400,
+                    }}
                 >
                     {title}
                 </span>
@@ -44,8 +68,8 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => {
                 )}
             </button>
             <div
-                className={`whitespace-pre-line text-[20px] font-semibold leading-[1.28] tracking-[0.15px] text-right text-[#001d26] overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}
-                style={isOpen ? { paddingBottom: '40px', paddingInline: '40px' } : {}}
+                className={`whitespace-pre-line font-semibold leading-[1.28] tracking-[0.15px] text-right text-[#001d26] overflow-hidden transition-all duration-300 ${ch5 ? '' : 'text-[20px]'} ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}
+                style={isOpen ? contentOpenStyle : {}}
             >
                 {content}
             </div>
@@ -53,11 +77,16 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => {
     );
 };
 
-const Accordion = ({ items }) => {
+/** @param {{ items: Array<{ title: string, content: string }>, viewportCh5Styles?: object }} props */
+const Accordion = ({ items, viewportCh5Styles }) => {
     const [openIndex, setOpenIndex] = useState(null);
+    const ch5 = viewportCh5Styles?.ch5AccordionListGap ? viewportCh5Styles : null;
 
     return (
-        <div className="w-full flex flex-col gap-[16px]">
+        <div
+            className={`w-full flex flex-col ${ch5 ? '' : 'gap-[16px]'}`}
+            style={ch5?.ch5AccordionListGap}
+        >
             {items.map((item, index) => (
                 <AccordionItem
                     key={index}
@@ -65,6 +94,7 @@ const Accordion = ({ items }) => {
                     content={item.content}
                     isOpen={openIndex === index}
                     onClick={() => setOpenIndex((prev) => (prev === index ? null : index))}
+                    viewportCh5Styles={ch5}
                 />
             ))}
         </div>

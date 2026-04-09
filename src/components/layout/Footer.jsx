@@ -25,10 +25,15 @@ const Footer = ({ data, variant }) => {
             className={
                 chapter2Mobile
                     ? 'ch2-mobile-footer mt-auto w-full shrink-0 border-0 bg-transparent px-3 pb-4 pt-4'
-                    : 'bg-[#F3F0FF] pt-10 pb-6 px-6 md:px-12 border-t border-[#5E3BEE]/5 mt-12'
+                    : 'bg-[#F3F0FF] pt-10 pb-6 px-6 border-t border-[#5E3BEE]/5 mt-12'
+            }
+            style={
+                chapter2Mobile
+                    ? undefined
+                    : { paddingInline: 'clamp(24px, 3.13vw, 80px)' }
             }
         >
-            <div className={chapter2Mobile ? 'mx-auto w-full max-w-none' : 'max-w-[1600px] mx-auto'}>
+            <div className={chapter2Mobile ? 'mx-auto w-full max-w-none' : 'mx-auto'} style={chapter2Mobile ? undefined : { maxWidth: 'var(--home-desktop-footer-max-w)' }}>
                 {/* מובייל: כרטיס — בפרק 2 בתוך העמודה הלבנה משתמשים ברקע סגול עדין (Figma Footer) */}
                 <div
                     className={

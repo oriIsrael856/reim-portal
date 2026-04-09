@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp:*)",
+      "mcp__figma__get_design_context",
+      "mcp__figma__whoami",
+      "mcp__figma__get_metadata",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:v for k,v in d.items\\(\\) if 'figma' in str\\(k\\).lower\\(\\) or 'figma' in str\\(v\\).lower\\(\\)}, indent=2, ensure_ascii=False\\)\\)\")",
+      "mcp__figma__get_screenshot",
+      "Bash(npm run:*)",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/44b172f5-fc46-4f62-8a3e-ed1b00a57318\" -o \"/c/Users/orisr/Desktop/reim-portal/public/assets/chapter1/hero-collage-1.png\")",
+      "Bash(curl -L \"https://www.figma.com/api/mcp/asset/668de676-f4f9-4c46-8dd4-49d774d05d50\" -o \"/c/Users/orisr/Desktop/reim-portal/public/assets/chapter1/hero-collage-2.png\")",
+      "Bash(gh api:*)",
+      "Bash(curl -s https://raw.githubusercontent.com/figma/mcp-server-guide/main/skills/figma-use/index.md)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(curl:*)",
+      "WebFetch(domain:www.figma.com)",
+      "mcp__figma__create_design_system_rules",
+      "Bash(npx eslint:*)",
+      "WebSearch",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(item['path']\\) for item in data.get\\('tree',[]\\) if 'skill' in item['path'].lower\\(\\) or item['path'].endswith\\('.md'\\)]\")",
+      "WebFetch(domain:css-tricks.com)",
+      "WebFetch(domain:ishadeed.com)",
+      "WebFetch(domain:medium.com)",
+      "Bash(mkdir -p \"/c/Users/orisr/Desktop/reim-portal/.claude/skills/figma-generate-design\")",
+      "Bash(mkdir -p \"/c/Users/orisr/Desktop/reim-portal/.claude/skills/figma-code-connect\")",
+      "Bash(npx vite:*)",
+      "Bash(node -e ':*)",
+      "Bash(node:*)",
+      "Bash(npm install:*)",
+      "Bash(xargs grep:*)"
+    ]
+  }
+}

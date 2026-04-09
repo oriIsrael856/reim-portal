@@ -37,8 +37,9 @@ export default function HomeHeroDesktop({ data }) {
             <img
                 src="/assets/home/home-hero-plane-2.svg"
                 alt=""
-                className="pointer-events-none absolute z-10 w-[66px] select-none"
+                className="pointer-events-none absolute z-10 select-none"
                 style={{
+                    width: 'var(--home-desktop-hero-plane-w)',
                     top: 'min(265px, 26vh)',
                     left: 'clamp(2rem, 22.4vw, 431px)',
                 }}
@@ -47,8 +48,9 @@ export default function HomeHeroDesktop({ data }) {
             <img
                 src="/assets/home/home-hero-star-deco.svg"
                 alt=""
-                className="pointer-events-none absolute z-10 w-[47px] select-none"
+                className="pointer-events-none absolute z-10 select-none"
                 style={{
+                    width: 'var(--home-desktop-hero-star-w)',
                     top: 'min(338px, 33vh)',
                     right: 'clamp(1rem, 12vw, 200px)',
                 }}
@@ -92,26 +94,22 @@ export default function HomeHeroDesktop({ data }) {
                         }}
                     >
                         {data.title1}
-                        {data.titleLine2 ? (
-                            <>
-                                <br />
-                                {data.titleLine2}
-                            </>
-                        ) : null}
                         <br />
-                        {data.title2}
+                        {data.titleLine2 ? <>{data.titleLine2}{' '}</> : null}
+                        <span style={{ color: '#6546de' }}>{data.title2}</span>
                     </h1>
                 </div>
             </div>
 
-            <div className="relative z-0 mx-auto w-full" style={{ marginTop: '8px' }}>
+            <div className="relative z-0 mx-auto w-full" style={{ marginTop: 'clamp(5px, 0.42vw, 11px)' }}>
                 <HomeHeroDesktopCollage sources={desktopCollage} />
             </div>
 
-            <div className="relative z-20 mt-10 flex justify-center pb-4">
+            {/* Scroll arrow — absolute so it doesn't add flow height (Figma: top 788/1024 ≈ 77%) */}
+            <div className="pointer-events-none absolute z-20 left-0 right-0 flex justify-center" style={{ top: '77%' }}>
                 <button
                     type="button"
-                    className="rounded-full p-2 transition hover:opacity-90"
+                    className="pointer-events-auto rounded-full p-2 transition hover:opacity-90"
                     aria-label="גלילה למטה"
                 >
                     <img

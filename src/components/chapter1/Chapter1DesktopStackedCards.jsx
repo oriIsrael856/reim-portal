@@ -77,6 +77,7 @@ export default function Chapter1DesktopStackedCards({ data, stickyReleaseRef }) 
                                 </p>
                             </div>
                             <div className="flex w-full flex-row items-start justify-start gap-3 self-stretch">
+                                <Chapter1ArrowPill direction="right" />
                                 <div className="flex min-w-0 flex-1 flex-col gap-2">
                                     <h3 className="text-right text-2xl font-bold leading-[1.334] text-[#46319B]">
                                         {c1.sec2Title}
@@ -85,7 +86,6 @@ export default function Chapter1DesktopStackedCards({ data, stickyReleaseRef }) 
                                         {c1.sec2Text}
                                     </p>
                                 </div>
-                                <Chapter1ArrowPill direction="right" />
                             </div>
                         </div>
                     </div>

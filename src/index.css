@@ -76,21 +76,59 @@
   --home-desktop-hero-pad-top: 60px;
   --home-desktop-hero-pad-bottom: 172px;
   --home-desktop-hero-pad-x: min(200px, 10.42vw);
-  --home-desktop-hero-text-max-w: 795px;
+  --home-desktop-hero-text-max-w: clamp(530px, 41.41vw, 1060px);
   --home-desktop-hero-text-stack-gap: 9px;
-  --home-desktop-hero-subtitle-size: 24px;
+  --home-desktop-hero-subtitle-size: clamp(16px, 1.25vw, 32px);
   --home-desktop-hero-subtitle-line: 1.334;
-  --home-desktop-hero-title-size: 60px;
+  --home-desktop-hero-title-size: clamp(40px, 3.125vw, 80px);
   --home-desktop-hero-title-line: 1;
   --home-desktop-hero-title-tracking: -0.008333em;
-  --home-desktop-hero-collage-h: 500px;
+  --home-desktop-hero-collage-h: clamp(333px, 26.04vw, 667px);
   --home-desktop-hero-photo-radius: 24px;
-  --home-desktop-hero-yellow-bar-w: 323px;
-  --home-desktop-hero-yellow-bar-h: 20px;
-  --home-desktop-hero-yellow-bar-left: 190.5px;
-  --home-desktop-hero-yellow-bar-top: 144px;
+  --home-desktop-hero-yellow-bar-w: clamp(216px, 16.82vw, 430px);
+  --home-desktop-hero-yellow-bar-h: clamp(13px, 1.04vw, 27px);
+  --home-desktop-hero-yellow-bar-left: clamp(128px, 9.92vw, 254px);
+  --home-desktop-hero-yellow-bar-top: clamp(96px, 7.5vw, 192px);
   --home-desktop-hero-blur-purple: rgba(101, 70, 222, 0.12);
   --home-desktop-hero-blur-amber: rgba(255, 178, 59, 0.08);
+
+  /* --- Home desktop Section 1 layout --- */
+  --home-desktop-section-pad-top: clamp(80px, 6.25vw, 160px);
+  --home-desktop-section-pad-bottom: clamp(67px, 5.21vw, 133px);
+  --home-desktop-section-pad-x: clamp(133px, 10.42vw, 267px);
+
+  /* --- Home desktop Intro card (Figma 36:1035) --- */
+  --home-desktop-intro-card-w: clamp(949px, 74.17vw, 1900px);
+  --home-desktop-intro-card-pad-top: clamp(43px, 3.33vw, 85px);
+  --home-desktop-intro-card-pad-x: clamp(53px, 4.17vw, 107px);
+  --home-desktop-intro-card-pad-bottom: clamp(35px, 2.71vw, 69px);
+  --home-desktop-intro-gap: clamp(16px, 1.25vw, 32px);
+  --home-desktop-intro-title-size: clamp(23px, 1.77vw, 45px);
+  --home-desktop-intro-h6-size: clamp(13px, 1.04vw, 27px);
+  --home-desktop-intro-body-size: clamp(11px, 0.83vw, 21px);
+  --home-desktop-intro-text-max-w: clamp(667px, 52.08vw, 1333px);
+
+  /* --- Home desktop Collage --- */
+  --home-desktop-collage-max-w: clamp(963px, 75.26vw, 1927px);
+
+  /* --- Home desktop Hero decorations --- */
+  --home-desktop-hero-plane-w: clamp(44px, 3.44vw, 88px);
+  --home-desktop-hero-star-w: clamp(31px, 2.45vw, 63px);
+
+  /* --- Home desktop NextChapter --- */
+  --home-desktop-nextch-container-h: clamp(133px, 10.42vw, 267px);
+  --home-desktop-nextch-btn-h: clamp(107px, 8.33vw, 213px);
+  --home-desktop-nextch-btn-w: clamp(433px, 33.85vw, 867px);
+  --home-desktop-nextch-icon-box: clamp(53px, 4.17vw, 107px);
+
+  /* --- Home desktop Footer --- */
+  --home-desktop-footer-max-w: clamp(1067px, 83.33vw, 2133px);
+
+  /* --- Newsletter card (mobile defaults) --- */
+  --home-newsletter-card-h: 400px;
+  --home-newsletter-title-size: 34px;
+  --home-newsletter-body-size: 16px;
+  --home-newsletter-input-min-h: 52px;
 
   /* --- Chapter 2 Mobile (Figma 194:16426 / 194:16436) --- */
   /* Figma Copy: 194:16426 "Chapter 2" (purple rail) + 194:16436 "Main content" (white card) */
@@ -153,24 +191,30 @@
   --ch2-gap-text-block: 16px;
   --ch2-gap-main-vertical: 8px;
 
-  /* Chapter 2 Desktop Hero — Figma 106:3191 (Section 1, desktop only) */
-  --ch2-desktop-hero-min-h: 980px;
+  /* Chapter 2 Desktop Hero — Figma 106:3191 — ref frame: 1824×980px          */
+  /* Gutters: 200px each side → 10.965vw. Collage: 1424×849 at x:200 y:106.  */
+  /* Text block: y:341 h:202 → center at 442px; section center 490 → -48px.  */
+  --ch2-desktop-hero-collage-top: clamp(70px, 5.81vw, 106px);                 /* 106/1824 */
+  /* collage-w = viewport − 2 gutters, same pattern as Chapter 1 */
+  --ch2-desktop-hero-collage-w: clamp(800px, calc(100vw - min(400px, 21.93vw)), 1424px);
+  /* collage-h = collage-w × (849/1424) = 0.5963 × collage-w, fluid at all desktop sizes */
+  --ch2-desktop-hero-collage-h: clamp(477px, 46.54vw, 849px);               /* 849/1824 */
+  /* min-h = collage-top(5.81vw) + collage-h(46.54vw) + 25px = 52.35vw+25px, flat clamp avoids nested-var vw bug */
+  --ch2-desktop-hero-min-h: clamp(572px, calc(52.35vw + 25px), 980px);
   --ch2-desktop-hero-max-w: 1824px;
-  --ch2-desktop-hero-collage-w: 1424px;
-  --ch2-desktop-hero-collage-h: 849px;
-  --ch2-desktop-hero-collage-top: 106px;
-  --ch2-desktop-hero-text-nudge-y: -48px;
-  --ch2-desktop-hero-title-size: 60px;
+  --ch2-desktop-hero-text-nudge-y: clamp(-48px, -2.63vw, -24px);              /* 48/1824 — Figma exact */
+  --ch2-desktop-hero-label-title-gap: clamp(20px, 2.19vw, 40px);              /* 40/1824 */
+  --ch2-desktop-hero-title-size: clamp(36px, 3.29vw, 60px);                   /* 60/1824 */
   --ch2-desktop-hero-title-lh: 1;
   --ch2-desktop-hero-title-tracking: -0.5px;
-  --ch2-desktop-hero-label-type-size: 20px;
-  --ch2-desktop-hero-badge-num-size: 16px;
-  --ch2-desktop-hero-display-num-size: 120px;
-  --ch2-desktop-hero-yellow-bar-h: 17px;
+  --ch2-desktop-hero-label-type-size: clamp(14px, 1.097vw, 20px);             /* 20/1824 */
+  --ch2-desktop-hero-badge-num-size: clamp(12px, 0.877vw, 16px);              /* 16/1824 */
+  --ch2-desktop-hero-display-num-size: clamp(72px, 6.58vw, 120px);            /* 120/1824 */
+  --ch2-desktop-hero-yellow-bar-h: clamp(10px, 0.932vw, 17px);                /* 17/1824 */
   /* Figma 114:2581 / 114:2583 — brush behind purple title lines */
-  --ch2-desktop-hero-yellow-bar-line1-w: 282px;
-  --ch2-desktop-hero-yellow-bar-line2-w: 277px;
-  --ch2-desktop-hero-photo-radius: 24px;
+  --ch2-desktop-hero-yellow-bar-line1-w: clamp(160px, 15.46vw, 282px);        /* 282/1824 */
+  --ch2-desktop-hero-yellow-bar-line2-w: clamp(156px, 15.19vw, 277px);        /* 277/1824 */
+  --ch2-desktop-hero-photo-radius: clamp(14px, 1.316vw, 24px);                /* 24/1824 */
   --ch2-desktop-hero-card-shadow: 2px 2px 0 0 #001d26;
 
   /* Section overlap — Main content column gap -24px (layout_L5PV5Q) */
@@ -1585,5 +1629,12 @@
     width: 100% !important;
     overflow: visible !important;
     flex: 0 0 auto !important;
+  }
+
+  :root {
+    --home-newsletter-card-h: clamp(256px, 25vw, 640px); /* Figma: section h:800 py:160 → card h:480 = 480/1920 = 25vw */
+    --home-newsletter-title-size: clamp(23px, 1.77vw, 45px);
+    --home-newsletter-body-size: clamp(11px, 0.83vw, 21px);
+    --home-newsletter-input-min-h: clamp(35px, 2.71vw, 69px);
   }
 }

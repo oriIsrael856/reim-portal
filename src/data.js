@@ -21,8 +21,8 @@ export const INITIAL_DATA = {
     home: {
         hero: {
             subtitle: "ברוכים.ות הבאים.ות",
-            title1: "לפורטל הרכזים",
-            titleLine2: "והרכזות של",
+            title1: "לפורטל הרכזים והרכזות",
+            titleLine2: "של",
             title2: "תוכנית רעים",
             logoText: "רעים",
             tagline: "שווה להיות ביחד",
@@ -88,8 +88,8 @@ export const INITIAL_DATA = {
             title2: "נעים להכיר",
             instruction: "גוללים למטה ומגלים את הסיפור שלנו.",
             imageCaption: "לא רואים עלי!!",
-            image1: "/Image (1).png",
-            image2: "/Image.png"
+            image1: "/assets/chapter1/hero-collage-1.png",
+            image2: "/assets/chapter1/hero-collage-2.png"
         },
         cards: [
             {

@@ -1,32 +1,20 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import ChapterDigitSvg from '../components/common/ChapterDigitSvg';
-import SplitStickyLayout from '../components/layout/SplitStickyLayout';
 import Accordion from '../components/common/Accordion';
 import CheckCard from '../components/chapter5/CheckCard';
 import NextChapterButton from '../components/common/NextChapterButton';
 import PrevChapterButton from '../components/common/PrevChapterButton';
 import NewsletterCard from '../components/common/NewsletterCard';
+import { useChapter5DesktopStyles } from '../hooks/useChapter5DesktopStyles';
 
 const Chapter5 = ({ data, onNext, onPrev }) => {
+    const d = useChapter5DesktopStyles();
+
     if (!data) return <div className="p-20 text-center font-bold text-[#816AFE]">טוען נתוני כלים מעשיים...</div>;
 
     const marketingParagraphs = (data.marketing?.text ?? '').split(/\n\n+/).filter(Boolean);
     const networkingCardsReversed = [...(data.networking?.cards ?? [])].reverse();
-
-    const MarketingHeader = (
-        <div className="text-right pr-4 md:pr-10">
-            <h2 className="text-[#5E3BEE] font-black text-4xl mb-4">
-                שיווק וגיוס
-                <br />
-                <span className="text-[#2D2D44]">משתתפים ומשתתפות</span>
-            </h2>
-            <div className="w-20 h-1.5 bg-[#C5E080] rounded-full mb-8"></div>
-            <p className="text-lg leading-relaxed text-[#2D2D44]/80 whitespace-pre-line font-medium">
-                {data.marketing?.text}
-            </p>
-        </div>
-    );
 
     return (
         <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-12 md:pt-0 font-['Rubik']">
@@ -191,8 +179,8 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                     className="pointer-events-none absolute z-0 rounded-full"
                     aria-hidden
                     style={{
-                        width: 'min(1184px, 92vw)',
-                        height: 'min(1184px, 92vw)',
+                        width: d.heroAmberBlurSize,
+                        height: d.heroAmberBlurSize,
                         background: 'rgba(255, 178, 59, 0.08)',
                         filter: 'blur(200px)',
                         top: 'clamp(-16rem, -24vw, -6rem)',
@@ -203,22 +191,33 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                 {/* Figma 125:4283 — Section 1: chapter label + title + photo collage */}
                 <header
                     dir="rtl"
-                    className="relative z-[1] flex flex-col items-center gap-[60px] pt-[48px] pb-[80px] px-[11%]"
+                    className="relative z-[1] flex flex-col items-center"
+                    style={d.heroHeader}
                 >
                     {/* Chapter label pill + title — Figma 125:4286 */}
-                    <div className="flex flex-col items-center gap-[40px]">
+                    <div className="flex flex-col items-center" style={d.heroTitleStackGap}>
 
                         {/* Chapter label pill */}
-                        <div className="relative flex h-[42px] items-center justify-center rounded-[24px] border-[1.5px] border-[#001d26] bg-[#bce079] px-6 shadow-[2px_2px_0px_0px_#001d26]">
+                        <div
+                            className="relative flex items-center justify-center rounded-[24px] border-[1.5px] border-[#001d26] bg-[#bce079] shadow-[2px_2px_0px_0px_#001d26]"
+                            style={d.heroChapterPill}
+                        >
                             <div
-                                className="absolute left-1/2 top-[-23.5px] -translate-x-1/2 z-10 flex size-8 items-center justify-center rounded-full border-[1.5px] border-[#001d26] bg-[#839c54]"
+                                className="absolute left-1/2 top-[-23.5px] -translate-x-1/2 z-10 flex items-center justify-center rounded-full border-[1.5px] border-[#001d26] bg-[#839c54]"
                                 aria-hidden
+                                style={d.heroChapterBadge}
                             >
-                                <span className="font-['Salsa'] text-[16px] font-normal leading-[1.28] tracking-[0.15px] text-white">
+                                <span
+                                    className="font-['Salsa'] font-normal leading-[1.28] tracking-[0.15px] text-white"
+                                    style={d.heroChapterNumeralFont}
+                                >
                                     05
                                 </span>
                             </div>
-                            <span className="whitespace-nowrap text-center text-[20px] font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]">
+                            <span
+                                className="whitespace-nowrap text-center font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]"
+                                style={d.heroChapterTagFont}
+                            >
                                 {data.hero?.tag ?? 'פרק חמישי ואחרון'}
                             </span>
                         </div>
@@ -226,21 +225,35 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                         {/* Title with orange underline bar — Figma 125:4288–4290 */}
                         <div className="relative">
                             <div
-                                className="pointer-events-none absolute left-1/2 top-[43px] z-0 h-[17px] w-[350px] -translate-x-1/2 bg-[#ffb23b]"
+                                className="pointer-events-none absolute left-1/2 z-0 -translate-x-1/2 bg-[#ffb23b]"
                                 aria-hidden
+                                style={{
+                                    top: d.heroOrangeBar.top,
+                                    height: d.heroOrangeBar.height,
+                                    width: d.heroOrangeBar.width,
+                                }}
                             />
-                            <h1 className="relative z-[1] text-center text-[60px] font-bold leading-none tracking-[-0.5px] text-[#001d26]">
+                            <h1
+                                className="relative z-[1] text-center font-bold leading-none tracking-[-0.5px] text-[#001d26]"
+                                style={d.heroH1}
+                            >
                                 {data.hero?.title ?? 'כלים מעשיים'}
                             </h1>
                         </div>
                     </div>
 
                     {/* Photo collage — Figma 125:4787, 1424×400px frame at x=200 y=425 in section */}
-                    <div className="relative h-[400px] w-full shrink-0">
+                    <div className="relative w-full shrink-0" style={d.heroCollageHeight}>
 
                         {/* Main center photo — Figma: centered, -2deg — z=0 (background) */}
                         <div className="absolute left-1/2 top-1/2 z-0 -translate-x-1/2 -translate-y-1/2 -rotate-2">
-                            <div className="h-[400px] w-[min(800px,56vw)] overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0px_0px_#001d26]">
+                            <div
+                                className="overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0px_0px_#001d26]"
+                                style={{
+                                    width: d.heroMainPhotoMaxWidth,
+                                    height: d.heroMainPhoto.height,
+                                }}
+                            >
                                 <img
                                     src={data.hero?.images?.[0]}
                                     alt=""
@@ -251,7 +264,10 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
 
                         {/* Top-left small photo — Figma: x=96 y=-3 size=192, +2deg — z=10 */}
                         <div className="absolute z-10 rotate-2" style={{ left: '6.74%', top: '-3px' }}>
-                            <div className="size-[186px] overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0px_0px_#001d26]">
+                            <div
+                                className="overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0px_0px_#001d26]"
+                                style={{ width: d.heroSidePhotoSm.width, height: d.heroSidePhotoSm.height }}
+                            >
                                 <img
                                     src={data.hero?.images?.[1]}
                                     alt=""
@@ -262,7 +278,10 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
 
                         {/* Bottom-right small photo — Figma: x=1086 y=220 size=240, bleeds 60px below — z=10 */}
                         <div className="absolute z-10" style={{ right: '6.88%', bottom: '-60px' }}>
-                            <div className="size-[240px] overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0px_0px_#001d26]">
+                            <div
+                                className="overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0px_0px_#001d26]"
+                                style={{ width: d.heroSidePhotoLg.width, height: d.heroSidePhotoLg.height }}
+                            >
                                 <img
                                     src={data.hero?.images?.[2]}
                                     alt=""
@@ -277,10 +296,13 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                             className="pointer-events-none absolute left-0 z-0"
                             aria-hidden
                             dir="ltr"
-                            style={{ top: '319px' }}
+                            style={{ top: d.heroCollageDigitTop.top }}
                         >
                             <div className="relative inline-block">
-                                <p className="font-['Salsa'] text-[120px] font-normal leading-[1.28] tracking-[0.15px] text-[#6546de] whitespace-nowrap">
+                                <p
+                                    className="font-['Salsa'] font-normal leading-[1.28] tracking-[0.15px] text-[#6546de] whitespace-nowrap"
+                                    style={d.heroCollageDigit}
+                                >
                                     05
                                 </p>
                                 <svg
@@ -302,26 +324,44 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                 {/* Section Meeting — Figma 125:4865 */}
                 <section
                     dir="rtl"
-                    className="w-full bg-white rounded-tl-[24px] rounded-tr-[24px] flex items-start gap-[80px] py-[120px]"
-                    style={{ paddingInline: 'clamp(24px, 11%, 200px)' }}
+                    className="w-full bg-white rounded-tl-[24px] rounded-tr-[24px] flex items-start"
+                    style={d.marketingSection}
                 >
-                    {/* Group Info — RIGHT in RTL (DOM-first = visually right) */}
-                    <div className="flex flex-col gap-[24px] items-end pt-[40px] shrink-0 w-[500px]">
+                    {/* Group Info — RIGHT in RTL: flex-col + items-start hugs physical right (reading start) */}
+                    <div
+                        className="flex shrink-0 flex-col items-start min-w-0"
+                        style={{
+                            width: d.marketingCol.width,
+                            gap: d.marketingCol.gap,
+                            paddingTop: d.marketingCol.paddingTop,
+                        }}
+                    >
                         {/* Title with green highlight behind "שיווק וגיוס" */}
-                        <div className="relative flex flex-col items-end w-full">
+                        <div className="relative flex w-full flex-col items-start">
                             <div
-                                className="pointer-events-none absolute bg-[#bce079] h-[13px] w-[167px]"
+                                className="pointer-events-none absolute bg-[#bce079]"
                                 aria-hidden
-                                style={{ right: '-5px', top: '29px' }}
+                                style={{
+                                    right: '-5px',
+                                    top: d.marketingHighlight.top,
+                                    width: d.marketingHighlight.width,
+                                    height: d.marketingHighlight.height,
+                                }}
                             />
-                            <p className="relative text-[34px] font-bold leading-[1.1] tracking-[0.25px] text-right text-[#001d26]">
+                            <p
+                                className="relative w-full text-start font-bold leading-[1.1] tracking-[0.25px] text-[#001d26]"
+                                style={d.marketingTitleFont}
+                            >
                                 <span className="text-[#6546de]">{data.marketing?.stickyTitle?.split('\n')[0] ?? 'שיווק וגיוס'}</span>
                                 <br />
                                 {data.marketing?.stickyTitle?.split('\n')[1] ?? 'משתתפים ומשתתפות'}
                             </p>
                         </div>
                         {/* Description paragraphs */}
-                        <div className="text-[20px] font-normal leading-[1.28] tracking-[0.15px] text-right text-[#001d26] w-full">
+                        <div
+                            className="w-full text-start font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]"
+                            style={d.marketingBodyFont}
+                        >
                             {marketingParagraphs.map((p, i) => (
                                 <p key={i} className={i < marketingParagraphs.length - 1 ? 'mb-[1.28em]' : ''}>{p}</p>
                             ))}
@@ -329,41 +369,48 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                     </div>
 
                     {/* Steps list — LEFT in RTL (DOM-second = visually left) */}
-                    <div className="flex flex-1 flex-col gap-[16px] min-w-0">
-                        <p className="text-[24px] font-bold leading-[1.334] text-right w-full text-[#001d26]">
+                    <div className="flex flex-1 flex-col min-w-0" style={d.marketingStepsCol}>
+                        <p
+                            className="font-bold leading-[1.334] text-right w-full text-[#001d26]"
+                            style={d.marketingStepsTitleFont}
+                        >
                             {data.marketing?.stepsTitle ?? 'צעדי פעולה מרכזיים:'}
                         </p>
-                        <Accordion
-                            items={data.marketing?.steps ?? []}
-                            variant="ch5"
-                        />
+                        <Accordion items={data.marketing?.steps ?? []} viewportCh5Styles={d} />
                     </div>
                 </section>
 
-                <section className="max-w-7xl mx-auto px-6 mb-48 text-center">
-                    <h2 className="text-4xl font-black text-[#2D2D44] mb-12">{data.networking?.title}</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                <section
+                    className="mx-auto text-center w-full"
+                    style={{
+                        maxWidth: d.networkingContainerMaxWidth,
+                        ...d.networkingSection,
+                    }}
+                >
+                    <h2
+                        className="font-black font-rubik text-[#001d26]"
+                        style={{ ...d.networkingTitleFont, marginBottom: d.networkingTitleMargin.marginBottom }}
+                    >
+                        {data.networking?.title}
+                    </h2>
+                    <div
+                        className="grid grid-cols-1 items-stretch md:grid-cols-3 lg:grid-cols-5"
+                        style={d.networkingGridGap}
+                    >
                         {data.networking?.cards?.map((c, i) => (
-                            <CheckCard key={i} title={c.title} text={c.text} />
+                            <CheckCard key={i} title={c.title} text={c.text} ch5AudienceDesktop={d} />
                         ))}
                     </div>
                 </section>
 
                 {/* Section 2 — Figma 125:5338: ספרייה | ניוזלטר | תמונה */}
-                <section
-                    className="relative mb-24 w-full"
-                    style={{
-                        paddingInline: 'clamp(24px, 11%, 200px)',
-                        paddingBlock: 'clamp(60px, 11vw, 160px)',
-                    }}
-                >
+                <section className="relative w-full" style={d.resourcesSection}>
                     {/* Figma 125:5412 — purple blurred ellipse bg */}
                     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
                         <div
-                            className="absolute left-1/2 top-[-50px] -translate-x-1/2 -rotate-[5.85deg] rounded-full"
+                            className="absolute rounded-full"
                             style={{
-                                width: '1360px',
-                                height: '1040px',
+                                ...d.resourcesPurpleBlurStyle,
                                 background: 'rgba(101, 70, 222, 0.08)',
                                 filter: 'blur(200px)',
                             }}
@@ -371,12 +418,16 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                     </div>
 
                     {/* Three-card flex row — dir ltr keeps physical left→right order matching Figma canvas */}
-                    <div className="relative z-[1] flex w-full items-stretch" style={{ gap: '24px' }} dir="ltr">
+                    <div className="relative z-[1] flex w-full items-stretch" style={d.resourcesRowGap} dir="ltr">
 
                         {/* Library card — Figma 125:5339: w=700px, image bg + white panel flush-left */}
                         <div
-                            className="relative flex flex-col items-start justify-end overflow-hidden rounded-[24px] border-[1.5px] border-[#001D26] p-4 shrink-0"
-                            style={{ width: 'min(700px, 49%)', height: '400px' }}
+                            className="relative flex flex-col items-start justify-end overflow-hidden rounded-[24px] border-[1.5px] border-[#001D26] shrink-0"
+                            style={{
+                                width: d.resourcesLibraryCard.width,
+                                height: d.resourcesLibraryCard.height,
+                                padding: d.resourcesLibraryCard.padding,
+                            }}
                         >
                             {/* Background photo fills entire card */}
                             <div className="pointer-events-none absolute inset-0">
@@ -389,21 +440,28 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
 
                             {/* White inner panel — Figma 125:5362: w=260px, full-height via flex-1, pt-24 pb-40 px-40 */}
                             <div
-                                className="relative z-[1] flex flex-1 flex-col justify-between gap-4 rounded-[24px] border-[1.5px] border-[#001D26] bg-white shadow-[2px_2px_0_0_#001D26]"
-                                style={{ width: 'min(260px, 100%)', padding: '24px 40px 40px 40px' }}
+                                className="relative z-[1] flex flex-1 flex-col justify-between max-w-full rounded-[24px] border-[1.5px] border-[#001D26] bg-white shadow-[2px_2px_0_0_#001D26]"
+                                style={d.resourcesLibraryPanel}
                                 dir="rtl"
                             >
                                 <div className="flex flex-col gap-2 text-center">
-                                    <h3 className="text-[34px] font-bold leading-[1.1] tracking-[0.25px] text-[#001D26]">
+                                    <h3
+                                        className="font-bold leading-[1.1] tracking-[0.25px] text-[#001D26]"
+                                        style={d.resourcesLibraryTitleFont}
+                                    >
                                         {data.resources?.library?.title ?? 'הרכזיה'}
                                     </h3>
-                                    <p className="text-[20px] font-normal leading-[1.28] tracking-[0.15px] text-[#001D26]">
+                                    <p
+                                        className="font-normal leading-[1.28] tracking-[0.15px] text-[#001D26]"
+                                        style={d.resourcesLibraryBodyFont}
+                                    >
                                         {data.resources?.library?.desc}
                                     </p>
                                 </div>
                                 <button
                                     type="button"
-                                    className="flex w-full items-center justify-center gap-3 rounded-full bg-[#6546DE] py-2 px-3 text-white"
+                                    className="flex w-full items-center justify-center rounded-full bg-[#6546DE] px-3 text-white"
+                                    style={d.resourcesLibraryBtn}
                                 >
                                     <ArrowLeft size={18} strokeWidth={2.5} />
                                     <span className="text-base font-bold uppercase tracking-[0.46px]">
@@ -413,9 +471,27 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                             </div>
                         </div>
 
-                        {/* Newsletter card — Figma 125:5340: w=400px, reuses existing NewsletterCard */}
-                        <div className="flex shrink-0 items-stretch" style={{ width: 'min(400px, 28%)' }}>
-                            <NewsletterCard data={data.resources?.newsletter} className="w-full" />
+                        {/* Newsletter — same fixed height as library card (row cross-size); avoids % height gaps */}
+                        <div
+                            className="flex min-h-0 shrink-0 flex-col"
+                            style={{
+                                width: d.resourcesNewsletterCol.width,
+                                height: d.resourcesLibraryCard.height,
+                                minHeight: d.resourcesLibraryCard.height,
+                            }}
+                        >
+                            <NewsletterCard
+                                data={data.resources?.newsletter}
+                                className="h-full min-h-0 w-full flex-1"
+                                embeddedInRow
+                                embeddedStyles={{
+                                    padding: d.resourcesNewsletterPadding,
+                                    stackGap: d.resourcesNewsletterStackGap,
+                                    titleFont: d.resourcesNewsletterTitleFont,
+                                    bodyFont: d.resourcesNewsletterBodyFont,
+                                    inputMinH: d.resourcesNewsletterInputMinH,
+                                }}
+                            />
                         </div>
 
                         {/* Side image card — Figma 125:5350: flex-1, image with exact crop offsets */}
@@ -439,7 +515,13 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                     </div>
                 </section>
 
-                <footer className="my-20 px-4 max-w-4xl mx-auto">
+                <footer
+                    className="mx-auto w-full"
+                    style={{
+                        maxWidth: d.footerContentMaxWidth,
+                        ...d.footerSection,
+                    }}
+                >
                     <NextChapterButton
                         title="סיימנו את האוגדן!"
                         subtitle="חזרה לעמוד הבית"

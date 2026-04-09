@@ -14,11 +14,11 @@ const toPct = (x, y, w, h) => ({
 });
 
 const PHOTO_LAYERS = [
-    { key: 'farRight', z: 2, ...toPct(1103.34, 71, 327.17, 419.95) },
-    { key: 'leftSquare', z: 3, ...toPct(-14.86, 115.64, 329.72, 329.72) },
-    { key: 'centerSquare', z: 4, ...toPct(832, 121, 320.2, 320.2) },
-    { key: 'centerLeftTall', z: 5, ...toPct(247.37, 67, 340.17, 429.17) },
-    { key: 'centerRightTall', z: 6, ...toPct(536, 66.64, 340.17, 429.17) },
+    { key: 'farRight', z: 2, rotate: 4, ...toPct(1103.34, 71, 327.17, 419.95) },
+    { key: 'leftSquare', z: 3, rotate: -6, ...toPct(-14.86, 115.64, 329.72, 329.72) },
+    { key: 'centerSquare', z: 4, rotate: 4, ...toPct(832, 121, 320.2, 320.2) },
+    { key: 'centerLeftTall', z: 5, rotate: 6, ...toPct(247.37, 67, 340.17, 429.17) },
+    { key: 'centerRightTall', z: 6, rotate: -6, ...toPct(536, 66.64, 340.17, 429.17) },
 ];
 
 const DECO_DOTS = [
@@ -44,15 +44,15 @@ export default function HomeHeroDesktopCollage({ sources = {} }) {
 
     return (
         <div
-            className="relative mx-auto w-full max-w-[1445px] overflow-x-visible"
-            style={{ height: 'var(--home-desktop-hero-collage-h)' }}
+            className="relative mx-auto w-full overflow-x-visible"
+            style={{ maxWidth: 'var(--home-desktop-collage-max-w)', height: 'var(--home-desktop-hero-collage-h)' }}
             dir="ltr"
         >
-            {PHOTO_LAYERS.map(({ key, z, left, top, width, height }) => {
+            {PHOTO_LAYERS.map(({ key, z, rotate, left, top, width, height }) => {
                 const url = merged[key];
                 if (!url) return null;
                 return (
-                    <div key={key} className={frameClass} style={{ left, top, width, height, zIndex: z }}>
+                    <div key={key} className={frameClass} style={{ left, top, width, height, zIndex: z, transform: `rotate(${rotate}deg)` }}>
                         <img src={url} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
                     </div>
                 );

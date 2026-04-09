@@ -27,10 +27,16 @@ const HomePage = ({ data, navigateTo }) => {
                 </div>
             </div>
 
-            {/* Section 1 desktop */}
+            {/* Section 1 desktop — mt matches Figma hero mb-[-24px] overlap */}
             <div
-                className="relative mt-4 mb-10 hidden w-full flex-col items-center justify-start gap-0 self-stretch overflow-visible pt-[120px] pb-[100px] ps-6 pe-6 md:flex md:ps-12 md:pe-12 lg:ps-[200px] lg:pe-[200px]"
-                style={{ background: 'rgba(101, 70, 222, 0.08)' }}
+                className="relative -mt-6 mb-10 hidden w-full flex-col items-center justify-start gap-0 self-stretch overflow-visible md:flex"
+                style={{
+                    background: 'rgba(101, 70, 222, 0.08)',
+                    paddingTop: 'var(--home-desktop-section-pad-top)',
+                    paddingBottom: 'var(--home-desktop-section-pad-bottom)',
+                    paddingInlineStart: 'var(--home-desktop-section-pad-x)',
+                    paddingInlineEnd: 'var(--home-desktop-section-pad-x)',
+                }}
             >
                 <HomeIntroDesktop data={data.intro} />
                 <div className="mt-10 w-full min-w-0 max-w-full md:mt-14">

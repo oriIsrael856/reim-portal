@@ -124,7 +124,7 @@ const App = () => {
             <div
                 className={
                     currentPage !== 'admin'
-                        ? 'flex min-h-screen flex-col overflow-x-clip rounded-[12px] bg-[#46319B] md:overflow-visible md:rounded-[16px] md:bg-gradient-to-b md:from-white md:to-[#F5F3FA]'
+                        ? 'flex min-h-screen flex-col overflow-x-clip rounded-[12px] bg-[#46319B] md:overflow-clip md:rounded-[16px] md:bg-gradient-to-b md:from-white md:to-[#F5F3FA]'
                         : 'flex min-h-screen flex-col overflow-hidden rounded-[12px] md:rounded-[16px]'
                 }
                 style={{
@@ -177,10 +177,10 @@ const App = () => {
             />
 
             <main
-                className={`flex min-h-0 flex-1 flex-col transition-all duration-500 px-4 md:min-h-min md:overflow-visible md:px-0 md:pr-20 md:pt-[116px] ${
-                    currentPage !== 'admin'
-                        ? 'pt-[max(0.75rem,env(safe-area-inset-top,0px))]'
-                        : 'pt-[130px]'
+                className={`flex min-h-0 flex-1 flex-col transition-all duration-500 px-4 md:px-0 md:pr-20 ${
+                    currentPage === 'admin'
+                        ? 'pt-[130px]'
+                        : 'pt-[max(0.75rem,env(safe-area-inset-top,0px))] md:pt-0'
                 }`}
             >
                 <Suspense fallback={

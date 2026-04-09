@@ -31,7 +31,7 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
     return (
         <div className="min-h-screen bg-[#F3F0FF] font-['Rubik'] md:bg-[#FFF9F0]">
             {onPrev && (
-                <div className="pt-24 pb-4">
+                <div className="pt-24 pb-4 md:hidden">
                     <PrevChapterButton title="חזור לדף הבית" onClick={onPrev} />
                 </div>
             )}
@@ -137,8 +137,8 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
                 </div>
             )}
 
-            {/* דסקטופ: padding אופקי מאוזן; שורת קולאז'+כותרת ממורכרת ב-lg כדי שלא ייווצר רווח ריק גדול מימין */}
-            <div className="relative mx-auto mb-20 hidden w-full max-w-[1800px] px-6 pt-16 md:block md:px-10 lg:px-12 xl:px-16">
+            {/* דסקטופ: 200px gutters (Figma @ 1920px), right col sticky */}
+            <div className="relative mx-auto mb-20 hidden w-full max-w-[1800px] px-[min(200px,10.42vw)] pt-16 md:block">
                 <div
                     className="flex flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:justify-center lg:gap-6 xl:gap-8"
                     dir="ltr"
@@ -150,7 +150,7 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
                         </div>
                     </div>
                     <div
-                        className={`w-full min-w-0 shrink-0 lg:max-w-[520px] lg:z-40 lg:flex lg:flex-col lg:items-end lg:pt-1 lg:self-start ${
+                        className={`w-full min-w-0 shrink-0 lg:max-w-[min(520px,34.2vw)] lg:z-40 lg:flex lg:flex-col lg:items-end lg:pt-1 lg:self-start ${
                             heroTitleSticky ? 'lg:sticky' : 'lg:relative'
                         }`}
                         style={{ top: heroTitleSticky ? CH1_TITLE_STICKY_TOP : undefined }}

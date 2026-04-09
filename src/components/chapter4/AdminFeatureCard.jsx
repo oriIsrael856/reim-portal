@@ -1,55 +1,78 @@
 import React from 'react';
-import { ArrowUpLeft, Award, File, FileText, HeartHandshake, Inbox, UserCheck } from 'lucide-react';
-import { CH4_ASSETS } from './chapter4Assets';
+import { ArrowUpLeft } from 'lucide-react';
 
-const ICON_MAP = { HeartHandshake, UserCheck, FileText, File };
-
-/** Figma 120:6180 — desktop feature row: Award / Inbox match file icons; 01 uses Nativ brand image */
-function Chapter4DesktopCardIcon({ id, iconName }) {
-    if (id === '01') {
-        return (
-            <img
-                src={CH4_ASSETS.featureNativBrand}
-                alt=""
-                className="size-8 object-contain object-center"
-                width={32}
-                height={32}
-            />
-        );
-    }
-    const MapIcon = iconName === 'UserCheck' ? Award : iconName === 'FileText' ? Inbox : ICON_MAP[iconName] || File;
-    return <MapIcon className="size-8 shrink-0 text-[#001d26] transition-colors duration-200 group-hover:text-[#FFB23B]" strokeWidth={1.5} aria-hidden />;
+// Figma 120:6184–6186 — feature card icons (fetched from node 120:5455)
+const imgFeatureNativ      = 'https://www.figma.com/api/mcp/asset/24dedca8-fc82-485e-b431-4e11293a2c30';
+const imgFeatureCommittees = 'https://www.figma.com/api/mcp/asset/d43cec28-1ba6-4b39-8648-cd2777c56637';
+const imgFeatureFiles      = 'https://www.figma.com/api/mcp/asset/722b1f14-4b8f-4c3b-8960-e3a0107eea00';
+/** Figma 120:6180 — desktop feature card icons */
+function Chapter4DesktopCardIcon({ id, iconBoxStyle }) {
+    const src = id === '01' ? imgFeatureNativ : id === '02' ? imgFeatureCommittees : imgFeatureFiles;
+    // Award (02) has inset 8.33% 20.83% per Figma; others use 12.5%
+    const inset = id === '02' ? '8.33% 20.83%' : '12.5%';
+    return (
+        <div className={`relative overflow-clip ${iconBoxStyle ? '' : 'size-8'}`} style={iconBoxStyle}>
+            <div className="absolute size-full" style={{ inset }}>
+                <img alt="" className="absolute block max-w-none size-full" src={src} />
+            </div>
+        </div>
+    );
 }
 
-const AdminFeatureCard = ({ id, title, desc, iconName, variant, onClick }) => {
-    const Icon = ICON_MAP[iconName] || File;
+const AdminFeatureCard = ({ id, title, desc, variant, onClick, ch4DesktopStyles }) => {
     const isCh4Desktop = variant === 'chapter4Desktop';
 
     if (isCh4Desktop) {
+        const s = ch4DesktopStyles;
         return (
+            /* Figma 120:6184/6185/6186 — scaled via chapter4ViewportRegistry + useChapter4DesktopStyles */
             <button
                 type="button"
                 dir="rtl"
                 onClick={onClick}
-                className="group relative flex h-[280px] w-full max-w-[320px] shrink-0 cursor-pointer flex-col items-end justify-between overflow-hidden rounded-[16px] border-[1.5px] border-[rgba(101,70,222,0.16)] bg-white p-6 text-right transition-all duration-200 ease-out hover:-translate-y-1.5 hover:border-[#FFB23B] hover:bg-gradient-to-b hover:from-[rgba(255,178,59,0.22)] hover:to-[rgba(255,178,59,0.04)] hover:shadow-[2px_12px_32px_rgba(255,178,59,0.32)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFB23B]"
+                className="group relative z-0 flex w-full shrink-0 cursor-pointer flex-col items-end justify-between overflow-hidden rounded-[16px] border border-transparent bg-white text-right transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFB84C]"
+                style={{ ...s?.adminFeatureCard, boxShadow: '0 4px 16px rgba(0,0,0,0.04)' }}
+                onMouseEnter={e => {
+                    e.currentTarget.style.background = '#FFF8EB';
+                    e.currentTarget.style.boxShadow = '8px 12px 32px rgba(45,45,68,0.18), 0 4px 12px rgba(0,0,0,0.08)';
+                    e.currentTarget.style.transform = 'translateY(-6px) scale(1.08)';
+                    e.currentTarget.style.zIndex = '10';
+                }}
+                onMouseLeave={e => {
+                    e.currentTarget.style.background = '';
+                    e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.04)';
+                    e.currentTarget.style.transform = '';
+                    e.currentTarget.style.zIndex = '';
+                }}
             >
-                <p className="min-w-0 w-full text-start font-['Salsa'] text-[40px] font-normal leading-[1.28] tracking-[0.15px] text-[#001d26] transition-colors duration-200 group-hover:text-[#FFB23B]">
-                    <span dir="ltr">{id}</span>
-                </p>
-                <div className="flex w-full shrink-0 flex-col items-end gap-4">
-                    <div className="flex size-8 items-center justify-center overflow-hidden transition-transform duration-200 group-hover:scale-110">
-                        <Chapter4DesktopCardIcon id={id} iconName={iconName} />
-                    </div>
-                    <div className="flex w-full flex-col gap-1 text-start text-[#001d26]">
-                        <p className="text-[24px] font-bold leading-[1.334] transition-colors duration-200 group-hover:text-[#FFB23B]">{title}</p>
-                        <p className="text-[16px] font-normal leading-[1.32] tracking-[0.15px]">{desc}</p>
-                    </div>
-                </div>
+                {/* Arrow badge — ArrowUpLeft in orange square, fades in on hover (HomeCarousel pattern) */}
                 <div
-                    className="absolute left-[-40px] top-[25.5px] flex h-9 items-center overflow-hidden rounded-[32px] bg-[#FFB23B] p-1.5 transition-all duration-200 group-hover:left-[10px]"
+                    className="absolute left-3 top-3 flex size-8 items-center justify-center rounded-lg bg-[#FFB84C] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     aria-hidden
                 >
-                    <ArrowUpLeft className="size-6 shrink-0 text-white" strokeWidth={2} />
+                    <ArrowUpLeft className="text-white" size={18} strokeWidth={2.5} />
+                </div>
+
+                {/* Chapter numeral — Figma I120:6184;120:6812 */}
+                <p
+                    className="min-w-0 w-full text-start font-['Salsa'] font-normal leading-[1.28] tracking-[0.15px] text-[#001d26] transition-colors duration-300 group-hover:text-[#FFD028]"
+                    style={s?.adminFeatureNumeralFont}
+                >
+                    <span dir="ltr">{id}</span>
+                </p>
+                {/* Icon + text block — Figma I120:6184;120:6813 */}
+                <div className="flex w-full shrink-0 flex-col items-end" style={s?.adminFeatureInnerGap}>
+                    <div className="transition-transform duration-300 group-hover:scale-110">
+                        <Chapter4DesktopCardIcon id={id} iconBoxStyle={s?.adminFeatureIcon} />
+                    </div>
+                    <div className="flex w-full flex-col items-end text-start text-[#001d26]" style={s?.adminFeatureTextStackGap}>
+                        <p className="font-bold leading-[1.334] transition-colors duration-300 group-hover:text-[#FFD028]" style={s?.adminFeatureTitleFont}>
+                            {title}
+                        </p>
+                        <p className="font-normal leading-[1.32] tracking-[0.15px]" style={s?.adminFeatureDescFont}>
+                            {desc}
+                        </p>
+                    </div>
                 </div>
             </button>
         );
@@ -60,7 +83,7 @@ const AdminFeatureCard = ({ id, title, desc, iconName, variant, onClick }) => {
             <span className="absolute top-4 right-6 font-['Rubik'] text-2xl font-black text-[#2D2D44]/10">{id}</span>
             <div className="mt-2 flex flex-1 flex-col items-center justify-center gap-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#F3F0FF] transition-transform group-hover:scale-110">
-                    <Icon className="h-8 w-8 text-[#816AFE]" />
+                    <Chapter4DesktopCardIcon id={id} />
                 </div>
                 <h3 className="text-2xl font-black text-[#2D2D44]">{title}</h3>
                 <p className="max-w-[14rem] text-sm font-medium text-[#2D2D44]/60">{desc}</p>

@@ -32,7 +32,7 @@ export default function HomeIntroDesktop({ data }) {
             <div
                 className="relative mx-auto w-full"
                 style={{
-                    width: '1424px',
+                    width: 'var(--home-desktop-intro-card-w)',
                     maxWidth: '100%',
                 }}
             >
@@ -72,13 +72,13 @@ export default function HomeIntroDesktop({ data }) {
                         border: '1.5px solid #001D26',
                         boxShadow: '2px 2px 0 0 rgba(0, 29, 38, 1)',
                         backgroundColor: '#6546DE',
-                        padding: '64px 80px 52px',
+                        padding: 'var(--home-desktop-intro-card-pad-top) var(--home-desktop-intro-card-pad-x) var(--home-desktop-intro-card-pad-bottom)',
                     }}
                 >
                     <div
                         className="flex w-full flex-col items-center justify-center"
                         style={{
-                            gap: '24px',
+                            gap: 'var(--home-desktop-intro-gap)',
                             fontFamily: 'Rubik',
                         }}
                     >
@@ -86,7 +86,7 @@ export default function HomeIntroDesktop({ data }) {
                         <div
                             className="w-full"
                             style={{
-                                maxWidth: 1000,
+                                maxWidth: 'var(--home-desktop-intro-text-max-w)',
                                 textAlign: 'right',
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -99,7 +99,7 @@ export default function HomeIntroDesktop({ data }) {
                                 {data?.subtitle ? (
                                 <p
                                     style={{
-                                        fontSize: 16,
+                                        fontSize: 'var(--home-desktop-intro-body-size)',
                                         lineHeight: '1.32em',
                                         letterSpacing: '0.9375000373%',
                                         fontWeight: 400,
@@ -113,7 +113,7 @@ export default function HomeIntroDesktop({ data }) {
                                 {data?.title ? (
                                 <h2
                                     style={{
-                                        fontSize: 34,
+                                        fontSize: 'var(--home-desktop-intro-title-size)',
                                         lineHeight: '1.1000000449em',
                                         letterSpacing: '0.735294%',
                                         fontWeight: 700,
@@ -131,7 +131,7 @@ export default function HomeIntroDesktop({ data }) {
                             <div
                                 className="w-full"
                                 style={{
-                                    maxWidth: 1000,
+                                    maxWidth: 'var(--home-desktop-intro-text-max-w)',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
@@ -141,7 +141,7 @@ export default function HomeIntroDesktop({ data }) {
                                 {lead1 ? (
                                     <p
                                         style={{
-                                            fontSize: 20,
+                                            fontSize: 'var(--home-desktop-intro-h6-size)',
                                             lineHeight: '1.2799999237em',
                                             letterSpacing: '0.7500000298%',
                                             fontWeight: 600,
@@ -156,7 +156,7 @@ export default function HomeIntroDesktop({ data }) {
                                 {lead2 ? (
                                     <p
                                         style={{
-                                            fontSize: 20,
+                                            fontSize: 'var(--home-desktop-intro-h6-size)',
                                             lineHeight: '1.2799999237em',
                                             letterSpacing: '0.7500000298%',
                                             fontWeight: 600,
@@ -176,7 +176,7 @@ export default function HomeIntroDesktop({ data }) {
                             <div
                                 className="w-full"
                                 style={{
-                                    maxWidth: 1000,
+                                    maxWidth: 'var(--home-desktop-intro-text-max-w)',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
@@ -185,7 +185,7 @@ export default function HomeIntroDesktop({ data }) {
                             >
                                 <p
                                     style={{
-                                        fontSize: 20,
+                                        fontSize: 'var(--home-desktop-intro-h6-size)',
                                         lineHeight: '1.2799999237em',
                                         letterSpacing: '0.7500000298%',
                                         fontWeight: 600,

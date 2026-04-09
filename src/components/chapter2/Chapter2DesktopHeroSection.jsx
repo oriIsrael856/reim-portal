@@ -196,7 +196,7 @@ export default function Chapter2DesktopHeroSection({ data, chapterNumber }) {
   return (
     /* desktop-only: hidden on mobile/tablet, shown lg+ */
     <section
-      className="relative hidden min-h-[length:var(--ch2-desktop-hero-min-h)] w-full overflow-hidden lg:block"
+      className="relative hidden w-full overflow-hidden lg:block"
       style={{
         background: 'linear-gradient(180deg, #faf7ff 0%, var(--color-surface-lilac) 100%)',
       }}
@@ -222,39 +222,49 @@ export default function Chapter2DesktopHeroSection({ data, chapterNumber }) {
 
       {/* ── Collage container (Figma 106:3194, 1424×849) ── */}
       {/*
-       * dir="ltr": Figma coordinate origin is physical left regardless of
-       * page RTL direction. start = left inside this wrapper.
-       *
+       * In normal flow (not absolute) so its aspect-ratio drives the section height —
+       * eliminates the need for a vw-based min-height on the section entirely.
+       * dir="ltr": Figma coordinate origin is physical left regardless of RTL.
        * x% = Figma_px / 1424 × 100   |   y% = Figma_px / 849 × 100
        */}
       <div
         dir="ltr"
-        className="pointer-events-none absolute start-1/2 top-[length:var(--ch2-desktop-hero-collage-top)] z-[1] aspect-[1424/849] w-[min(100%,var(--ch2-desktop-hero-collage-w))] max-w-[calc(100%-2rem)] -translate-x-1/2"
+        className="pointer-events-none relative z-[1] mx-auto aspect-[1424/849]"
+        style={{
+          width: 'min(clamp(800px, 84%, 1424px), calc((100svh - 140px) * 1.678))',
+          maxWidth: 'calc(100% - 2rem)',
+          marginTop: 'clamp(70px, 6.5%, 106px)',
+          marginBottom: '25px',
+        }}
       >
-        {/* Photo 1 — 400×500, -4 deg (Figma 111:1314) start-[-1.43%] top-[9.79%] */}
-        <div className="absolute start-[-1.43%] top-[9.79%] flex w-[28.09%] items-start justify-center">
-          <div className="w-full origin-center -rotate-[4deg]">
+        {/* Photo 1 — wrapper=433.904×526.685 (bounding box of 400×500 @ -4deg)
+             Figma 111:1314: left=-20.44px(−1.44%) top=83.1px(9.79%) wrapper_w=30.47% card=92% of wrapper */}
+        <div className="absolute start-[-1.44%] top-[9.79%] flex w-[30.47%] items-center justify-center">
+          <div className="w-[92%] origin-center -rotate-[4deg]">
             <PhotoCard src={IMG.collage1} aspect="aspect-[400/500]" className="w-full" />
           </div>
         </div>
 
-        {/* Photo 2 — 400×400, +4 deg (Figma 111:2270) end-[-0.87%] top-[9%] */}
-        <div className="absolute end-[-0.87%] top-[9%] flex w-[28.09%] items-start justify-center">
-          <div className="w-full max-w-[400px] origin-center rotate-[4deg]">
+        {/* Photo 2 — wrapper=426.928×426.928 (bounding box of 400×400 @ +4deg)
+             Figma 111:2270: right=-12.46px(−0.87%) top=76.39px(9%) wrapper_w=29.98% card=94% of wrapper */}
+        <div className="absolute end-[-0.87%] top-[9%] flex w-[29.98%] items-center justify-center">
+          <div className="w-[94%] origin-center rotate-[4deg]">
             <PhotoCard src={IMG.collage2} aspect="aspect-square" className="w-full" />
           </div>
         </div>
 
-        {/* Photo 3 — 400×300, -4 deg (Figma 111:2274) end-[-4.91%] bottom-[9.51%] */}
-        <div className="absolute end-[-4.91%] bottom-[9.51%] flex w-[28.09%] items-end justify-center">
-          <div className="w-full origin-center -rotate-[4deg]">
+        {/* Photo 3 — wrapper=419.953×327.172 (bounding box of 400×300 @ -4deg)
+             Figma 111:2274: right=-69.95px(−4.91%) bottom=80.73px(9.51%) wrapper_w=29.49% card=95% of wrapper */}
+        <div className="absolute end-[-4.91%] bottom-[9.51%] flex w-[29.49%] items-center justify-center">
+          <div className="w-[95%] origin-center -rotate-[4deg]">
             <PhotoCard src={IMG.collage3} aspect="aspect-[400/300]" className="w-full" />
           </div>
         </div>
 
-        {/* Photo 4 — 240×240, +4 deg (Figma 111:2282) start-[17.77%] bottom-[9.52%] */}
-        <div className="absolute start-[17.77%] bottom-[9.52%] flex w-[16.85%] items-end justify-center">
-          <div className="w-full origin-center rotate-[4deg]">
+        {/* Photo 4 — wrapper=256.157×256.157 (bounding box of 240×240 @ +4deg)
+             Figma 111:2282: left=253.03px(17.77%) bottom=80.84px(9.52%) wrapper_w=17.99% card=94% of wrapper */}
+        <div className="absolute start-[17.77%] bottom-[9.52%] flex w-[17.99%] items-center justify-center">
+          <div className="w-[94%] origin-center rotate-[4deg]">
             <PhotoCard src={IMG.collage4} aspect="aspect-square" className="w-full" />
           </div>
         </div>
@@ -361,8 +371,8 @@ export default function Chapter2DesktopHeroSection({ data, chapterNumber }) {
       {/* Centered, nudged up by --ch2-desktop-hero-text-nudge-y (-48px) */}
       <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
         <div
-          className="flex flex-col items-center gap-10"
-          style={{ transform: 'translateY(var(--ch2-desktop-hero-text-nudge-y))' }}
+          className="flex flex-col items-center"
+          style={{ gap: 'var(--ch2-desktop-hero-label-title-gap)', transform: 'translateY(var(--ch2-desktop-hero-text-nudge-y))' }}
         >
           {/* Chapter label pill — Figma 114:2496 */}
           <div className="relative flex flex-col items-center pt-6">

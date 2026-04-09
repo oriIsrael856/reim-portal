@@ -12,16 +12,63 @@ const ASSETS = {
     submit: '/assets/home/home-newsletter-submit.svg',
 };
 
-const NewsletterCard = ({ data, className = '' }) => {
+/**
+ * @param {{ data: object, className?: string, embeddedInRow?: boolean, embeddedStyles?: object | null }} props
+ * `embeddedInRow` — Chapter 5 resources row: fill library card height; `embeddedStyles` overrides global `--home-newsletter-*` (broken on md+ by homepage tokens).
+ */
+const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedStyles = null }) => {
     const [email, setEmail] = useState('');
 
     if (!data) return null;
 
     const placeholder = data.placeholder || 'הקלידי את כתובת המייל שלך';
 
+    const useEmbedded = Boolean(embeddedInRow && embeddedStyles?.padding && embeddedStyles?.titleFont);
+
+    const articleStyle = useEmbedded
+        ? {
+              height: '100%',
+              minHeight: '100%',
+              maxHeight: '100%',
+              boxSizing: 'border-box',
+              ...embeddedStyles.padding,
+          }
+        : { height: 'var(--home-newsletter-card-h)' };
+
+    const titleTypography = useEmbedded
+        ? {
+              fontSize: embeddedStyles.titleFont.fontSize,
+              lineHeight: 1.1,
+              letterSpacing: '0.00735294em',
+              fontWeight: 700,
+          }
+        : {
+              fontSize: 'var(--home-newsletter-title-size)',
+              lineHeight: 1.1,
+              letterSpacing: '0.00735294em',
+              fontWeight: 700,
+          };
+
+    const bodyTypography = useEmbedded
+        ? {
+              fontSize: embeddedStyles.bodyFont.fontSize,
+              lineHeight: 1.32,
+              letterSpacing: '0.009375em',
+              fontWeight: 400,
+          }
+        : {
+              fontSize: 'var(--home-newsletter-body-size)',
+              lineHeight: 1.32,
+              letterSpacing: '0.009375em',
+              fontWeight: 400,
+          };
+
+    const inputRowStyle = useEmbedded ? { minHeight: embeddedStyles.inputMinH.minHeight } : { minHeight: 'var(--home-newsletter-input-min-h)' };
+
     return (
         <article
-            className={`relative box-border flex h-[400px] flex-col justify-between overflow-visible rounded-[24px] border-[1.5px] border-[#001D26] bg-[#BCE079] p-4 shadow-[2px_2px_0_#001D26] ${className}`}
+            className={`relative box-border flex flex-col rounded-[24px] border-[1.5px] border-[#001D26] bg-[#BCE079] shadow-[2px_2px_0_#001D26] ${useEmbedded ? 'min-h-0 overflow-visible p-0' : 'justify-between overflow-visible p-4'} ${className}`}
+            style={articleStyle}
         >
             {/* מטוס + זנב — מיקום מדויק יחסית לפריים 400px (Figma y:225, x:90) */}
             <img
@@ -37,52 +84,59 @@ const NewsletterCard = ({ data, className = '' }) => {
                 aria-hidden
             />
 
-            <div className="relative z-[2] flex w-full flex-col items-center gap-3">
-                <img src={ASSETS.star1} alt="" width={44} height={44} className="shrink-0" aria-hidden />
-                <div className="flex w-full flex-col items-center gap-0 text-center">
-                    {data.subtitle ? (
-                        <p
-                            className="text-[#001D26]"
-                            style={{
-                                fontSize: '16px',
-                                lineHeight: 1.32,
-                                letterSpacing: '0.009375em',
-                                fontWeight: 400,
-                            }}
-                        >
-                            {data.subtitle}
-                        </p>
-                    ) : null}
-                    <h3
-                        className="text-[#001D26]"
-                        style={{
-                            fontSize: '34px',
-                            lineHeight: 1.1,
-                            letterSpacing: '0.00735294em',
-                            fontWeight: 700,
-                        }}
+            {useEmbedded ? (
+                <>
+                    <div
+                        className="relative z-[2] flex min-h-0 min-w-0 w-full flex-1 flex-col items-center overflow-y-auto overscroll-contain text-center"
+                        style={embeddedStyles.stackGap}
                     >
-                        {data.title}
-                    </h3>
-                </div>
-                <p
-                    className="w-full text-center text-[#001D26]"
-                    style={{
-                        fontSize: '16px',
-                        lineHeight: 1.32,
-                        letterSpacing: '0.009375em',
-                        fontWeight: 400,
-                    }}
-                >
-                    {data.text}
-                </p>
-            </div>
+                        <img src={ASSETS.star1} alt="" width={44} height={44} className="shrink-0" aria-hidden />
+                        <div className="flex w-full min-w-0 shrink-0 flex-col items-center gap-0 text-center">
+                            {data.subtitle ? (
+                                <p className="text-[#001D26]" style={bodyTypography}>
+                                    {data.subtitle}
+                                </p>
+                            ) : null}
+                            <h3 className="text-[#001D26]" style={titleTypography}>
+                                {data.title}
+                            </h3>
+                        </div>
+                        <p className="w-full min-w-0 shrink-0 text-center text-[#001D26]" style={bodyTypography}>
+                            {data.text}
+                        </p>
+                    </div>
+                    <div className="relative z-[2] flex shrink-0 justify-center py-1">
+                        <img src={ASSETS.star2} alt="" width={40} height={40} className="shrink-0" aria-hidden />
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className="relative z-[2] flex w-full flex-col items-center gap-3 text-center">
+                        <img src={ASSETS.star1} alt="" width={44} height={44} className="shrink-0" aria-hidden />
+                        <div className="flex w-full flex-col items-center gap-0 text-center">
+                            {data.subtitle ? (
+                                <p className="text-[#001D26]" style={bodyTypography}>
+                                    {data.subtitle}
+                                </p>
+                            ) : null}
+                            <h3 className="text-[#001D26]" style={titleTypography}>
+                                {data.title}
+                            </h3>
+                        </div>
+                        <p className="w-full text-center text-[#001D26]" style={bodyTypography}>
+                            {data.text}
+                        </p>
+                    </div>
+                    <div className="relative z-[2] flex justify-center">
+                        <img src={ASSETS.star2} alt="" width={40} height={40} className="shrink-0" aria-hidden />
+                    </div>
+                </>
+            )}
 
-            <div className="relative z-[2] flex justify-center">
-                <img src={ASSETS.star2} alt="" width={40} height={40} className="shrink-0" aria-hidden />
-            </div>
-
-            <div className="relative z-[2] flex w-full min-h-[52px] items-center justify-between gap-3 rounded-[100px] border border-[#001D26] bg-white py-2 ps-1.5 pe-[14px]">
+            <div
+                className="relative z-[2] flex w-full min-w-0 shrink-0 items-center justify-between gap-3 rounded-[100px] border border-[#001D26] bg-white py-2 ps-1.5 pe-[14px]"
+                style={inputRowStyle}
+            >
                 <input
                     type="email"
                     name="newsletter-email"
