@@ -29,11 +29,7 @@ export default function Chapter3MobileView({ data, onNext, footerData }) {
     return (
         <div className="ch3-mobile md:hidden" dir="rtl" lang="he">
             <Page3HeroSection hero={data.hero} chapterNumber={chapterNumber} />
-            <Page3PageContentColumn
-                hero={data.hero}
-                responsibilities={data.responsibilities}
-                chapterNumber={chapterNumber}
-            />
+            <Page3PageContentColumn hero={data.hero} responsibilities={data.responsibilities} />
             <Page3OnboardingSection onboarding={data.onboarding} />
             <Page3MeetingSection session={data.sessionStructure} />
             {nextSlot ? <div className="ch3-mobile__next">{nextSlot}</div> : null}

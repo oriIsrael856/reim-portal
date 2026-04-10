@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Menu, X, Home, Lock, Facebook, Instagram } from 'lucide-react';
 import { THEME } from '../theme';
 

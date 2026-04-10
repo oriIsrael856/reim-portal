@@ -54,11 +54,14 @@ const Footer = ({ data, variant }) => {
                         <p>מייל: <a href={`mailto:${contact.email}`} className="text-[#5E3BEE] underline">{contact.email}</a></p>
                     </div>
                     <div className="flex justify-center gap-3 mb-6">
-                        {SOCIAL_LINKS.map(({ Icon, href, label }, i) => (
-                            <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="bg-[#EBE5FC] p-2.5 rounded-xl text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
-                                <Icon size={20} />
-                            </a>
-                        ))}
+                        {SOCIAL_LINKS.map((link, i) => {
+                            const ItemIcon = link.Icon;
+                            return (
+                                <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label} className="bg-[#EBE5FC] p-2.5 rounded-xl text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
+                                    <ItemIcon size={20} />
+                                </a>
+                            );
+                        })}
                     </div>
                     <div className="flex flex-wrap justify-center gap-2 text-sm text-[#2D2D44]/80 mb-4">
                         {bottomLinks.map((link, i) => (
@@ -104,11 +107,14 @@ const Footer = ({ data, variant }) => {
                 {/* דסקטופ: סושיאל וזכויות */}
                 <div className="hidden md:flex flex-col-reverse md:flex-row justify-between items-center pt-8 border-t border-gray-200">
                     <div className="flex gap-4 mt-4 md:mt-0">
-                        {SOCIAL_LINKS.map(({ Icon, href, label }, i) => (
-                            <a key={i} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="bg-[#EBE5FC] p-2 rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
-                                <Icon size={18} />
-                            </a>
-                        ))}
+                        {SOCIAL_LINKS.map((link, i) => {
+                            const ItemIcon = link.Icon;
+                            return (
+                                <a key={i} href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label} className="bg-[#EBE5FC] p-2 rounded-full text-[#5E3BEE] hover:bg-[#5E3BEE] hover:text-white transition-colors">
+                                    <ItemIcon size={18} />
+                                </a>
+                            );
+                        })}
                     </div>
                     <div className="flex gap-8 text-sm text-gray-500 font-medium">
                         {bottomLinks.map((link, i) => (

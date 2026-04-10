@@ -1638,3 +1638,46 @@
     --home-newsletter-input-min-h: clamp(35px, 2.71vw, 69px);
   }
 }
+
+/* ── Menu overlay chapter digits (Figma 36:1325 / node 50:4490) ─────────────
+   מיקום כמו בקובץ: left -4px, top -33px (משתנה לפי viewport); חיתוך תחתון = overflow בשורה. */
+.reim-menu-digit {
+  left: var(--menu-digit-left, 6px);
+  top: var(--menu-digit-top-rest, -33px);
+  bottom: auto;
+  transform: translateZ(0) scale(1);
+  transform-origin: top left;
+  color: rgba(101, 70, 222, 0.08);
+  transition:
+    top 0.3s ease-out,
+    transform 0.3s ease-out,
+    transform-origin 0.3s ease-out,
+    color 0.3s ease-out;
+}
+
+.group:hover .reim-menu-digit,
+.group:focus-visible .reim-menu-digit {
+  bottom: auto;
+  top: 50%;
+  left: var(--menu-digit-left, 6px);
+  transform: translateY(-50%) scale(0.32);
+  transform-origin: left center;
+  color: var(--color-text-purple);
+}
+
+@media (hover: none) {
+  .reim-menu-digit {
+    bottom: auto;
+    top: 50%;
+    left: var(--menu-digit-left, 6px);
+    transform: translateY(-50%) scale(0.32);
+    transform-origin: left center;
+    color: var(--color-text-purple);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reim-menu-digit {
+    transition: none;
+  }
+}

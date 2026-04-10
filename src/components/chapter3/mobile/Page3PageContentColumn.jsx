@@ -2,7 +2,7 @@ import React from 'react';
 import Page3HeroImageBlock from './Page3HeroImageBlock';
 import Page3ResponsibilityCard from './Page3ResponsibilityCard';
 
-export default function Page3PageContentColumn({ hero, responsibilities, chapterNumber }) {
+export default function Page3PageContentColumn({ hero, responsibilities }) {
     const cards = responsibilities ?? [];
     if (!hero?.image && cards.length === 0) return null;
 
