@@ -204,16 +204,20 @@ export const MenuOverlay = ({
             }`}
             aria-hidden={!isOpen}
         >
-            {/* מובייל: עמעום מתחת לבלוק הסגול בלבד — שורש ה-overlay עם pointer-events-none כדי שכפתורי הכרום (כולל X) יקבלו קליק */}
+            {/* מובייל: עמעום — pointer-events רק כשפתוח; אחרת שכבה שקופה עם auto חוסמת את כפתור פתיחת התפריט */}
             <div
-                className="pointer-events-auto absolute inset-x-0 bottom-0 cursor-default bg-[rgba(0,29,38,0.6)] md:hidden"
+                className={`absolute inset-x-0 bottom-0 cursor-default bg-[rgba(0,29,38,0.6)] md:hidden ${
+                    isOpen ? 'pointer-events-auto' : 'pointer-events-none'
+                }`}
                 style={{ top: mobileChromeTopPx ? `${mobileChromeTopPx}px` : 0 }}
                 onClick={closeMenu}
                 aria-hidden
             />
             {/* דסקטופ: עמעום מסך מלא */}
             <div
-                className="pointer-events-auto absolute inset-0 hidden cursor-default bg-[rgba(0,29,38,0.6)] md:block"
+                className={`absolute inset-0 hidden cursor-default bg-[rgba(0,29,38,0.6)] md:block ${
+                    isOpen ? 'md:pointer-events-auto' : 'md:pointer-events-none'
+                }`}
                 onClick={closeMenu}
                 aria-hidden
             />
@@ -225,8 +229,8 @@ export const MenuOverlay = ({
                 style={{ top: mobileChromeTopPx ? `${mobileChromeTopPx}px` : 0 }}
             >
                 <div
-                    className={`pointer-events-auto flex h-full max-h-full flex-col overflow-hidden bg-[#46319B] shadow-2xl transition-transform duration-500 ease-out ${
-                        isOpen ? 'translate-y-0' : 'translate-y-full'
+                    className={`flex h-full max-h-full flex-col overflow-hidden bg-[#46319B] shadow-2xl transition-transform duration-500 ease-out ${
+                        isOpen ? 'pointer-events-auto translate-y-0' : 'pointer-events-none translate-y-full'
                     }`}
                     style={overlayRootStyle}
                     onClick={(e) => e.stopPropagation()}
@@ -271,8 +275,8 @@ export const MenuOverlay = ({
             {/* דסקטופ — Figma 36:1324; dir=ltr מרכז את המגירה בצד הפיזי הנכון */}
             <div
                 dir="ltr"
-                className={`pointer-events-auto absolute inset-0 hidden items-stretch justify-end transition-transform duration-500 ease-out md:flex md:inset-4 md:bottom-4 md:end-0 md:start-4 md:top-4 ${
-                    isOpen ? 'translate-x-0' : 'translate-x-full'
+                className={`absolute inset-0 hidden items-stretch justify-end transition-transform duration-500 ease-out md:flex md:inset-4 md:bottom-4 md:end-0 md:start-4 md:top-4 ${
+                    isOpen ? 'pointer-events-auto translate-x-0' : 'pointer-events-none translate-x-full'
                 }`}
                 onClick={(e) => e.stopPropagation()}
             >
