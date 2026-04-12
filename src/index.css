@@ -1295,6 +1295,8 @@
     cursor: pointer;
     overflow: visible;
     transition: filter 0.2s ease;
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
   }
 
   .ch2-mobile-menu-frame__btn:hover {

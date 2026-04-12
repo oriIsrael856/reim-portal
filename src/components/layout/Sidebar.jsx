@@ -84,10 +84,13 @@ export const MenuOverlay = ({
 
     useLayoutEffect(() => {
         if (!isOpen) return undefined;
+        /* סינכרוני לפני ציור — מונע פריים ב־iOS שבו top=0 ושכבת העמעום חוסמת את כפתורי הכרום */
+        updateChromeBottom();
+
         const scheduleMeasure = () => {
-            queueMicrotask(updateChromeBottom);
+            updateChromeBottom();
         };
-        scheduleMeasure();
+
         const el = document.getElementById('reim-mobile-sticky-chrome-purple');
         let ro;
         if (el && typeof ResizeObserver !== 'undefined') {
@@ -96,10 +99,17 @@ export const MenuOverlay = ({
         }
         window.addEventListener('resize', scheduleMeasure, { passive: true });
         window.addEventListener('scroll', scheduleMeasure, { passive: true, capture: true });
+        const vv = typeof window !== 'undefined' ? window.visualViewport : null;
+        if (vv) {
+            vv.addEventListener('resize', scheduleMeasure);
+            vv.addEventListener('scroll', scheduleMeasure);
+        }
         return () => {
             ro?.disconnect();
             window.removeEventListener('resize', scheduleMeasure);
             window.removeEventListener('scroll', scheduleMeasure, { capture: true });
+            vv?.removeEventListener('resize', scheduleMeasure);
+            vv?.removeEventListener('scroll', scheduleMeasure);
         };
     }, [isOpen, updateChromeBottom]);
 
@@ -200,13 +210,13 @@ export const MenuOverlay = ({
     return (
         <div
             className={`fixed inset-0 z-[1100] transition-opacity duration-300 ${
-                isOpen ? 'pointer-events-none opacity-100 md:pointer-events-auto' : 'pointer-events-none opacity-0'
+                isOpen ? 'pointer-events-none opacity-100 lg:pointer-events-auto' : 'pointer-events-none opacity-0'
             }`}
             aria-hidden={!isOpen}
         >
             {/* מובייל: עמעום — pointer-events רק כשפתוח; אחרת שכבה שקופה עם auto חוסמת את כפתור פתיחת התפריט */}
             <div
-                className={`absolute inset-x-0 bottom-0 cursor-default bg-[rgba(0,29,38,0.6)] md:hidden ${
+                className={`absolute inset-x-0 bottom-0 cursor-default bg-[rgba(0,29,38,0.6)] lg:hidden ${
                     isOpen ? 'pointer-events-auto' : 'pointer-events-none'
                 }`}
                 style={{ top: mobileChromeTopPx ? `${mobileChromeTopPx}px` : 0 }}
@@ -215,8 +225,8 @@ export const MenuOverlay = ({
             />
             {/* דסקטופ: עמעום מסך מלא */}
             <div
-                className={`absolute inset-0 hidden cursor-default bg-[rgba(0,29,38,0.6)] md:block ${
-                    isOpen ? 'md:pointer-events-auto' : 'md:pointer-events-none'
+                className={`absolute inset-0 hidden cursor-default bg-[rgba(0,29,38,0.6)] lg:block ${
+                    isOpen ? 'lg:pointer-events-auto' : 'lg:pointer-events-none'
                 }`}
                 onClick={closeMenu}
                 aria-hidden
@@ -225,7 +235,7 @@ export const MenuOverlay = ({
             {/* מובייל 191:15815 — מגירה מתחת לכרום; אנימציה translate-y מלמטה (אותו כרום נשאר בדף) */}
             <div
                 dir="ltr"
-                className="pointer-events-none fixed start-0 end-0 bottom-0 md:hidden"
+                className="pointer-events-none fixed start-0 end-0 bottom-0 lg:hidden"
                 style={{ top: mobileChromeTopPx ? `${mobileChromeTopPx}px` : 0 }}
             >
                 <div
@@ -275,15 +285,15 @@ export const MenuOverlay = ({
             {/* דסקטופ — Figma 36:1324; dir=ltr מרכז את המגירה בצד הפיזי הנכון */}
             <div
                 dir="ltr"
-                className={`absolute inset-0 hidden items-stretch justify-end transition-transform duration-500 ease-out md:flex md:inset-4 md:bottom-4 md:end-0 md:start-4 md:top-4 ${
+                className={`absolute inset-0 hidden items-stretch justify-end transition-transform duration-500 ease-out lg:flex lg:inset-4 lg:bottom-4 lg:end-0 lg:start-4 lg:top-4 ${
                     isOpen ? 'pointer-events-auto translate-x-0' : 'pointer-events-none translate-x-full'
                 }`}
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="hidden h-full w-full max-h-full overflow-hidden rounded-t-3xl shadow-2xl md:flex md:w-auto md:rounded-3xl">
+                <div className="hidden h-full w-full max-h-full overflow-hidden rounded-t-3xl shadow-2xl lg:flex lg:w-auto lg:rounded-3xl">
                     <div
                         dir="rtl"
-                        className="relative flex h-full min-w-0 flex-1 flex-col overflow-y-auto bg-white md:flex-none"
+                        className="relative flex h-full min-w-0 flex-1 flex-col overflow-y-auto bg-white lg:flex-none"
                         style={{
                             ...panelPaddingStyle,
                             width: drawerWidthCss,
@@ -293,7 +303,7 @@ export const MenuOverlay = ({
                         <button
                             type="button"
                             onClick={closeMenu}
-                            className="absolute end-4 top-4 z-20 flex rounded-full bg-[#f3f4f6] p-2 transition hover:bg-gray-200 md:hidden"
+                            className="absolute end-4 top-4 z-20 flex rounded-full bg-[#f3f4f6] p-2 transition hover:bg-gray-200 lg:hidden"
                             aria-label="סגור תפריט"
                         >
                             <X size={22} className="text-[#001d26]" strokeWidth={2} />
@@ -301,7 +311,7 @@ export const MenuOverlay = ({
                         <button
                             type="button"
                             onClick={closeMenu}
-                            className="absolute end-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-white p-3 shadow-md transition hover:bg-gray-100 md:flex"
+                            className="absolute end-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-white p-3 shadow-md transition hover:bg-gray-100 lg:flex"
                             aria-label="סגור תפריט"
                         >
                             <X size={22} className="text-[#001d26]" strokeWidth={2} />
@@ -323,7 +333,7 @@ export const MenuOverlay = ({
                     </div>
 
                     <div
-                        className="relative hidden h-full shrink-0 flex-col items-center justify-between bg-[#46319B] py-6 md:flex"
+                        className="relative hidden h-full shrink-0 flex-col items-center justify-between bg-[#46319B] py-6 lg:flex"
                         style={{ width: railWidthPx }}
                         aria-hidden={!isOpen}
                     >
@@ -343,7 +353,7 @@ export const MenuOverlay = ({
                         <button
                             type="button"
                             onClick={closeMenu}
-                            className="mb-8 flex items-center justify-center rounded-full bg-white/15 p-3 transition hover:bg-white/25 md:hidden"
+                            className="mb-8 flex items-center justify-center rounded-full bg-white/15 p-3 transition hover:bg-white/25 lg:hidden"
                             aria-label="סגור תפריט"
                         >
                             <X size={22} className="text-white" strokeWidth={2.5} />

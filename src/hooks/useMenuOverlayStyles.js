@@ -24,9 +24,9 @@ import {
 
 
 
-/** Tailwind md — same breakpoint as desktop rail / menu chrome */
+/** Tailwind lg — same breakpoint as `MenuOverlay` mobile vs desktop rail in Sidebar.jsx */
 
-const MENU_OVERLAY_MD_MIN_PX = 768;
+const MENU_OVERLAY_DESKTOP_MIN_PX = 1024;
 
 
 
@@ -82,7 +82,7 @@ function computeBundle(viewport) {
 
 
 
-    const isDesktop = viewport.width >= MENU_OVERLAY_MD_MIN_PX;
+    const isDesktop = viewport.width >= MENU_OVERLAY_DESKTOP_MIN_PX;
 
 
 
