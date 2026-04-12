@@ -1,5 +1,5 @@
-import React from 'react';
-import { Menu, X, LogOut, Home } from 'lucide-react';
+import React, { useCallback, useLayoutEffect, useState } from 'react';
+import { Menu, X, LogOut, Home, Mail } from 'lucide-react';
 import { useMenuOverlayStyles } from '../../hooks/useMenuOverlayStyles';
 
 // סרגל צד — Figma 36:1217 / Right Sidebar: רקע סגול כהה, טקסט אנכי, כפתור תפריט
@@ -38,10 +38,16 @@ export const Sidebar = ({ toggleMenu }) => {
 };
 
 /**
- * תפריט מלא פתוח — Figma 36:1324–36:1342 (Side menu + window 600px + rail 80px).
- * מגירה לבנה: שורות 64px, מספרי רקע Salsa 120px ב-rgba(101,70,222,0.08), מפריד purple/24.
+ * תפריט מלא פתוח — דסקטופ Figma 36:1324–36:1342; מובייל Figma 191:15815 (מסך + כרום עליון + חלון לבן עם CTA ניוזלטר).
  */
-export const MenuOverlay = ({ isOpen, closeMenu, menuItems = [], navigateTo }) => {
+export const MenuOverlay = ({
+    isOpen,
+    closeMenu,
+    menuItems = [],
+    navigateTo,
+    ctaText = 'הרשמה לניוזלטר',
+    currentPage = 'home',
+}) => {
     const homeItem = menuItems.find((i) => i.isHome);
     const chapterItems = menuItems.filter((i) => !i.isHome);
 
@@ -56,41 +62,230 @@ export const MenuOverlay = ({ isOpen, closeMenu, menuItems = [], navigateTo }) =
         homeIconPx,
         railWidthPx,
         digitLeftCssPx,
-        digitTopPullPx,
         drawerWidthCss,
         rowMaxWidthCss,
+        overlayRootStyle,
+        windowMarginStyle,
+        newsletterCtaStyle,
+        newsletterIconBoxStyle,
     } = useMenuOverlayStyles();
+
+    /** תחתית הבלוק הסגול בלבד (#reim-mobile-sticky-chrome-purple) — בלי רצועת הלוגו, כדי שהמגירה תישב מתחת לשורת הטאב */
+    const [mobileChromeBottomPx, setMobileChromeBottomPx] = useState(0);
+
+    const updateChromeBottom = useCallback(() => {
+        const el = document.getElementById('reim-mobile-sticky-chrome-purple');
+        if (!el) {
+            setMobileChromeBottomPx(0);
+            return;
+        }
+        setMobileChromeBottomPx(Math.round(el.getBoundingClientRect().bottom));
+    }, []);
+
+    useLayoutEffect(() => {
+        if (!isOpen) return undefined;
+        const scheduleMeasure = () => {
+            queueMicrotask(updateChromeBottom);
+        };
+        scheduleMeasure();
+        const el = document.getElementById('reim-mobile-sticky-chrome-purple');
+        let ro;
+        if (el && typeof ResizeObserver !== 'undefined') {
+            ro = new ResizeObserver(scheduleMeasure);
+            ro.observe(el);
+        }
+        window.addEventListener('resize', scheduleMeasure, { passive: true });
+        window.addEventListener('scroll', scheduleMeasure, { passive: true, capture: true });
+        return () => {
+            ro?.disconnect();
+            window.removeEventListener('resize', scheduleMeasure);
+            window.removeEventListener('scroll', scheduleMeasure, { capture: true });
+        };
+    }, [isOpen, updateChromeBottom]);
 
     const handleNav = (page) => {
         navigateTo(page);
         closeMenu();
     };
 
+    const handleNewsletterCta = useCallback(() => {
+        closeMenu();
+        if (currentPage === 'home') {
+            requestAnimationFrame(() => {
+                document.getElementById('home-mobile-newsletter-191')?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            });
+        } else {
+            navigateTo('home');
+            window.setTimeout(() => {
+                document.getElementById('home-mobile-newsletter-191')?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+            }, 400);
+        }
+    }, [closeMenu, currentPage, navigateTo]);
+
+    const renderHomeRow = () =>
+        homeItem ? (
+            <button
+                key="home"
+                type="button"
+                onClick={() => handleNav(homeItem.page)}
+                className="group flex w-full shrink-0 cursor-pointer items-center justify-between border-b border-[rgba(101,70,222,0.24)] transition-colors duration-300 ease-out hover:bg-[var(--color-surface-purple-8)] active:bg-[var(--color-surface-purple-8)] touch-manipulation"
+                style={menuRowStyle}
+            >
+                <span
+                    className="relative z-10 min-w-0 text-start font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26] group-hover:text-[#6546DE] group-active:text-[#6546DE]"
+                    style={menuLabelStyle}
+                >
+                    {homeItem.title}
+                </span>
+                <Home
+                    size={homeIconPx}
+                    strokeWidth={2}
+                    className="pointer-events-none z-[1] shrink-0 text-[rgba(101,70,222,0.08)] transition-colors duration-300 ease-out group-hover:text-[var(--color-text-purple)] group-active:text-[var(--color-text-purple)]"
+                    aria-hidden
+                />
+            </button>
+        ) : null;
+
+    const renderChapterButton = (item, index) => (
+        <button
+            key={item.page || index}
+            type="button"
+            onClick={() => handleNav(item.page)}
+            className="group relative isolate flex w-full shrink-0 cursor-pointer items-center justify-start overflow-hidden border-b border-[rgba(101,70,222,0.24)] transition-colors duration-300 ease-out hover:bg-[var(--color-surface-purple-8)] active:bg-[var(--color-surface-purple-8)] touch-manipulation [clip-path:inset(0)]"
+            style={{
+                ...menuRowStyle,
+                '--menu-digit-left': `${digitLeftCssPx}px`,
+            }}
+        >
+            {/* שכבת clip — div block כדי שגובה החיתוך יתאים לשורה (span לפעמים לא חותך ב-WebKit) */}
+            <div className="reim-menu-overlay-digit-clip" aria-hidden>
+                <span
+                    dir="ltr"
+                    className="reim-menu-digit reim-menu-digit--menu-overlay pointer-events-none absolute z-0 whitespace-nowrap text-start font-salsa font-normal leading-[1.28] tracking-[0.15px]"
+                    style={{
+                        ...menuDigitStyle,
+                        lineHeight: 1.28,
+                    }}
+                    aria-hidden
+                >
+                    {item.id}
+                </span>
+            </div>
+            <span
+                className="relative z-10 min-w-0 text-start font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26] group-hover:text-[#6546DE] group-active:text-[#6546DE]"
+                style={menuLabelStyle}
+            >
+                {item.title}
+            </span>
+        </button>
+    );
+
+    const renderChapterRows = () => (
+        <div
+            className="flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden overscroll-y-contain"
+            style={chapterListGapStyle}
+        >
+            {chapterItems.map((item, index) => renderChapterButton(item, index))}
+        </div>
+    );
+
+    const mobileChromeTopPx = Math.max(0, mobileChromeBottomPx);
+
     return (
         <div
-            className={`fixed inset-0 z-[1100] transition-opacity duration-300 ${isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`}
-            style={{ background: 'rgba(0, 29, 38, 0.6)' }}
-            onClick={closeMenu}
+            className={`fixed inset-0 z-[1100] transition-opacity duration-300 ${
+                isOpen ? 'pointer-events-none opacity-100 md:pointer-events-auto' : 'pointer-events-none opacity-0'
+            }`}
             aria-hidden={!isOpen}
         >
-            {/* Figma: dir=ltr מרכז את הקצה הפיזי ימין (מגירה + מסילה) כמו בקובץ */}
+            {/* מובייל: עמעום מתחת לבלוק הסגול בלבד — שורש ה-overlay עם pointer-events-none כדי שכפתורי הכרום (כולל X) יקבלו קליק */}
+            <div
+                className="pointer-events-auto absolute inset-x-0 bottom-0 cursor-default bg-[rgba(0,29,38,0.6)] md:hidden"
+                style={{ top: mobileChromeTopPx ? `${mobileChromeTopPx}px` : 0 }}
+                onClick={closeMenu}
+                aria-hidden
+            />
+            {/* דסקטופ: עמעום מסך מלא */}
+            <div
+                className="pointer-events-auto absolute inset-0 hidden cursor-default bg-[rgba(0,29,38,0.6)] md:block"
+                onClick={closeMenu}
+                aria-hidden
+            />
+
+            {/* מובייל 191:15815 — מגירה מתחת לכרום; אנימציה translate-y מלמטה (אותו כרום נשאר בדף) */}
             <div
                 dir="ltr"
-                className={`pointer-events-auto absolute inset-3 flex items-stretch justify-end transition-transform duration-500 ease-out md:inset-4 md:bottom-4 md:end-0 md:start-4 md:top-4 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                className="pointer-events-none fixed start-0 end-0 bottom-0 md:hidden"
+                style={{ top: mobileChromeTopPx ? `${mobileChromeTopPx}px` : 0 }}
+            >
+                <div
+                    className={`pointer-events-auto flex h-full max-h-full flex-col overflow-hidden bg-[#46319B] shadow-2xl transition-transform duration-500 ease-out ${
+                        isOpen ? 'translate-y-0' : 'translate-y-full'
+                    }`}
+                    style={overlayRootStyle}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <div className="flex min-h-0 flex-1 flex-col" style={windowMarginStyle}>
+                        <div
+                            dir="rtl"
+                            className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-t-3xl bg-white"
+                            style={{
+                                ...panelPaddingStyle,
+                                width: drawerWidthCss,
+                                maxWidth: '100%',
+                            }}
+                        >
+                            <nav
+                                className="flex min-h-0 w-full flex-1 flex-col justify-between"
+                                style={{ maxWidth: rowMaxWidthCss }}
+                                aria-label="ניווט ראשי"
+                            >
+                                <div className="shrink-0">{renderHomeRow()}</div>
+                                {renderChapterRows()}
+                                <button
+                                    type="button"
+                                    onClick={handleNewsletterCta}
+                                    className="flex w-full shrink-0 cursor-pointer items-center rounded-[100px] border-[1.5px] border-[#001d26] bg-transparent text-start font-semibold leading-snug text-[#001d26] transition hover:bg-[rgba(101,70,222,0.06)]"
+                                    style={newsletterCtaStyle}
+                                >
+                                    <span
+                                        className="flex shrink-0 items-center justify-center rounded-[32px] bg-[#6546de] text-white"
+                                        style={newsletterIconBoxStyle}
+                                    >
+                                        <Mail size={20} strokeWidth={2} className="shrink-0" aria-hidden />
+                                    </span>
+                                    <span className="min-w-0 flex-1 text-start text-base">{ctaText}</span>
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* דסקטופ — Figma 36:1324; dir=ltr מרכז את המגירה בצד הפיזי הנכון */}
+            <div
+                dir="ltr"
+                className={`pointer-events-auto absolute inset-0 hidden items-stretch justify-end transition-transform duration-500 ease-out md:flex md:inset-4 md:bottom-4 md:end-0 md:start-4 md:top-4 ${
+                    isOpen ? 'translate-x-0' : 'translate-x-full'
+                }`}
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="flex h-full max-h-full overflow-hidden rounded-3xl shadow-2xl">
-                    {/* Main window — Figma 36:1325; פרופורציות דינמיות מול 1920×1080 */}
+                <div className="hidden h-full w-full max-h-full overflow-hidden rounded-t-3xl shadow-2xl md:flex md:w-auto md:rounded-3xl">
                     <div
                         dir="rtl"
-                        className="flex h-full min-w-0 flex-col overflow-y-auto bg-white"
+                        className="relative flex h-full min-w-0 flex-1 flex-col overflow-y-auto bg-white md:flex-none"
                         style={{
                             ...panelPaddingStyle,
                             width: drawerWidthCss,
                             maxWidth: '100%',
                         }}
                     >
-                        {/* מובייל: פינה; דסקטופ Figma: X לבן במרכז הקצה הפיזי שמאל של הפאנל */}
                         <button
                             type="button"
                             onClick={closeMenu}
@@ -109,75 +304,20 @@ export const MenuOverlay = ({ isOpen, closeMenu, menuItems = [], navigateTo }) =
                         </button>
 
                         <nav
-                            className="mx-auto mt-10 flex w-full flex-col md:mt-0"
+                            className="mx-auto mt-0 flex w-full flex-col"
                             style={{
                                 ...navGapHomeStyle,
                                 maxWidth: rowMaxWidthCss,
                             }}
                             aria-label="ניווט ראשי"
                         >
-                            {homeItem ? (
-                                <button
-                                    key="home"
-                                    type="button"
-                                    onClick={() => handleNav(homeItem.page)}
-                                    className="group flex w-full shrink-0 cursor-pointer items-center justify-between border-b border-[rgba(101,70,222,0.24)] transition-colors duration-300 ease-out hover:bg-[var(--color-surface-purple-8)]"
-                                    style={menuRowStyle}
-                                >
-                                    {/* DOM ראשון ב-flex-row+RTL = פיזית ימין — טקסט */}
-                                    <span
-                                        className="relative z-10 min-w-0 text-start font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26] group-hover:text-[#6546DE]"
-                                        style={menuLabelStyle}
-                                    >
-                                        {homeItem.title}
-                                    </span>
-                                    <Home
-                                        size={homeIconPx}
-                                        strokeWidth={2}
-                                        className="pointer-events-none z-[1] shrink-0 text-[rgba(101,70,222,0.08)] transition-colors duration-300 ease-out group-hover:text-[var(--color-text-purple)]"
-                                        aria-hidden
-                                    />
-                                </button>
-                            ) : null}
-
+                            {renderHomeRow()}
                             <div className="flex flex-col" style={chapterListGapStyle}>
-                                {chapterItems.map((item, index) => (
-                                    <button
-                                        key={item.page || index}
-                                        type="button"
-                                        onClick={() => handleNav(item.page)}
-                                        className="group relative flex w-full shrink-0 cursor-pointer items-center justify-start overflow-hidden border-b border-[rgba(101,70,222,0.24)] transition-colors duration-300 ease-out hover:bg-[var(--color-surface-purple-8)]"
-                                        style={{
-                                            ...menuRowStyle,
-                                            '--menu-digit-left': `${digitLeftCssPx}px`,
-                                            '--menu-digit-top-rest': `-${digitTopPullPx}px`,
-                                        }}
-                                    >
-                                        {/* Figma 36:1325 / 50:4490: כותרת ב-DOM ראשון → ב-RTL יושבת ימין; ספרה absolute left/top כמו בקובץ */}
-                                        <span
-                                            className="relative z-10 min-w-0 text-start font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26] group-hover:text-[#6546DE]"
-                                            style={menuLabelStyle}
-                                        >
-                                            {item.title}
-                                        </span>
-                                        <span
-                                            dir="ltr"
-                                            className="reim-menu-digit pointer-events-none absolute z-0 whitespace-nowrap text-start font-salsa font-normal leading-[1.28] tracking-[0.15px]"
-                                            style={{
-                                                ...menuDigitStyle,
-                                                lineHeight: 1.28,
-                                            }}
-                                            aria-hidden
-                                        >
-                                            {item.id}
-                                        </span>
-                                    </button>
-                                ))}
+                                {chapterItems.map((item, index) => renderChapterButton(item, index))}
                             </div>
                         </nav>
                     </div>
 
-                    {/* Right rail — Figma 36:1342 (תפריט ניווט + סגירה), דסקטופ בלבד */}
                     <div
                         className="relative hidden h-full shrink-0 flex-col items-center justify-between bg-[#46319B] py-6 md:flex"
                         style={{ width: railWidthPx }}

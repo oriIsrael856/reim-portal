@@ -1227,6 +1227,7 @@
     background-color: var(--ch2-page-bg);
   }
 
+  /* gap / padding / title size — מ־useMobileStickyChromeStyles (Figma 191:9787 ~½) */
   .ch2-mobile-sticky-chrome__purple-inner {
     position: relative;
     box-sizing: border-box;
@@ -1234,13 +1235,7 @@
     max-width: var(--ch2-mobile-page-max-width);
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
     margin-inline: auto;
-    padding-inline-start: 16px;
-    padding-inline-end: 24px;
-    padding-top: max(8px, env(safe-area-inset-top, 0px));
-    /* תפריט חופף ללבן — אין ריפוד סגול מתחת לצ׳יפ */
-    padding-bottom: 0;
   }
 
   .ch2-mobile-sticky-chrome__chrome-top-row {
@@ -1249,14 +1244,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
   }
 
   .ch2-mobile-sticky-chrome__menu-row {
     display: flex;
     width: 100%;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     position: relative;
     z-index: 6;
@@ -1270,7 +1264,6 @@
     min-width: 0;
     font-family: var(--font-rubik);
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.32;
     letter-spacing: var(--ch2-type-body-ls, 0.009375em);
     color: #ffffff;
@@ -1281,27 +1274,26 @@
     position: relative;
     z-index: inherit;
     display: block;
-    width: 84px;
-    height: 48px;
     flex-shrink: 0;
     border: none;
-    border-radius: 12px;
     background: transparent;
     box-shadow: none;
     pointer-events: auto;
   }
 
   .ch2-mobile-menu-frame__btn {
+    position: relative;
     display: flex;
     width: 100%;
     height: 100%;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     padding: 0;
     border: none;
     border-radius: inherit;
     background: transparent;
     cursor: pointer;
+    overflow: visible;
     transition: filter 0.2s ease;
   }
 
@@ -1309,18 +1301,43 @@
     filter: brightness(0.97);
   }
 
-  .ch2-mobile-menu-frame__icon {
+  /* גובה שכבת Union + מידות תמונה — מ־useMobileStickyChromeStyles */
+  .ch2-mobile-menu-frame__union-layer {
+    position: absolute;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  .ch2-mobile-menu-frame__union-img {
     display: block;
-    width: 84px;
-    height: 48px;
-    object-fit: contain;
+    flex-shrink: 0;
+    transform: rotate(-90deg);
+  }
+
+  .ch2-mobile-menu-frame__glyph {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ch2-mobile-menu-frame__glyph-img {
+    display: block;
+    flex-shrink: 0;
   }
 
   .ch2-mobile-menu-frame--open {
-    border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.22);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    /* טאב לבן מגיע מ-Union; בלי מלבן זכוכית נפרד */
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     box-shadow: none;
   }
 
@@ -1337,6 +1354,17 @@
     z-index: 2;
   }
 
+  /* גובה זהה לרצועת הלוגו כשהתפריט פתוח — בלי קפיצת layout מתחת ל־MenuOverlay */
+  .ch2-mobile-sticky-chrome__header-band--menu-spacer {
+    flex-shrink: 0;
+    padding-block: 0;
+    padding-inline: 12px;
+    pointer-events: none;
+    visibility: hidden;
+    min-height: var(--ch2-mobile-chrome-logo-band-height);
+  }
+
+  /* רוחב/גובה/רדיוס — מ־useMobileStickyChromeStyles */
   .ch2-mobile-menu-icon-btn {
     position: relative;
     z-index: 1;
@@ -1344,9 +1372,6 @@
     flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.55);
     background: transparent;
     color: #ffffff;
@@ -1639,41 +1664,56 @@
   }
 }
 
+/* שורת פרק בתפריט — חיתוך תחתון של הספרה (גם Safari בתוך overflow-y-auto).
+   block + clip-path; בלי transform על ה-wrapper; בלי translateZ על הספרה במצב מנוחה */
+.reim-menu-overlay-digit-clip {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+  border-radius: 1px;
+  clip-path: inset(0);
+  -webkit-clip-path: inset(0);
+}
+
 /* ── Menu overlay chapter digits (Figma 36:1325 / node 50:4490) ─────────────
-   מיקום כמו בקובץ: left -4px, top -33px (משתנה לפי viewport); חיתוך תחתון = overflow בשורה. */
+   ברירת מחדל ל־overlay: עוגן מלמטה + דחיפה קלה למטה ב־em — רוב הגליף יוצא מתחת לשורה ונחתך למטה (לא למעלה). */
 .reim-menu-digit {
   left: var(--menu-digit-left, 6px);
   top: var(--menu-digit-top-rest, -33px);
   bottom: auto;
-  transform: translateZ(0) scale(1);
+  transform: scale(1);
   transform-origin: top left;
   color: rgba(101, 70, 222, 0.08);
   transition:
     top 0.3s ease-out,
+    bottom 0.3s ease-out,
     transform 0.3s ease-out,
     transform-origin 0.3s ease-out,
     color 0.3s ease-out;
 }
 
+.reim-menu-digit.reim-menu-digit--menu-overlay {
+  top: auto;
+  /* יותר דחיפה למטה — רוב הגליף מתחת לשורה ונחתך למטה */
+  bottom: -0.52em;
+  transform-origin: bottom left;
+  transform: scale(1);
+}
+
+/* דסקטופ: hover/focus; מגע: :active נותן אותו אפקט בזמן הלחיצה (כמו hover בדסקטופ) */
 .group:hover .reim-menu-digit,
-.group:focus-visible .reim-menu-digit {
-  bottom: auto;
+.group:focus-visible .reim-menu-digit,
+.group:active .reim-menu-digit {
   top: 50%;
+  bottom: auto;
   left: var(--menu-digit-left, 6px);
   transform: translateY(-50%) scale(0.32);
   transform-origin: left center;
   color: var(--color-text-purple);
-}
-
-@media (hover: none) {
-  .reim-menu-digit {
-    bottom: auto;
-    top: 50%;
-    left: var(--menu-digit-left, 6px);
-    transform: translateY(-50%) scale(0.32);
-    transform-origin: left center;
-    color: var(--color-text-purple);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

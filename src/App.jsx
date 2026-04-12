@@ -87,6 +87,7 @@ const App = () => {
 
         const pageProps = {
             data: content[route.contentKey],
+            /** Full CMS document (e.g. home mobile Figma shell needs `footer` + `header`). */
             content,
             onNext: route.next ? () => navigateTo(route.next) : undefined,
             onPrev: route.prev ? () => navigateTo(route.prev) : undefined,
@@ -161,11 +162,7 @@ const App = () => {
 
             {/* סרגל צף – רק מדסקטופ כדי לא להסתיר תוכן במובייל */}
             <div className="hidden md:block">
-                <Sidebar
-                    navigateTo={navigateTo}
-                    toggleMenu={() => setIsMenuOpen(true)}
-                    currentPage={currentPage}
-                />
+                <Sidebar toggleMenu={() => setIsMenuOpen(true)} />
             </div>
 
             <MenuOverlay
@@ -173,7 +170,8 @@ const App = () => {
                 closeMenu={() => setIsMenuOpen(false)}
                 menuItems={content.menu || []}
                 navigateTo={navigateTo}
-                isAdmin={!!user}
+                ctaText={content?.header?.ctaText}
+                currentPage={currentPage}
             />
 
             <main
@@ -195,15 +193,17 @@ const App = () => {
             {currentPage !== 'admin' && (
                 <div
                     className={
-                        currentPage === 'chapter1' ||
-                        currentPage === 'chapter2' ||
-                        currentPage === 'chapter3' ||
-                        currentPage === 'chapter4'
+                        currentPage === 'home'
                             ? 'hidden px-0 md:block md:pr-20'
-                            : 'px-0 md:pr-20'
+                            : currentPage === 'chapter1' ||
+                                currentPage === 'chapter2' ||
+                                currentPage === 'chapter3' ||
+                                currentPage === 'chapter4'
+                              ? 'hidden px-0 md:block md:pr-20'
+                              : 'px-0 md:pr-20'
                     }
                 >
-                    <Footer data={content.footer} />
+                    <Footer data={content.footer} suppressMobileCard={currentPage === 'home'} />
                 </div>
             )}
 

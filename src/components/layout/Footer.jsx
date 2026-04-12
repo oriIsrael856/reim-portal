@@ -9,8 +9,9 @@ const SOCIAL_LINKS = [
     { Icon: Facebook, href: 'https://www.facebook.com/reimprogram/', label: 'פייסבוק – תוכנית רעים' }
 ];
 
-const Footer = ({ data, variant }) => {
+const Footer = ({ data, variant, suppressMobileCard }) => {
     const chapter2Mobile = variant === 'chapter2Mobile';
+    const showDefaultMobileCard = chapter2Mobile || !suppressMobileCard;
     const contact = data?.contact ?? {};
     const bottomLinks = data?.bottomLinks ?? [
         { text: 'מדיניות פרטיות', url: '#' },
@@ -34,7 +35,8 @@ const Footer = ({ data, variant }) => {
             }
         >
             <div className={chapter2Mobile ? 'mx-auto w-full max-w-none' : 'mx-auto'} style={chapter2Mobile ? undefined : { maxWidth: 'var(--home-desktop-footer-max-w)' }}>
-                {/* מובייל: כרטיס — בפרק 2 בתוך העמודה הלבנה משתמשים ברקע סגול עדין (Figma Footer) */}
+                {/* מובייל: כרטיס — בפרק 2 בתוך העמודה הלבנה משתמשים ברקע סגול עדין (Figma Footer); בדף הבית הכרטיס בתוך `HomeMobileFigma191View` */}
+                {showDefaultMobileCard ? (
                 <div
                     className={
                         chapter2Mobile
@@ -73,6 +75,7 @@ const Footer = ({ data, variant }) => {
                     </div>
                     <p className="text-xs text-[#2D2D44]/60">{copyright}</p>
                 </div>
+                ) : null}
 
                 {/* דסקטופ: לוגואים ופרטים */}
                 <div className="hidden md:flex flex-col md:flex-row justify-between items-start mb-16">

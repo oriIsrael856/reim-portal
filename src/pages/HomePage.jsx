@@ -1,30 +1,27 @@
 import React from 'react';
 import HomeHero from '../components/home/HomeHero';
-import HomeIntro from '../components/home/HomeIntro';
+import HomeMobileFigma191View from '../components/home/HomeMobileFigma191View';
 import HomeIntroDesktop from '../components/home/HomeIntroDesktop';
 import HomeCarousel from '../components/home/HomeCarousel';
 import HomeNewsletter from '../components/home/HomeNewsletter';
 import NextChapterButton from '../components/common/NextChapterButton';
 
-const HomePage = ({ data, navigateTo }) => {
+const HomePage = ({ data, navigateTo, content }) => {
     return (
-        <div className="bg-[#F8F7FF] min-h-screen">
-            {/* 1. Hero */}
-            <HomeHero data={data.hero} />
+        <div className="min-h-screen bg-transparent md:bg-[#F8F7FF]">
+            {/* Figma 191:15288 — mobile home column (NavBar frame main content) */}
+            <div className="md:hidden">
+                <HomeMobileFigma191View
+                    data={data}
+                    navigateTo={navigateTo}
+                    footer={content?.footer}
+                    header={content?.header}
+                />
+            </div>
 
-            {/* Section 1 (Figma 36:1035): mobile */}
-            <div
-                className="md:hidden w-full rounded-2xl mt-3 mb-6 overflow-hidden"
-                style={{
-                    background: 'rgba(101, 70, 222, 0.08)',
-                    border: '2px solid var(--Purple-Dark, #46319B)',
-                    padding: 'clamp(1rem, 4vh, 2rem) clamp(1rem, 4%, 2rem)',
-                }}
-            >
-                <HomeIntro data={data.intro} />
-                <div className="mt-8 w-full min-w-0">
-                    <HomeCarousel items={data.carousel} navigateTo={navigateTo} carouselHeader={data.carouselHeader} />
-                </div>
+            {/* Desktop */}
+            <div className="hidden md:block">
+                <HomeHero data={data.hero} />
             </div>
 
             {/* Section 1 desktop — mt matches Figma hero mb-[-24px] overlap */}
@@ -48,9 +45,9 @@ const HomePage = ({ data, navigateTo }) => {
                 </div>
             </div>
 
-            {/* 4. כפתור מעבר לפרק הראשון */}
+            {/* כפתור מעבר לפרק הראשון — desktop; mobile in Figma view */}
             {navigateTo && (
-                <div className="my-10 md:my-14">
+                <div className="my-10 hidden md:my-14 md:block">
                     <NextChapterButton
                         title="לפרק הראשון"
                         subtitle="פרק 01 - נעים להכיר"
@@ -59,8 +56,10 @@ const HomePage = ({ data, navigateTo }) => {
                 </div>
             )}
 
-            {/* 5. Newsletter Section */}
-            <HomeNewsletter data={data.newsletter} photoGrid={data.photoGrid} />
+            {/* Newsletter — desktop */}
+            <div className="hidden md:block">
+                <HomeNewsletter data={data.newsletter} photoGrid={data.photoGrid} />
+            </div>
         </div>
     );
 };
