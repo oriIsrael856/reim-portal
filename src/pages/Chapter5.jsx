@@ -2,7 +2,9 @@ import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import ChapterDigitSvg from '../components/common/ChapterDigitSvg';
 import Accordion from '../components/common/Accordion';
+import Page5MarketingStepsAccordion from '../components/chapter5/Page5MarketingStepsAccordion';
 import CheckCard from '../components/chapter5/CheckCard';
+import '../styles/chapter5-mobile.css';
 import NextChapterButton from '../components/common/NextChapterButton';
 import PrevChapterButton from '../components/common/PrevChapterButton';
 import NewsletterCard from '../components/common/NewsletterCard';
@@ -65,8 +67,8 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                             <h3 className="text-right text-xl font-semibold leading-[1.28] tracking-[0.0075em] text-[#001D26]">
                                 {data.marketing?.stepsTitle ?? 'צעדי פעולה מרכזיים:'}
                             </h3>
-                            <div className="[&_.ch3-acc]:w-full [&_.w-full]:w-full rounded-lg">
-                                <Accordion items={data.marketing?.steps || []} />
+                            <div className="w-full rounded-lg">
+                                <Page5MarketingStepsAccordion items={data.marketing?.steps || []} />
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,5 @@
 import React from 'react';
-import Accordion from '../../common/Accordion';
-import { CH4_ASSETS } from '../chapter4Assets';
+import Page4FaqAccordion from './Page4FaqAccordion';
 
 /** Figma 254:12236 */
 export default function Page4CommitteesFaqSection({ committees, qa }) {
@@ -41,7 +40,7 @@ export default function Page4CommitteesFaqSection({ committees, qa }) {
                         <h2 className="ch4-cf__faqTitle">שאלות ותשובות</h2>
                     </div>
                     <div className="ch4-faq">
-                        <Accordion items={qa} collapsedIconSrc={CH4_ASSETS.faqPlus} />
+                        <Page4FaqAccordion items={qa} />
                     </div>
                 </>
             ) : null}

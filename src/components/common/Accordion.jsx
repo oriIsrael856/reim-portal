@@ -35,18 +35,18 @@ const AccordionItem = ({ title, content, isOpen, onClick, viewportCh5Styles }) =
                     ? 'rgba(101,70,222,0.08)'
                     : 'linear-gradient(90deg,rgba(101,70,222,0.04) 0%,rgba(101,70,222,0.04) 100%),linear-gradient(90deg,#fff 0%,#fff 100%)',
                 border: '1px solid rgba(101,70,222,0.08)',
-                borderRight: active ? '2px solid #6546DE' : undefined,
+                borderInlineStart: active ? '2px solid #6546DE' : undefined,
             }}
         >
             <button
                 type="button"
                 dir="rtl"
                 onClick={onClick}
-                className="flex w-full items-center outline-none transition-all duration-200"
+                className="flex w-full items-center justify-between outline-none transition-all duration-200"
                 style={buttonStyle}
             >
                 <span
-                    className={`flex-1 min-w-0 leading-[1.334] text-right transition-all duration-200 ${ch5 ? '' : 'text-[24px]'}`}
+                    className={`min-w-0 flex-1 leading-[1.334] text-end transition-all duration-200 ${ch5 ? '' : 'text-[24px]'}`}
                     style={{
                         ...(ch5 ? { fontSize: ch5.ch5AccordionTitleFont.fontSize } : {}),
                         color: active ? '#6546DE' : '#001d26',
@@ -56,7 +56,7 @@ const AccordionItem = ({ title, content, isOpen, onClick, viewportCh5Styles }) =
                     {title}
                 </span>
                 {isOpen ? (
-                    <div className="shrink-0 flex items-center justify-center size-[24px] rounded-full bg-[rgba(101,70,222,0.08)]">
+                    <div className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[rgba(101,70,222,0.08)]">
                         <Minus size={16} className="text-[#6546DE]" />
                     </div>
                 ) : (
@@ -68,7 +68,7 @@ const AccordionItem = ({ title, content, isOpen, onClick, viewportCh5Styles }) =
                 )}
             </button>
             <div
-                className={`whitespace-pre-line font-semibold leading-[1.28] tracking-[0.15px] text-right text-[#001d26] overflow-hidden transition-all duration-300 ${ch5 ? '' : 'text-[20px]'} ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}
+                className={`whitespace-pre-line leading-[1.28] tracking-[0.15px] text-end text-[#001d26] overflow-hidden transition-all duration-300 ${ch5 ? 'font-semibold' : 'text-[20px] font-normal'} ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}
                 style={isOpen ? contentOpenStyle : {}}
             >
                 {content}
@@ -84,7 +84,7 @@ const Accordion = ({ items, viewportCh5Styles }) => {
 
     return (
         <div
-            className={`w-full flex flex-col ${ch5 ? '' : 'gap-[16px]'}`}
+            className={`flex w-full flex-col ${ch5 ? '' : 'gap-[16px]'}`}
             style={ch5?.ch5AccordionListGap}
         >
             {items.map((item, index) => (

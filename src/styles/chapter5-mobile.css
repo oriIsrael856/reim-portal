@@ -1,0 +1,134 @@
+/**
+ * Chapter 5 — mobile-only pieces (marketing steps accordion).
+ * Row proportions match Ch4 committees FAQ mobile — Figma 254:12264 Collapse Item.
+ */
+
+.ch5-steps-acc {
+  --ch5-steps-acc-list-gap: 12px;
+  --ch5-steps-acc-trigger-gap: 24px;
+  --ch5-steps-acc-radius: 8px;
+  --ch5-steps-acc-icon-open: rgba(101, 70, 222, 0.08);
+  --ch5-steps-acc-border: rgba(101, 70, 222, 0.08);
+  --ch5-steps-acc-pad-x: 16px;
+  --ch5-steps-acc-row-h: 52px;
+  --ch5-steps-acc-btn-pad-open-block: 12px;
+  --ch5-steps-acc-panel-pad-start: 20px;
+  --ch5-steps-acc-panel-pad-end: 16px;
+  --ch5-steps-acc-panel-pad-bottom: 16px;
+  --ch5-steps-acc-icon-hit: 16px;
+  --ch5-steps-type-body1-size: 16px;
+  --ch5-steps-type-body1-weight: 400;
+  --ch5-steps-type-body1-lh: 1.32;
+  --ch5-steps-type-body1-ls: 0.009375em;
+  --ch5-steps-type-subtitle1-weight: 500;
+  --ch5-steps-type-subtitle1-lh: 1.22;
+  --ch5-steps-type-body2-size: 14px;
+  --ch5-steps-type-body2-weight: 400;
+  --ch5-steps-type-body2-lh: 1.43;
+  --ch5-steps-type-body2-ls: 0.01214286em;
+  --ch5-steps-ink: #001d26;
+  --ch5-steps-purple-brand: #6546de;
+
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--ch5-steps-acc-list-gap);
+  align-self: stretch;
+  box-sizing: border-box;
+}
+
+.ch5-steps-acc__item {
+  border-radius: var(--ch5-steps-acc-radius);
+  margin-bottom: 0;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+.ch5-steps-acc__item--open {
+  background: #ffffff;
+  border: 1px solid var(--ch5-steps-acc-border);
+  border-inline-start: 2px solid var(--ch5-steps-purple-brand);
+}
+
+.ch5-steps-acc__item--closed {
+  background: #ffffff;
+  border: 1px solid var(--ch5-steps-acc-border);
+}
+
+.ch5-steps-acc__btn {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ch5-steps-acc-trigger-gap);
+  padding-inline: var(--ch5-steps-acc-pad-x);
+  min-height: var(--ch5-steps-acc-row-h);
+  padding-block: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: start;
+  box-sizing: border-box;
+}
+
+.ch5-steps-acc__item--open .ch5-steps-acc__btn {
+  padding-block: var(--ch5-steps-acc-btn-pad-open-block);
+  min-height: unset;
+}
+
+.ch5-steps-acc__title {
+  font-family: var(--font-rubik, 'Rubik', sans-serif);
+  font-size: var(--ch5-steps-type-body1-size);
+  font-weight: var(--ch5-steps-type-body1-weight);
+  line-height: var(--ch5-steps-type-body1-lh);
+  letter-spacing: var(--ch5-steps-type-body1-ls);
+  color: var(--ch5-steps-ink);
+  flex: 1;
+  min-width: 0;
+  text-align: start;
+}
+
+.ch5-steps-acc__item--open .ch5-steps-acc__title {
+  color: var(--ch5-steps-purple-brand);
+  font-weight: var(--ch5-steps-type-subtitle1-weight);
+  line-height: var(--ch5-steps-type-subtitle1-lh);
+}
+
+.ch5-steps-acc__icon {
+  width: var(--ch5-steps-acc-icon-hit);
+  height: var(--ch5-steps-acc-icon-hit);
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.ch5-steps-acc__icon--open {
+  background: var(--ch5-steps-acc-icon-open);
+  color: var(--ch5-steps-purple-brand);
+}
+
+.ch5-steps-acc__icon--closed {
+  background: transparent;
+  color: var(--ch5-steps-ink);
+  border: none;
+}
+
+.ch5-steps-acc__panel {
+  padding-block-start: 0;
+  padding-block-end: var(--ch5-steps-acc-panel-pad-bottom);
+  padding-inline-start: var(--ch5-steps-acc-panel-pad-start);
+  padding-inline-end: var(--ch5-steps-acc-panel-pad-end);
+  font-family: var(--font-rubik, 'Rubik', sans-serif);
+  font-size: var(--ch5-steps-type-body2-size);
+  font-weight: var(--ch5-steps-type-body2-weight);
+  line-height: var(--ch5-steps-type-body2-lh);
+  letter-spacing: var(--ch5-steps-type-body2-ls);
+  color: var(--ch5-steps-ink);
+  text-align: start;
+  white-space: pre-line;
+  box-sizing: border-box;
+}
