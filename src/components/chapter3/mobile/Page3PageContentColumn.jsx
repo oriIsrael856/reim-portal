@@ -15,10 +15,18 @@ export default function Page3PageContentColumn({ hero, responsibilities }) {
                 />
             ) : null}
             <div className="ch3-pageContent__cards">
-                <div className="ch3-cardStack">
-                    {cards.map((card, i) => (
-                        <Page3ResponsibilityCard key={i} card={card} />
-                    ))}
+                <div className="ch3-respStickyRegion">
+                    <div className="ch3-respStickyStack">
+                        {cards.map((card, i) => (
+                            <div
+                                key={i}
+                                className="ch3-respStickySlot"
+                                style={{ '--ch3-resp-sticky-index': String(i) }}
+                            >
+                                <Page3ResponsibilityCard card={card} />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

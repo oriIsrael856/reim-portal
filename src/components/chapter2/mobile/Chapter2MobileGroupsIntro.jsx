@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
+import { scrollToChapter2GroupSection } from '../../../utils/scrollToChapter2GroupSection';
 
 /** Section 4 — mobile (Figma 202:3379): תמונה + מידע על הקבוצות — ראו קובץ תוכנית רעים בפיגמה */
 export default function Chapter2MobileGroupsIntro({ groupsIntro }) {
@@ -36,23 +37,36 @@ export default function Chapter2MobileGroupsIntro({ groupsIntro }) {
 
                     {populations?.length ? (
                         <ul className="ch2-mobile-section4__pops">
-                            {populations.map((pop) => (
-                                <li key={pop.id} className="ch2-mobile-section4__item">
-                                    {/*
-                                      Figma Frame 12 (שורה): טקסט ואז מספר. באתר dir=rtl מספר מימין לטקסט
-                                      ⇒ item-id לפני item-label ב-DOM (ראו CLAUDE.md — Figma layer order / RTL)
-                                    */}
-                                    <div className="ch2-mobile-section4__item-text">
-                                        <span className="ch2-mobile-section4__item-id" dir="ltr">
-                                            {pop.id}
-                                        </span>
-                                        <span className="ch2-mobile-section4__item-label">{pop.text}</span>
-                                    </div>
-                                    <div className="ch2-mobile-section4__icon" aria-hidden>
-                                        <ArrowLeft size={16} strokeWidth={2.25} className="text-[var(--ch2-text-purple)]" />
-                                    </div>
-                                </li>
-                            ))}
+                            {populations.map((pop) => {
+                                const numStr = String(pop.id).replace(/\D/g, '').padStart(2, '0');
+                                return (
+                                    <li key={pop.id} className="m-0 list-none p-0">
+                                        <button
+                                            type="button"
+                                            className="ch2-mobile-section4__item ch2-mobile-section4__item--action"
+                                            onClick={() => scrollToChapter2GroupSection(numStr)}
+                                        >
+                                            {/*
+                                              Figma Frame 12 (שורה): טקסט ואז מספר. באתר dir=rtl מספר מימין לטקסט
+                                              ⇒ item-id לפני item-label ב-DOM (ראו CLAUDE.md — Figma layer order / RTL)
+                                            */}
+                                            <div className="ch2-mobile-section4__item-text">
+                                                <span className="ch2-mobile-section4__item-id" dir="ltr">
+                                                    {pop.id}
+                                                </span>
+                                                <span className="ch2-mobile-section4__item-label">{pop.text}</span>
+                                            </div>
+                                            <div className="ch2-mobile-section4__icon" aria-hidden>
+                                                <ArrowLeft
+                                                    size={16}
+                                                    strokeWidth={2.25}
+                                                    className="text-[var(--ch2-text-purple)]"
+                                                />
+                                            </div>
+                                        </button>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     ) : null}
 

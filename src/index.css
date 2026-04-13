@@ -926,6 +926,19 @@
     box-shadow: var(--ch2-section4-item-shadow);
   }
 
+  /* Population row — same look as Figma list row, as <button> (scroll to group; desktop parity) */
+  button.ch2-mobile-section4__item.ch2-mobile-section4__item--action {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    cursor: pointer;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   .ch2-mobile-section4__item-text {
     display: flex;
     min-width: 0;
@@ -1649,8 +1662,8 @@
   }
 }
 
-/* Desktop: mobile shell tokens cap main at 359px — breaks full-width chapters + viewport `position: sticky`. */
-@media (min-width: 768px) {
+/* Desktop: mobile shell tokens cap main at 359px — breaks full-width chapters + viewport `position: sticky`. (1024 = lg, same as MenuOverlay / SiteMobileStickyChrome) */
+@media (min-width: 1024px) {
   .ch2-mobile-main-content.ch2-mobile-main-surface.ch2-mobile-main-content--below-sticky-chrome {
     max-width: none !important;
     width: 100% !important;

@@ -10,7 +10,7 @@ export default function Chapter2MobileGroupAccordions({ data, groupsIntro }) {
     return (
         <section className="ch2-mobile-section5">
             {data.group01 && (
-                <div className="ch2-mobile-section5__group">
+                <div className="ch2-mobile-section5__group" data-ch2-group="01">
                     <div className="ch2-mobile-section5__heading">
                         <p className="ch2-mobile-section5__eyebrow">קבוצה 01</p>
                         <h2 className="ch2-mobile-section5__title">{data.group01.title}</h2>
@@ -20,7 +20,7 @@ export default function Chapter2MobileGroupAccordions({ data, groupsIntro }) {
                 </div>
             )}
             {data.group02 && (
-                <div className="ch2-mobile-section5__group">
+                <div className="ch2-mobile-section5__group" data-ch2-group="02">
                     <div className="ch2-mobile-section5__heading">
                         <p className="ch2-mobile-section5__eyebrow">קבוצה 02</p>
                         <h2 className="ch2-mobile-section5__title">{data.group02.title}</h2>

@@ -21,7 +21,7 @@ export default function SiteMobileStickyChrome({
     const iconPurple = { width: ch.logoutIconPx, height: ch.logoutIconPx };
 
     return (
-        <header id="reim-mobile-sticky-chrome" className="ch2-mobile-sticky-chrome md:hidden">
+        <header id="reim-mobile-sticky-chrome" className="ch2-mobile-sticky-chrome lg:hidden">
             <div className="ch2-mobile-sticky-chrome__stack">
                 <div id="reim-mobile-sticky-chrome-purple" className="ch2-mobile-sticky-chrome__purple">
                     <div

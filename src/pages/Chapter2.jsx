@@ -5,6 +5,7 @@ import NextChapterButton from '../components/common/NextChapterButton';
 import { Chapter2MobileView } from '../components/chapter2/mobile';
 import Chapter2DesktopAudienceSection from '../components/chapter2/Chapter2DesktopAudienceSection';
 import Chapter2DesktopHeroSection from '../components/chapter2/Chapter2DesktopHeroSection';
+import { scrollToChapter2GroupSection } from '../utils/scrollToChapter2GroupSection';
 
 /* ==============================================================================
    1. רכיבי עזר (ללא שינוי)
@@ -221,10 +222,7 @@ const GroupsIntroSection = ({ data }) => {
                             <div className="flex w-full flex-col items-start gap-[12px]">
                                 {data.populations.map((pop, index) => {
                                     const numStr = String(pop.id).replace(/\D/g, '').padStart(2, '0');
-                                    const handleClick = () => {
-                                        const el = document.getElementById(`ch2-group-${numStr}`);
-                                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                    };
+                                    const handleClick = () => scrollToChapter2GroupSection(numStr);
                                     return (
                                         <button
                                             key={index}
@@ -402,8 +400,16 @@ const Chapter2 = ({ data, onNext, content }) => {
             {/* Section 2: overlaps hero bottom by 24px — Figma y:956 in Section 1 height:980 */}
             {data.contentBox && <div className="relative z-10 hidden md:block" style={{ marginTop: 'var(--ch2-section-overlap-y)' }}><UnifiedOrangeSection data={data.contentBox} /></div>}
             {groupsIntro && <div className="hidden md:block"><GroupsIntroSection data={data.groupsIntro} /></div>}
-            {data.group01 && <div id="ch2-group-01" className="hidden md:block"><GroupDetailsSection data={data.group01} /></div>}
-            {data.group02 && <div id="ch2-group-02" className="hidden md:block"><GroupDetailsSection data={data.group02} /></div>}
+            {data.group01 && (
+                <div data-ch2-group="01" className="hidden md:block">
+                    <GroupDetailsSection data={data.group01} />
+                </div>
+            )}
+            {data.group02 && (
+                <div data-ch2-group="02" className="hidden md:block">
+                    <GroupDetailsSection data={data.group02} />
+                </div>
+            )}
             {data.whyTogether && <div className="hidden md:block"><WhyTogetherSection data={data.whyTogether} /></div>}
 
             <div className="my-20 hidden px-4 md:block">

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { ArrowUpLeft, ArrowDown, Bell, Facebook, Instagram, Layers, Linkedin, Star, ThumbsUp, Twitter, Users } from 'lucide-react';
 import NextChapterButton from '../common/NextChapterButton';
 
@@ -46,6 +46,19 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
 
     const carouselForFigma = [...carousel].reverse();
 
+    /* Safari/iOS: horizontal overflow-x scroll often fails inside dir=rtl; strip uses dir=ltr for the scrollport only. */
+    useLayoutEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        const alignEnd = () => {
+            el.scrollLeft = Math.max(0, el.scrollWidth - el.clientWidth);
+        };
+        alignEnd();
+        const ro = new ResizeObserver(alignEnd);
+        ro.observe(el);
+        return () => ro.disconnect();
+    }, [carouselForFigma.length]);
+
     const handleCardNav = (card) => {
         const page = card.page || CARD_ID_TO_PAGE[card.id];
         if (page && navigateTo) navigateTo(page);
@@ -69,7 +82,11 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
     const logos = footer?.logos ?? { reim: '/Logo (1).png', matnasim: '/matnasimLogo.png' };
 
     return (
-        <div className="w-full max-w-[359px] mx-auto overflow-x-clip" dir="rtl">
+        <div
+            className="mx-auto min-w-0 w-full max-w-[359px] overflow-x-hidden"
+            dir="rtl"
+        >
+            {/* overflow-x-clip על אב חוסם לעיתים גלילה אופקית במגע ב-Safari; כאן overflow-x-hidden + min-w-0 */}
             {/* Figma 191:15298 Main content — white column, rounded 24, Hero + content −24 gap */}
             <div className="flex flex-col -space-y-6">
                 {/* Hero 191:15299 */}
@@ -317,8 +334,13 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
 
                         <div
                             ref={scrollRef}
-                            className="relative z-10 flex w-[335px] max-w-full flex-row flex-nowrap justify-end gap-3 overflow-x-auto pb-4 pt-1 no-scrollbar"
-                            style={{ height: '360px' }}
+                            dir="ltr"
+                            className="relative z-10 flex w-[335px] max-w-full min-w-0 flex-row flex-nowrap justify-start gap-3 overflow-x-auto overscroll-x-contain pb-4 pt-1 no-scrollbar [touch-action:pan-x]"
+                            style={{
+                                height: '360px',
+                                WebkitOverflowScrolling: 'touch',
+                                transform: 'translateZ(0)',
+                            }}
                         >
                             <div className="w-[180px] shrink-0" aria-hidden />
                             {carouselForFigma.map((card) => {
@@ -327,8 +349,9 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
                                     <button
                                         key={card.id}
                                         type="button"
+                                        dir="rtl"
                                         onClick={() => handleCardNav(card)}
-                                        className="relative flex h-[340px] w-[260px] shrink-0 flex-col justify-between overflow-hidden rounded-2xl border-[1.5px] border-[hsla(252,70%,57%,0.16)] bg-white p-6 text-start"
+                                        className="relative flex h-[340px] w-[260px] shrink-0 touch-pan-x flex-col justify-between overflow-hidden rounded-2xl border-[1.5px] border-[hsla(252,70%,57%,0.16)] bg-white p-6 text-start"
                                     >
                                         <span
                                             className="font-salsa font-normal text-[#001D26]"

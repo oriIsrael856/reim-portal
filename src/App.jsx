@@ -125,7 +125,7 @@ const App = () => {
             <div
                 className={
                     currentPage !== 'admin'
-                        ? 'flex min-h-screen flex-col overflow-x-clip rounded-[12px] bg-[#46319B] md:overflow-clip md:rounded-[16px] md:bg-gradient-to-b md:from-white md:to-[#F5F3FA]'
+                        ? 'flex min-h-screen flex-col overflow-x-hidden rounded-[12px] bg-[#46319B] md:overflow-clip md:rounded-[16px] md:bg-gradient-to-b md:from-white md:to-[#F5F3FA]'
                         : 'flex min-h-screen flex-col overflow-hidden rounded-[12px] md:rounded-[16px]'
                 }
                 style={{

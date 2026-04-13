@@ -85,6 +85,7 @@ export const MenuOverlay = ({
     useLayoutEffect(() => {
         if (!isOpen) return undefined;
         /* סינכרוני לפני ציור — מונע פריים ב־iOS שבו top=0 ושכבת העמעום חוסמת את כפתורי הכרום */
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- מדידת layout לפני paint; microtask מאחר מדי ב־Safari
         updateChromeBottom();
 
         const scheduleMeasure = () => {
@@ -210,7 +211,9 @@ export const MenuOverlay = ({
     return (
         <div
             className={`fixed inset-0 z-[1100] transition-opacity duration-300 ${
-                isOpen ? 'pointer-events-none opacity-100 lg:pointer-events-auto' : 'pointer-events-none opacity-0'
+                isOpen
+                    ? 'visible pointer-events-none opacity-100 lg:pointer-events-auto'
+                    : 'invisible pointer-events-none opacity-0'
             }`}
             aria-hidden={!isOpen}
         >
