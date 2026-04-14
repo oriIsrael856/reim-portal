@@ -46,7 +46,7 @@ const AccordionItem = ({ title, content, isOpen, onClick, viewportCh5Styles }) =
                 style={buttonStyle}
             >
                 <span
-                    className={`min-w-0 flex-1 leading-[1.334] text-end transition-all duration-200 ${ch5 ? '' : 'text-[24px]'}`}
+                    className={`min-w-0 flex-1 leading-[1.334] text-start transition-all duration-200 ${ch5 ? '' : 'text-[24px]'}`}
                     style={{
                         ...(ch5 ? { fontSize: ch5.ch5AccordionTitleFont.fontSize } : {}),
                         color: active ? '#6546DE' : '#001d26',
@@ -68,7 +68,7 @@ const AccordionItem = ({ title, content, isOpen, onClick, viewportCh5Styles }) =
                 )}
             </button>
             <div
-                className={`whitespace-pre-line leading-[1.28] tracking-[0.15px] text-end text-[#001d26] overflow-hidden transition-all duration-300 ${ch5 ? 'font-semibold' : 'text-[20px] font-normal'} ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}
+                className={`whitespace-pre-line leading-[1.28] tracking-[0.15px] text-start text-[#001d26] overflow-hidden transition-all duration-300 ${ch5 ? 'font-semibold' : 'text-[20px] font-normal'} ${isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'}`}
                 style={isOpen ? contentOpenStyle : {}}
             >
                 {content}

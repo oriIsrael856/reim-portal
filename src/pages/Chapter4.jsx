@@ -463,7 +463,7 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
                         </div>
 
                         {/* Physical right (second LTR child) — text frame, Figma 120:6885; w-full + wrap so copy uses column width (no nowrap clip) */}
-                        <div className="flex min-w-0 w-full flex-1 flex-col items-stretch" style={d.nativTextGap}>
+                        <div className="flex min-w-0 w-full flex-1 flex-col items-stretch" style={d.nativFrameGap}>
                             {/* Heading — Figma 120:6887 */}
                             <div className="flex w-full max-w-full flex-col items-end text-right text-[#001d26]">
                                 <p className="max-w-full font-normal leading-[1.32] tracking-[0.15px]" style={d.nativSubtitleFont}>הנחיות לרכזת</p>
@@ -471,14 +471,14 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
                             </div>
 
                             {/* Content — Figma 120:6890 */}
-                            <div className="flex w-full max-w-full min-w-0 flex-col" style={d.nativTextGap}>
+                            <div className="flex w-full max-w-full min-w-0 flex-col" style={d.nativContentGap}>
                                 {/* Description + principles label — Figma 120:7027 */}
-                                <div className="flex w-full max-w-full min-w-0 flex-col" style={d.nativSubGap}>
+                                <div className="flex w-full max-w-full min-w-0 flex-col" style={d.nativDescGap}>
                                     <p className="w-full max-w-full min-w-0 break-words text-right font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]" style={d.nativBodyFont}>{data.nativSystem?.description}</p>
                                     <p className="w-full max-w-full min-w-0 break-words text-right font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26]" style={d.nativBodyFont}>עקרונות העבודה בנתיב:</p>
                                 </div>
                                 {/* Principles list — Figma 120:6978 */}
-                                <div className="flex w-full max-w-full min-w-0 flex-col" style={d.nativSubGap}>
+                                <div className="flex w-full max-w-full min-w-0 flex-col" style={d.nativPrincipleListGap}>
                                     {data.nativSystem?.principles?.map((p, i) => (
                                         <div key={i} dir="ltr" className="flex w-full max-w-full min-w-0 items-center" style={d.nativPrincipleRowGap}>
                                             <p className="min-w-0 max-w-full flex-1 break-words text-right font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]" style={d.nativBodyFont}>{p}</p>
@@ -557,6 +557,7 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
                                         key={s.id}
                                         step={s}
                                         spacingStyle={d.committeesStepCard}
+                                        ch4={d}
                                     />
                                 ))}
                             </div>

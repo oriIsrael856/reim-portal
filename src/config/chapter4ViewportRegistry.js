@@ -69,14 +69,16 @@ export function getCh4FigmaPercentForBox(key) {
  * useComponentStyle({ values, mins }) entries — Figma px + axis per CLAUDE / Chapter 4 nodes.
  */
 export const CH4_COMPONENT_STYLE = {
+    /** Figma 125:4050 — files section container: pt-120 pb-120 pr-200 (RTL ps) pl-0 */
     filesSection: {
         values: {
-            paddingTop: { px: 80, axis: 'height' },
-            paddingBottom: { px: 80, axis: 'height' },
+            paddingTop: { px: 120, axis: 'height' },
+            paddingBottom: { px: 120, axis: 'height' },
             paddingInlineStart: { px: 200, axis: 'width' },
         },
-        mins: { paddingTop: 32, paddingBottom: 32, paddingInlineStart: 80 },
+        mins: { paddingTop: 48, paddingBottom: 48, paddingInlineStart: 80 },
     },
+    /** Figma 125:4094 — title row: pl-200 in Figma = paddingInlineEnd in RTL */
     filesTitleRow: {
         values: { paddingInlineEnd: { px: 200, axis: 'width' } },
         mins: { paddingInlineEnd: 80 },
@@ -102,22 +104,35 @@ export const CH4_COMPONENT_STYLE = {
         values: { gap: { px: 200, axis: 'width' } },
         mins: { gap: 24 },
     },
+    /** Figma 120:6881 — orange card: px-50 py-100 w-400 */
     nativCard: {
         values: {
-            paddingTop: { px: 120, axis: 'height' },
-            paddingBottom: { px: 120, axis: 'height' },
-            paddingLeft: { px: 80, axis: 'width' },
-            paddingRight: { px: 80, axis: 'width' },
+            paddingTop: { px: 100, axis: 'height' },
+            paddingBottom: { px: 100, axis: 'height' },
+            paddingLeft: { px: 50, axis: 'width' },
+            paddingRight: { px: 50, axis: 'width' },
             width: { px: 400, axis: 'width' },
             minWidth: { px: 240, axis: 'width' },
         },
-        mins: { paddingTop: 32, paddingBottom: 32, paddingLeft: 20, paddingRight: 20, width: 260, minWidth: 200 },
+        mins: { paddingTop: 28, paddingBottom: 28, paddingLeft: 16, paddingRight: 16, width: 260, minWidth: 200 },
     },
-    nativTextGap: {
+    /** Figma 120:6885 — heading + content frame gap */
+    nativFrameGap: {
+        values: { gap: { px: 24, axis: 'height' } },
+        mins: { gap: 12 },
+    },
+    /** Figma 120:6890 — content sub-sections gap */
+    nativContentGap: {
         values: { gap: { px: 32, axis: 'height' } },
         mins: { gap: 16 },
     },
-    nativSubGap: {
+    /** Figma 120:7027 — description + principles label gap */
+    nativDescGap: {
+        values: { gap: { px: 8, axis: 'height' } },
+        mins: { gap: 4 },
+    },
+    /** Figma 120:6978 — principle list items gap */
+    nativPrincipleListGap: {
         values: { gap: { px: 12, axis: 'height' } },
         mins: { gap: 6 },
     },
@@ -155,16 +170,45 @@ export const CH4_COMPONENT_STYLE = {
         values: { gap: { px: 24, axis: 'width' } },
         mins: { gap: 12 },
     },
-    /** Figma 125:2463 — inner rhythm (px-3.5, pt badge-clearance, pb-3, gap-1.5) */
+    /** Figma 125:2463 — step card: pt-32 pb-24 px-16 gap-8 */
     committeesStepCard: {
         values: {
-            paddingTop: { px: 22, axis: 'height' },
-            paddingBottom: { px: 12, axis: 'height' },
-            paddingLeft: { px: 14, axis: 'width' },
-            paddingRight: { px: 14, axis: 'width' },
-            gap: { px: 6, axis: 'height' },
+            paddingTop: { px: 32, axis: 'height' },
+            paddingBottom: { px: 24, axis: 'height' },
+            paddingLeft: { px: 16, axis: 'width' },
+            paddingRight: { px: 16, axis: 'width' },
+            gap: { px: 8, axis: 'height' },
         },
-        mins: { paddingTop: 14, paddingBottom: 8, paddingLeft: 8, paddingRight: 8, gap: 4 },
+        mins: { paddingTop: 18, paddingBottom: 14, paddingLeft: 8, paddingRight: 8, gap: 4 },
+    },
+    /** Figma 125:2466 — step card title: 20px Rubik SemiBold */
+    committeesStepTitleFont: {
+        values: { fontSize: { px: 20, axis: 'width' } },
+        mins: { fontSize: 13 },
+    },
+    /** Figma 125:2469 — step card desc: 16px Rubik Regular */
+    committeesStepDescFont: {
+        values: { fontSize: { px: 16, axis: 'width' } },
+        mins: { fontSize: 11 },
+    },
+    /** Figma 125:2480 — step badge: h-42 px-6 */
+    committeesStepBadge: {
+        values: {
+            height: { px: 42, axis: 'height' },
+            paddingLeft: { px: 6, axis: 'width' },
+            paddingRight: { px: 6, axis: 'width' },
+        },
+        mins: { height: 32, paddingLeft: 4, paddingRight: 4 },
+    },
+    /** Figma I125:2480;106:3068 — badge number circle: size-32 */
+    committeesStepBadgeCircle: {
+        values: { width: { px: 32, axis: 'width' }, height: { px: 32, axis: 'width' } },
+        mins: { width: 24, height: 24 },
+    },
+    /** Figma badge number font: 16px Salsa */
+    committeesStepBadgeFont: {
+        values: { fontSize: { px: 16, axis: 'width' } },
+        mins: { fontSize: 12 },
     },
     /** FAQ closed row — target height vs 1080p ref */
     faqRowHeight: {
@@ -334,16 +378,17 @@ export const CH4_DESKTOP_STYLE_EXTRA = {
         values: { width: { px: 32, axis: 'width' }, height: { px: 24, axis: 'height' } },
         mins: { width: 28, height: 20 },
     },
+    /** Figma 120:6972 — CTA badge: size-80 p-12 */
     nativCtaBadge: {
         values: {
-            width: { px: 56, axis: 'width' },
-            height: { px: 56, axis: 'height' },
+            width: { px: 80, axis: 'width' },
+            height: { px: 80, axis: 'height' },
             paddingTop: { px: 12, axis: 'width' },
             paddingBottom: { px: 12, axis: 'width' },
             paddingLeft: { px: 12, axis: 'width' },
             paddingRight: { px: 12, axis: 'width' },
         },
-        mins: { width: 44, height: 44, paddingTop: 8, paddingBottom: 8, paddingLeft: 8, paddingRight: 8 },
+        mins: { width: 52, height: 52, paddingTop: 8, paddingBottom: 8, paddingLeft: 8, paddingRight: 8 },
     },
     nativCtaIcon: {
         values: { width: { px: 40, axis: 'width' }, height: { px: 40, axis: 'width' } },
@@ -375,9 +420,10 @@ export const CH4_DESKTOP_STYLE_EXTRA = {
         values: { fontSize: { px: 14, axis: 'width' } },
         mins: { fontSize: 11 },
     },
+    /** Figma 125:4050 — files section inner gap between title row and cards: 60px */
     filesZ10StackGap: {
-        values: { gap: { px: 32, axis: 'height' } },
-        mins: { gap: 20 },
+        values: { gap: { px: 60, axis: 'height' } },
+        mins: { gap: 24 },
     },
     filesTitleDescGap: {
         values: { gap: { px: 24, axis: 'width' } },

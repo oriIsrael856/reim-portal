@@ -13,10 +13,10 @@ export const CH4_ASSETS = {
     heroDecoA: `${CH4_ICONS_BASE}/hero-deco-star-a.svg`,
     heroDecoB: `${CH4_ICONS_BASE}/hero-deco-star-b.svg`,
 
-    /* desktop feature card icons (Figma 120:6184-6186) */
-    featureDesktopNativ: `${CH4_BASE}/feature-desktop-nativ.png`,
-    featureDesktopCommittees: `${CH4_BASE}/feature-desktop-committees.png`,
-    featureDesktopFiles: `${CH4_BASE}/feature-desktop-files.png`,
+    /* desktop feature card icons — SVG/PNG from Figma icon nodes */
+    featureDesktopNativ: `${CH4_BASE}/nativ-brand-icon.png`,
+    featureDesktopCommittees: `${CH4_BASE}/outline-award.svg`,
+    featureDesktopFiles: `${CH4_BASE}/outline-inbox.svg`,
 
     /* nativ section */
     nativPrinciple: `${CH4_ICONS_BASE}/nativ-principle-bullet.svg`,
