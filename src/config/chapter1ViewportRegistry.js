@@ -20,14 +20,18 @@ export const CH1_DESKTOP_STYLE_REGISTRY = {
         values: { paddingTop: { px: 64, axis: 'height' } },
         mins: { paddingTop: 32 },
     },
+    layoutMb: {
+        values: { marginBottom: { px: 80, axis: 'height' } },
+        mins: { marginBottom: 32 },
+    },
     colGap: {
         values: { gap: { px: 32, axis: 'width' } },
         mins: { gap: 16 },
     },
     leftColMaxW: {
-        values: { maxWidth: { px: 680, axis: 'width' } },
+        values: { maxWidth: { px: 852, axis: 'width' } },
         mins: { maxWidth: 400 },
-        maxes: { maxWidth: 680 },
+        maxes: { maxWidth: 852 },
     },
     rightColMaxW: {
         values: { maxWidth: { px: 520, axis: 'width' } },
@@ -72,7 +76,13 @@ export const CH1_DESKTOP_STYLE_REGISTRY = {
         maxes: { width: 140 },
     },
 
-    /* ── Stacked cards ── */
+    /* ── Gap between collage and first card — Figma 106:3100 (h-900 container centers 600px card → ~150px top space) ── */
+    collageMb: {
+        values: { marginTop: { px: 150, axis: 'height' } },
+        mins: { marginTop: 48 },
+    },
+
+    /* ── Stacked cards — outer stack ── */
     cardsStackGap: {
         values: { gap: { px: 96, axis: 'height' } },
         mins: { gap: 48 },
@@ -86,6 +96,27 @@ export const CH1_DESKTOP_STYLE_REGISTRY = {
         mins: { top: 80 },
         maxes: { top: 132 },
     },
+
+    /* ── Card 0 (program card, sticky) — Figma 106:3102 ── */
+    card0Padding: {
+        values: {
+            paddingInlineStart: { px: 60, axis: 'width' },
+            paddingInlineEnd: { px: 80, axis: 'width' },
+            paddingTop: { px: 40, axis: 'height' },
+            paddingBottom: { px: 40, axis: 'height' },
+        },
+        mins: { paddingInlineStart: 32, paddingInlineEnd: 40, paddingTop: 24, paddingBottom: 24 },
+    },
+    card0MinH: {
+        values: { minHeight: { px: 600, axis: 'height' } },
+        mins: { minHeight: 360 },
+    },
+    card0Gap: {
+        values: { gap: { px: 14, axis: 'height' } },
+        mins: { gap: 8 },
+    },
+
+    /* ── Card 1 (details card) — Figma 106:3146 ── */
     cardPadding: {
         values: {
             paddingInlineStart: { px: 60, axis: 'width' },
@@ -103,6 +134,8 @@ export const CH1_DESKTOP_STYLE_REGISTRY = {
         values: { gap: { px: 24, axis: 'height' } },
         mins: { gap: 16 },
     },
+
+    /* ── Shared card typography ── */
     cardTitleFont: {
         values: { fontSize: { px: 34, axis: 'width' } },
         mins: { fontSize: 24 },
@@ -117,6 +150,29 @@ export const CH1_DESKTOP_STYLE_REGISTRY = {
         values: { fontSize: { px: 16, axis: 'width' } },
         mins: { fontSize: 14 },
         maxes: { fontSize: 16 },
+    },
+
+    /* ── Card 1 inner section spacing — Figma 106:3168 / 106:3152 ── */
+    cardSectionGap: {
+        values: { gap: { px: 12, axis: 'height' } },
+        mins: { gap: 8 },
+    },
+    cardBodyMaxW: {
+        values: { maxWidth: { px: 712, axis: 'width' } },
+        mins: { maxWidth: 400 },
+        maxes: { maxWidth: 712 },
+    },
+
+    /* ── Arrow pill — Figma 106:3172 ── */
+    arrowPillH: {
+        values: { height: { px: 32, axis: 'height' } },
+        mins: { height: 24 },
+        maxes: { height: 32 },
+    },
+    arrowPillW: {
+        values: { width: { px: 60, axis: 'width' } },
+        mins: { width: 44 },
+        maxes: { width: 60 },
     },
 };
 

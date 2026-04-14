@@ -139,8 +139,8 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
 
             {/* דסקטופ: Figma-ratio gutters + columns (1920×1080 ref) */}
             <div
-                className="relative mx-auto mb-20 hidden w-full md:block"
-                style={{ maxWidth: d.shellMaxWidth, ...d.layoutGutter, ...d.layoutPt }}
+                className="relative mx-auto hidden w-full md:block"
+                style={{ maxWidth: d.shellMaxWidth, ...d.layoutGutter, ...d.layoutPt, ...d.layoutMb }}
             >
                 <div
                     className="flex flex-col items-stretch lg:flex-row lg:items-start lg:justify-center"
@@ -149,7 +149,7 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
                 >
                     <div className="flex w-full min-w-0 flex-col lg:w-auto lg:shrink-0" style={d.leftColMaxW}>
                         <Chapter1DesktopCollage hero={data.hero} ch1={d} />
-                        <div className="min-w-0 w-full">
+                        <div className="min-w-0 w-full" style={d.collageMb}>
                             <Chapter1DesktopStackedCards data={data} stickyReleaseRef={stickyReleaseRef} ch1={d} />
                         </div>
                     </div>
