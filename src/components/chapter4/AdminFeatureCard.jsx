@@ -5,13 +5,9 @@ import { featureDesktopIconSrc } from './chapter4Assets';
 /** Figma 120:6180 — desktop feature card icons */
 function Chapter4DesktopCardIcon({ id, iconBoxStyle }) {
     const src = featureDesktopIconSrc(id);
-    // Award (02) has inset 8.33% 20.83% per Figma; others use 12.5%
-    const inset = id === '02' ? '8.33% 20.83%' : '12.5%';
     return (
-        <div className={`relative overflow-clip ${iconBoxStyle ? '' : 'size-8'}`} style={iconBoxStyle}>
-            <div className="absolute size-full" style={{ inset }}>
-                <img alt="" className="absolute block max-w-none size-full" src={src} />
-            </div>
+        <div className={`flex items-center justify-center ${iconBoxStyle ? '' : 'size-8'}`} style={iconBoxStyle}>
+            <img alt="" className="block size-full object-contain" src={src} />
         </div>
     );
 }
@@ -27,7 +23,7 @@ const AdminFeatureCard = ({ id, title, desc, variant, onClick, ch4DesktopStyles 
                 type="button"
                 dir="rtl"
                 onClick={onClick}
-                className="group relative z-0 flex w-full shrink-0 cursor-pointer flex-col items-end justify-between overflow-hidden rounded-[16px] border border-transparent bg-white text-right transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFB84C]"
+                className="group relative z-0 flex w-full shrink-0 cursor-pointer flex-col items-start justify-between overflow-hidden rounded-[16px] border border-transparent bg-white text-right transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFB84C]"
                 style={{ ...s?.adminFeatureCard, boxShadow: '0 4px 16px rgba(0,0,0,0.04)' }}
                 onMouseEnter={e => {
                     e.currentTarget.style.background = '#FFF8EB';
@@ -58,11 +54,11 @@ const AdminFeatureCard = ({ id, title, desc, variant, onClick, ch4DesktopStyles 
                     <span dir="ltr">{id}</span>
                 </p>
                 {/* Icon + text block — Figma I120:6184;120:6813 */}
-                <div className="flex w-full shrink-0 flex-col items-end" style={s?.adminFeatureInnerGap}>
+                <div className="flex w-full shrink-0 flex-col items-start" style={s?.adminFeatureInnerGap}>
                     <div className="transition-transform duration-300 group-hover:scale-110">
                         <Chapter4DesktopCardIcon id={id} iconBoxStyle={s?.adminFeatureIcon} />
                     </div>
-                    <div className="flex w-full flex-col items-end text-start text-[#001d26]" style={s?.adminFeatureTextStackGap}>
+                    <div className="flex w-full flex-col items-start text-start text-[#001d26]" style={s?.adminFeatureTextStackGap}>
                         <p className="font-bold leading-[1.334] transition-colors duration-300 group-hover:text-[#FFD028]" style={s?.adminFeatureTitleFont}>
                             {title}
                         </p>
