@@ -77,19 +77,15 @@ function DesktopFaqRow({
 
 const PROCEDURES_INTRO = 'בקבצים המצורפים תוכלו למצוא את נהלי העבודה בתוכנית רעים: נהלים אלה נועדו לסייע בעבודה השוטפת, להעניק סדר וביטחון לפעילות בתוך ומחוץ למרכז הקהילתי.';
 
-// Figma 120:5457 — Section 1 hero decorations (fetched from node 120:5455)
-const imgOutlineLayers = 'https://www.figma.com/api/mcp/asset/6135bd39-729b-4f47-8e89-70eda8cce1de';
-
-// Figma 120:6878 — "Section Meeting" (מערכת נתיב) assets (fetched from node 120:5455)
-const imgNativHero = 'https://www.figma.com/api/mcp/asset/6a107b03-a3cd-4c93-9904-62bc169198ab';
-const imgNativDiagonalArrow = 'https://www.figma.com/api/mcp/asset/eb0673e3-bbdf-49cd-afe8-f07d4711f1d3';
-const imgNativArrowLeftOutline = 'https://www.figma.com/api/mcp/asset/c44811c9-b846-40fc-85f2-abb3e958267e';
-
-// Figma 125:4050 — "נהלים וטפסים" (fetched from node 120:5455)
-const imgCh4FilesCard = 'https://www.figma.com/api/mcp/asset/777f2431-c6cb-444e-b48f-ce2f216608db';
-const imgCh4FilesGlow = 'https://www.figma.com/api/mcp/asset/a5ad7a16-0f7f-4331-9da3-c808a4c8b51f';
-const imgCh4FilesArrowLeft = 'https://www.figma.com/api/mcp/asset/592b33d6-6205-4fbc-9a51-904f82464a39';
-const imgCh4FilesArrowRight = 'https://www.figma.com/api/mcp/asset/20905ef2-081b-4c5c-ad03-d7906647b63a';
+// Local assets (downloaded from Figma MCP; see chapter4Assets.js for full map)
+const imgOutlineLayers = CH4_ASSETS.outlineLayers;
+const imgNativHero = CH4_ASSETS.nativHero;
+const imgNativDiagonalArrow = CH4_ASSETS.nativDiagonalArrow;
+const imgNativArrowLeftOutline = CH4_ASSETS.nativArrowLeftOutline;
+const imgCh4FilesCard = CH4_ASSETS.filesCardDefault;
+const imgCh4FilesGlow = CH4_ASSETS.filesGlow;
+const imgCh4FilesArrowLeft = CH4_ASSETS.filesArrowLeft;
+const imgCh4FilesArrowRight = CH4_ASSETS.filesArrowRight;
 
 const FILES_SECTION_INTRO_P1 = 'בקבצים המצורפים ניתן למצוא את נהלי העבודה בתכנית רעים:';
 const FILES_SECTION_INTRO_P2 =
@@ -242,7 +238,7 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
     return (
         <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-12 font-['Rubik'] md:pt-3">
             {onPrev && (
-                <div className="px-4 pt-6 pb-4 md:pt-1 md:pb-2">
+                <div className="px-4 pt-6 pb-4 md:hidden">
                     <PrevChapterButton title="לפרק הקודם" subtitle="פרק 03 - תפקיד הרכזת" onClick={onPrev} />
                 </div>
             )}

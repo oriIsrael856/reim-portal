@@ -12,19 +12,20 @@ const SplitStickyLayout = ({
     stickyContent,
     children,
     className = "max-w-[1700px] mx-auto px-6 md:px-12 gap-12",
+    classNameStyle,
     sidebarClassName = "w-full md:w-5/12",
+    sidebarStyle,
     contentClassName = "w-full md:w-7/12 flex flex-col gap-24 pb-20",
+    contentStyle,
 }) => {
     return (
-        <div className={`w-full flex flex-col md:flex-row items-start relative ${className}`}>
+        <div className={`w-full flex flex-col md:flex-row items-start relative ${className}`} style={classNameStyle}>
 
-            {/* Sticky sidebar — first DOM child = physical right in RTL */}
-            <div className={`sticky top-32 z-40 text-right h-fit pb-10 ${sidebarClassName}`}>
+            <div className={`sticky top-32 z-40 text-right h-fit pb-10 ${sidebarClassName}`} style={sidebarStyle}>
                 {stickyContent}
             </div>
 
-            {/* Scrollable content column */}
-            <div className={contentClassName}>
+            <div className={contentClassName} style={contentStyle}>
                 {children}
             </div>
 

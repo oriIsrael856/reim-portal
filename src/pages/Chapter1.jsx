@@ -8,6 +8,7 @@ import Chapter1DesktopStackedCards from '../components/chapter1/Chapter1DesktopS
 import PrevChapterButton from '../components/common/PrevChapterButton';
 import Footer from '../components/layout/Footer';
 import { useChapter1StickyTitle } from '../hooks/useChapter1StickyTitle';
+import { useChapter1DesktopStyles } from '../hooks/useChapter1DesktopStyles';
 
 // רכיב עזר: עיגול ירוק עם חץ
 const GreenArrowCircle = ({ direction = 'left' }) => (
@@ -21,10 +22,9 @@ const GreenArrowCircle = ({ direction = 'left' }) => (
     </div>
 );
 
-const CH1_TITLE_STICKY_TOP = 132;
-
 const Chapter1 = ({ data, content, onNext, onPrev }) => {
     const { ref: stickyReleaseRef, isSticky: heroTitleSticky } = useChapter1StickyTitle(data?.cards?.[1]?.sec1Title);
+    const d = useChapter1DesktopStyles();
 
     if (!data) return null;
 
@@ -137,25 +137,29 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
                 </div>
             )}
 
-            {/* דסקטופ: 200px gutters (Figma @ 1920px), right col sticky */}
-            <div className="relative mx-auto mb-20 hidden w-full max-w-[1800px] px-[min(200px,10.42vw)] pt-16 md:block">
+            {/* דסקטופ: Figma-ratio gutters + columns (1920×1080 ref) */}
+            <div
+                className="relative mx-auto mb-20 hidden w-full md:block"
+                style={{ maxWidth: d.shellMaxWidth, ...d.layoutGutter, ...d.layoutPt }}
+            >
                 <div
-                    className="flex flex-col items-stretch gap-12 lg:flex-row lg:items-start lg:justify-center lg:gap-6 xl:gap-8"
+                    className="flex flex-col items-stretch lg:flex-row lg:items-start lg:justify-center"
+                    style={d.colGap}
                     dir="ltr"
                 >
-                    <div className="flex w-full min-w-0 flex-col gap-24 md:gap-32 lg:w-auto lg:max-w-[min(680px,52vw)] lg:shrink-0 lg:gap-40 xl:gap-48">
-                        <Chapter1DesktopCollage hero={data.hero} />
+                    <div className="flex w-full min-w-0 flex-col lg:w-auto lg:shrink-0" style={d.leftColMaxW}>
+                        <Chapter1DesktopCollage hero={data.hero} ch1={d} />
                         <div className="min-w-0 w-full">
-                            <Chapter1DesktopStackedCards data={data} stickyReleaseRef={stickyReleaseRef} />
+                            <Chapter1DesktopStackedCards data={data} stickyReleaseRef={stickyReleaseRef} ch1={d} />
                         </div>
                     </div>
                     <div
-                        className={`w-full min-w-0 shrink-0 lg:max-w-[min(520px,34.2vw)] lg:z-40 lg:flex lg:flex-col lg:items-end lg:pt-1 lg:self-start ${
+                        className={`w-full min-w-0 shrink-0 lg:z-40 lg:flex lg:flex-col lg:items-end lg:pt-1 lg:self-start ${
                             heroTitleSticky ? 'lg:sticky' : 'lg:relative'
                         }`}
-                        style={{ top: heroTitleSticky ? CH1_TITLE_STICKY_TOP : undefined }}
+                        style={{ ...d.rightColMaxW, ...(heroTitleSticky ? d.stickyTop : {}) }}
                     >
-                        <Chapter1DesktopTitleColumn data={data} />
+                        <Chapter1DesktopTitleColumn data={data} ch1={d} />
                     </div>
                 </div>
             </div>

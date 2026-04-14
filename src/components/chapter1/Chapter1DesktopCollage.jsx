@@ -6,7 +6,7 @@ import ChapterDigitSvg from '../common/ChapterDigitSvg';
  * Figma — פריים ראשון דסקטופ פרק 1: קולאז' משמאל, "01" + גלים אדומים, מטוס/כוכב דקורטיביים.
  * מיכל חיצוני קובע רוחב (עמודה שמאלית ב־ltr).
  */
-export default function Chapter1DesktopCollage({ hero }) {
+export default function Chapter1DesktopCollage({ hero, ch1 }) {
     if (!hero?.image1) return null;
     const W = 852;
     const H = 616;
@@ -47,7 +47,7 @@ export default function Chapter1DesktopCollage({ hero }) {
                             left: 0,
                             bottom: `${(24 / H) * 100}%`,
                             transform: 'translateY(10%)',
-                            width: 'clamp(90px,8vw,140px)',
+                            ...ch1?.collageDigitW,
                         }}
                     />
                 </div>

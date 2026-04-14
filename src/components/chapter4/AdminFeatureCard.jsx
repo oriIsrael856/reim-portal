@@ -1,13 +1,10 @@
 import React from 'react';
 import { ArrowUpLeft } from 'lucide-react';
+import { featureDesktopIconSrc } from './chapter4Assets';
 
-// Figma 120:6184–6186 — feature card icons (fetched from node 120:5455)
-const imgFeatureNativ      = 'https://www.figma.com/api/mcp/asset/24dedca8-fc82-485e-b431-4e11293a2c30';
-const imgFeatureCommittees = 'https://www.figma.com/api/mcp/asset/d43cec28-1ba6-4b39-8648-cd2777c56637';
-const imgFeatureFiles      = 'https://www.figma.com/api/mcp/asset/722b1f14-4b8f-4c3b-8960-e3a0107eea00';
 /** Figma 120:6180 — desktop feature card icons */
 function Chapter4DesktopCardIcon({ id, iconBoxStyle }) {
-    const src = id === '01' ? imgFeatureNativ : id === '02' ? imgFeatureCommittees : imgFeatureFiles;
+    const src = featureDesktopIconSrc(id);
     // Award (02) has inset 8.33% 20.83% per Figma; others use 12.5%
     const inset = id === '02' ? '8.33% 20.83%' : '12.5%';
     return (

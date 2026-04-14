@@ -115,11 +115,19 @@
   --home-desktop-hero-plane-w: clamp(44px, 3.44vw, 88px);
   --home-desktop-hero-star-w: clamp(31px, 2.45vw, 63px);
 
-  /* --- Home desktop NextChapter --- */
+  /* --- Home desktop NextChapter (Figma 1920 ref) --- */
   --home-desktop-nextch-container-h: clamp(133px, 10.42vw, 267px);
   --home-desktop-nextch-btn-h: clamp(107px, 8.33vw, 213px);
   --home-desktop-nextch-btn-w: clamp(433px, 33.85vw, 867px);
   --home-desktop-nextch-icon-box: clamp(53px, 4.17vw, 107px);
+  --home-desktop-nextch-title-fs: clamp(24px, 2.5vw, 48px);
+  --home-desktop-nextch-sub-fs: clamp(14px, 1.04vw, 20px);
+  --home-desktop-nextch-px: clamp(24px, 2.5vw, 48px);
+  --home-desktop-nextch-radius: clamp(20px, 2.08vw, 40px);
+  --home-desktop-nextch-icon-radius: clamp(12px, 1.25vw, 24px);
+  --home-desktop-nextch-icon-size: clamp(20px, 1.67vw, 32px);
+  --home-desktop-nextch-mt: clamp(48px, 6.67vw, 128px);
+  --home-desktop-nextch-mb: clamp(32px, 5vw, 96px);
 
   /* --- Home desktop Footer --- */
   --home-desktop-footer-max-w: clamp(1067px, 83.33vw, 2133px);

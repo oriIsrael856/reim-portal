@@ -34,8 +34,14 @@ const NextChapterButton = ({ title, subtitle, onClick }) => {
             </div>
 
             <div
-                className="hidden md:flex w-full px-6 mt-32 mb-24 relative z-30 justify-center items-center"
-                style={{ height: 'var(--home-desktop-nextch-container-h)' }}
+                className="hidden md:flex w-full relative z-30 justify-center items-center"
+                style={{
+                    height: 'var(--home-desktop-nextch-container-h)',
+                    marginTop: 'var(--home-desktop-nextch-mt)',
+                    marginBottom: 'var(--home-desktop-nextch-mb)',
+                    paddingInlineStart: 'var(--home-desktop-nextch-px)',
+                    paddingInlineEnd: 'var(--home-desktop-nextch-px)',
+                }}
             >
                 <button
                     type="button"
@@ -45,7 +51,6 @@ const NextChapterButton = ({ title, subtitle, onClick }) => {
                         disabled:opacity-50 disabled:cursor-not-allowed
                         group relative
                         flex items-center justify-between
-                        rounded-[40px] px-6 md:px-12
                         cursor-pointer overflow-hidden
                         w-[var(--home-desktop-nextch-btn-w)] hover:w-[95%]
                         bg-[#816AFE]/70 hover:bg-[#816AFE]
@@ -56,16 +61,41 @@ const NextChapterButton = ({ title, subtitle, onClick }) => {
                     "
                     style={{
                         height: 'var(--home-desktop-nextch-btn-h)',
+                        borderRadius: 'var(--home-desktop-nextch-radius)',
+                        paddingInlineStart: 'var(--home-desktop-nextch-px)',
+                        paddingInlineEnd: 'var(--home-desktop-nextch-px)',
                     }}
                 >
                     {/* Icon — shrink-0 so it stays fixed width */}
-                    <div className="bg-white rounded-[24px] flex items-center justify-center shadow-md transition-all duration-500 ease-out flex-shrink-0 z-20" style={{ height: 'var(--home-desktop-nextch-icon-box)', width: 'var(--home-desktop-nextch-icon-box)' }}>
-                        <ArrowLeft size={32} color="#816AFE" strokeWidth={3} className="group-hover:-translate-x-1 transition-transform duration-500" />
+                    <div
+                        className="bg-white flex items-center justify-center shadow-md transition-all duration-500 ease-out flex-shrink-0 z-20"
+                        style={{
+                            height: 'var(--home-desktop-nextch-icon-box)',
+                            width: 'var(--home-desktop-nextch-icon-box)',
+                            borderRadius: 'var(--home-desktop-nextch-icon-radius)',
+                        }}
+                    >
+                        <ArrowLeft
+                            style={{ width: 'var(--home-desktop-nextch-icon-size)', height: 'var(--home-desktop-nextch-icon-size)' }}
+                            color="#816AFE"
+                            strokeWidth={3}
+                            className="group-hover:-translate-x-1 transition-transform duration-500"
+                        />
                     </div>
                     {/* Text — flex-1 + text-center keeps it centered as button expands */}
                     <div className="flex flex-1 flex-col items-center justify-center text-center text-white z-10">
-                        <h2 className="text-3xl md:text-5xl font-black mb-1 leading-tight whitespace-nowrap">{title}</h2>
-                        <p className="text-lg md:text-xl font-medium opacity-90 tracking-wide whitespace-nowrap pt-1">{subtitle}</p>
+                        <h2
+                            className="font-black mb-1 leading-tight whitespace-nowrap"
+                            style={{ fontSize: 'var(--home-desktop-nextch-title-fs)' }}
+                        >
+                            {title}
+                        </h2>
+                        <p
+                            className="font-medium opacity-90 tracking-wide whitespace-nowrap pt-1"
+                            style={{ fontSize: 'var(--home-desktop-nextch-sub-fs)' }}
+                        >
+                            {subtitle}
+                        </p>
                     </div>
                     {/* Spacer mirrors icon width to balance centering */}
                     <div className="flex-shrink-0" style={{ width: 'var(--home-desktop-nextch-icon-box)' }} aria-hidden />

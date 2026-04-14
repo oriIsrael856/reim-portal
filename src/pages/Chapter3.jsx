@@ -10,6 +10,7 @@ import { Chapter3MobileView } from '../components/chapter3/mobile';
 import { INITIAL_DATA } from '../data';
 import '../styles/chapter3-mobile.css';
 import '../styles/chapter3-desktop.css';
+import { useChapter3DesktopStyles } from '../hooks/useChapter3DesktopStyles';
 
 /** Firestore may omit `onboarding`; merge defaults so desktop + mobile show steps (schema-safe). */
 function mergeChapter3Onboarding(fromCms) {
@@ -46,6 +47,7 @@ const RESPONSIBILITY_SCHEMES = [
 ];
 
 const Chapter3 = ({ data, content, onNext, onPrev }) => {
+    const d3 = useChapter3DesktopStyles();
     if (!data) return <div className="text-center p-20 text-text-purple font-bold">טוען נתוני פרק 3...</div>;
 
     const mergedData = { ...data, onboarding: mergeChapter3Onboarding(data.onboarding) };
@@ -94,7 +96,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
     return (
         <div className="min-h-screen bg-white pt-24 pb-0 font-rubik">
             {onPrev && (
-                <div className="pt-6 pb-4 px-4">
+                <div className="pt-6 pb-4 px-4 md:hidden">
                     <PrevChapterButton title="לפרק הקודם" subtitle="פרק 02 - המשתתפים" onClick={onPrev} />
                 </div>
             )}
@@ -111,12 +113,15 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                     Gap between cols = 1824-200×2-852-367=205px (justify-between, no explicit gap). */}
                 <SplitStickyLayout
                     stickyContent={StickyHeader}
-                    className="max-w-none px-[clamp(80px,10.965vw,200px)] justify-between"
-                    sidebarClassName="shrink-0 w-[clamp(180px,20.12vw,367px)]"
-                    contentClassName="shrink-0 w-[clamp(320px,46.71vw,852px)] flex flex-col gap-0 pb-0 pt-[5.75vw]"
+                    className="max-w-none justify-between"
+                    classNameStyle={d3.splitGutter}
+                    sidebarClassName="shrink-0"
+                    sidebarStyle={d3.sidebarW}
+                    contentClassName="shrink-0 flex flex-col gap-0 pb-0"
+                    contentStyle={{ ...d3.contentW, ...d3.contentPt }}
                 >
-                    {/* ── Sticky hero image — Figma 120:3725: 900/1824=49.34vw sticky */}
-                    <div className="sticky top-0 h-[49.34vw] w-full flex items-center justify-center z-10">
+                    {/* ── Sticky hero image — Figma 120:3725 ── */}
+                    <div className="sticky top-0 w-full flex items-center justify-center z-10" style={d3.stickyStripH}>
                         {/* Figma 120:3729 — 852×600px → aspect-ratio for fluid height */}
                         <div className="relative w-full max-w-[852px] aspect-[852/600]">
                             <div className="absolute inset-0 rounded-[24px] border-[1.5px] border-border-default shadow-[2px_2px_0_0_#001d26] overflow-hidden">
@@ -164,15 +169,12 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                         return (
                             <div
                                 key={index}
-                                className="sticky top-0 h-[49.34vw] w-full flex items-center px-[2.19vw]"
-                                style={{ zIndex: 10 + index + 1 }}
+                                className="sticky top-0 w-full flex items-center"
+                                style={{ ...d3.respCardOuterH, ...d3.respCardOuterPx, zIndex: 10 + index + 1 }}
                             >
-                                {/* Inner card — proportional: h-28.51vw pe-4.39vw ps-3.29vw py-2.19vw gap-1.32vw
-                                    Card 0 (6 items): no justify-center, smaller font to fit content.
-                                    Cards 1-2 (2-3 items): justify-center so short content sits mid-card. */}
                                 <div
-                                    className={`w-full h-[28.51vw] rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0_0_#001d26] flex flex-col gap-[1.32vw] pe-[4.39vw] ps-[3.29vw] py-[2.19vw] overflow-hidden${index > 0 ? ' justify-center' : ''}`}
-                                    style={{ backgroundImage: `linear-gradient(90deg, ${scheme.cardBg}, ${scheme.cardBg}), linear-gradient(90deg, #fff, #fff)` }}
+                                    className={`w-full rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0_0_#001d26] flex flex-col overflow-hidden${index > 0 ? ' justify-center' : ''}`}
+                                    style={{ ...d3.respCardInnerH, ...d3.respCardPad, backgroundImage: `linear-gradient(90deg, ${scheme.cardBg}, ${scheme.cardBg}), linear-gradient(90deg, #fff, #fff)` }}
                                 >
                                     {/* Card title — Figma H4: 34px Bold, leading 1.1, tracking 0.25px */}
                                     <p

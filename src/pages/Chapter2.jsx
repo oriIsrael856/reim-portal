@@ -6,24 +6,24 @@ import { Chapter2MobileView } from '../components/chapter2/mobile';
 import Chapter2DesktopAudienceSection from '../components/chapter2/Chapter2DesktopAudienceSection';
 import Chapter2DesktopHeroSection from '../components/chapter2/Chapter2DesktopHeroSection';
 import { scrollToChapter2GroupSection } from '../utils/scrollToChapter2GroupSection';
+import { useChapter2DesktopStyles } from '../hooks/useChapter2DesktopStyles';
 
 /* ==============================================================================
    1. רכיבי עזר (ללא שינוי)
    ============================================================================== */
-const GoalCard = ({ text }) => (
+const GoalCard = ({ text, ch2 }) => (
     <div
-        className="relative flex flex-1 items-center justify-center rounded-[8px] border-[1.5px] border-[#001d26] pt-[40px] pb-[16px] px-4 text-center shadow-[2px_2px_0_0_#001d26]"
-        style={{ backgroundImage: 'linear-gradient(180deg, rgba(188,224,121,0.08) 0%, #ffffff 100%)' }}
+        className="relative flex flex-1 items-center justify-center rounded-[8px] border-[1.5px] border-[#001d26] px-4 text-center shadow-[2px_2px_0_0_#001d26]"
+        style={{ ...ch2?.goalsCardPad, backgroundImage: 'linear-gradient(180deg, rgba(188,224,121,0.08) 0%, #ffffff 100%)' }}
     >
-        {/* Icon badge — top-[-25.5px] matches Figma 114:2594 */}
         <div className="absolute top-[-25.5px] left-1/2 -translate-x-1/2 flex items-center justify-center rounded-[8px] border-[1.5px] border-[#001d26] bg-[#bce079] p-[12px]">
             <Check size={24} strokeWidth={2} className="text-[#001d26]" />
         </div>
-        <p className="text-[#001d26] font-normal text-[20px] leading-[1.28] tracking-[0.15px]">{text}</p>
+        <p className="text-[#001d26] font-normal leading-[1.28] tracking-[0.15px]" style={ch2?.goalsCardFont}>{text}</p>
     </div>
 );
 
-const AccordionItem = ({ title, content, isOpen, onClick }) => (
+const AccordionItem = ({ title, content, isOpen, onClick, ch2 }) => (
     <div
         className={`rounded-[8px] overflow-hidden transition-all duration-300 bg-white ${
             isOpen
@@ -33,25 +33,27 @@ const AccordionItem = ({ title, content, isOpen, onClick }) => (
     >
         <button
             onClick={onClick}
-            className={`w-full flex items-center justify-between gap-4 px-4 text-start outline-none cursor-pointer transition-all duration-300 ${isOpen ? 'pt-4 pb-3' : 'h-[80px] px-4'}`}
+            className={`w-full flex items-center justify-between gap-4 px-4 text-start outline-none cursor-pointer transition-all duration-300 ${isOpen ? 'pt-4 pb-3' : 'px-4'}`}
+            style={isOpen ? undefined : ch2?.groupDetailsAccRowH}
         >
             <div className={`shrink-0 size-[24px] rounded-[100px] flex items-center justify-center transition-colors duration-300 ${isOpen ? 'bg-[rgba(101,70,222,0.08)] text-[#6546de]' : 'bg-[rgba(0,29,38,0.06)] text-[#001d26]'}`}>
                 {isOpen ? <Minus size={14} /> : <Plus size={14} />}
             </div>
-            <span className={`flex-1 text-[24px] leading-[1.334] ${isOpen ? 'font-bold text-[#6546de]' : 'font-normal text-[#001d26]'}`}>{title}</span>
+            <span className={`flex-1 leading-[1.334] ${isOpen ? 'font-bold text-[#6546de]' : 'font-normal text-[#001d26]'}`} style={ch2?.groupDetailsAccTitleFont}>{title}</span>
         </button>
         <div
-            className={`pe-[200px] ps-4 text-[#001d26]/90 leading-relaxed overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[800px] opacity-100 pb-[40px]' : 'max-h-0 opacity-0'}`}
+            className={`ps-4 text-[#001d26]/90 leading-relaxed overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}
+            style={isOpen ? { ...ch2?.groupDetailsAccPanelPe, ...ch2?.groupDetailsAccPanelPb } : undefined}
         >
             <AccordionRichContent>{content}</AccordionRichContent>
         </div>
     </div>
 );
 
-const Accordion = ({ items }) => {
+const Accordion = ({ items, ch2 }) => {
     const [openIndex, setOpenIndex] = useState(0); 
     const handleItemClick = (index) => setOpenIndex(openIndex === index ? null : index);
-    return <div className="w-full max-w-4xl mx-auto flex flex-col gap-2">{items.map((item, index) => <AccordionItem key={index} title={item.title} content={item.content} isOpen={openIndex === index} onClick={() => handleItemClick(index)} />)}</div>;
+    return <div className="w-full max-w-4xl mx-auto flex flex-col gap-2">{items.map((item, index) => <AccordionItem key={index} title={item.title} content={item.content} isOpen={openIndex === index} onClick={() => handleItemClick(index)} ch2={ch2} />)}</div>;
 };
 
 /* ==============================================================================
@@ -142,16 +144,16 @@ const HeroSection = ({ data, chapterNumber }) => (
     </div>
 );
 
-const UnifiedOrangeSection = ({ data }) => (
+const UnifiedOrangeSection = ({ data, ch2 }) => (
     <div className="relative z-20 w-full">
         <Chapter2DesktopAudienceSection data={data} />
         {/* Section 3 — Goals — Figma 114:2503 */}
         <section
-            className="w-full px-[clamp(1rem,10.965vw,200px)] pt-[80px] pb-[200px]"
-            style={{ backgroundImage: 'linear-gradient(90deg, rgba(255,178,59,0.08) 0%, rgba(255,178,59,0.08) 100%), linear-gradient(90deg, #fff 0%, #fff 100%)' }}
+            className="w-full"
+            style={{ ...ch2?.sectionGutter, ...ch2?.goalsSectionPad, backgroundImage: 'linear-gradient(90deg, rgba(255,178,59,0.08) 0%, rgba(255,178,59,0.08) 100%), linear-gradient(90deg, #fff 0%, #fff 100%)' }}
         >
             {/* Title — centered, max-w matches Figma 114:2572 */}
-            <div className="relative mx-auto mb-[52px] flex w-full max-w-[1000px] flex-col items-center justify-center">
+            <div className="relative mx-auto flex w-full max-w-[1000px] flex-col items-center justify-center" style={ch2?.goalsTitleMb}>
                 {/* Green underline bar — Figma top:29px from container top */}
                 <span
                     className="pointer-events-none absolute top-[29px] left-1/2 -translate-x-1/2 z-0 h-[13px] w-[112px] bg-[#bce079]"
@@ -167,16 +169,16 @@ const UnifiedOrangeSection = ({ data }) => (
                 </h2>
             </div>
             {/* Cards — two rows of 3, gap-x:24 gap-y:40 — Figma 114:2639 */}
-            <div className="flex flex-col gap-[40px]">
-                <div className="flex gap-[24px]">
+            <div className="flex flex-col" style={ch2?.goalsRowGap}>
+                <div className="flex" style={ch2?.goalsCardGap}>
                     {data.goals.slice(0, 3).map((item, index) => (
-                        <GoalCard key={index} text={item} />
+                        <GoalCard key={index} text={item} ch2={ch2} />
                     ))}
                 </div>
                 {data.goals.length > 3 && (
-                    <div className="flex gap-[24px]">
+                    <div className="flex" style={ch2?.goalsCardGap}>
                         {data.goals.slice(3).map((item, index) => (
-                            <GoalCard key={index + 3} text={item} />
+                            <GoalCard key={index + 3} text={item} ch2={ch2} />
                         ))}
                     </div>
                 )}
@@ -185,41 +187,40 @@ const UnifiedOrangeSection = ({ data }) => (
     </div>
 );
 
-const GroupsIntroSection = ({ data }) => {
+const GroupsIntroSection = ({ data, ch2 }) => {
     if (!data) return null;
     return (
-        /* Section 4 — Groups intro — Figma 115:2641 */
         <section
-            className="w-full rounded-t-[24px] bg-white px-[clamp(1rem,10.965vw,200px)] py-[120px]"
+            className="w-full rounded-t-[24px] bg-white"
+            style={{ ...ch2?.sectionGutter, ...ch2?.groupsIntroPad }}
             dir="rtl"
         >
-            <div className="mx-auto flex max-w-[1424px] items-center gap-[80px]">
+            <div className="mx-auto flex items-center" style={{ maxWidth: ch2?.groupsIntroMaxWidth, ...ch2?.groupsIntroGap }}>
 
                 {/* Text column — DOM-first = physical right in RTL */}
-                {/* items-start = physical right in RTL flex-col (CLAUDE.md RTL rule) */}
-                <div className="flex min-w-0 flex-1 flex-col gap-[52px] items-start text-start">
+                <div className="flex min-w-0 flex-1 flex-col items-start text-start" style={ch2?.groupsIntroTextGap}>
 
                     {/* Heading block — subheading + title, no gap (Figma 115:2681) */}
                     <div className="flex w-full flex-col items-start">
-                        <p className="text-[16px] font-normal leading-[1.32] tracking-[0.15px] text-[#001d26]">
+                        <p className="font-normal leading-[1.32] tracking-[0.15px] text-[#001d26]" style={ch2?.groupsIntroSubFont}>
                             {data.subheading}
                         </p>
-                        <h2 className="text-[34px] font-bold leading-[1.1] tracking-[0.25px] text-[#001d26]">
+                        <h2 className="font-bold leading-[1.1] tracking-[0.25px] text-[#001d26]" style={ch2?.groupsIntroTitleFont}>
                             {data.title}
                         </h2>
                     </div>
 
-                    {/* Body block — gap-[24px] (Figma 115:2685) */}
-                    <div className="flex w-full flex-col items-start gap-[24px]">
+                    {/* Body block — Figma 115:2685 */}
+                    <div className="flex w-full flex-col items-start" style={ch2?.groupsIntroBodyGap}>
                         {data.intro && (
-                            <p className="w-full text-[20px] font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]">
+                            <p className="w-full font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]" style={ch2?.groupsIntroBodyFont}>
                                 {data.intro}
                             </p>
                         )}
 
-                        {/* Population items — shrink to content, click → scroll to group section */}
+                        {/* Population items — Figma 115:2743 */}
                         {data.populations && data.populations.length > 0 && (
-                            <div className="flex w-full flex-col items-start gap-[12px]">
+                            <div className="flex w-full flex-col items-start" style={ch2?.groupsIntroPopListGap}>
                                 {data.populations.map((pop, index) => {
                                     const numStr = String(pop.id).replace(/\D/g, '').padStart(2, '0');
                                     const handleClick = () => scrollToChapter2GroupSection(numStr);
@@ -228,14 +229,15 @@ const GroupsIntroSection = ({ data }) => {
                                             key={index}
                                             type="button"
                                             onClick={handleClick}
-                                            className="group flex shrink-0 cursor-pointer items-center gap-[24px] rounded-[8px] border border-[rgba(101,70,222,0.08)] bg-[rgba(101,70,222,0.08)] ps-[12px] pe-[8px] py-[8px] transition-colors duration-200 hover:border-[rgba(101,70,222,0.16)] hover:bg-[rgba(101,70,222,0.16)]"
+                                            className="group flex shrink-0 cursor-pointer items-center rounded-[8px] border border-[rgba(101,70,222,0.08)] bg-[rgba(101,70,222,0.08)] transition-colors duration-200 hover:border-[rgba(101,70,222,0.16)] hover:bg-[rgba(101,70,222,0.16)]"
+                                            style={{ ...ch2?.groupsIntroPopBtnGap, ...ch2?.groupsIntroPopBtnPad }}
                                         >
                                             {/* Number badge — DOM-first = physical right in RTL */}
-                                            <div className="flex h-[32px] w-[40px] shrink-0 items-center justify-center rounded-[200px] bg-[rgba(101,70,222,0.16)]">
-                                                <span className="font-[family-name:var(--font-salsa)] text-[16px] leading-[1.28] text-[#001d26]" dir="ltr">{pop.id}</span>
+                                            <div className="flex shrink-0 items-center justify-center rounded-[200px] bg-[rgba(101,70,222,0.16)]" style={ch2?.groupsIntroPopBadge}>
+                                                <span className="font-[family-name:var(--font-salsa)] leading-[1.28] text-[#001d26]" style={ch2?.groupsIntroPopBadgeFont} dir="ltr">{pop.id}</span>
                                             </div>
                                             {/* Text */}
-                                            <p className="shrink-0 whitespace-nowrap text-[20px] font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]">{pop.text}</p>
+                                            <p className="shrink-0 whitespace-nowrap font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]" style={ch2?.groupsIntroPopTextFont}>{pop.text}</p>
                                             {/* Arrow — DOM-last = physical left in RTL */}
                                             <ArrowLeft size={16} className="shrink-0 text-[#6546de]" />
                                         </button>
@@ -245,7 +247,7 @@ const GroupsIntroSection = ({ data }) => {
                         )}
 
                         {data.description && (
-                            <p className="w-full text-[20px] font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]">
+                            <p className="w-full font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]" style={ch2?.groupsIntroBodyFont}>
                                 {data.description}
                             </p>
                         )}
@@ -253,12 +255,12 @@ const GroupsIntroSection = ({ data }) => {
                 </div>
 
                 {/* Image — DOM-second = physical left in RTL (Figma 115:2712) */}
-                <div className="shrink-0 -rotate-2" style={{ width: 'clamp(320px, 35.09vw, 640px)' }}>
+                <div className="shrink-0 -rotate-2" style={ch2?.groupsIntroImgW}>
                     <img
                         src={data.image}
                         alt="קבוצת רעים"
                         className="block w-full rounded-[24px] border-[1.5px] border-[#001d26] object-cover shadow-[2px_2px_0_0_#001d26]"
-                        style={{ height: 'clamp(200px, 21.93vw, 400px)' }}
+                        style={ch2?.groupsIntroImgH}
                     />
                 </div>
             </div>
@@ -266,40 +268,38 @@ const GroupsIntroSection = ({ data }) => {
     );
 };
 
-const GroupDetailsSection = ({ data }) => {
+const GroupDetailsSection = ({ data, ch2 }) => {
     if (!data) return null;
     return (
-        /* Section 5 — Group accordion — Figma node 202:10011 */
         <section
-            className="w-full px-[clamp(1rem,10.965vw,200px)] pt-[60px] pb-[60px]"
-            style={{ background: 'var(--ch2-section5-bg)' }}
+            className="w-full"
+            style={{ ...ch2?.sectionGutter, ...ch2?.groupDetailsPad, background: 'var(--ch2-section5-bg)' }}
         >
-            <div className="mx-auto max-w-[1424px]" dir="rtl">
-                <div className="text-start mb-[24px]">
+            <div className="mx-auto" style={{ maxWidth: ch2?.groupDetailsMaxWidth }} dir="rtl">
+                <div className="text-start" style={ch2?.groupDetailsTitleMb}>
                     {data.id && (
-                        <p className="text-[16px] font-normal leading-[1.32] text-[#001d26] mb-1">{data.id}</p>
+                        <p className="font-normal leading-[1.32] text-[#001d26] mb-1" style={ch2?.groupDetailsSubFont}>{data.id}</p>
                     )}
-                    <h2 className="text-[34px] font-bold leading-[1.1] tracking-[0.25px] text-[#001d26]">{data.title}</h2>
+                    <h2 className="font-bold leading-[1.1] tracking-[0.25px] text-[#001d26]" style={ch2?.groupDetailsTitleFont}>{data.title}</h2>
                 </div>
-                <Accordion items={data.items} />
+                <Accordion items={data.items} ch2={ch2} />
             </div>
         </section>
     );
 };
 
 /* Section 6 — Why Together — Figma 120:2475 */
-const WhyTogetherSection = ({ data }) => {
+const WhyTogetherSection = ({ data, ch2 }) => {
     if (!data) return null;
 
     const cardBg = 'linear-gradient(90deg, rgba(255,178,59,0.04) 0%, rgba(255,178,59,0.04) 100%), linear-gradient(90deg, #fff 0%, #fff 100%)';
     const rowBg  = 'linear-gradient(90deg, rgba(188,224,121,0.08) 0%, rgba(188,224,121,0.08) 100%), linear-gradient(90deg, #fff 0%, #fff 100%)';
 
     return (
-        <section className="w-full px-[clamp(1rem,10.965vw,200px)] pt-[80px]" dir="rtl">
+        <section className="w-full" style={{ ...ch2?.sectionGutter, ...ch2?.whySectionPt }} dir="rtl">
             <div className="flex items-start justify-between">
 
-                {/* Sticky title — DOM-first = physical right in RTL (Figma 120:2513) */}
-                <div className="sticky top-0 flex h-[800px] flex-1 flex-col items-start justify-center pe-[80px]">
+                <div className="sticky top-0 flex flex-1 flex-col items-start justify-center" style={{ ...ch2?.whyStickyH, ...ch2?.whyStickyPe }}>
                     <div className="relative">
                         {/* Green bar — end-[-5px] = physical right in RTL, top:61.91px (Figma 120:2546) */}
                         <span
@@ -317,16 +317,14 @@ const WhyTogetherSection = ({ data }) => {
 
                 {/* Cards column — DOM-second = physical left in RTL (Figma 120:2478) */}
                 <div
-                    className="flex w-[852px] shrink-0 flex-col"
-                    style={{ paddingBottom: 'var(--ch2-why-stack-padding-bottom)' }}
+                    className="flex shrink-0 flex-col"
+                    style={{ ...ch2?.whyCardColW, paddingBottom: 'var(--ch2-why-stack-padding-bottom)' }}
                 >
                     {data.cards && data.cards.map((card, index) => (
-                        /* Outer: h-[800px] sticky top-0 — provides scroll runway per card */
-                        <div key={index} className="sticky top-0 flex h-[800px] w-full items-center justify-center">
-                            {/* Inner: h-[500px] sticky top-0 — the visible card (Figma 120:2491) */}
+                        <div key={index} className="sticky top-0 flex w-full items-center justify-center" style={ch2?.whyStickyH}>
                             <div
-                                className="sticky top-0 flex h-[500px] w-full shrink-0 flex-col items-center justify-center gap-[24px] overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] px-[80px] py-[40px] shadow-[2px_2px_0_0_#001d26]"
-                                style={{ backgroundImage: cardBg }}
+                                className="sticky top-0 flex w-full shrink-0 flex-col items-center justify-center overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0_0_#001d26]"
+                                style={{ ...ch2?.whyCardInnerH, ...ch2?.whyCardPad, backgroundImage: cardBg }}
                             >
                                 {card.type === 'list' ? (
                                     /* Card 1 — check-list */
@@ -388,6 +386,7 @@ const WhyTogetherSection = ({ data }) => {
    הרכיב הראשי
    ============================================================================== */
 const Chapter2 = ({ data, onNext, content }) => {
+    const d = useChapter2DesktopStyles();
     if (!data) return <div className="text-center p-20 text-[#816AFE]">טוען פרק 2...</div>;
     const groupsIntro = data.groupsIntro;
 
@@ -398,19 +397,19 @@ const Chapter2 = ({ data, onNext, content }) => {
             {/* דסקטופ: הירו + בלוק תפוז + מטרות */}
             <HeroSection data={data.hero} chapterNumber={data.chapterNumber} />
             {/* Section 2: overlaps hero bottom by 24px — Figma y:956 in Section 1 height:980 */}
-            {data.contentBox && <div className="relative z-10 hidden md:block" style={{ marginTop: 'var(--ch2-section-overlap-y)' }}><UnifiedOrangeSection data={data.contentBox} /></div>}
-            {groupsIntro && <div className="hidden md:block"><GroupsIntroSection data={data.groupsIntro} /></div>}
+            {data.contentBox && <div className="relative z-10 hidden md:block" style={{ marginTop: 'var(--ch2-section-overlap-y)' }}><UnifiedOrangeSection data={data.contentBox} ch2={d} /></div>}
+            {groupsIntro && <div className="hidden md:block"><GroupsIntroSection data={data.groupsIntro} ch2={d} /></div>}
             {data.group01 && (
                 <div data-ch2-group="01" className="hidden md:block">
-                    <GroupDetailsSection data={data.group01} />
+                    <GroupDetailsSection data={data.group01} ch2={d} />
                 </div>
             )}
             {data.group02 && (
                 <div data-ch2-group="02" className="hidden md:block">
-                    <GroupDetailsSection data={data.group02} />
+                    <GroupDetailsSection data={data.group02} ch2={d} />
                 </div>
             )}
-            {data.whyTogether && <div className="hidden md:block"><WhyTogetherSection data={data.whyTogether} /></div>}
+            {data.whyTogether && <div className="hidden md:block"><WhyTogetherSection data={data.whyTogether} ch2={d} /></div>}
 
             <div className="my-20 hidden px-4 md:block">
                 <NextChapterButton
