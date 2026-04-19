@@ -54,8 +54,8 @@ export const CH3_DESKTOP_STYLE_REGISTRY = {
         mins: { paddingInlineStart: 16, paddingInlineEnd: 16 },
     },
     respCardInnerH: {
-        values: { height: { px: 550, axis: 'width' } },
-        mins: { height: 320 },
+        values: { minHeight: { px: 550, axis: 'width' } },
+        mins: { minHeight: 320 },
     },
     respCardPad: {
         values: {
