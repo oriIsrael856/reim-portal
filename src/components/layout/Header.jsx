@@ -29,7 +29,7 @@ const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl, hideMobileChrom
             )}
 
             {/* דסקטופ: פיל צף – גובה ב־vh, ריווח ב־vw */}
-            <header className="hidden md:flex fixed z-[500] justify-center pointer-events-none print:hidden" style={{ top: '12px', left: '12px', right: 0, paddingLeft: '1vw', paddingRight: '1vw' }}>
+            <header className="hidden md:flex fixed z-[500] justify-center pointer-events-none print:hidden" style={{ top: '12px', left: '12px', right: '92px', paddingLeft: '1vw', paddingRight: '1vw' }}>
             <div className="
                 w-full max-w-[95vw]
                 bg-white/10
