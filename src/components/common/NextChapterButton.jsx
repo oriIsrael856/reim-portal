@@ -14,21 +14,30 @@ const NextChapterButton = ({ title, subtitle, onClick }) => {
                     onClick={handleClick}
                     disabled={!onClick}
                     className="
+                        group
                         w-full h-[200px] px-6
                         disabled:opacity-50 disabled:cursor-not-allowed
                         flex flex-col items-center justify-center gap-6
                         bg-[rgba(101,70,222,0.6)]
+                        hover:bg-[#6546de] active:bg-[#6546de]
+                        hover:shadow-[0_12px_32px_rgba(101,70,222,0.45)]
+                        active:scale-[0.98]
                         rounded-[24px]
                         text-white text-center
-                        transition-all duration-200
+                        transition-all duration-200 ease-out
                     "
                 >
                     <div className="w-full flex flex-col items-center justify-center gap-1">
                         <h2 className="w-full text-2xl font-bold leading-[1.334] text-center">{title}</h2>
                         <p className="w-full text-base font-normal leading-[1.32] tracking-[0.009375em] text-center">{subtitle}</p>
                     </div>
-                    <span className="inline-flex items-center justify-center rounded-[12px] bg-white p-3">
-                        <ArrowLeft size={24} color="#6546DE" strokeWidth={2.5} />
+                    <span className="inline-flex items-center justify-center rounded-[12px] bg-white p-3 transition-transform duration-200 group-hover:scale-110 group-active:scale-110">
+                        <ArrowLeft
+                            size={24}
+                            color="#6546DE"
+                            strokeWidth={2.5}
+                            className="transition-transform duration-200 group-hover:-translate-x-1 group-active:-translate-x-1"
+                        />
                     </span>
                 </button>
             </div>

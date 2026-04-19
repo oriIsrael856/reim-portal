@@ -33,8 +33,9 @@ export default function Page3ResponsibilityCard({ card }) {
             <ul className="ch3-respCard__list">
                 {card.items.map((item, idx) => (
                     <li key={idx} className="ch3-respCard__row">
-                        <span className="ch3-respCard__text">{item}</span>
+                        {/* Figma 253:8660: icon first in DOM = physical right in RTL row */}
                         <img src={iconSrc} alt="" className="ch3-respCard__rowIcon" width={32} height={24} decoding="async" />
+                        <span className="ch3-respCard__text">{item}</span>
                     </li>
                 ))}
             </ul>

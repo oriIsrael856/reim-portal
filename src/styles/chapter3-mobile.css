@@ -32,6 +32,7 @@
   --ch3-card-surface-purple: rgba(101, 70, 222, 0.04);
   --ch3-card-surface-learning: rgba(255, 178, 59, 0.04);
   --ch3-card-surface-admin: rgba(196, 33, 59, 0.04);
+  /* Figma 253:8656/8685/8698 — fixed 520px card height. */
   --ch3-resp-card-min-h: 520px;
   /* Figma 253:8655 — runway between sticky slots (scroll inside .ch3-respStickyRegion) */
   --ch3-resp-cards-vertical-gap: 200px;
@@ -99,7 +100,8 @@
   --ch3-s1-stack-gap: 8px;
   --ch3-hero-inner-gap: 24px;
   --ch3-hero-text-max: 303px;
-  --ch3-page-content-gap-y: 200px;
+  /* Figma 253:8649 — hero image (700px) and cards container are stacked back-to-back, no gap. */
+  --ch3-page-content-gap-y: 0px;
   --ch3-page-content-pad-x: 40px;
   --ch3-page-content-min-h: 700px;
   /* Figma 253:8650 Image (Page Content hero photo block) */
@@ -701,16 +703,6 @@
   box-sizing: border-box;
 }
 
-.ch3-onboard__accentLine {
-  position: absolute;
-  width: var(--ch3-header-accent-w);
-  height: var(--ch3-header-accent-h);
-  background: var(--ch3-green-tag);
-  border-radius: 2px;
-  left: 41px;
-  top: 42px;
-}
-
 .ch3-onboard__kicker {
   font-family: var(--ch3-font-rubik);
   font-size: var(--ch3-type-body1-size);
@@ -718,7 +710,7 @@
   line-height: var(--ch3-type-body1-lh);
   letter-spacing: var(--ch3-type-body1-ls);
   color: var(--ch3-ink);
-  text-align: end;
+  text-align: center;
   align-self: stretch;
   margin: 0;
 }
@@ -732,6 +724,26 @@
   text-align: center;
   margin: 0;
   align-self: stretch;
+}
+
+/* Figma 253:8822 — accent suffix ("מתחילה") in brand purple, with green underline (Figma 253:8820). */
+.ch3-onboard__titleAccent {
+  position: relative;
+  display: inline-block;
+  color: var(--ch3-purple-brand);
+  z-index: 0;
+}
+
+.ch3-onboard__titleAccent::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0.1em;
+  height: var(--ch3-header-accent-h);
+  background: var(--ch3-green-tag);
+  border-radius: 2px;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .ch3-onboard__intro {
@@ -1133,11 +1145,13 @@
   border: 1px solid var(--ch3-accordion-border-collapsed);
 }
 
+/* Figma 254:9802 inner panel — `pl-60` in LTR Figma = inline-end 60px in RTL.
+   Padding sits on the physical left; tiny inline-start (right edge) breathing room. */
 .ch3-acc__panel {
   padding-block-start: 0;
   padding-block-end: var(--ch3-acc-panel-pad-bottom);
-  padding-inline-start: var(--ch3-acc-panel-pad-start);
-  padding-inline-end: 0;
+  padding-inline-start: 16px;
+  padding-inline-end: var(--ch3-acc-panel-pad-start);
   font-family: var(--ch3-font-rubik);
   font-size: var(--ch3-type-body2-size);
   font-weight: var(--ch3-type-body2-weight);

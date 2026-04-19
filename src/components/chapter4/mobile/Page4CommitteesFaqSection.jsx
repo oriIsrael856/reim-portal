@@ -3,7 +3,7 @@ import Page4FaqAccordion from './Page4FaqAccordion';
 
 /** Figma 254:12236 */
 export default function Page4CommitteesFaqSection({ committees, qa }) {
-    const steps = [...(committees?.steps ?? [])].reverse();
+    const steps = committees?.steps ?? [];
 
     if (!committees && !(qa?.length)) return null;
 

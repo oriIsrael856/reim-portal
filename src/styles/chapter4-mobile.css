@@ -398,10 +398,12 @@
   display: block;
 }
 
+/* Hover corner arrow: fully inside the top-left corner of the card
+   (physical left in RTL = inset-inline-end). */
 .ch4-featureCard__corner {
   position: absolute;
-  inset-inline-start: -6px;
-  top: 27px;
+  inset-inline-end: 12px;
+  top: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -702,7 +704,7 @@
   border: var(--ch4-card-stroke-width) solid var(--ch4-card-stroke);
   box-shadow: var(--ch4-label-shadow);
   padding: 32px 16px 24px;
-  background: linear-gradient(180deg, var(--ch4-step-card-fill-top) 0%, #ffffff 100%);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -971,8 +973,8 @@
 }
 
 .ch4-files__spacer {
-  flex: 0 0 180px;
-  width: 180px;
+  flex: 0 0 24px;
+  width: 24px;
   height: 1px;
 }
 

@@ -47,16 +47,12 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
     const carouselForFigma = [...carousel].reverse();
 
     /* Safari/iOS: horizontal overflow-x scroll often fails inside dir=rtl; strip uses dir=ltr for the scrollport only. */
+    /* Snap scroll to the rightmost edge once on mount so the first card is visible. */
+    /* No ResizeObserver: it would re-snap on every layout shift and fight the user's swipes. */
     useLayoutEffect(() => {
         const el = scrollRef.current;
         if (!el) return;
-        const alignEnd = () => {
-            el.scrollLeft = Math.max(0, el.scrollWidth - el.clientWidth);
-        };
-        alignEnd();
-        const ro = new ResizeObserver(alignEnd);
-        ro.observe(el);
-        return () => ro.disconnect();
+        el.scrollLeft = Math.max(0, el.scrollWidth - el.clientWidth);
     }, [carouselForFigma.length]);
 
     const handleCardNav = (card) => {
@@ -335,11 +331,11 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
                         <div
                             ref={scrollRef}
                             dir="ltr"
-                            className="relative z-10 flex w-[335px] max-w-full min-w-0 flex-row flex-nowrap justify-start gap-3 overflow-x-auto overscroll-x-contain pb-4 pt-1 no-scrollbar [touch-action:pan-x]"
+                            className="relative z-10 flex w-[335px] max-w-full min-w-0 flex-row flex-nowrap justify-start gap-3 overflow-x-auto overscroll-x-contain pb-4 pt-1 no-scrollbar"
                             style={{
                                 height: '360px',
                                 WebkitOverflowScrolling: 'touch',
-                                transform: 'translateZ(0)',
+                                touchAction: 'pan-x',
                             }}
                         >
                             <div className="w-[180px] shrink-0" aria-hidden />
@@ -359,11 +355,11 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
                                         >
                                             {card.id}
                                         </span>
-                                        <div className="flex flex-col items-end gap-4">
+                                        <div className="flex flex-col items-start gap-4">
                                             <div className="flex h-8 w-8 items-center justify-center text-[#001D26]">
                                                 <Icon className="size-8" strokeWidth={2} aria-hidden />
                                             </div>
-                                            <div className="flex w-full flex-col gap-1 text-end">
+                                            <div className="flex w-full flex-col gap-1 text-start">
                                                 <h4
                                                     className="whitespace-pre-line font-rubik font-semibold text-[#001D26]"
                                                     style={{
@@ -386,9 +382,6 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
                                                 </p>
                                             </div>
                                         </div>
-                                        <span className="absolute bottom-6 start-6 flex size-9 items-center justify-center rounded-[32px] bg-[#6546DE] p-1.5">
-                                            <ArrowUpLeft className="size-4 text-white" strokeWidth={2.5} aria-hidden />
-                                        </span>
                                     </button>
                                 );
                             })}
