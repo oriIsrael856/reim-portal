@@ -106,10 +106,8 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
             {/* Desktop */}
             <div className="hidden md:block">
 
-                {/* ── Section 1 — Figma 120:3721 ──
-                    Frame: 1824×3705px. justify-between, px-200px gutters, item-spacing=0.
-                    Content: 852px (46.71vw). Sidebar: 367px (20.12vw).
-                    Gap between cols = 1824-200×2-852-367=205px (justify-between, no explicit gap). */}
+                {/* ── Section 1 — Figma 120:3721 ── */}
+                <div id="ch3-definition" />
                 <SplitStickyLayout
                     stickyContent={StickyHeader}
                     className="max-w-none justify-between"
@@ -229,7 +227,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
 
                 {/* ── Section 3: Onboarding steps — Figma 120:4317 ── */}
                 {mergedData.onboarding?.steps?.length > 0 && (
-                    <div className="ch3-desktop-onboard relative mt-32 w-full overflow-x-clip overflow-y-visible border-t border-[#001d26]/10">
+                    <div id="ch3-onboarding" className="ch3-desktop-onboard relative mt-32 w-full overflow-x-clip overflow-y-visible border-t border-[#001d26]/10">
                         <div className="ch3-desktop-onboard__blob pointer-events-none absolute" aria-hidden />
                         <div className="ch3-desktop-onboard__inner relative z-[1] mx-auto max-w-[1600px] px-[clamp(80px,10.42vw,200px)] py-16 md:py-24">
                             <div className="ch3-desktop-onboard__intro mx-auto mb-12 max-w-[1000px] md:mb-16">
@@ -287,7 +285,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                     Image col: 400px (21.93vw), self-stretch + min-h so images aren't clipped.
                     Accordion col: 904px (49.56vw), gap-40px between heading and items. ── */}
                 {data.sessionStructure && (
-                    <div className="w-full bg-white py-[clamp(60px,6.58vw,120px)] px-[clamp(80px,10.965vw,200px)] border-t border-[#001d26]/10 overflow-x-hidden">
+                    <div id="ch3-session" className="w-full bg-white py-[clamp(60px,6.58vw,120px)] px-[clamp(80px,10.965vw,200px)] border-t border-[#001d26]/10 overflow-x-hidden">
 
                         {/* Figma items-center: accordion centered vertically relative to image column height */}
                         <div className="flex flex-row flex-nowrap items-center gap-[clamp(40px,6.58vw,120px)]">

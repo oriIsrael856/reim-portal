@@ -326,7 +326,7 @@ export const INITIAL_DATA = {
             support: "רכזות חדשות עוברות הדרכה מסודרת עם אחראי נתיב, המהווה כתובת לכל שאלה בהמשך.",
             ctaUrl: ""
         },
-        qaTitle: "שאלות ותשובות",
+        qaTitle: "שאלות ותשובות לרכזות",
         filesTitle: "נהלים וטפסים",
         committees: {
             title: "הוועדות",
@@ -340,13 +340,13 @@ export const INITIAL_DATA = {
             footer: "בסיום התהליך, המימון מאושר, והמשתתף/ת מצטרף/ת רשמית."
         },
         qa: [
-            { title: "איך נדע שהוועדה אושרה?", content: "כאן יופיע הסבר על תהליך האישור..." },
-            { title: "האם כל הסכום מגיע למתנ\"ס?", content: "הסבר על חלוקת התקציב..." },
-            { title: "מה לגבי גבייה?", content: "נוהל גבייה מהמשתתפים..." },
-            { title: "מהו תוקף הוועדה?", content: "הסבר על תוקף האישורים..." },
-            { title: "מה קורה אם משתתף לא יכול לשלם?", content: "נהלי הנחות ומלגות..." },
-            { title: "איך לנהל גבייה?", content: "כלים לניהול רישומי כספים..." },
-            { title: "חשוב לדעת", content: "דגשים נוספים למנהלה תקינה..." }
+            { title: "איך נדע שהוועדה אושרה?", content: "משרד הרווחה מבצע העברה תקציבית חודשית. מנהלנית רעים שולחת רשימה שמית לרכזות." },
+            { title: "האם כל הסכום מגיע למתנ\"ס?", content: "לא. המתנ\"ס מקבל 195 ₪ + השתתפות עצמית של 60 ₪. השאר נשאר לתפעול התכנית." },
+            { title: "מה לגבי גבייה?", content: "המשתתף/ת משלם/ת 60 ₪ ל-90 יום. אם התקציב לא מתקבל, יש לשלם 255 ₪ רטרואקטיבית." },
+            { title: "מהו תוקף הוועדה?", content: "לשנה שלמה. מה-1 בספטמבר עד 31 באוגוסט. יש לחדש מדי שנה." },
+            { title: "מה קורה אם משתתף לא יכול לשלם?", content: "ניתן להגיש בקשה להנחה דרך המרכז הקהילתי." },
+            { title: "איך לנהל גבייה?", content: "פתיחת קבוצות במערכת \"דיאלוג\" לפי סכומים. עדיף גבייה בהוראת קבע." },
+            { title: "חשוב לדעת", content: "משתתף שאינו רשום במרכז הקהילתי - אינו מבוטח!" }
         ],
         files: [
             { name: "שם קובץ", desc: "תיאור הקובץ" },
@@ -397,6 +397,7 @@ export const INITIAL_DATA = {
                 title: "הרכזיה",
                 desc: "מאגר פעילויות ומשחקים שפותח לאורך השנים על ידי רכזות ורכזים. מעל 600 פעילויות, ממוין לפי נושאים, מותאם במיוחד לאופי הייחודי של קבוצות רעים.",
                 btnText: "הצגת מאגר",
+                btnUrl: "https://www.reimsys.org.il/index.php",
                 image: "/assets/chapter5/chapter5-library-bg.png"
             },
             newsletter: {
@@ -416,10 +417,32 @@ export const INITIAL_DATA = {
         labels: { phone: "טלפון:", fax: "פקס:", email: "מייל:" },
         contact: { phone: "0732870187", fax: "0732870387", email: "reim@matnasim.org.il" },
         links: [
-            { title: "כותרת", items: ["לינק 1", "לינק 1"] },
-            { title: "כותרת", items: ["לינק 1", "לינק 1"] },
-            { title: "כותרת", items: ["לינק 1", "לינק 1"] },
-            { title: "התוכנית", items: ["לינק 1", "לינק 1"] }
+            { title: "התוכנית", page: "chapter1", items: [
+                { text: "מהי התוכנית?", anchor: "ch1-program" },
+                { text: "מאיפה באנו?", anchor: "ch1-history" },
+                { text: "לאן אנחנו הולכות?", anchor: "ch1-future" }
+            ]},
+            { title: "משתתפים ומשתתפות", page: "chapter2", items: [
+                { text: "למי מיועדת התוכנית?", anchor: "ch2-audience" },
+                { text: "מטרות התוכנית", anchor: "ch2-goals" },
+                { text: "המגוון האוטיסטי", anchor: "ch2-group01" },
+                { text: "לקויות למידה", anchor: "ch2-group02" }
+            ]},
+            { title: "תפקיד הרכז/ת", page: "chapter3", items: [
+                { text: "הגדרת התפקיד", anchor: "ch3-definition" },
+                { text: "צעדים ראשונים בתפקיד", anchor: "ch3-onboarding" },
+                { text: "איך נראה מפגש?", anchor: "ch3-session" }
+            ]},
+            { title: "עבודה מנהלית", page: "chapter4", items: [
+                { text: "מערכת נתיב", anchor: "ch4-nativ-section" },
+                { text: "הועדות", anchor: "ch4-committees-section" },
+                { text: "נהלים וטפסים", anchor: "ch4-files-section" }
+            ]},
+            { title: "כלים שימושיים", page: "chapter5", items: [
+                { text: "שיווק וגיוס", anchor: "ch5-marketing" },
+                { text: "הרכזייה", anchor: "ch5-library" },
+                { text: "ניוזלטר", anchor: "ch5-newsletter" }
+            ]}
         ],
         bottomLinks: [
             { text: "מדיניות פרטיות", url: "#" },

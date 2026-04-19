@@ -134,9 +134,11 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                                     {data.resources?.library?.desc}
                                 </p>
                             </div>
-                            <button
-                                type="button"
-                                className="flex w-full items-center justify-between gap-3 rounded-[100px] border border-[#6546DE] bg-[#6546DE] px-6 py-2 text-white"
+                            <a
+                                href={data.resources?.library?.btnUrl ?? 'https://www.reimsys.org.il/index.php'}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex w-full items-center justify-between gap-3 rounded-[100px] border border-[#6546DE] bg-[#6546DE] px-6 py-2 text-white no-underline"
                             >
                                 <span className="text-base font-bold uppercase leading-[1.625] tracking-[0.02875em]">
                                     {data.resources?.library?.btnText ?? 'הצגת מאגר'}
@@ -144,7 +146,7 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">
                                     <ArrowLeft size={14} strokeWidth={2.5} />
                                 </span>
-                            </button>
+                            </a>
                         </div>
                     </article>
 
@@ -325,6 +327,7 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
 
                 {/* Section Meeting — Figma 125:4865 */}
                 <section
+                    id="ch5-marketing"
                     dir="rtl"
                     className="w-full bg-white rounded-tl-[24px] rounded-tr-[24px] flex items-start"
                     style={d.marketingSection}
@@ -424,6 +427,7 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
 
                         {/* Library card — Figma 125:5339: w=700px, image bg + white panel flush-left */}
                         <div
+                            id="ch5-library"
                             className="relative flex flex-col items-start justify-end overflow-hidden rounded-[24px] border-[1.5px] border-[#001D26] shrink-0"
                             style={{
                                 width: d.resourcesLibraryCard.width,
@@ -460,21 +464,24 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                                         {data.resources?.library?.desc}
                                     </p>
                                 </div>
-                                <button
-                                    type="button"
-                                    className="flex w-full items-center justify-center rounded-full bg-[#6546DE] px-3 text-white"
+                                <a
+                                    href={data.resources?.library?.btnUrl ?? 'https://www.reimsys.org.il/index.php'}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex w-full items-center justify-center rounded-full bg-[#6546DE] px-3 text-white no-underline"
                                     style={d.resourcesLibraryBtn}
                                 >
                                     <ArrowLeft size={18} strokeWidth={2.5} />
                                     <span className="text-base font-bold uppercase tracking-[0.46px]">
                                         {data.resources?.library?.btnText ?? 'הצגת מאגר'}
                                     </span>
-                                </button>
+                                </a>
                             </div>
                         </div>
 
                         {/* Newsletter — same fixed height as library card (row cross-size); avoids % height gaps */}
                         <div
+                            id="ch5-newsletter"
                             className="flex min-h-0 shrink-0 flex-col"
                             style={{
                                 width: d.resourcesNewsletterCol.width,
@@ -496,23 +503,15 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
                             />
                         </div>
 
-                        {/* Side image card — Figma 125:5350: flex-1, image with exact crop offsets */}
-                        <div className="relative flex-1 min-w-0 rounded-[24px] border-[1.5px] border-[#001D26]">
-                            <div className="absolute inset-0 overflow-hidden rounded-[24px] pointer-events-none">
-                                {data.resources?.sideImage && (
-                                    <img
-                                        src={data.resources.sideImage}
-                                        alt=""
-                                        className="absolute max-w-none"
-                                        style={{
-                                            width: '225.7%',
-                                            height: '102.06%',
-                                            left: '-62.85%',
-                                            top: '-1.15%',
-                                        }}
-                                    />
-                                )}
-                            </div>
+                        {/* Side image card — Figma 125:5350: flex-1, fills remaining row space */}
+                        <div className="relative flex-1 min-w-0 overflow-hidden rounded-[24px] border-[1.5px] border-[#001D26]">
+                            {data.resources?.sideImage && (
+                                <img
+                                    src={data.resources.sideImage}
+                                    alt=""
+                                    className="pointer-events-none absolute inset-0 size-full object-cover"
+                                />
+                            )}
                         </div>
                     </div>
                 </section>

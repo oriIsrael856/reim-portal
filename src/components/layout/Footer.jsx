@@ -9,7 +9,36 @@ const SOCIAL_LINKS = [
     { Icon: Facebook, href: 'https://www.facebook.com/reimprogram/', label: 'פייסבוק – תוכנית רעים' }
 ];
 
-const Footer = ({ data, variant, suppressMobileCard }) => {
+const FOOTER_NAV_LINKS = [
+    { title: 'התוכנית', page: 'chapter1', items: [
+        { text: 'מהי התוכנית?', anchor: 'ch1-program' },
+        { text: 'מאיפה באנו?', anchor: 'ch1-history' },
+        { text: 'לאן אנחנו הולכות?', anchor: 'ch1-future' },
+    ]},
+    { title: 'משתתפים ומשתתפות', page: 'chapter2', items: [
+        { text: 'למי מיועדת התוכנית?', anchor: 'ch2-audience' },
+        { text: 'מטרות התוכנית', anchor: 'ch2-goals' },
+        { text: 'המגוון האוטיסטי', anchor: 'ch2-group01' },
+        { text: 'לקויות למידה', anchor: 'ch2-group02' },
+    ]},
+    { title: 'תפקיד הרכז/ת', page: 'chapter3', items: [
+        { text: 'הגדרת התפקיד', anchor: 'ch3-definition' },
+        { text: 'צעדים ראשונים בתפקיד', anchor: 'ch3-onboarding' },
+        { text: 'איך נראה מפגש?', anchor: 'ch3-session' },
+    ]},
+    { title: 'עבודה מנהלית', page: 'chapter4', items: [
+        { text: 'מערכת נתיב', anchor: 'ch4-nativ-section' },
+        { text: 'הועדות', anchor: 'ch4-committees-section' },
+        { text: 'נהלים וטפסים', anchor: 'ch4-files-section' },
+    ]},
+    { title: 'כלים שימושיים', page: 'chapter5', items: [
+        { text: 'שיווק וגיוס', anchor: 'ch5-marketing' },
+        { text: 'הרכזייה', anchor: 'ch5-library' },
+        { text: 'ניוזלטר', anchor: 'ch5-newsletter' },
+    ]},
+];
+
+const Footer = ({ data, variant, suppressMobileCard, navigateTo }) => {
     const chapter2Mobile = variant === 'chapter2Mobile';
     const showDefaultMobileCard = chapter2Mobile || !suppressMobileCard;
     const contact = data?.contact ?? {};
@@ -92,15 +121,27 @@ const Footer = ({ data, variant, suppressMobileCard }) => {
                             <p>מייל: <a href={`mailto:${contact.email}`} className="underline hover:text-[#5E3BEE]">{contact.email}</a></p>
                         </div>
                     </div>
-                    <div className="flex flex-wrap gap-16 md:gap-24 text-right">
-                        {[1, 2, 3, 4].map((col) => (
-                            <div key={col} className="flex flex-col gap-3">
-                                <h4 className="font-bold text-[#2D2D44] text-base">כותרת</h4>
+                    <div className="flex flex-wrap gap-8 md:gap-12 text-right me-8">
+                        {FOOTER_NAV_LINKS.map((col, i) => (
+                            <div key={i} className="flex flex-col gap-3">
+                                <h4
+                                    className="font-bold text-[#2D2D44] text-base cursor-pointer hover:text-[#5E3BEE] transition-colors"
+                                    onClick={() => navigateTo?.(col.page)}
+                                >
+                                    {col.title}
+                                </h4>
                                 <ul className="space-y-2 text-sm text-gray-500">
-                                    <li><a href="#" className="hover:text-[#5E3BEE]">לינק 1</a></li>
-                                    <li><a href="#" className="hover:text-[#5E3BEE]">לינק 1</a></li>
-                                    <li><a href="#" className="hover:text-[#5E3BEE]">לינק 1</a></li>
-                                    <li><a href="#" className="hover:text-[#5E3BEE]">לינק 1</a></li>
+                                    {col.items.map((item, j) => (
+                                        <li key={j}>
+                                            <button
+                                                type="button"
+                                                className="text-start hover:text-[#5E3BEE] transition-colors"
+                                                onClick={() => navigateTo?.(col.page, item.anchor)}
+                                            >
+                                                {item.text}
+                                            </button>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         ))}

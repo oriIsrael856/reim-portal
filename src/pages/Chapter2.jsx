@@ -149,6 +149,7 @@ const UnifiedOrangeSection = ({ data, ch2 }) => (
         <Chapter2DesktopAudienceSection data={data} />
         {/* Section 3 — Goals — Figma 114:2503 */}
         <section
+            id="ch2-goals"
             className="w-full"
             style={{ ...ch2?.sectionGutter, ...ch2?.goalsSectionPad, backgroundImage: 'linear-gradient(90deg, rgba(255,178,59,0.08) 0%, rgba(255,178,59,0.08) 100%), linear-gradient(90deg, #fff 0%, #fff 100%)' }}
         >
@@ -400,12 +401,12 @@ const Chapter2 = ({ data, onNext, content }) => {
             {data.contentBox && <div className="relative z-10 hidden md:block" style={{ marginTop: 'var(--ch2-section-overlap-y)' }}><UnifiedOrangeSection data={data.contentBox} ch2={d} /></div>}
             {groupsIntro && <div className="hidden md:block"><GroupsIntroSection data={data.groupsIntro} ch2={d} /></div>}
             {data.group01 && (
-                <div data-ch2-group="01" className="hidden md:block">
+                <div id="ch2-group01" data-ch2-group="01" className="hidden md:block">
                     <GroupDetailsSection data={data.group01} ch2={d} />
                 </div>
             )}
             {data.group02 && (
-                <div data-ch2-group="02" className="hidden md:block">
+                <div id="ch2-group02" data-ch2-group="02" className="hidden md:block">
                     <GroupDetailsSection data={data.group02} ch2={d} />
                 </div>
             )}

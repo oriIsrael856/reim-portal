@@ -30,6 +30,7 @@ export default function Chapter1DesktopStackedCards({ data, stickyReleaseRef, ch
             {/* Card 0 — Figma 106:3102 (sticky program card) */}
             {c0 ? (
                 <div
+                    id="ch1-program"
                     className="sticky z-10"
                     style={{ top: ch1?.stickyTop?.top ?? '132px' }}
                 >
@@ -59,7 +60,7 @@ export default function Chapter1DesktopStackedCards({ data, stickyReleaseRef, ch
 
             {/* Card 1 — Figma 106:3146 */}
             {c1 ? (
-                <div className="relative z-[11] w-full shrink-0">
+                <div id="ch1-history" className="relative z-[11] w-full shrink-0">
                     <div
                         className="flex h-auto w-full shrink-0 flex-col rounded-[24px] border-[1.5px] border-[#001D26] text-right shadow-[2px_2px_0_#001D26] [background:color-mix(in_srgb,#6546DE_4%,white)]"
                         style={{ ...ch1?.cardPadding, ...ch1?.cardMinH, ...ch1?.cardGap }}
@@ -87,7 +88,7 @@ export default function Chapter1DesktopStackedCards({ data, stickyReleaseRef, ch
                                     {c1.sec1Text}
                                 </p>
                             </div>
-                            <div className="flex w-full flex-row items-start justify-start self-stretch" style={ch1?.cardSectionGap}>
+                            <div id="ch1-future" className="flex w-full flex-row items-start justify-start self-stretch" style={ch1?.cardSectionGap}>
                                 <Chapter1ArrowPill direction="right" ch1={ch1} />
                                 <div className="flex min-w-0 flex-1 flex-col gap-2">
                                     <h3 className="text-right font-bold leading-[1.334] text-[#46319B]" style={ch1?.cardSubtitleFont}>

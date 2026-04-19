@@ -54,6 +54,7 @@ export default function Chapter2DesktopAudienceSection({ data }) {
 
     return (
         <section
+            id="ch2-audience"
             className="relative w-full overflow-x-clip rounded-t-3xl border-t-2 border-[#ffb23b] px-4 pt-[clamp(80px,6.58vw,120px)] pb-[clamp(60px,5.48vw,100px)] md:px-[clamp(1rem,10.965vw,200px)]"
             style={{
                 backgroundImage:

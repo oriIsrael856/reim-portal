@@ -585,7 +585,7 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
                             כל מה שרצית לשאול
                         </p>
                         <p className="font-bold leading-[1.1] tracking-[0.25px]" style={d.faqSectionTitleFont}>
-                            שאלות ותשובות
+                            שאלות ותשובות לרכזות
                         </p>
                     </div>
 

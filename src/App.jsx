@@ -57,10 +57,26 @@ const App = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
 
-    const navigateTo = (page) => {
+    const navigateTo = (page, anchor) => {
         setCurrentPage(page);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
         setIsMenuOpen(false);
+        if (anchor) {
+            let attempts = 0;
+            const tryScroll = () => {
+                const el = document.getElementById(anchor);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else if (attempts < 10) {
+                    attempts++;
+                    setTimeout(tryScroll, 200);
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            };
+            requestAnimationFrame(() => setTimeout(tryScroll, 100));
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     };
 
     const handleReset = async () => {
@@ -203,7 +219,7 @@ const App = () => {
                               : 'px-0 md:pr-20'
                     }
                 >
-                    <Footer data={content.footer} suppressMobileCard={currentPage === 'home'} />
+                    <Footer data={content.footer} suppressMobileCard={currentPage === 'home'} navigateTo={navigateTo} />
                 </div>
             )}
 
