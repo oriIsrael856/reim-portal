@@ -23,44 +23,61 @@ function computeBundle(viewport) {
         });
     }
 
-    const unionImgW = Math.max(
-        16,
-        Math.round(
-            scaleFigmaPxToViewport({
-                figmaPx: MOBILE_STICKY_CHROME_UNION_SYN.width,
-                axis: 'width',
-                viewport,
-            }),
+    const unionImgW = Math.min(
+        64,
+        Math.max(
+            32,
+            Math.round(
+                scaleFigmaPxToViewport({
+                    figmaPx: MOBILE_STICKY_CHROME_UNION_SYN.width,
+                    axis: 'width',
+                    viewport,
+                }),
+            ),
         ),
     );
-    const unionImgH = Math.max(
+    const unionImgH = Math.min(
+        110,
+        Math.max(
+            56,
+            Math.round(
+                scaleFigmaPxToViewport({
+                    figmaPx: MOBILE_STICKY_CHROME_UNION_SYN.height,
+                    axis: 'width',
+                    viewport,
+                }),
+            ),
+        ),
+    );
+    const glyphImgW = Math.min(
         24,
-        Math.round(
-            scaleFigmaPxToViewport({
-                figmaPx: MOBILE_STICKY_CHROME_UNION_SYN.height,
-                axis: 'height',
-                viewport,
-            }),
+        Math.max(
+            14,
+            Math.round(
+                scaleFigmaPxToViewport({
+                    figmaPx: MOBILE_STICKY_CHROME_GLYPH_SYN.size,
+                    axis: 'width',
+                    viewport,
+                }),
+            ),
         ),
     );
-    const glyphImgPx = Math.max(
-        10,
-        Math.round(
-            scaleFigmaPxToViewport({
-                figmaPx: MOBILE_STICKY_CHROME_GLYPH_SYN.size,
-                axis: 'width',
-                viewport,
-            }),
-        ),
+    const glyphImgH = Math.max(
+        8,
+        Math.round(glyphImgW * (MOBILE_STICKY_CHROME_GLYPH_SYN.aspect ?? 1)),
     );
-    const logoutIconPx = Math.max(
-        10,
-        Math.round(
-            scaleFigmaPxToViewport({
-                figmaPx: MOBILE_STICKY_CHROME_GLYPH_SYN.size,
-                axis: 'width',
-                viewport,
-            }),
+    const glyphImgPx = glyphImgW;
+    const logoutIconPx = Math.min(
+        20,
+        Math.max(
+            12,
+            Math.round(
+                scaleFigmaPxToViewport({
+                    figmaPx: MOBILE_STICKY_CHROME_GLYPH_SYN.size * 0.5,
+                    axis: 'width',
+                    viewport,
+                }),
+            ),
         ),
     );
 
@@ -76,6 +93,8 @@ function computeBundle(viewport) {
         unionImgW,
         unionImgH,
         glyphImgPx,
+        glyphImgW,
+        glyphImgH,
         logoutIconPx,
     };
 }

@@ -314,10 +314,10 @@ export const MenuOverlay = ({
                         <button
                             type="button"
                             onClick={closeMenu}
-                            className="absolute end-4 top-1/2 z-20 hidden -translate-y-1/2 rounded-full bg-white p-3 shadow-md transition hover:bg-gray-100 lg:flex"
+                            className="absolute end-3 top-3 z-20 hidden rounded-full bg-white p-2 shadow-md transition hover:bg-gray-100 lg:flex"
                             aria-label="סגור תפריט"
                         >
-                            <X size={22} className="text-[#001d26]" strokeWidth={2} />
+                            <X size={16} className="text-[#001d26]" strokeWidth={2.5} />
                         </button>
 
                         <nav

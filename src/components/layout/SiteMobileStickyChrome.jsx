@@ -73,8 +73,8 @@ export default function SiteMobileStickyChrome({
                                             src={isMenuOpen ? MOBILE_MENU_CLOSE_SVG : MOBILE_MENU_HAMBURGER_SVG}
                                             alt=""
                                             className="ch2-mobile-menu-frame__glyph-img"
-                                            width={ch.glyphImgPx}
-                                            height={ch.glyphImgPx}
+                                            width={isMenuOpen ? ch.glyphImgPx : ch.glyphImgW}
+                                            height={isMenuOpen ? ch.glyphImgPx : ch.glyphImgH}
                                             decoding="async"
                                         />
                                     </span>

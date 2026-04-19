@@ -43,27 +43,29 @@ export const MOBILE_STICKY_CHROME_SPECS = {
     },
     menuFrame: {
         values: {
-            width: { px: W(42), axis: 'width' },
-            height: { px: H(24), axis: 'height' },
-            borderRadius: { px: W(6), axis: 'width' },
+            width: { px: W(84), axis: 'width' },
+            height: { px: H(48), axis: 'height' },
+            borderRadius: { px: W(8), axis: 'width' },
         },
-        mins: { width: 36, height: 20, borderRadius: 4 },
-        maxes: { width: 84, height: 48, borderRadius: 12 },
+        mins: { width: 56, height: 32, borderRadius: 4 },
+        maxes: { width: 110, height: 64, borderRadius: 14 },
     },
     unionLayer: {
         values: {
-            height: { px: H(24), axis: 'height' },
+            height: { px: H(48), axis: 'height' },
+            bottom: { px: H(18), axis: 'height' },
         },
-        mins: { height: 20 },
-        maxes: { height: 48 },
+        mins: { height: 32, bottom: 10 },
+        maxes: { height: 64, bottom: 26 },
     },
     glyphTray: {
         values: {
-            marginBottom: { px: H(4), axis: 'height' },
-            paddingBlock: { px: H(2), axis: 'height' },
-            paddingInline: { px: W(2), axis: 'width' },
+            marginBottom: { px: H(36), axis: 'height' },
+            paddingBlock: { px: 0, axis: 'height' },
+            paddingInline: { px: 0, axis: 'width' },
         },
-        mins: { marginBottom: 2, paddingBlock: 2, paddingInline: 2 },
+        mins: { marginBottom: 20, paddingBlock: 0, paddingInline: 0 },
+        maxes: { marginBottom: 52, paddingBlock: 0, paddingInline: 0 },
     },
     title: {
         values: {
@@ -83,12 +85,18 @@ export const MOBILE_STICKY_CHROME_SPECS = {
     },
 };
 
-/** מידות תמונה Union (48×84 → 24×42) — סינתטי לרולר, מימדים בפיקסלים נספרים ב־hook */
+/**
+ * מידות תמונה Union — ה־SVG מוגדר אינטרינזית 48×84 (גבוה מרוחב) ומסובב ב־CSS ב־-90deg
+ * כך שהוא מוצג בפועל 84×48. שני המימדים נמדדים על ציר ה־width של הרולר כי כרום המובייל
+ * מעוגן לרוחב המסך.
+ */
 export const MOBILE_STICKY_CHROME_UNION_SYN = {
-    width: W(24),
-    height: H(42),
+    width: W(48),
+    height: W(84),
 };
 
+/** Hamburger glyph — Figma 191:9792, intrinsic 18×12 (aspect 3:2). */
 export const MOBILE_STICKY_CHROME_GLYPH_SYN = {
-    size: W(12),
+    size: W(20),
+    aspect: 12 / 18,
 };
