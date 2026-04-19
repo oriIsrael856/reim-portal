@@ -26,6 +26,7 @@ const HomePage = ({ data, navigateTo, content }) => {
 
             {/* Section 1 desktop — mt matches Figma hero mb-[-24px] overlap */}
             <div
+                id="home-intro-section"
                 className="relative -mt-6 mb-10 hidden w-full flex-col items-center justify-start gap-0 self-stretch overflow-visible md:flex"
                 style={{
                     background: 'rgba(101, 70, 222, 0.08)',

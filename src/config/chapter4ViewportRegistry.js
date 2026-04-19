@@ -249,16 +249,24 @@ export const CH4_COMPONENT_STYLE = {
 
 /** Remaining desktop sections — merged into CH4_DESKTOP_STYLE_REGISTRY for one resize hook */
 export const CH4_DESKTOP_STYLE_EXTRA = {
+    /** Figma 120:5457 — Section 1 wrapper: pt-60 gap-80 pb-157 (hero + cards + "04" in one frame) */
+    heroSection1: {
+        values: {
+            paddingTop: { px: 60, axis: 'height' },
+            paddingBottom: { px: 157, axis: 'height' },
+            gap: { px: 80, axis: 'height' },
+        },
+        mins: { paddingTop: 20, paddingBottom: 48, gap: 28 },
+    },
     heroHeader: {
         values: {
             paddingLeft: { px: 40, axis: 'width' },
             paddingRight: { px: 40, axis: 'width' },
-            marginBottom: { px: 48, axis: 'height' },
         },
-        mins: { paddingLeft: 24, paddingRight: 24, marginBottom: 20 },
+        mins: { paddingLeft: 24, paddingRight: 24 },
     },
     heroStackGap: {
-        values: { gap: { px: 28, axis: 'height' } },
+        values: { gap: { px: 40, axis: 'height' } },
         mins: { gap: 20 },
     },
     heroTitleRowFlex: {
@@ -306,9 +314,8 @@ export const CH4_DESKTOP_STYLE_EXTRA = {
         values: {
             paddingLeft: { px: 32, axis: 'width' },
             paddingRight: { px: 32, axis: 'width' },
-            marginBottom: { px: 48, axis: 'height' },
         },
-        mins: { paddingLeft: 20, paddingRight: 20, marginBottom: 20 },
+        mins: { paddingLeft: 20, paddingRight: 20 },
     },
     featureStripPe: {
         values: { paddingInlineEnd: { px: 160, axis: 'width' } },

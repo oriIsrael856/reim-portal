@@ -111,6 +111,7 @@ export default function HomeHeroDesktop({ data }) {
                     type="button"
                     className="pointer-events-auto rounded-full p-2 transition hover:opacity-90"
                     aria-label="גלילה למטה"
+                    onClick={() => document.getElementById('home-intro-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                 >
                     <img
                         src="/assets/home/home-hero-scroll-arrow.svg"

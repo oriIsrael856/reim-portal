@@ -253,22 +253,24 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
             {/* Desktop — full width; no zoom/max-w capping (causes half-empty screen in Chrome) */}
             <div className="hidden md:block w-full">
                 <div className="relative w-full">
-                        {/* Figma 120:5459 — Ellipse 2: 1184×1184, fill rgba(255,178,59,0.08), blur 200px */}
-                        <div
-                            className="pointer-events-none absolute z-0 rounded-full"
-                            aria-hidden
-                            style={{
-                                width: getCh4MinMaxWidthCss(1184),
-                                height: getCh4MinMaxWidthCss(1184),
-                                background: 'var(--home-desktop-hero-blur-amber, rgba(255, 178, 59, 0.08))',
-                                filter: 'blur(200px)',
-                                top: 'clamp(-16rem, -24vw, -6rem)',
-                                left: 'clamp(-14rem, -22vw, -5rem)',
-                            }}
-                        />
+                {/* Figma 120:5457 — Section 1: hero pill + title + cards + "04" as one visual frame */}
+                <section className="relative flex w-full flex-col items-center" style={d.heroSection1}>
+                    {/* Figma 120:5459 — Ellipse 2: 1184×1184, fill rgba(255,178,59,0.08), blur 200px */}
+                    <div
+                        className="pointer-events-none absolute z-0 rounded-full"
+                        aria-hidden
+                        style={{
+                            width: getCh4MinMaxWidthCss(1184),
+                            height: getCh4MinMaxWidthCss(1184),
+                            background: 'var(--home-desktop-hero-blur-amber, rgba(255, 178, 59, 0.08))',
+                            filter: 'blur(200px)',
+                            top: 'clamp(-16rem, -24vw, -6rem)',
+                            left: 'clamp(-14rem, -22vw, -5rem)',
+                        }}
+                    />
                 {/* Figma 120:5527 — desktop hero: chapter pill + badge, H2 + orange bar, twin layers icons */}
                 <header
-                    className="relative z-[1] mx-auto w-full pb-2 pt-0 mb-5 lg:mb-8 xl:mb-12 md:pt-0"
+                    className="relative z-[1] mx-auto w-full"
                     dir="rtl"
                     style={{ ...d.heroHeader, maxWidth: getCh4MinMaxWidthCss(960) }}
                 >
@@ -350,8 +352,8 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
                 </header>
 
                 {/* Figma Section 1: strip max ~1282px; Cards gap 24px; Chapter No. — 205px above “04”, 120px bbox (Chapter/Large), 55px below; row = 380px */}
-                <section
-                    className="relative z-[1] mx-auto w-full overflow-x-visible mb-5 lg:mb-8 xl:mb-12"
+                <div
+                    className="relative z-[1] mx-auto w-full overflow-x-visible"
                     style={{ ...d.featureStripSection, maxWidth: getCh4MinMaxWidthCss(1282) }}
                 >
                     {/* Chapter No. — absolute in the section's left padding zone; out of flex flow */}
@@ -414,6 +416,7 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
                             ))}
                         </div>
                     </div>
+                </div>
                 </section>
 
                 {/* Figma 120:6878 — Section Meeting (מערכת נתיב):
