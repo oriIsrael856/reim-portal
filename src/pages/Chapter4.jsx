@@ -466,9 +466,9 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
                         </div>
 
                         {/* Physical right (second LTR child) — text frame, Figma 120:6885; w-full + wrap so copy uses column width (no nowrap clip) */}
-                        <div className="flex min-w-0 w-full flex-1 flex-col items-stretch" style={d.nativFrameGap}>
+                        <div dir="rtl" className="flex min-w-0 w-full flex-1 flex-col items-stretch" style={d.nativFrameGap}>
                             {/* Heading — Figma 120:6887 */}
-                            <div className="flex w-full max-w-full flex-col items-end text-right text-[#001d26]">
+                            <div className="flex w-full max-w-full flex-col items-start text-right text-[#001d26]">
                                 <p className="max-w-full font-normal leading-[1.32] tracking-[0.15px]" style={d.nativSubtitleFont}>הנחיות לרכזת</p>
                                 <p className="max-w-full break-words font-bold leading-[1.1] tracking-[0.25px]" style={d.nativHeadingFont}>{data.nativSystem?.title}</p>
                             </div>
@@ -483,8 +483,8 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
                                 {/* Principles list — Figma 120:6978 */}
                                 <div className="flex w-full max-w-full min-w-0 flex-col" style={d.nativPrincipleListGap}>
                                     {data.nativSystem?.principles?.map((p, i) => (
-                                        <div key={i} dir="ltr" className="flex w-full max-w-full min-w-0 items-center" style={d.nativPrincipleRowGap}>
-                                            <p className="min-w-0 max-w-full flex-1 break-words text-right font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]" style={d.nativBodyFont}>{p}</p>
+                                        <div key={i} className="flex w-full max-w-full min-w-0 items-center" style={d.nativPrincipleRowGap}>
+                                            {/* DOM-first = physical right in RTL — green arrow pill */}
                                             <div
                                                 className="flex shrink-0 items-center justify-center rounded-[200px] bg-[rgba(188,224,121,0.6)]"
                                                 style={d.nativPillTrack}
@@ -493,6 +493,7 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
                                                     <img src={imgNativArrowLeftOutline} alt="" className="absolute inset-0 size-full object-contain" />
                                                 </div>
                                             </div>
+                                            <p className="min-w-0 max-w-full flex-1 break-words text-start font-normal leading-[1.28] tracking-[0.15px] text-[#001d26]" style={d.nativBodyFont}>{p}</p>
                                         </div>
                                     ))}
                                 </div>
