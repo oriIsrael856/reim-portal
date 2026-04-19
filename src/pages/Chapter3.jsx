@@ -67,22 +67,21 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
             </div>
 
             {/* Title + yellow underline bar — Figma 120:4019 */}
-            <div className="relative">
-                {/* Yellow bar — Figma 120:3760: top-103px, physical-left=85px in 367px frame.
-                    Decorative overlay uses physical left (acceptable per CLAUDE.md for deco).
-                    left=23.16% ≈ 85/367 relative to sidebar container. */}
-                <div
-                    className="absolute bg-[#ffb23b] h-[17px] w-[291px]"
-                    style={{ top: '103px', left: '23.16%' }}
-                    aria-hidden
-                />
+            <div>
                 <h1
-                    className="font-rubik font-bold text-[clamp(36px,3.29vw,60px)] leading-none tracking-[-0.5px] text-[#001d26] text-start relative"
+                    className="font-rubik font-bold text-[clamp(36px,3.29vw,60px)] leading-none tracking-[-0.5px] text-[#001d26] text-start"
                     dir="auto"
                 >
                     <span>{data.hero?.titleTop ?? 'הגדרת תפקיד:'}</span>
                     <br aria-hidden="true" />
-                    <span className="text-[#6546de]">{data.hero?.titleBottom ?? 'רכזת רעים'}</span>
+                    {/* Figma 120:3760 — yellow bar underlines "רכזת רעים"; inline-relative so it scales with font */}
+                    <span className="relative inline-block text-[#6546de]">
+                        <span
+                            className="pointer-events-none absolute bottom-[0.05em] left-0 z-0 h-[0.28em] w-full bg-[#ffb23b]"
+                            aria-hidden
+                        />
+                        <span className="relative z-[1]">{data.hero?.titleBottom ?? 'רכזת רעים'}</span>
+                    </span>
                 </h1>
             </div>
 
