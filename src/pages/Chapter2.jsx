@@ -323,7 +323,7 @@ const WhyTogetherSection = ({ data, ch2 }) => {
                     {data.cards && data.cards.map((card, index) => (
                         <div key={index} className="sticky top-0 flex w-full items-center justify-center" style={ch2?.whyStickyH}>
                             <div
-                                className="sticky top-0 flex w-full shrink-0 flex-col items-center justify-center overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0_0_#001d26]"
+                                className="sticky top-0 flex w-full shrink-0 flex-col items-center overflow-hidden rounded-[24px] border-[1.5px] border-[#001d26] shadow-[2px_2px_0_0_#001d26]"
                                 style={{ ...ch2?.whyCardInnerH, ...ch2?.whyCardPad, backgroundImage: cardBg }}
                             >
                                 {card.type === 'list' ? (
@@ -350,7 +350,7 @@ const WhyTogetherSection = ({ data, ch2 }) => {
                                                     className="relative flex w-full items-center gap-[24px] rounded-[8px] border-[1.5px] border-[#001d26] px-[40px] py-[16px] shadow-[2px_2px_0_0_#001d26]"
                                                     style={{ backgroundImage: rowBg }}
                                                 >
-                                                    <p className="flex-1 whitespace-nowrap text-[16px] font-normal leading-[1.32] tracking-[0.15px] text-[#001d26] text-start">{item}</p>
+                                                    <p className="flex-1 text-[16px] font-normal leading-[1.32] tracking-[0.15px] text-[#001d26] text-start">{item}</p>
                                                     {/* Check badge — start-[-17.5px] = physical right in RTL, exact top from Figma */}
                                                     <div
                                                         className="absolute start-[-17.5px] -translate-y-1/2 flex size-[32px] items-center justify-center rounded-[8px] border-[1.5px] border-[#001d26] bg-[#bce079] p-[12px]"
@@ -368,7 +368,7 @@ const WhyTogetherSection = ({ data, ch2 }) => {
                                         <p className="w-full shrink-0 text-[20px] font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26] text-start">
                                             {card.title}
                                         </p>
-                                        <div className="w-full overflow-y-auto text-[20px] font-normal leading-[1.28] tracking-[0.15px] text-[#001d26] text-start whitespace-pre-wrap">
+                                        <div className="w-full text-[20px] font-normal leading-[1.28] tracking-[0.15px] text-[#001d26] text-start whitespace-pre-wrap">
                                             {card.text}
                                         </div>
                                     </>
