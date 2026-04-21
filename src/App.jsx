@@ -115,7 +115,8 @@ const App = () => {
                 isMenuOpen={isMenuOpen}
                 onMenuToggle={() => setIsMenuOpen((p) => !p)}
                 screenTitle={getMobileScreenTitle(currentPage, content)}
-                onExitClick={route.prev ? () => navigateTo(route.prev) : () => navigateTo('home')}
+                onBackClick={route.prev ? () => navigateTo(route.prev) : undefined}
+                onHomeClick={() => navigateTo('home')}
                 logoUrl={content?.header?.logo}
                 onLogoClick={() => navigateTo('home')}
             >

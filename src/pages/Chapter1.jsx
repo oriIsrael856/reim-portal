@@ -5,7 +5,6 @@ import NextChapterButton from '../components/common/NextChapterButton';
 import Chapter1DesktopCollage from '../components/chapter1/Chapter1DesktopCollage';
 import Chapter1DesktopTitleColumn from '../components/chapter1/Chapter1DesktopTitleColumn';
 import Chapter1DesktopStackedCards from '../components/chapter1/Chapter1DesktopStackedCards';
-import PrevChapterButton from '../components/common/PrevChapterButton';
 import Footer from '../components/layout/Footer';
 import { useChapter1StickyTitle } from '../hooks/useChapter1StickyTitle';
 import { useChapter1DesktopStyles } from '../hooks/useChapter1DesktopStyles';
@@ -30,12 +29,6 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
 
     return (
         <div className="min-h-screen bg-[#F3F0FF] font-['Rubik'] md:bg-[#FFF9F0]">
-            {onPrev && (
-                <div className="pt-24 pb-4 md:hidden">
-                    <PrevChapterButton title="חזור לדף הבית" onClick={onPrev} />
-                </div>
-            )}
-
             {/* מובייל: כרטיס לבן — תג וכותרת בלבד */}
             <div className="mx-4 mb-12 mt-4 md:hidden">
                 <div className="relative overflow-visible rounded-[32px] border-2 border-[#2D2D44]/20 bg-white p-6 pb-8 shadow-xl">

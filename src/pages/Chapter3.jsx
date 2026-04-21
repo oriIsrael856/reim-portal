@@ -1,7 +1,6 @@
 import React from 'react';
 import { Star } from 'lucide-react';
 import NextChapterButton from '../components/common/NextChapterButton';
-import PrevChapterButton from '../components/common/PrevChapterButton';
 import SplitStickyLayout from '../components/layout/SplitStickyLayout';
 import Chapter3OnboardingStepCard from '../components/chapter3/Chapter3OnboardingStepCard';
 import { Chapter3OnboardingHeading } from '../components/chapter3/Chapter3OnboardingHeading';
@@ -94,12 +93,6 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
 
     return (
         <div className="min-h-screen bg-white pt-24 pb-0 font-rubik">
-            {onPrev && (
-                <div className="pt-6 pb-4 px-4 md:hidden">
-                    <PrevChapterButton title="לפרק הקודם" subtitle="פרק 02 - המשתתפים" onClick={onPrev} />
-                </div>
-            )}
-
             {/* Mobile */}
             <Chapter3MobileView data={mergedData} onNext={onNext} footerData={content?.footer} />
 

@@ -6,7 +6,6 @@ import Page5MarketingStepsAccordion from '../components/chapter5/Page5MarketingS
 import CheckCard from '../components/chapter5/CheckCard';
 import '../styles/chapter5-mobile.css';
 import NextChapterButton from '../components/common/NextChapterButton';
-import PrevChapterButton from '../components/common/PrevChapterButton';
 import NewsletterCard from '../components/common/NewsletterCard';
 import { useChapter5DesktopStyles } from '../hooks/useChapter5DesktopStyles';
 
@@ -20,12 +19,6 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
 
     return (
         <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-12 md:pt-0 font-['Rubik']">
-            {onPrev && (
-                <div className="pt-6 pb-4 px-4 md:hidden">
-                    <PrevChapterButton title="לפרק הקודם" subtitle="פרק 04 - עבודה מנהלית" onClick={onPrev} />
-                </div>
-            )}
-
             {/* ========== מובייל בלבד ========== */}
             <div className="md:hidden">
                 {/* 1. Hero */}

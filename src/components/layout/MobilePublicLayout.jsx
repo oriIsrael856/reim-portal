@@ -10,7 +10,8 @@ export default function MobilePublicLayout({
     isMenuOpen,
     onMenuToggle,
     screenTitle,
-    onExitClick,
+    onBackClick,
+    onHomeClick,
     logoUrl,
     onLogoClick,
 }) {
@@ -23,7 +24,8 @@ export default function MobilePublicLayout({
                 isMenuOpen={isMenuOpen}
                 onMenuClick={onMenuToggle}
                 screenTitle={screenTitle}
-                onExitClick={onExitClick}
+                onBackClick={onBackClick}
+                onHomeClick={onHomeClick}
                 logoUrl={logoUrl}
                 onLogoClick={onLogoClick}
             />

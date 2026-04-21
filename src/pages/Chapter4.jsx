@@ -10,7 +10,6 @@ import { Plus, Minus } from 'lucide-react';
 import AdminFeatureCard from '../components/chapter4/AdminFeatureCard';
 import CommitteeStepCard from '../components/chapter4/CommitteeStepCard';
 import NextChapterButton from '../components/common/NextChapterButton';
-import PrevChapterButton from '../components/common/PrevChapterButton';
 import { Chapter4MobileView } from '../components/chapter4/mobile';
 import { CH4_ASSETS } from '../components/chapter4/chapter4Assets';
 
@@ -237,12 +236,6 @@ const Chapter4 = ({ data, content, onNext, onPrev }) => {
 
     return (
         <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-12 font-['Rubik'] md:pt-3">
-            {onPrev && (
-                <div className="px-4 pt-6 pb-4 md:hidden">
-                    <PrevChapterButton title="לפרק הקודם" subtitle="פרק 03 - תפקיד הרכזת" onClick={onPrev} />
-                </div>
-            )}
-
             <Chapter4MobileView
                 data={data}
                 onNext={onNext}

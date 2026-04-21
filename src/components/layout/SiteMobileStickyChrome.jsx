@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogOut } from 'lucide-react';
+import { Home, ArrowLeft } from 'lucide-react';
 import Chapter2MobileTopBarPill from '../chapter2/mobile/Chapter2MobileTopBarPill';
 import {
     MOBILE_MENU_TAB_UNION_SVG,
@@ -13,7 +13,8 @@ export default function SiteMobileStickyChrome({
     isMenuOpen,
     onMenuClick,
     screenTitle,
-    onExitClick,
+    onBackClick,
+    onHomeClick,
     logoUrl,
     onLogoClick,
 }) {
@@ -23,24 +24,58 @@ export default function SiteMobileStickyChrome({
     return (
         <header id="reim-mobile-sticky-chrome" className="ch2-mobile-sticky-chrome lg:hidden">
             <div className="ch2-mobile-sticky-chrome__stack">
-                <div id="reim-mobile-sticky-chrome-purple" className="ch2-mobile-sticky-chrome__purple">
+                <div
+                    id="reim-mobile-sticky-chrome-purple"
+                    className="ch2-mobile-sticky-chrome__purple"
+                >
                     <div
                         className="ch2-mobile-sticky-chrome__purple-inner pt-[max(4px,env(safe-area-inset-top,0px))] pb-0"
-                        style={ch.purpleInnerStyle}
+                        style={{ ...ch.purpleInnerStyle, paddingInlineStart: 0, paddingInlineEnd: 0 }}
                     >
-                        <div className="ch2-mobile-sticky-chrome__chrome-top-row" style={ch.chromeTopRowStyle}>
-                            <span className="ch2-mobile-sticky-chrome__title" style={ch.titleStyle}>
+                        <div
+                            className="ch2-mobile-sticky-chrome__chrome-top-row"
+                            style={{
+                                ...ch.chromeTopRowStyle,
+                                paddingInlineStart: 1,
+                                paddingInlineEnd: 1,
+                                transform: 'translateY(6px)',
+                            }}
+                        >
+                            {/* Title sits in its original right corner (physical right in RTL = first DOM child).
+                                `flex: 0 0 auto` overrides the CSS `flex: 1 1 auto` so the span shrinks to content
+                                and `justify-content: space-between` pushes it to the real frame edge. */}
+                            <span
+                                className="ch2-mobile-sticky-chrome__title"
+                                style={{ ...ch.titleStyle, flex: '0 0 auto' }}
+                            >
                                 {screenTitle}
                             </span>
-                            <button
-                                type="button"
-                                className="ch2-mobile-menu-icon-btn"
-                                style={ch.logoutBtnStyle}
-                                onClick={onExitClick}
-                                aria-label="יציאה לפרק הקודם או לדף הבית"
+                            {/* Nav button group: back + home, both on physical left (end in RTL). */}
+                            <div
+                                className="ch2-mobile-sticky-chrome__nav-group"
+                                style={{ display: 'inline-flex', alignItems: 'center', gap: 6, flexShrink: 0 }}
                             >
-                                <LogOut style={iconPurple} strokeWidth={2.25} aria-hidden />
-                            </button>
+                                {onBackClick ? (
+                                    <button
+                                        type="button"
+                                        className="ch2-mobile-menu-icon-btn"
+                                        style={ch.logoutBtnStyle}
+                                        onClick={onBackClick}
+                                        aria-label="חזרה לעמוד הקודם"
+                                    >
+                                        <ArrowLeft style={iconPurple} strokeWidth={2.25} aria-hidden />
+                                    </button>
+                                ) : null}
+                                <button
+                                    type="button"
+                                    className="ch2-mobile-menu-icon-btn"
+                                    style={ch.logoutBtnStyle}
+                                    onClick={onHomeClick}
+                                    aria-label="חזרה לדף הבית"
+                                >
+                                    <Home style={iconPurple} strokeWidth={2.25} aria-hidden />
+                                </button>
+                            </div>
                         </div>
                         <div className="ch2-mobile-sticky-chrome__menu-row" style={ch.menuRowStyle}>
                             <div
