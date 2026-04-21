@@ -1,13 +1,11 @@
 import React from 'react';
-import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { ExternalLink, Facebook } from 'lucide-react';
 
-// סדר מימין לשמאל (RTL): איקס, אינסטגרם, לינקדאין, פייסבוק
 const SOCIAL_LINKS = [
-    { Icon: Twitter, href: '#', label: 'איקס (טוויטר)' },
-    { Icon: Instagram, href: '#', label: 'אינסטגרם' },
-    { Icon: Linkedin, href: '#', label: 'לינקדאין' },
     { Icon: Facebook, href: 'https://www.facebook.com/reimprogram/', label: 'פייסבוק – תוכנית רעים' }
 ];
+
+const REIM_SITE_URL = 'https://www.reim-groups.org.il/index.php';
 
 const FOOTER_NAV_LINKS = [
     { title: 'התוכנית', page: 'chapter1', items: [
@@ -84,7 +82,7 @@ const Footer = ({ data, variant, suppressMobileCard, navigateTo }) => {
                         <p>פקס: {contact.fax}</p>
                         <p>מייל: <a href={`mailto:${contact.email}`} className="text-[#5E3BEE] underline">{contact.email}</a></p>
                     </div>
-                    <div className="flex justify-center gap-3 mb-6">
+                    <div className="flex flex-wrap justify-center items-center gap-3 mb-6">
                         {SOCIAL_LINKS.map((link, i) => {
                             const ItemIcon = link.Icon;
                             return (
@@ -93,6 +91,15 @@ const Footer = ({ data, variant, suppressMobileCard, navigateTo }) => {
                                 </a>
                             );
                         })}
+                        <a
+                            href={REIM_SITE_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 rounded-xl bg-[#5E3BEE] px-3.5 py-2 text-sm font-medium text-white transition-colors hover:bg-[#4a2fc7]"
+                        >
+                            <span>לאתר רעים</span>
+                            <ExternalLink size={16} aria-hidden />
+                        </a>
                     </div>
                     <div className="flex flex-wrap justify-center gap-2 text-sm text-[#2D2D44]/80 mb-4">
                         {bottomLinks.map((link, i) => (
@@ -150,7 +157,7 @@ const Footer = ({ data, variant, suppressMobileCard, navigateTo }) => {
 
                 {/* דסקטופ: סושיאל וזכויות */}
                 <div className="hidden md:flex flex-col-reverse md:flex-row justify-between items-center pt-8 border-t border-gray-200">
-                    <div className="flex gap-4 mt-4 md:mt-0">
+                    <div className="flex items-center gap-3 mt-4 md:mt-0">
                         {SOCIAL_LINKS.map((link, i) => {
                             const ItemIcon = link.Icon;
                             return (
@@ -159,6 +166,15 @@ const Footer = ({ data, variant, suppressMobileCard, navigateTo }) => {
                                 </a>
                             );
                         })}
+                        <a
+                            href={REIM_SITE_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 rounded-full bg-[#5E3BEE] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#4a2fc7]"
+                        >
+                            <span>לאתר רעים</span>
+                            <ExternalLink size={16} aria-hidden />
+                        </a>
                     </div>
                     <div className="flex gap-8 text-sm text-gray-500 font-medium">
                         {bottomLinks.map((link, i) => (

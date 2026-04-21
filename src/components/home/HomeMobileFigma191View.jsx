@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react';
-import { ArrowUpLeft, ArrowDown, Bell, Facebook, Instagram, Layers, Linkedin, Star, ThumbsUp, Twitter, Users } from 'lucide-react';
+import { ArrowUpLeft, ArrowDown, Bell, ExternalLink, Facebook, Layers, Star, ThumbsUp, Users } from 'lucide-react';
 import NextChapterButton from '../common/NextChapterButton';
 
 const CARD_ID_TO_PAGE = {
@@ -22,11 +22,10 @@ const MOBILE_CARD_FRAME =
     'overflow-hidden rounded-3xl border-[1.5px] border-[#001D26] shadow-[2px_2px_0_0_#001D26]';
 
 const SOCIAL_LINKS = [
-    { Icon: Twitter, href: '#', label: 'איקס (טוויטר)' },
-    { Icon: Instagram, href: '#', label: 'אינסטגרם' },
-    { Icon: Linkedin, href: '#', label: 'לינקדאין' },
     { Icon: Facebook, href: 'https://www.facebook.com/reimprogram/', label: 'פייסבוק – תוכנית רעים' },
 ];
+
+const REIM_SITE_URL = 'https://www.reim-groups.org.il/index.php';
 
 /**
  * Figma 191:15288 — NavBar / mobile home column (375 logical): hero, intro, chapter cards,
@@ -529,6 +528,15 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
                                             </a>
                                         );
                                     })}
+                                    <a
+                                        href={REIM_SITE_URL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1.5 rounded-full bg-[#6546DE] px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#4a2fc7]"
+                                    >
+                                        <span>לאתר רעים</span>
+                                        <ExternalLink size={14} aria-hidden />
+                                    </a>
                                 </div>
                                 <div className="flex flex-row flex-wrap items-center justify-center gap-2 text-sm text-[#001D26]">
                                     {bottomLinks.map((link, i) => (

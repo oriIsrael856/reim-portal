@@ -21,14 +21,13 @@ export default function SiteMobileStickyChrome({
     const ch = useMobileStickyChromeStyles();
     const iconPurple = { width: ch.logoutIconPx, height: ch.logoutIconPx };
 
-    // Dynamic offset: shift menu-row down until the hamburger Union SVG bottom
-    // exactly meets the top of the white logo pill. Necessary because the SVG's
-    // below-box overhang scales with viewport while header-band padding is fixed.
-    const purpleInnerRef = useRef(null);
+    // Dynamic offset: shift menu-row so the hamburger Union SVG bottom
+    // lands exactly on the top of the white outer main-surface (the card that wraps
+    // site content). Per Figma: "קצה עליון של main = קצה תחתון של אייקון התפריט".
+    const headerRef = useRef(null);
     const menuBtnRef = useRef(null);
     const unionImgRef = useRef(null);
-    const headerBandRef = useRef(null);
-    const [menuRowOffset, setMenuRowOffset] = useState(6);
+    const [menuRowOffset, setMenuRowOffset] = useState(0);
 
     // #region agent log
     const sendLog = (message, data) => {
@@ -47,32 +46,37 @@ export default function SiteMobileStickyChrome({
 
     useLayoutEffect(() => {
         const computeOffset = () => {
-            const purpleInner = purpleInnerRef.current;
+            const header = headerRef.current;
             const menuBtn = menuBtnRef.current;
             const unionImg = unionImgRef.current;
-            const headerBand = headerBandRef.current;
-            if (!purpleInner || !menuBtn || !unionImg || !headerBand) return;
-            const purpleBottom = purpleInner.getBoundingClientRect().bottom;
+            if (!header || !menuBtn || !unionImg) return;
+            // The white outer frame is a sibling of this <header> within .ch2-mobile-page.
+            // Its top is where we want the Union SVG bottom to land.
+            const mainSurface =
+                header.parentElement?.querySelector('.ch2-mobile-main-surface') || null;
+            if (!mainSurface) return;
+            const mainTop = mainSurface.getBoundingClientRect().top;
             const btnBottom = menuBtn.getBoundingClientRect().bottom;
             const unionBottom = unionImg.getBoundingClientRect().bottom;
-            const pillTop =
-                headerBand.getBoundingClientRect().top +
-                parseFloat(getComputedStyle(headerBand).paddingBlockStart || '0');
-            // Remove current offset from measurements by using menu-row's menuBtn as a reference.
-            // Union overhang below the button box is invariant under the transform.
+            // overhang below button box is invariant under transform.
             const overhang = unionBottom - btnBottom;
-            const gapFromPurpleToPill = pillTop - purpleBottom;
-            const needed = Math.max(0, Math.round(gapFromPurpleToPill - overhang));
+            // Natural (no-transform) btnBottom equals current btnBottom minus currentOffset;
+            // natural unionBottom = naturalBtnBottom + overhang.
+            // We want (natural unionBottom) + newOffset = mainTop  →
+            //   newOffset = mainTop - naturalBtnBottom - overhang
+            //             = mainTop - (btnBottom - currentOffset) - overhang
+            const naturalBtnBottom = btnBottom - menuRowOffset;
+            const needed = Math.round(mainTop - naturalBtnBottom - overhang);
             // #region agent log
-            sendLog('dynamic-offset compute', {
-                runId: 'dynamic-offset',
+            sendLog('dynamic-offset v2 (main-surface target)', {
+                runId: 'dynamic-offset-v2',
                 viewportW: window.innerWidth,
-                purpleBottom: Math.round(purpleBottom),
+                mainTop: Math.round(mainTop),
                 btnBottom: Math.round(btnBottom),
                 unionBottom: Math.round(unionBottom),
-                pillTop: Math.round(pillTop),
                 overhang: Math.round(overhang),
-                gapFromPurpleToPill: Math.round(gapFromPurpleToPill),
+                currentOffset: menuRowOffset,
+                naturalBtnBottom: Math.round(naturalBtnBottom),
                 neededOffset: needed,
             });
             // #endregion
@@ -83,35 +87,38 @@ export default function SiteMobileStickyChrome({
         return () => {
             window.removeEventListener('resize', computeOffset);
         };
-    }, [isMenuOpen]);
+    }, [isMenuOpen, menuRowOffset]);
 
-    // Also recompute after images load (Union SVG size may change after load)
+    // Also recompute after Union SVG load (dimensions may change).
     useEffect(() => {
         const img = unionImgRef.current;
         if (!img) return;
         const onLoad = () => {
-            const purpleInner = purpleInnerRef.current;
+            const header = headerRef.current;
             const menuBtn = menuBtnRef.current;
-            const headerBand = headerBandRef.current;
-            if (!purpleInner || !menuBtn || !headerBand) return;
-            const purpleBottom = purpleInner.getBoundingClientRect().bottom;
+            if (!header || !menuBtn) return;
+            const mainSurface =
+                header.parentElement?.querySelector('.ch2-mobile-main-surface') || null;
+            if (!mainSurface) return;
+            const mainTop = mainSurface.getBoundingClientRect().top;
             const btnBottom = menuBtn.getBoundingClientRect().bottom;
             const unionBottom = img.getBoundingClientRect().bottom;
-            const pillTop =
-                headerBand.getBoundingClientRect().top +
-                parseFloat(getComputedStyle(headerBand).paddingBlockStart || '0');
             const overhang = unionBottom - btnBottom;
-            const gapFromPurpleToPill = pillTop - purpleBottom;
-            const needed = Math.max(0, Math.round(gapFromPurpleToPill - overhang));
+            const naturalBtnBottom = btnBottom - menuRowOffset;
+            const needed = Math.round(mainTop - naturalBtnBottom - overhang);
             setMenuRowOffset((prev) => (prev === needed ? prev : needed));
         };
         if (img.complete) onLoad();
         else img.addEventListener('load', onLoad, { once: true });
         return () => img.removeEventListener('load', onLoad);
-    }, [isMenuOpen]);
+    }, [isMenuOpen, menuRowOffset]);
 
     return (
-        <header id="reim-mobile-sticky-chrome" className="ch2-mobile-sticky-chrome lg:hidden">
+        <header
+            id="reim-mobile-sticky-chrome"
+            className="ch2-mobile-sticky-chrome lg:hidden"
+            ref={headerRef}
+        >
             <div className="ch2-mobile-sticky-chrome__stack">
                 <div
                     id="reim-mobile-sticky-chrome-purple"
@@ -120,7 +127,6 @@ export default function SiteMobileStickyChrome({
                     <div
                         className="ch2-mobile-sticky-chrome__purple-inner pt-[max(4px,env(safe-area-inset-top,0px))] pb-0"
                         style={{ ...ch.purpleInnerStyle, paddingInlineStart: 0, paddingInlineEnd: 0 }}
-                        ref={purpleInnerRef}
                     >
                         <div
                             className="ch2-mobile-sticky-chrome__chrome-top-row"
@@ -217,7 +223,7 @@ export default function SiteMobileStickyChrome({
                     </div>
                 </div>
                 {!isMenuOpen ? (
-                    <div className="ch2-mobile-sticky-chrome__header-band" ref={headerBandRef}>
+                    <div className="ch2-mobile-sticky-chrome__header-band">
                         <Chapter2MobileTopBarPill
                             logoUrl={logoUrl}
                             onLogoClick={onLogoClick}
