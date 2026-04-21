@@ -230,19 +230,24 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
                     </div>
 
                     <div className="relative z-20 mt-8 flex justify-center">
-                        <div
-                            className="flex h-16 w-[60px] items-center justify-center rounded-full p-2.5"
-                            aria-hidden
+                        <button
+                            type="button"
+                            className="flex h-16 w-[60px] items-center justify-center rounded-full p-2.5 transition hover:opacity-90"
+                            aria-label="גלילה למטה"
+                            onClick={() => document.getElementById('home-intro-section-mobile')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                         >
                             <div className="flex size-10 items-center justify-center rounded-[32px] border border-[#001D26] bg-[#BCE079] p-1.5 shadow-[2px_2px_0_0_#001d26]">
                                 <ArrowDown className="size-6 text-[#001D26]" strokeWidth={2} aria-hidden />
                             </div>
-                        </div>
+                        </button>
                     </div>
                 </section>
 
                 {/* content 191:15319 — overlap Hero, top border purple 2 */}
-                <div className="relative z-10 overflow-hidden rounded-[24px] border-t-2 border-[#6546DE] bg-white">
+                <div
+                    id="home-intro-section-mobile"
+                    className="relative z-10 overflow-hidden rounded-[24px] border-t-2 border-[#6546DE] bg-white"
+                >
                     {/* Section 1 191:15320 */}
                     <div
                         className="flex flex-col items-center justify-center gap-8 overflow-hidden bg-[hsla(252,70%,57%,0.08)]"

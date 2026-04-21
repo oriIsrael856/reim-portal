@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Home, ArrowLeft } from 'lucide-react';
 import Chapter2MobileTopBarPill from '../chapter2/mobile/Chapter2MobileTopBarPill';
 import {
@@ -21,6 +21,95 @@ export default function SiteMobileStickyChrome({
     const ch = useMobileStickyChromeStyles();
     const iconPurple = { width: ch.logoutIconPx, height: ch.logoutIconPx };
 
+    // Dynamic offset: shift menu-row down until the hamburger Union SVG bottom
+    // exactly meets the top of the white logo pill. Necessary because the SVG's
+    // below-box overhang scales with viewport while header-band padding is fixed.
+    const purpleInnerRef = useRef(null);
+    const menuBtnRef = useRef(null);
+    const unionImgRef = useRef(null);
+    const headerBandRef = useRef(null);
+    const [menuRowOffset, setMenuRowOffset] = useState(6);
+
+    // #region agent log
+    const sendLog = (message, data) => {
+        fetch('http://127.0.0.1:7242/ingest/33d723f8-c665-4af5-ad39-38344c92c1fe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                location: 'SiteMobileStickyChrome.jsx',
+                message,
+                data,
+                timestamp: Date.now(),
+            }),
+        }).catch(() => {});
+    };
+    // #endregion
+
+    useLayoutEffect(() => {
+        const computeOffset = () => {
+            const purpleInner = purpleInnerRef.current;
+            const menuBtn = menuBtnRef.current;
+            const unionImg = unionImgRef.current;
+            const headerBand = headerBandRef.current;
+            if (!purpleInner || !menuBtn || !unionImg || !headerBand) return;
+            const purpleBottom = purpleInner.getBoundingClientRect().bottom;
+            const btnBottom = menuBtn.getBoundingClientRect().bottom;
+            const unionBottom = unionImg.getBoundingClientRect().bottom;
+            const pillTop =
+                headerBand.getBoundingClientRect().top +
+                parseFloat(getComputedStyle(headerBand).paddingBlockStart || '0');
+            // Remove current offset from measurements by using menu-row's menuBtn as a reference.
+            // Union overhang below the button box is invariant under the transform.
+            const overhang = unionBottom - btnBottom;
+            const gapFromPurpleToPill = pillTop - purpleBottom;
+            const needed = Math.max(0, Math.round(gapFromPurpleToPill - overhang));
+            // #region agent log
+            sendLog('dynamic-offset compute', {
+                runId: 'dynamic-offset',
+                viewportW: window.innerWidth,
+                purpleBottom: Math.round(purpleBottom),
+                btnBottom: Math.round(btnBottom),
+                unionBottom: Math.round(unionBottom),
+                pillTop: Math.round(pillTop),
+                overhang: Math.round(overhang),
+                gapFromPurpleToPill: Math.round(gapFromPurpleToPill),
+                neededOffset: needed,
+            });
+            // #endregion
+            setMenuRowOffset((prev) => (prev === needed ? prev : needed));
+        };
+        computeOffset();
+        window.addEventListener('resize', computeOffset, { passive: true });
+        return () => {
+            window.removeEventListener('resize', computeOffset);
+        };
+    }, [isMenuOpen]);
+
+    // Also recompute after images load (Union SVG size may change after load)
+    useEffect(() => {
+        const img = unionImgRef.current;
+        if (!img) return;
+        const onLoad = () => {
+            const purpleInner = purpleInnerRef.current;
+            const menuBtn = menuBtnRef.current;
+            const headerBand = headerBandRef.current;
+            if (!purpleInner || !menuBtn || !headerBand) return;
+            const purpleBottom = purpleInner.getBoundingClientRect().bottom;
+            const btnBottom = menuBtn.getBoundingClientRect().bottom;
+            const unionBottom = img.getBoundingClientRect().bottom;
+            const pillTop =
+                headerBand.getBoundingClientRect().top +
+                parseFloat(getComputedStyle(headerBand).paddingBlockStart || '0');
+            const overhang = unionBottom - btnBottom;
+            const gapFromPurpleToPill = pillTop - purpleBottom;
+            const needed = Math.max(0, Math.round(gapFromPurpleToPill - overhang));
+            setMenuRowOffset((prev) => (prev === needed ? prev : needed));
+        };
+        if (img.complete) onLoad();
+        else img.addEventListener('load', onLoad, { once: true });
+        return () => img.removeEventListener('load', onLoad);
+    }, [isMenuOpen]);
+
     return (
         <header id="reim-mobile-sticky-chrome" className="ch2-mobile-sticky-chrome lg:hidden">
             <div className="ch2-mobile-sticky-chrome__stack">
@@ -31,6 +120,7 @@ export default function SiteMobileStickyChrome({
                     <div
                         className="ch2-mobile-sticky-chrome__purple-inner pt-[max(4px,env(safe-area-inset-top,0px))] pb-0"
                         style={{ ...ch.purpleInnerStyle, paddingInlineStart: 0, paddingInlineEnd: 0 }}
+                        ref={purpleInnerRef}
                     >
                         <div
                             className="ch2-mobile-sticky-chrome__chrome-top-row"
@@ -79,7 +169,10 @@ export default function SiteMobileStickyChrome({
                         </div>
                         <div
                             className="ch2-mobile-sticky-chrome__menu-row"
-                            style={{ ...ch.menuRowStyle, transform: 'translateY(6px)' }}
+                            style={{
+                                ...ch.menuRowStyle,
+                                transform: `translateY(${menuRowOffset}px)`,
+                            }}
                         >
                             <div
                                 className={`ch2-mobile-menu-frame${isMenuOpen ? ' ch2-mobile-menu-frame--open' : ''}`}
@@ -91,6 +184,7 @@ export default function SiteMobileStickyChrome({
                                     onClick={onMenuClick}
                                     aria-expanded={isMenuOpen}
                                     aria-label={isMenuOpen ? 'סגירת תפריט' : 'תפריט'}
+                                    ref={menuBtnRef}
                                 >
                                     <span
                                         className="ch2-mobile-menu-frame__union-layer"
@@ -104,6 +198,7 @@ export default function SiteMobileStickyChrome({
                                             width={ch.unionImgW}
                                             height={ch.unionImgH}
                                             decoding="async"
+                                            ref={unionImgRef}
                                         />
                                     </span>
                                     <span className="ch2-mobile-menu-frame__glyph" style={ch.glyphTrayStyle}>
@@ -122,7 +217,7 @@ export default function SiteMobileStickyChrome({
                     </div>
                 </div>
                 {!isMenuOpen ? (
-                    <div className="ch2-mobile-sticky-chrome__header-band">
+                    <div className="ch2-mobile-sticky-chrome__header-band" ref={headerBandRef}>
                         <Chapter2MobileTopBarPill
                             logoUrl={logoUrl}
                             onLogoClick={onLogoClick}
