@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowUpRight, Menu, Share2, X } from 'lucide-react';
 
+const REIMSYS_URL = 'https://www.reimsys.org.il/index.php';
+
 const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl, hideMobileChrome }) => {
     return (
         <>
@@ -73,24 +75,31 @@ const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl, hideMobileChrom
                 </button>
 
                 {/* צד שמאל: כפתור – גודל ב־vw */}
-                <button className="
-                    group flex items-center gap-[0.5vw] shrink-0 py-2
-                    bg-white/90 hover:bg-white
-                    border border-white/50 hover:border-[#816AFE]
-                    rounded-full
-                    transition-all duration-300
-                    cursor-pointer shadow-sm
-                " style={{ paddingLeft: '0.25rem', paddingRight: 'clamp(0.75rem, 1.5vw, 1.5rem)' }}>
+                <a
+                    href={REIMSYS_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                        group flex items-center gap-[0.5vw] shrink-0 py-2
+                        bg-white/90 hover:bg-white
+                        border border-white/50 hover:border-[#816AFE]
+                        rounded-full
+                        transition-all duration-300
+                        cursor-pointer shadow-sm no-underline
+                    "
+                    style={{ paddingLeft: '0.25rem', paddingRight: 'clamp(0.75rem, 1.5vw, 1.5rem)' }}
+                    aria-label="מעבר לרכזייה – מערכת רעים"
+                >
                     <span className="text-[#2D2D44] font-bold group-hover:text-[#816AFE] transition-colors whitespace-nowrap hidden sm:inline" style={{ fontSize: 'clamp(0.7rem, 1vw, 1rem)' }}>
-                        הרשמה לניוזלטר
+                        לרכזייה
                     </span>
                     <span className="text-[#2D2D44] font-bold group-hover:text-[#816AFE] sm:hidden" style={{ fontSize: 'clamp(0.7rem, 1vw, 1rem)' }}>
-                        ניוזלטר
+                        לרכזייה
                     </span>
                     <div className="bg-[#816AFE] rounded-full flex items-center justify-center text-white transform group-hover:rotate-45 transition-transform duration-300 shadow-md" style={{ width: 'clamp(32px, 2.5vw, 40px)', height: 'clamp(32px, 2.5vw, 40px)' }}>
                         <ArrowUpRight style={{ width: 'clamp(14px, 1.2vw, 20px)', height: 'clamp(14px, 1.2vw, 20px)' }} />
                     </div>
-                </button>
+                </a>
             </div>
             </header>
         </>

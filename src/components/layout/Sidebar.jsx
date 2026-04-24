@@ -2,6 +2,8 @@ import React, { useCallback, useLayoutEffect, useState } from 'react';
 import { Menu, X, LogOut, Home, Mail } from 'lucide-react';
 import { useMenuOverlayStyles } from '../../hooks/useMenuOverlayStyles';
 
+const REIMSYS_URL = 'https://www.reimsys.org.il/index.php';
+
 // סרגל צד — Figma 36:1217 / Right Sidebar: רקע סגול כהה, טקסט אנכי, כפתור תפריט
 export const Sidebar = ({ toggleMenu }) => {
     return (
@@ -45,7 +47,7 @@ export const MenuOverlay = ({
     closeMenu,
     menuItems = [],
     navigateTo,
-    ctaText = 'הרשמה לניוזלטר',
+    ctaText = 'לרכזייה',
     currentPage = 'home',
 }) => {
     const homeItem = menuItems.find((i) => i.isHome);
@@ -121,23 +123,7 @@ export const MenuOverlay = ({
 
     const handleNewsletterCta = useCallback(() => {
         closeMenu();
-        if (currentPage === 'home') {
-            requestAnimationFrame(() => {
-                document.getElementById('home-mobile-newsletter-191')?.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                });
-            });
-        } else {
-            navigateTo('home');
-            window.setTimeout(() => {
-                document.getElementById('home-mobile-newsletter-191')?.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                });
-            }, 400);
-        }
-    }, [closeMenu, currentPage, navigateTo]);
+    }, [closeMenu]);
 
     const renderHomeRow = () =>
         homeItem ? (
@@ -265,11 +251,14 @@ export const MenuOverlay = ({
                             >
                                 <div className="shrink-0">{renderHomeRow()}</div>
                                 {renderChapterRows()}
-                                <button
-                                    type="button"
+                                <a
+                                    href={REIMSYS_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     onClick={handleNewsletterCta}
-                                    className="flex w-full shrink-0 cursor-pointer items-center rounded-[100px] border-[1.5px] border-[#001d26] bg-transparent text-start font-semibold leading-snug text-[#001d26] transition hover:bg-[rgba(101,70,222,0.06)]"
+                                    className="flex w-full shrink-0 cursor-pointer items-center rounded-[100px] border-[1.5px] border-[#001d26] bg-transparent text-start font-semibold leading-snug text-[#001d26] no-underline transition hover:bg-[rgba(101,70,222,0.06)]"
                                     style={newsletterCtaStyle}
+                                    aria-label="מעבר לרכזייה – מערכת רעים"
                                 >
                                     <span
                                         className="flex shrink-0 items-center justify-center rounded-[32px] bg-[#6546de] text-white"
@@ -278,7 +267,7 @@ export const MenuOverlay = ({
                                         <Mail size={20} strokeWidth={2} className="shrink-0" aria-hidden />
                                     </span>
                                     <span className="min-w-0 flex-1 text-start text-base">{ctaText}</span>
-                                </button>
+                                </a>
                             </nav>
                         </div>
                     </div>

@@ -14,7 +14,7 @@ export const INITIAL_DATA = {
         logo: "/Logo (1).png",
         logoAlt: "רעים",
         logoFallback: "רעים",
-        ctaText: "הרשמה לניוזלטר"
+        ctaText: "לרכזייה"
     },
 
     // --- עמוד הבית ---
