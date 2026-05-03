@@ -29,6 +29,9 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
 
     return (
         <div className="min-h-screen bg-[#F3F0FF] font-['Rubik'] md:bg-[#FFF9F0]">
+            {/* `.ch2-mobile-main-content__body` משלם את ה-margin-top השלילי של ה-mobile shell;
+                בלעדיו הגלולית של הלוגו עולה מעל הכרטיס הראשון של הפרק. */}
+            <div className="ch2-mobile-main-content__body">
             {/* מובייל: כרטיס לבן — תג וכותרת בלבד */}
             <div className="mx-4 mb-12 mt-4 md:hidden">
                 <div className="relative overflow-visible rounded-[32px] border-2 border-[#2D2D44]/20 bg-white p-6 pb-8 shadow-xl">
@@ -174,6 +177,7 @@ const Chapter1 = ({ data, content, onNext, onPrev }) => {
                     subtitle="פרק 02 - מי משתתפות ומשתתפים ברעים"
                     onClick={onNext}
                 />
+            </div>
             </div>
         </div>
     );

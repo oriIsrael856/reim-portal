@@ -1145,7 +1145,11 @@
   }
 
   .ch2-mobile-section5-accordion__body--open {
-    max-height: 800px;
+    /* Long Hebrew bodies with bullet lists (e.g. "מאפיינים מרכזיים במגוון האוטיסטי",
+       "משמעויות חברתיות ורעים") render >1500px on a ~340px-wide viewport; the previous
+       800px ceiling clipped the bottom. Use a generous cap to keep the height transition
+       while never truncating real content. */
+    max-height: 4000px;
     opacity: 1;
   }
 

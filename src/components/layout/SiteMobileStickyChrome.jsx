@@ -61,10 +61,11 @@ export default function SiteMobileStickyChrome({
         return () => {
             window.removeEventListener('resize', computeOffset);
         };
-        // `menuRowOffset` deliberately NOT in deps — it's the effect's own output; including
-        // it caused setState→effect→setState loops on viewports where the chrome is hidden.
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isMenuOpen]);
+        // `menuRowOffset` is intentionally a dep: the math closes over the current offset to
+        // subtract the applied transform, then converges in 1–2 iterations on mobile (the
+        // `prev === needed` guard short-circuits). The early `offsetParent === null` bail
+        // above prevents the divergent loop on desktop where the chrome is `display:none`.
+    }, [isMenuOpen, menuRowOffset]);
 
     // Also recompute after Union SVG load (dimensions may change).
     useEffect(() => {
@@ -89,8 +90,7 @@ export default function SiteMobileStickyChrome({
         if (img.complete) onLoad();
         else img.addEventListener('load', onLoad, { once: true });
         return () => img.removeEventListener('load', onLoad);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isMenuOpen]);
+    }, [isMenuOpen, menuRowOffset]);
 
     return (
         <header
