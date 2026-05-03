@@ -18,14 +18,18 @@ const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/Ofere@matnasim.org.il';
  * @param {{ data: object, className?: string, embeddedInRow?: boolean, embeddedStyles?: object | null }} props
  * `embeddedInRow` — Chapter 5 resources row: fill library card height; `embeddedStyles` overrides global `--home-newsletter-*` (broken on md+ by homepage tokens).
  */
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedStyles = null }) => {
     const [email, setEmail] = useState('');
     const [status, setStatus] = useState('idle');
     const [errorMsg, setErrorMsg] = useState('');
 
+    const isValidEmail = EMAIL_REGEX.test(email.trim());
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!email || status === 'sending' || status === 'success') return;
+        if (!isValidEmail || status === 'sending' || status === 'success') return;
         setStatus('sending');
         setErrorMsg('');
         try {
@@ -193,8 +197,12 @@ const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedS
                 />
                 <button
                     type="submit"
-                    disabled={status === 'sending' || status === 'success'}
-                    className="flex h-9 shrink-0 items-center justify-center rounded-[32px] p-1.5 disabled:opacity-60"
+                    disabled={status === 'sending' || status === 'success' || !isValidEmail}
+                    className={`flex h-9 shrink-0 items-center justify-center rounded-[32px] p-1.5 transition-all duration-200 ${
+                        isValidEmail && status !== 'success'
+                            ? 'scale-110 bg-[#6546de] shadow-[2px_2px_0_#001D26] hover:scale-[1.15] hover:shadow-[3px_3px_0_#001D26] active:scale-105 active:shadow-[1px_1px_0_#001D26]'
+                            : 'opacity-50'
+                    } ${status === 'sending' ? 'animate-pulse' : ''}`}
                     aria-label="שליחה"
                 >
                     <img src={ASSETS.submit} alt="" width={36} height={36} aria-hidden />
