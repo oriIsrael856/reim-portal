@@ -29,27 +29,14 @@ export default function SiteMobileStickyChrome({
     const unionImgRef = useRef(null);
     const [menuRowOffset, setMenuRowOffset] = useState(0);
 
-    // #region agent log
-    const sendLog = (message, data) => {
-        fetch('http://127.0.0.1:7242/ingest/33d723f8-c665-4af5-ad39-38344c92c1fe', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                location: 'SiteMobileStickyChrome.jsx',
-                message,
-                data,
-                timestamp: Date.now(),
-            }),
-        }).catch(() => {});
-    };
-    // #endregion
-
     useLayoutEffect(() => {
         const computeOffset = () => {
             const header = headerRef.current;
             const menuBtn = menuBtnRef.current;
             const unionImg = unionImgRef.current;
             if (!header || !menuBtn || !unionImg) return;
+            // Chrome is hidden at lg+ (`lg:hidden`); skip math (rects are 0, math diverges → React #185).
+            if (header.offsetParent === null) return;
             // The white outer frame is a sibling of this <header> within .ch2-mobile-page.
             // Its top is where we want the Union SVG bottom to land.
             const mainSurface =
@@ -67,19 +54,6 @@ export default function SiteMobileStickyChrome({
             //             = mainTop - (btnBottom - currentOffset) - overhang
             const naturalBtnBottom = btnBottom - menuRowOffset;
             const needed = Math.round(mainTop - naturalBtnBottom - overhang);
-            // #region agent log
-            sendLog('dynamic-offset v2 (main-surface target)', {
-                runId: 'dynamic-offset-v2',
-                viewportW: window.innerWidth,
-                mainTop: Math.round(mainTop),
-                btnBottom: Math.round(btnBottom),
-                unionBottom: Math.round(unionBottom),
-                overhang: Math.round(overhang),
-                currentOffset: menuRowOffset,
-                naturalBtnBottom: Math.round(naturalBtnBottom),
-                neededOffset: needed,
-            });
-            // #endregion
             setMenuRowOffset((prev) => (prev === needed ? prev : needed));
         };
         computeOffset();
@@ -87,7 +61,10 @@ export default function SiteMobileStickyChrome({
         return () => {
             window.removeEventListener('resize', computeOffset);
         };
-    }, [isMenuOpen, menuRowOffset]);
+        // `menuRowOffset` deliberately NOT in deps — it's the effect's own output; including
+        // it caused setState→effect→setState loops on viewports where the chrome is hidden.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMenuOpen]);
 
     // Also recompute after Union SVG load (dimensions may change).
     useEffect(() => {
@@ -97,6 +74,7 @@ export default function SiteMobileStickyChrome({
             const header = headerRef.current;
             const menuBtn = menuBtnRef.current;
             if (!header || !menuBtn) return;
+            if (header.offsetParent === null) return;
             const mainSurface =
                 header.parentElement?.querySelector('.ch2-mobile-main-surface') || null;
             if (!mainSurface) return;
@@ -111,7 +89,8 @@ export default function SiteMobileStickyChrome({
         if (img.complete) onLoad();
         else img.addEventListener('load', onLoad, { once: true });
         return () => img.removeEventListener('load', onLoad);
-    }, [isMenuOpen, menuRowOffset]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMenuOpen]);
 
     return (
         <header
