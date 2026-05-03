@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 /**
  * כרטיס ניוזלטר — Figma Home 191:9424 (מבנה + מידות + אייקונים מיוצאים).
  * data: { title, subtitle, text, placeholder } — כולם ניתנים לעריכה ב-CMS.
- * TODO: חיבור לרשימת תפוצה (שליחת email ל-endpoint / שירות).
+ * הגשה: FormSubmit AJAX endpoint (https://formsubmit.co) — חינמי, ללא backend.
  */
 const ASSETS = {
     star1: '/assets/home/home-newsletter-star1.svg',
@@ -12,12 +12,45 @@ const ASSETS = {
     submit: '/assets/home/home-newsletter-submit.svg',
 };
 
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/Ofere@matnasim.org.il';
+
 /**
  * @param {{ data: object, className?: string, embeddedInRow?: boolean, embeddedStyles?: object | null }} props
  * `embeddedInRow` — Chapter 5 resources row: fill library card height; `embeddedStyles` overrides global `--home-newsletter-*` (broken on md+ by homepage tokens).
  */
 const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedStyles = null }) => {
     const [email, setEmail] = useState('');
+    const [status, setStatus] = useState('idle');
+    const [errorMsg, setErrorMsg] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!email || status === 'sending' || status === 'success') return;
+        setStatus('sending');
+        setErrorMsg('');
+        try {
+            const res = await fetch(FORMSUBMIT_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify({
+                    email,
+                    _subject: 'הרשמה חדשה לניוזלטר רעים',
+                    _captcha: 'false',
+                    _template: 'table',
+                }),
+            });
+            const result = await res.json();
+            if (result.success === 'true' || result.success === true) {
+                setStatus('success');
+                setEmail('');
+            } else {
+                throw new Error(result.message || 'שליחה נכשלה, נסי שוב');
+            }
+        } catch (err) {
+            setStatus('error');
+            setErrorMsg(err.message || 'שליחה נכשלה, נסי שוב');
+        }
+    };
 
     if (!data) return null;
 
@@ -141,28 +174,42 @@ const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedS
                 </>
             )}
 
-            <div
+            <form
+                onSubmit={handleSubmit}
                 className="relative z-[2] flex w-full min-w-0 shrink-0 items-center justify-between gap-3 rounded-[100px] border border-[#001D26] bg-white py-2 ps-1.5 pe-[14px]"
                 style={inputRowStyle}
             >
                 <input
                     type="email"
-                    name="newsletter-email"
+                    name="email"
+                    required
                     autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={placeholder}
-                    className="min-w-0 flex-1 border-0 bg-transparent text-end font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26] outline-none placeholder:text-[rgba(0,29,38,0.4)]"
+                    disabled={status === 'sending' || status === 'success'}
+                    className="min-w-0 flex-1 border-0 bg-transparent text-end font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26] outline-none placeholder:text-[rgba(0,29,38,0.4)] disabled:opacity-60"
                     style={inputTypography}
                 />
                 <button
-                    type="button"
-                    className="flex h-9 shrink-0 items-center justify-center rounded-[32px] p-1.5"
+                    type="submit"
+                    disabled={status === 'sending' || status === 'success'}
+                    className="flex h-9 shrink-0 items-center justify-center rounded-[32px] p-1.5 disabled:opacity-60"
                     aria-label="שליחה"
                 >
                     <img src={ASSETS.submit} alt="" width={36} height={36} aria-hidden />
                 </button>
-            </div>
+            </form>
+            {status === 'success' ? (
+                <p className="relative z-[2] mt-2 text-center text-sm text-[#001D26]">
+                    תודה! נרשמת בהצלחה.
+                </p>
+            ) : null}
+            {status === 'error' ? (
+                <p className="relative z-[2] mt-2 text-center text-sm text-[#c4213b]">
+                    {errorMsg}
+                </p>
+            ) : null}
         </article>
     );
 };
