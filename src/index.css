@@ -1125,35 +1125,39 @@
     color: var(--ch2-text-primary);
   }
 
+  /* Use the modern `grid-template-rows: 0fr → 1fr` trick to animate to the
+     content's natural height without a fixed `max-height` cap. Long Hebrew
+     bodies with bullet lists (e.g. "משמעויות חברתיות ורעים") were previously
+     clipped by the 4000px ceiling — now they expand to whatever they need. */
   .ch2-mobile-section5-accordion__body {
-    padding: 0 var(--ch2-section5-body-pad-inline) var(--ch2-section5-body-pad-bottom)
-      var(--ch2-section5-body-offset-start);
+    display: grid;
+    grid-template-rows: 0fr;
+    padding-inline: var(--ch2-section5-body-pad-inline) var(--ch2-section5-body-offset-start);
     font-family: var(--font-rubik);
     font-weight: 400;
     font-size: var(--ch2-type-body-size);
     line-height: var(--ch2-type-body-lh);
     letter-spacing: var(--ch2-type-body-ls);
     color: var(--ch2-section5-body-color);
-    transition: max-height 0.3s ease, opacity 0.3s ease;
+    transition: grid-template-rows 0.3s ease, opacity 0.3s ease,
+      padding-block 0.3s ease;
   }
 
   .ch2-mobile-section5-accordion__body--collapsed {
-    max-height: 0;
-    overflow: hidden;
+    grid-template-rows: 0fr;
     opacity: 0;
-    padding: 0;
+    padding-block: 0;
   }
 
   .ch2-mobile-section5-accordion__body--open {
-    /* Long Hebrew bodies with bullet lists (e.g. "מאפיינים מרכזיים במגוון האוטיסטי",
-       "משמעויות חברתיות ורעים") render >1500px on a ~340px-wide viewport; the previous
-       800px ceiling clipped the bottom. Use a generous cap to keep the height transition
-       while never truncating real content. */
-    max-height: 4000px;
+    grid-template-rows: 1fr;
     opacity: 1;
+    padding-block: 0 var(--ch2-section5-body-pad-bottom);
   }
 
   .ch2-mobile-section5-accordion__body-inner {
+    min-height: 0;
+    overflow: hidden;
     padding-inline-end: 8px;
   }
 

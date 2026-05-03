@@ -34,6 +34,13 @@ description: Team rules and skills for the Reim portal — React, Tailwind v4, H
 - **Avoid** `flex-row-reverse` / `order-*` to fake direction; **reorder JSX** when visual order must change.
 - **`flex-col` in RTL:** `items-start` = physical right, `items-end` = physical left (opposite to LTR).
 
+### Layout-measurement effects (do not "fix" loops by stripping deps)
+
+- A small number of layout effects (e.g. the menu-row offset math in `src/components/layout/SiteMobileStickyChrome.jsx`) intentionally list their own state in the deps array AND call `setState` inside. The math closes over the current value to subtract a previously-applied transform, then converges in 1–2 iterations thanks to a `prev === needed` short-circuit.
+- If such an effect loops forever in one surface (e.g. React #185 on desktop), the root cause is the **measurement context being invalid** — not the deps. Most common: the host element is `display:none` (e.g. `lg:hidden`) so its rects are 0 while a sibling is still visible, making the formula diverge.
+- **Correct fix:** add an early bail inside the effect for the invalid context (canonical: `if (header.offsetParent === null) return;`). **Do NOT** remove the state from the dep array — that silently breaks convergence on the working surface (mobile).
+- Always test both the broken surface and the working surface after changing deps of layout-measurement effects.
+
 ### Figma handoff
 
 - **DOM order** should match Auto Layout child order unless an exception is documented.

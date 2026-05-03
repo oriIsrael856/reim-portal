@@ -294,6 +294,10 @@ src/styles/                 # Chapter-specific CSS files
 - Touch only files relevant to the task — no drive-by refactors.
 - After UI changes: verify desktop + mobile layouts, RTL behavior, no unintended horizontal scroll, keyboard focus order intact.
 - **No CSS `zoom` for chapter layouts** — it causes size mismatches between sections. Use Tailwind utilities + breakpoints. If encountered, remove: `CH4_DESKTOP_*` constants, `getChapter4DesktopScale`, `desktopScale` state, resize event listeners, and `style={{ zoom }}` wrappers.
+- **Self-correcting layout effects (do not "simplify" by removing state from deps).** Some `useLayoutEffect`/`useEffect` blocks deliberately include their own state in the deps array AND call `setState` inside, in order to converge over 1–2 iterations against a `prev === needed` short-circuit (canonical example: the menu-row offset math in `[src/components/layout/SiteMobileStickyChrome.jsx](src/components/layout/SiteMobileStickyChrome.jsx)` — math closes over the current offset to subtract the applied transform). If you observe this pattern looping forever in some context (e.g. React error #185 on desktop), the cause is almost always the **measurement context being invalid** — not the deps themselves:
+  - Element is `display:none` so `getBoundingClientRect()` returns zeros while a sibling is visible → math diverges.
+  - Required image/font/asset has not loaded yet → wrong intermediate values.
+  - Fix by adding an **early bail in the effect** for that context (e.g. `if (header.offsetParent === null) return;` for `display:none` elements). **Do NOT** remove the state from the dep array — that breaks the convergence on the surfaces where the effect was working. Always verify both the failing surface (e.g. desktop) and the working surface (e.g. mobile) after changing dep arrays of layout-measurement effects.
 
 ---
 
