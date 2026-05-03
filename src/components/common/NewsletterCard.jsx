@@ -65,6 +65,14 @@ const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedS
 
     const inputRowStyle = useEmbedded ? { minHeight: embeddedStyles.inputMinH.minHeight } : { minHeight: 'var(--home-newsletter-input-min-h)' };
 
+    /* Input/placeholder must scale with viewport so the long Hebrew placeholder
+       ("הקלידי את כתובת המייל שלך") fits in the input on small desktops where
+       the card column shrinks. Embedded → reuse card body font; standalone →
+       dedicated CSS var (see :root in src/index.css). */
+    const inputTypography = useEmbedded
+        ? { fontSize: embeddedStyles.bodyFont.fontSize }
+        : { fontSize: 'var(--home-newsletter-input-font-size)' };
+
     return (
         <article
             className={`relative box-border flex flex-col rounded-[24px] border-[1.5px] border-[#001D26] bg-[#BCE079] shadow-[2px_2px_0_#001D26] ${useEmbedded ? 'min-h-0 overflow-visible p-0' : 'justify-between overflow-visible p-4'} ${className}`}
@@ -144,7 +152,8 @@ const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedS
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={placeholder}
-                    className="min-w-0 flex-1 border-0 bg-transparent text-end text-base font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26] outline-none placeholder:text-[rgba(0,29,38,0.4)]"
+                    className="min-w-0 flex-1 border-0 bg-transparent text-end font-normal leading-[1.32] tracking-[0.009375em] text-[#001D26] outline-none placeholder:text-[rgba(0,29,38,0.4)]"
+                    style={inputTypography}
                 />
                 <button
                     type="button"

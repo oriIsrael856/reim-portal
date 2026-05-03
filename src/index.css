@@ -137,6 +137,8 @@
   --home-newsletter-title-size: 34px;
   --home-newsletter-body-size: 16px;
   --home-newsletter-input-min-h: 52px;
+  /* Mobile baseline for the input/placeholder font; clamps in on md+ override below. */
+  --home-newsletter-input-font-size: 16px;
 
   /* --- Chapter 2 Mobile (Figma 194:16426 / 194:16436) --- */
   /* Figma Copy: 194:16426 "Chapter 2" (purple rail) + 194:16436 "Main content" (white card) */
@@ -1692,6 +1694,9 @@
     --home-newsletter-title-size: clamp(23px, 1.77vw, 45px);
     --home-newsletter-body-size: clamp(11px, 0.83vw, 21px);
     --home-newsletter-input-min-h: clamp(35px, 2.71vw, 69px);
+    /* Input font scales 13→16px (vs body's 11→21) so the long Hebrew placeholder
+       still fits the input on small desktops where the card column shrinks. */
+    --home-newsletter-input-font-size: clamp(13px, 0.83vw, 16px);
   }
 }
 

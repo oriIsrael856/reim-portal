@@ -336,7 +336,10 @@ const WhyTogetherSection = ({ data, ch2 }) => {
                                                 // Split last two Hebrew words ending with ":" into olive accent
                                                 const m = card.title.match(/^([\s\S]*?)\s+(\S+\s+\S+:)\s*$/);
                                                 return (
-                                                    <p className="w-full text-[20px] font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26] text-start">
+                                                    <p
+                                                        className="w-full font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26] text-start"
+                                                        style={ch2?.whyCardTitleFont}
+                                                    >
                                                         <span className="whitespace-pre-line">{m ? m[1] : card.title}</span>
                                                         {m && <span className="text-[#839c54]"> {m[2]}</span>}
                                                     </p>
@@ -351,7 +354,12 @@ const WhyTogetherSection = ({ data, ch2 }) => {
                                                     className="relative flex w-full items-center gap-[24px] rounded-[8px] border-[1.5px] border-[#001d26] px-[40px] py-[16px] shadow-[2px_2px_0_0_#001d26]"
                                                     style={{ backgroundImage: rowBg }}
                                                 >
-                                                    <p className="flex-1 text-[16px] font-normal leading-[1.32] tracking-[0.15px] text-[#001d26] text-start">{item}</p>
+                                                    <p
+                                                        className="flex-1 font-normal leading-[1.32] tracking-[0.15px] text-[#001d26] text-start"
+                                                        style={ch2?.whyCardItemFont}
+                                                    >
+                                                        {item}
+                                                    </p>
                                                     {/* Check badge — start-[-17.5px] = physical right in RTL, exact top from Figma */}
                                                     <div
                                                         className="absolute start-[-17.5px] -translate-y-1/2 flex size-[32px] items-center justify-center rounded-[8px] border-[1.5px] border-[#001d26] bg-[#bce079] p-[12px]"
@@ -366,10 +374,16 @@ const WhyTogetherSection = ({ data, ch2 }) => {
                                 ) : (
                                     /* Cards 2 & 3 — text (Figma 120:2580, 120:2603) */
                                     <>
-                                        <p className="w-full shrink-0 text-[20px] font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26] text-start">
+                                        <p
+                                            className="w-full shrink-0 font-semibold leading-[1.28] tracking-[0.15px] text-[#001d26] text-start"
+                                            style={ch2?.whyCardTitleFont}
+                                        >
                                             {card.title}
                                         </p>
-                                        <div className="w-full text-[20px] font-normal leading-[1.28] tracking-[0.15px] text-[#001d26] text-start whitespace-pre-wrap">
+                                        <div
+                                            className="w-full font-normal leading-[1.28] tracking-[0.15px] text-[#001d26] text-start whitespace-pre-wrap"
+                                            style={ch2?.whyCardBodyFont}
+                                        >
                                             {card.text}
                                         </div>
                                     </>

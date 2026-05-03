@@ -183,8 +183,10 @@ export const CH2_DESKTOP_STYLE_REGISTRY = {
         mins: { paddingTop: 40 },
     },
     whyStickyH: {
+        /* Min raised from 500→560 so the sticky region (= card slot) is tall enough for
+           the longest card body ("חיזוק השייכות החברתית") at the smallest scaled font. */
         values: { height: { px: 800, axis: 'height' } },
-        mins: { height: 500 },
+        mins: { height: 560 },
     },
     whyStickyPe: {
         values: { paddingInlineEnd: { px: 80, axis: 'width' } },
@@ -196,8 +198,10 @@ export const CH2_DESKTOP_STYLE_REGISTRY = {
         maxes: { width: 852 },
     },
     whyCardInnerH: {
+        /* Min raised from 320→500 so card 2's long Hebrew body fits at min font without
+           being clipped by `overflow-hidden`. */
         values: { height: { px: 500, axis: 'height' } },
-        mins: { height: 320 },
+        mins: { height: 500 },
     },
     whyCardPad: {
         values: {
@@ -208,6 +212,26 @@ export const CH2_DESKTOP_STYLE_REGISTRY = {
             gap: { px: 24, axis: 'height' },
         },
         mins: { paddingInlineStart: 32, paddingInlineEnd: 32, paddingTop: 20, paddingBottom: 20, gap: 12 },
+    },
+    /* Card title — Figma 20px @ 1920; min lowered from `bodyFont` floor to give long
+       titles room on smallest desktops. */
+    whyCardTitleFont: {
+        values: { fontSize: { px: 20, axis: 'width' } },
+        mins: { fontSize: 16 },
+        maxes: { fontSize: 20 },
+    },
+    /* Card body — Figma 20px @ 1920; min 14 (vs bodyFont 16) so card 2's long body
+       still fits the card height at small desktop viewports. */
+    whyCardBodyFont: {
+        values: { fontSize: { px: 20, axis: 'width' } },
+        mins: { fontSize: 14 },
+        maxes: { fontSize: 20 },
+    },
+    /* Card list-item text (card 1 only) — Figma 16px @ 1920. */
+    whyCardItemFont: {
+        values: { fontSize: { px: 16, axis: 'width' } },
+        mins: { fontSize: 13 },
+        maxes: { fontSize: 16 },
     },
 
     /* ── Typography ── */
