@@ -1,6 +1,7 @@
 import React, { useLayoutEffect, useRef } from 'react';
-import { ArrowUpLeft, ArrowDown, Bell, ExternalLink, Facebook, Layers, Star, ThumbsUp, Users } from 'lucide-react';
+import { ArrowDown, Bell, ExternalLink, Facebook, Layers, Star, ThumbsUp, Users } from 'lucide-react';
 import NextChapterButton from '../common/NextChapterButton';
+import NewsletterCard from '../common/NewsletterCard';
 
 const CARD_ID_TO_PAGE = {
     '01': 'chapter1',
@@ -408,54 +409,9 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
                         className="flex flex-col items-center gap-4 overflow-hidden"
                         style={{ padding: '80px 24px' }}
                     >
-                        <div
-                            className="flex h-[400px] w-[311px] max-w-full flex-col justify-between rounded-[24px] border-[1.5px] border-[#001D26] bg-[#BCE079] p-4 text-center shadow-[2px_2px_0_0_#001d26]"
-                        >
-                            <div className="flex flex-col items-center gap-3">
-                                <img
-                                    src="/assets/home/home-hero-star-deco.svg"
-                                    alt=""
-                                    className="size-11 opacity-90"
-                                />
-                                <div className="flex w-full max-w-[279px] flex-col items-center gap-0">
-                                    <p
-                                        className="w-full max-w-[237px] self-end text-right font-rubik font-normal text-[#001D26]"
-                                        style={{ fontSize: '16px', lineHeight: '132%', letterSpacing: '0.15px' }}
-                                    >
-                                        {newsletter.subtitle}
-                                    </p>
-                                    <h3
-                                        className="text-right font-rubik font-bold text-[#001D26]"
-                                        style={{
-                                            fontSize: '34px',
-                                            lineHeight: '110%',
-                                            letterSpacing: '0.25px',
-                                        }}
-                                    >
-                                        {newsletter.title}
-                                    </h3>
-                                </div>
-                                <p
-                                    className="max-w-[279px] font-rubik font-normal text-[#001D26]"
-                                    style={{ fontSize: '16px', lineHeight: '132%', letterSpacing: '0.15px' }}
-                                >
-                                    {newsletter.text}
-                                </p>
-                                <div className="size-10 rounded-full bg-white" aria-hidden />
-                            </div>
-                            <div
-                                className="mx-auto flex h-12 w-[279px] max-w-full items-center justify-between gap-3 rounded-full border border-[#001D26] bg-white px-2 shadow-[2px_2px_0_0_#001d26]"
-                            >
-                                <span
-                                    className="min-w-0 flex-1 truncate text-right font-rubik font-normal text-[hsla(194,100%,7%,0.4)]"
-                                    style={{ fontSize: '16px', lineHeight: '132%', letterSpacing: '0.15px' }}
-                                >
-                                    {newsletter.placeholder}
-                                </span>
-                                <span className="flex size-9 shrink-0 items-center justify-center rounded-[32px] bg-[hsla(252,70%,57%,0.4)] p-1.5">
-                                    <ArrowUpLeft className="size-4 text-[#001D26]" strokeWidth={2} aria-hidden />
-                                </span>
-                            </div>
+                        {/* Functional newsletter card (was a static visual mock — replaced with real form). */}
+                        <div className="w-[311px] max-w-full" style={{ ['--home-newsletter-card-h']: '400px' }}>
+                            <NewsletterCard data={newsletter} />
                         </div>
 
                         <div
