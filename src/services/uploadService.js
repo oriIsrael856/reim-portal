@@ -100,7 +100,8 @@ export function uploadSiteDocumentFile(file, onProgress) {
       new Error('סוג קובץ לא נתמך (PDF, Word, Excel בלבד)')
     );
   }
-  const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+  const rawName = (file.name || 'document').replace(/[/\\]/g, '_').trim() || 'document';
+  const safeName = rawName.length > 200 ? rawName.slice(0, 200) : rawName;
   const path = `${CMS_DOCUMENTS_PREFIX}/${Date.now()}_${safeName}`;
   const storageRef = ref(storage, path);
   const task = uploadBytesResumable(storageRef, file);
