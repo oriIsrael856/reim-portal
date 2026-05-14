@@ -238,13 +238,13 @@ export const DocumentUrlField = ({ label, value, onChange }) => {
 
         <div className="flex flex-col items-center gap-2 text-gray-400 pointer-events-none">
           <FileText size={40} />
-          <span className="text-xs font-bold text-center px-2 break-all">
-            {dragging
-              ? 'שחררי כאן'
-              : hasUrl
-              ? (value.length > 80 ? `${value.slice(0, 80)}…` : value)
-              : 'לחצי או גררי קובץ (PDF, Word, Excel)'}
-          </span>
+            <span className="text-xs font-bold text-center px-2 break-all">
+              {dragging
+                ? 'שחררי כאן'
+                : hasUrl
+                ? (value.length > 80 ? `${value.slice(0, 80)}…` : value)
+                : 'לחצי או גררי קובץ מהמחשב (PDF, Word, Excel)'}
+            </span>
         </div>
       </label>
       {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
@@ -449,6 +449,19 @@ const SortableCard = ({
   const cardTitle =
     item?.title || item?.name || item?.label || `פריט ${index + 1}`;
 
+  const docUrlKeys = Array.isArray(storageDocumentUrlKeys)
+    ? storageDocumentUrlKeys
+    : [];
+  const baseKeys = Object.keys(item || {}).filter((k) => k !== 'id');
+  const missingDocKeys = docUrlKeys.filter(
+    (k) =>
+      k &&
+      k !== 'id' &&
+      item &&
+      !Object.prototype.hasOwnProperty.call(item, k)
+  );
+  const cardFieldKeys = [...baseKeys, ...missingDocKeys];
+
   return (
     <div
       ref={setNodeRef}
@@ -488,7 +501,7 @@ const SortableCard = ({
       {/* Card body */}
       {!collapsed && (
         <div className="p-6 space-y-2">
-          {Object.keys(item).map((key) => {
+          {cardFieldKeys.map((key) => {
             if (key === 'id') return null;
             if (Array.isArray(item[key])) {
               return (
@@ -511,16 +524,14 @@ const SortableCard = ({
                 />
               );
             }
-            if (
-              Array.isArray(storageDocumentUrlKeys) &&
-              storageDocumentUrlKeys.includes(key) &&
-              typeof item[key] === 'string'
-            ) {
+            if (docUrlKeys.includes(key)) {
+              const strVal =
+                item[key] == null ? '' : String(item[key]);
               return (
                 <DocumentUrlField
                   key={key}
-                  label={key}
-                  value={item[key]}
+                  label={key === 'url' ? 'קישור / העלאת קובץ מהמחשב' : key}
+                  value={strVal}
                   onChange={(val) => onUpdate(key, val)}
                 />
               );
