@@ -8,7 +8,11 @@ import { app } from '../firebase';
 
 const storage = getStorage(app);
 const IMAGES_PREFIX = 'site_images';
-const DOCUMENTS_PREFIX = 'site_documents';
+/**
+ * CMS documents — under site_images/ so authenticated uploads work with the
+ * already-deployed rule `match /site_images/{allPaths=**}` (no extra deploy).
+ */
+const CMS_DOCUMENTS_PREFIX = 'site_images/cms_documents';
 
 /** Max upload size for CMS documents (bytes). */
 export const MAX_DOCUMENT_UPLOAD_BYTES = 25 * 1024 * 1024;
@@ -76,7 +80,7 @@ export function uploadImageFile(file, onProgress) {
 
 /**
  * Uploads a document (PDF / Office) to Firebase Storage for download links.
- * Path: site_documents/{timestamp}_{sanitizedName}
+ * Path: site_images/cms_documents/{timestamp}_{sanitizedName}
  *
  * @param {File} file
  * @param {(progress: number) => void} [onProgress]
@@ -97,7 +101,7 @@ export function uploadSiteDocumentFile(file, onProgress) {
     );
   }
   const safeName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
-  const path = `${DOCUMENTS_PREFIX}/${Date.now()}_${safeName}`;
+  const path = `${CMS_DOCUMENTS_PREFIX}/${Date.now()}_${safeName}`;
   const storageRef = ref(storage, path);
   const task = uploadBytesResumable(storageRef, file);
   return runResumableUpload(task, onProgress);
