@@ -997,6 +997,12 @@
   z-index: 0;
 }
 
+a.ch4-fileCard {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .ch4-fileCard__thumb {
   position: relative;
   flex: 1;

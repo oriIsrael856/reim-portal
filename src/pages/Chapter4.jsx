@@ -90,14 +90,22 @@ const FILES_SECTION_INTRO_P1 = 'בקבצים המצורפים ניתן למצו�
 const FILES_SECTION_INTRO_P2 =
     'הנהלים נועדו לסייע בעבודה השוטפת, להעניק סדר וביטחון להתנהלות בתוך המרכז הקהילתי ומחוצה לו.';
 
-function DesktopFileCard({ name, desc, imageSrc, ch4 }) {
+function isChapter4FileDownloadUrl(url) {
+    if (!url || typeof url !== 'string') return false;
+    const u = url.trim();
+    if (!u || u === '#') return false;
+    return u.startsWith('https://') || u.startsWith('http://') || u.startsWith('/');
+}
+
+const DESKTOP_FILE_CARD_CLASS =
+    'group relative z-0 flex shrink-0 flex-col items-stretch overflow-visible rounded-[16px] border-[1.5px] border-[rgba(101,70,222,0.16)] bg-white text-[#001d26] shadow-none transition-all duration-200 ease-out hover:z-[2] hover:-translate-y-1 hover:border-[#6546de] hover:shadow-[2px_10px_28px_rgba(101,70,222,0.18)] hover:bg-gradient-to-b hover:from-[rgba(255,178,59,0.14)] hover:to-white focus-visible:z-[2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6546de]';
+
+function DesktopFileCard({ name, desc, imageSrc, url, ch4 }) {
     const src = imageSrc || imgCh4FilesCard;
-    return (
-        <button
-            type="button"
-            className="group relative z-0 flex shrink-0 flex-col items-stretch overflow-visible rounded-[16px] border-[1.5px] border-[rgba(101,70,222,0.16)] bg-white text-[#001d26] shadow-none transition-all duration-200 ease-out hover:z-[2] hover:-translate-y-1 hover:border-[#6546de] hover:shadow-[2px_10px_28px_rgba(101,70,222,0.18)] hover:bg-gradient-to-b hover:from-[rgba(255,178,59,0.14)] hover:to-white focus-visible:z-[2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6546de]"
-            style={ch4?.fileCard}
-        >
+    const href = isChapter4FileDownloadUrl(url) ? url.trim() : null;
+
+    const inner = (
+        <>
             <div className="relative min-h-0 w-full flex-1 overflow-hidden rounded-[12px] bg-[rgba(0,29,38,0.06)]">
                 <img
                     alt=""
@@ -127,6 +135,32 @@ function DesktopFileCard({ name, desc, imageSrc, ch4 }) {
                     </p>
                 </div>
             </div>
+        </>
+    );
+
+    if (href) {
+        return (
+            <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={DESKTOP_FILE_CARD_CLASS}
+                style={ch4?.fileCard}
+            >
+                {inner}
+            </a>
+        );
+    }
+
+    /* No download URL in CMS — card is visual only (no navigation). */
+    return (
+        <button
+            type="button"
+            className={DESKTOP_FILE_CARD_CLASS}
+            style={ch4?.fileCard}
+            aria-disabled="true"
+        >
+            {inner}
         </button>
     );
 }
@@ -213,7 +247,7 @@ function Chapter4DesktopFilesSection({ files, filesTitle, ch4 }) {
                     style={ch4?.filesCarouselStrip}
                 >
                     {items.map((f, i) => (
-                        <DesktopFileCard key={i} name={f.name} desc={f.desc} imageSrc={f.image} ch4={ch4} />
+                        <DesktopFileCard key={i} name={f.name} desc={f.desc} imageSrc={f.image} url={f.url} ch4={ch4} />
                     ))}
                 </div>
             </div>
@@ -221,7 +255,7 @@ function Chapter4DesktopFilesSection({ files, filesTitle, ch4 }) {
     );
 }
 
-const Chapter4 = ({ data, content, onNext, onPrev }) => {
+const Chapter4 = ({ data, content, onNext }) => {
     const committees = data?.committees;
     const qaItems = data?.qa ?? [];
     const steps = useMemo(() => data?.committees?.steps ?? [], [data?.committees]);

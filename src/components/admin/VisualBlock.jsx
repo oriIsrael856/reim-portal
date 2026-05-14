@@ -5,6 +5,7 @@ import {
   Eye,
   CheckSquare,
   ImagePlus,
+  FileText,
   GripVertical,
   ChevronDown,
   ChevronUp,
@@ -23,7 +24,10 @@ import {
   arrayMove,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { uploadImageFile } from '../../services/uploadService';
+import { uploadImageFile, uploadSiteDocumentFile } from '../../services/uploadService';
+
+const DOCUMENT_ACCEPT =
+  '.pdf,.doc,.docx,.xls,.xlsx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
 
 /* ─────────────────────────────────────────────
    ImageField — upload with progress + drag-drop
@@ -137,6 +141,119 @@ export const ImageField = ({ label, value, onChange }) => {
         value={value || ''}
         onChange={(e) => onChange(e.target.value)}
         placeholder="או הדבקי קישור לתמונה (כתובת URL)"
+      />
+    </div>
+  );
+};
+
+/* ─────────────────────────────────────────────
+   DocumentUrlField — PDF/Office upload + paste URL (Chapter 4 files, etc.)
+   ───────────────────────────────────────────── */
+export const DocumentUrlField = ({ label, value, onChange }) => {
+  const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState(null);
+  const [dragging, setDragging] = useState(false);
+  const fileInputId = useId();
+
+  const handleUpload = async (file) => {
+    if (!file) return;
+    setError(null);
+    setProgress(0);
+    setUploading(true);
+    try {
+      const url = await uploadSiteDocumentFile(file, setProgress);
+      onChange(url);
+    } catch (err) {
+      setError(err?.message || 'ההעלאה נכשלה');
+      console.error('[DocumentUrlField] upload failed', err);
+    } finally {
+      setUploading(false);
+      setProgress(0);
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    handleUpload(file);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setDragging(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) handleUpload(file);
+  };
+
+  const hasUrl =
+    value && (value.startsWith('http') || value.startsWith('/'));
+
+  return (
+    <div className="mb-4 w-full">
+      {label && (
+        <span className="flex items-center gap-2 text-[10px] font-black text-[#2D2D44]/40 mb-1 uppercase tracking-wider block">
+          {label}
+        </span>
+      )}
+      <label
+        htmlFor={fileInputId}
+        className={`relative w-full min-h-[120px] max-h-[200px] rounded-xl border-2 border-dashed overflow-hidden flex flex-col items-center justify-center cursor-pointer transition-all block py-6 px-3 ${
+          uploading ? 'pointer-events-none opacity-70' : ''
+        } ${
+          dragging
+            ? 'border-[#5E3BEE] bg-[#F0F2FF]'
+            : hasUrl
+            ? 'border-[#5E3BEE]/30 hover:border-[#5E3BEE] bg-gray-50'
+            : 'border-gray-200 hover:border-[#5E3BEE]/50 bg-[#F8F9FC]'
+        }`}
+        aria-label={label ? `העלאת מסמך: ${label}` : 'לחצי להעלאת מסמך'}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDragging(true);
+        }}
+        onDragLeave={() => setDragging(false)}
+        onDrop={handleDrop}
+      >
+        <input
+          id={fileInputId}
+          type="file"
+          accept={DOCUMENT_ACCEPT}
+          className="sr-only"
+          onChange={handleFileChange}
+          disabled={uploading}
+        />
+
+        {uploading && (
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/30 gap-3">
+            <div className="w-3/4 bg-white/30 rounded-full h-2 overflow-hidden">
+              <div
+                className="h-full bg-white rounded-full transition-all duration-200"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+            <span className="text-white text-xs font-bold">{progress}%</span>
+          </div>
+        )}
+
+        <div className="flex flex-col items-center gap-2 text-gray-400 pointer-events-none">
+          <FileText size={40} />
+          <span className="text-xs font-bold text-center px-2 break-all">
+            {dragging
+              ? 'שחררי כאן'
+              : hasUrl
+              ? (value.length > 80 ? `${value.slice(0, 80)}…` : value)
+              : 'לחצי או גררי קובץ (PDF, Word, Excel)'}
+          </span>
+        </div>
+      </label>
+      {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+      <input
+        type="text"
+        className="mt-2 w-full p-2 bg-[#F8F9FC] border border-gray-200 rounded-lg text-xs dir-ltr text-start"
+        value={value || ''}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder="או הדבקי קישור להורדה (URL)"
       />
     </div>
   );
@@ -315,7 +432,15 @@ const getNextCardId = (existingItems) => {
   return nextNum.toString().padStart(2, '0');
 };
 
-const SortableCard = ({ id, item, index, onUpdate, onRemove, showRaw }) => {
+const SortableCard = ({
+  id,
+  item,
+  index,
+  onUpdate,
+  onRemove,
+  showRaw,
+  storageDocumentUrlKeys = [],
+}) => {
   const [collapsed, setCollapsed] = useState(false);
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
     useSortable({ id });
@@ -386,6 +511,20 @@ const SortableCard = ({ id, item, index, onUpdate, onRemove, showRaw }) => {
                 />
               );
             }
+            if (
+              Array.isArray(storageDocumentUrlKeys) &&
+              storageDocumentUrlKeys.includes(key) &&
+              typeof item[key] === 'string'
+            ) {
+              return (
+                <DocumentUrlField
+                  key={key}
+                  label={key}
+                  value={item[key]}
+                  onChange={(val) => onUpdate(key, val)}
+                />
+              );
+            }
             return (
               <SmartField
                 key={key}
@@ -415,6 +554,7 @@ export const UniversalCardEditor = ({
   onUpdate,
   newItemTemplate = {},
   icon = CheckSquare,
+  storageDocumentUrlKeys = [],
 }) => {
   const Icon = icon; // PascalCase alias for JSX usage — matches varsIgnorePattern
   const safeItems = Array.isArray(items) ? items : [];
@@ -486,6 +626,7 @@ export const UniversalCardEditor = ({
                 onUpdate={(key, val) => updateItemField(idx, key, val)}
                 onRemove={() => onUpdate(safeItems.filter((_, i) => i !== idx))}
                 showRaw={showRaw}
+                storageDocumentUrlKeys={storageDocumentUrlKeys}
               />
             ))}
           </div>
