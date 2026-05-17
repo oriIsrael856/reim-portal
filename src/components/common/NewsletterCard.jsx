@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 /**
  * כרטיס ניוזלטר — Figma Home 191:9424 (מבנה + מידות + אייקונים מיוצאים).
  * data: { title, subtitle, text, placeholder } — כולם ניתנים לעריכה ב-CMS.
- * הגשה: FormSubmit AJAX endpoint (https://formsubmit.co) — חינמי, ללא backend.
+ * הגשה: (1) שמירה ב-Firestore `newsletter_signups` — מקור האמת, עובד גם כש־fetch חיצוני נחסם.
+ *        (2) לאחר מכן — ניסיון שקט (best-effort) ל־FormSubmit כדי להודיע למייל של אופיר; אם הרשת חוסמת, ההרשמה עדיין נשמרה ב-Firestore.
  */
 const ASSETS = {
     star1: '/assets/home/home-newsletter-star1.svg',
@@ -12,7 +15,21 @@ const ASSETS = {
     submit: '/assets/home/home-newsletter-submit.svg',
 };
 
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/Ofere@matnasim.org.il';
+/** FormSubmit — הודעה לעופיר; לא חוסם UI ולא משפיע על הצלחת ההרשמה אם נכשל. */
+const FORMSUBMIT_NOTIFY = 'https://formsubmit.co/ajax/Ofere@matnasim.org.il';
+
+function notifyAdminNewsletterBestEffort(submittedEmail) {
+    void fetch(FORMSUBMIT_NOTIFY, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+            email: submittedEmail,
+            _subject: 'הרשמה חדשה לניוזלטר רעים',
+            _captcha: 'false',
+            _template: 'table',
+        }),
+    }).catch(() => {});
+}
 
 /**
  * @param {{ data: object, className?: string, embeddedInRow?: boolean, embeddedStyles?: object | null }} props
@@ -29,30 +46,76 @@ const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedS
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // #region agent log
+        fetch('http://127.0.0.1:7242/ingest/33d723f8-c665-4af5-ad39-38344c92c1fe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                location: 'NewsletterCard.jsx:handleSubmit:entry',
+                message: 'newsletter submit entry',
+                data: {
+                    emailLen: email.trim().length,
+                    isValidEmail,
+                    statusBefore: status,
+                },
+                timestamp: Date.now(),
+                hypothesisId: 'D',
+                runId: 'post-fix',
+            }),
+        }).catch(() => {});
+        // #endregion
         if (!isValidEmail || status === 'sending' || status === 'success') return;
         setStatus('sending');
         setErrorMsg('');
         try {
-            const res = await fetch(FORMSUBMIT_ENDPOINT, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-                body: JSON.stringify({
-                    email,
-                    _subject: 'הרשמה חדשה לניוזלטר רעים',
-                    _captcha: 'false',
-                    _template: 'table',
-                }),
+            const ref = await addDoc(collection(db, 'newsletter_signups'), {
+                email: email.trim(),
+                submittedAt: new Date().toISOString(),
             });
-            const result = await res.json();
-            if (result.success === 'true' || result.success === true) {
-                setStatus('success');
-                setEmail('');
-            } else {
-                throw new Error(result.message || 'שליחה נכשלה, נסי שוב');
-            }
+            // #region agent log
+            fetch('http://127.0.0.1:7242/ingest/33d723f8-c665-4af5-ad39-38344c92c1fe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    location: 'NewsletterCard.jsx:firestoreSuccess',
+                    message: 'newsletter signup saved',
+                    data: { docIdPrefix: String(ref?.id || '').slice(0, 8) },
+                    timestamp: Date.now(),
+                    hypothesisId: 'F',
+                    runId: 'post-fix',
+                }),
+            }).catch(() => {});
+            // #endregion
+            notifyAdminNewsletterBestEffort(email.trim());
+            setStatus('success');
+            setEmail('');
         } catch (err) {
+            // #region agent log
+            fetch('http://127.0.0.1:7242/ingest/33d723f8-c665-4af5-ad39-38344c92c1fe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    location: 'NewsletterCard.jsx:firestoreError',
+                    message: 'newsletter signup failed',
+                    data: {
+                        errMsg: String(err?.message || err),
+                        code: err?.code || null,
+                    },
+                    timestamp: Date.now(),
+                    hypothesisId: 'G',
+                    runId: 'post-fix',
+                }),
+            }).catch(() => {});
+            // #endregion
             setStatus('error');
-            setErrorMsg(err.message || 'שליחה נכשלה, נסי שוב');
+            const code = err?.code;
+            const hint =
+                code === 'permission-denied'
+                    ? 'אין הרשאה לשרת — יש לפרוס את חוקי Firestore המעודכנים (newsletter_signups).'
+                    : '';
+            setErrorMsg(
+                [err.message || 'שליחה נכשלה, נסי שוב', hint].filter(Boolean).join(' ')
+            );
         }
     };
 

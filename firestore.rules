@@ -6,5 +6,16 @@ service cloud.firestore {
       allow read: if true;
       allow create, update, delete: if request.auth != null;
     }
+
+    // הרשמות לניוזלטר מהאתר הציבורי — יצירה בלבד ללא auth; קריאה/עדכון למנהלים מחוברים בלבד
+    match /newsletter_signups/{signupId} {
+      allow create: if request.resource.data.size() == 2
+        && request.resource.data.email is string
+        && request.resource.data.submittedAt is string
+        && request.resource.data.email.size() > 3
+        && request.resource.data.email.size() < 256
+        && request.resource.data.submittedAt.size() < 40;
+      allow read, update, delete: if request.auth != null;
+    }
   }
 }
