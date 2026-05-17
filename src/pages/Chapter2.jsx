@@ -25,7 +25,7 @@ const GoalCard = ({ text, ch2 }) => (
 
 const AccordionItem = ({ title, content, isOpen, onClick, ch2 }) => (
     <div
-        className={`rounded-[8px] overflow-hidden transition-all duration-300 bg-white ${
+        className={`rounded-[8px] overflow-hidden transition-all duration-300 bg-white [overflow-anchor:none] ${
             isOpen
                 ? 'border border-[rgba(101,70,222,0.12)] border-s-[2px] border-s-[#6546de]'
                 : 'border border-[rgba(101,70,222,0.08)]'
@@ -53,7 +53,7 @@ const AccordionItem = ({ title, content, isOpen, onClick, ch2 }) => (
 const Accordion = ({ items, ch2 }) => {
     const [openIndex, setOpenIndex] = useState(0); 
     const handleItemClick = (index) => setOpenIndex(openIndex === index ? null : index);
-    return <div className="w-full max-w-4xl mx-auto flex flex-col gap-2">{items.map((item, index) => <AccordionItem key={index} title={item.title} content={item.content} isOpen={openIndex === index} onClick={() => handleItemClick(index)} ch2={ch2} />)}</div>;
+    return <div className="mx-auto flex w-full max-w-4xl flex-col gap-2 [overflow-anchor:none]">{items.map((item, index) => <AccordionItem key={index} title={item.title} content={item.content} isOpen={openIndex === index} onClick={() => handleItemClick(index)} ch2={ch2} />)}</div>;
 };
 
 /* ==============================================================================
@@ -273,7 +273,7 @@ const GroupDetailsSection = ({ data, ch2 }) => {
     if (!data) return null;
     return (
         <section
-            className="w-full"
+            className="w-full [overflow-anchor:none]"
             style={{ ...ch2?.sectionGutter, ...ch2?.groupDetailsPad, background: 'var(--ch2-section5-bg)' }}
         >
             <div className="mx-auto" style={{ maxWidth: ch2?.groupDetailsMaxWidth }} dir="rtl">
