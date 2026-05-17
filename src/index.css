@@ -361,9 +361,9 @@
   /* Outer card: opaque base + tint (overlap must not show through) */
   --ch2-why-card-fill: var(--ch2-surface);
   --ch2-why-card-tint: linear-gradient(180deg, rgba(255, 178, 59, 0.1) 0%, rgba(255, 255, 255, 0) 58%);
-  /* Room after last card + easier handoff to document scroll */
-  --ch2-why-stack-padding-bottom: clamp(100px, 28vh, 220px);
-  --ch2-why-sticky-exit-runway: clamp(72px, 16vh, 160px);
+  /* Room after last card + handoff to page scroll (tuned down — was leaving a large white tail) */
+  --ch2-why-stack-padding-bottom: clamp(28px, 7vh, 72px);
+  --ch2-why-sticky-exit-runway: clamp(28px, 7vh, 64px);
   --ch2-why-card-gap: 40px;
   --ch2-why-card-radius: 24px;
   --ch2-why-card-border: var(--ch2-image-border);
@@ -387,7 +387,8 @@
   --ch2-why-lime-bar-w: 183px;
   --ch2-why-lime-bar-h: 8px;
   /* Sticky card stack — scroll runway between sticky slots (not Figma) */
-  --ch2-why-sticky-runway: clamp(160px, 34vh, 340px);
+  /* Scroll slack between sticky steps — keep enough for overlap, avoid oversized empty band */
+  --ch2-why-sticky-runway: clamp(120px, 24vh, 260px);
 }
 
 /* ========================================
@@ -1598,6 +1599,8 @@
     gap: var(--ch2-why-card-inner-gap-text);
     padding: var(--ch2-why-card-padding);
     text-align: start;
+    /* Match visual mass of list + long text cards so sticky overlap reads evenly (card 2 body is shorter in CMS). */
+    min-height: clamp(400px, 56dvh, 560px);
   }
 
   .ch2-mobile-why-card__title--list {
