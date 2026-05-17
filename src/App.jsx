@@ -50,6 +50,12 @@ function getMobileScreenTitle(page, content) {
     return fallbacks[page] || '—';
 }
 
+/** כיתוב פס הסגול בדסקטופ — עמוד נוכחי (כולל אדמין) */
+function getSidebarRailTitle(page, content) {
+    if (page === 'admin') return 'מערכת ניהול';
+    return getMobileScreenTitle(page, content);
+}
+
 const App = () => {
     const { content } = useFirebaseContent();
     const { user, login, logout } = useAuth();
@@ -136,6 +142,8 @@ const App = () => {
         );
     }
 
+    const sidebarRoute = ROUTES[currentPage] || ROUTES.home;
+
     return (
         <div dir="rtl" className="font-['Rubik'] text-[#2D2D44] min-h-screen" style={{ background: 'var(--Purple-Dark, #46319B)' }}>
             {/* קונטיינר פנימי – פס סגול תמיד נראה למעלה, שמאל ולמטה */}
@@ -179,7 +187,12 @@ const App = () => {
 
             {/* סרגל צף – רק מדסקטופ כדי לא להסתיר תוכן במובייל */}
             <div className="hidden md:block">
-                <Sidebar toggleMenu={() => setIsMenuOpen(true)} />
+                <Sidebar
+                    toggleMenu={() => setIsMenuOpen(true)}
+                    railTitle={getSidebarRailTitle(currentPage, content)}
+                    onBack={sidebarRoute.prev ? () => navigateTo(sidebarRoute.prev) : undefined}
+                    onHome={() => navigateTo('home')}
+                />
             </div>
 
             <MenuOverlay
@@ -188,7 +201,6 @@ const App = () => {
                 menuItems={content.menu || []}
                 navigateTo={navigateTo}
                 ctaText={content?.header?.ctaText}
-                currentPage={currentPage}
             />
 
             <main

@@ -1,11 +1,23 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
-import { Menu, X, LogOut, Home, Mail } from 'lucide-react';
+import { Menu, X, Home, Mail, ArrowLeft } from 'lucide-react';
 import { useMenuOverlayStyles } from '../../hooks/useMenuOverlayStyles';
 
 const REIMSYS_URL = 'https://www.reimsys.org.il/index.php';
 
-// סרגל צד — Figma 36:1217 / Right Sidebar: רקע סגול כהה, טקסט אנכי, כפתור תפריט
-export const Sidebar = ({ toggleMenu }) => {
+/** מקצר כותרת לאזור אנכי צר בפס הסגול */
+function shortenForVerticalRail(text, maxLen = 28) {
+    const s = String(text ?? '').trim();
+    if (s.length <= maxLen) return s;
+    return `${s.slice(0, Math.max(0, maxLen - 1))}…`;
+}
+
+const railNavBtnClass =
+    'flex min-h-[48px] min-w-[48px] cursor-pointer items-center justify-center rounded-[24px] border-0 bg-transparent p-3 transition-all duration-300 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/80 disabled:pointer-events-none disabled:opacity-35';
+
+// סרגל צד — Figma 36:1217 / Right Sidebar: רקע סגול כהה, כותרת אנכית לעמוד הנוכחי, תפריט, חזרה + בית
+export const Sidebar = ({ toggleMenu, railTitle = 'דף הבית', onBack, onHome }) => {
+    const label = shortenForVerticalRail(railTitle);
+
     return (
         <aside
             className="fixed start-0 top-0 bottom-0 z-50 flex w-[72px] flex-col items-center justify-between rounded-e-[32px] py-6 shadow-xl md:w-20"
@@ -13,28 +25,41 @@ export const Sidebar = ({ toggleMenu }) => {
             aria-label="תפריט צד"
         >
             <span
-                className="whitespace-nowrap text-sm font-bold text-white"
+                className="max-h-[min(42vh,280px)] overflow-hidden whitespace-nowrap text-sm font-bold text-white"
                 style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
+                title={railTitle}
             >
-                דף הבית
+                {label}
             </span>
 
             <button
                 type="button"
                 onClick={toggleMenu}
-                className="flex min-h-[56px] min-w-[56px] cursor-pointer items-center justify-center rounded-[24px] border-0 bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-50"
+                className="flex min-h-[56px] min-w-[56px] cursor-pointer items-center justify-center rounded-[24px] border-0 bg-white p-4 shadow-md transition-all duration-300 hover:scale-105 hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#46319B]"
                 aria-label="תפריט"
             >
                 <Menu size={26} color="#1a1a2e" strokeWidth={2} />
             </button>
 
-            <button
-                type="button"
-                className="flex min-h-[48px] min-w-[48px] cursor-pointer items-center justify-center rounded-[24px] border-0 bg-transparent p-3 transition-all duration-300 hover:bg-white/10"
-                aria-label="יציאה"
-            >
-                <LogOut size={22} color="white" strokeWidth={2} />
-            </button>
+            <div className="flex flex-col items-center gap-3" role="group" aria-label="ניווט מהיר">
+                <button
+                    type="button"
+                    onClick={onBack}
+                    disabled={!onBack}
+                    className={railNavBtnClass}
+                    aria-label="חזרה לעמוד הקודם"
+                >
+                    <ArrowLeft size={22} color="white" strokeWidth={2} aria-hidden />
+                </button>
+                <button
+                    type="button"
+                    onClick={onHome}
+                    className={railNavBtnClass}
+                    aria-label="חזרה לדף הבית"
+                >
+                    <Home size={22} color="white" strokeWidth={2} aria-hidden />
+                </button>
+            </div>
         </aside>
     );
 };
@@ -48,7 +73,6 @@ export const MenuOverlay = ({
     menuItems = [],
     navigateTo,
     ctaText = 'לרכזייה',
-    currentPage = 'home',
 }) => {
     const homeItem = menuItems.find((i) => i.isHome);
     const chapterItems = menuItems.filter((i) => !i.isHome);

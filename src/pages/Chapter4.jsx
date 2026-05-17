@@ -269,7 +269,7 @@ const Chapter4 = ({ data, content, onNext }) => {
     if (!data) return <div className="p-20 text-center font-bold text-[#816AFE]">טוען נתוני עבודה מנהלית...</div>;
 
     return (
-        <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-12 font-['Rubik'] md:pt-3">
+        <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-12 font-['Rubik']">
             <Chapter4MobileView
                 data={data}
                 onNext={onNext}

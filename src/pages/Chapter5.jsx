@@ -9,7 +9,7 @@ import NextChapterButton from '../components/common/NextChapterButton';
 import NewsletterCard from '../components/common/NewsletterCard';
 import { useChapter5DesktopStyles } from '../hooks/useChapter5DesktopStyles';
 
-const Chapter5 = ({ data, onNext, onPrev }) => {
+const Chapter5 = ({ data, onNext }) => {
     const d = useChapter5DesktopStyles();
 
     if (!data) return <div className="p-20 text-center font-bold text-[#816AFE]">טוען נתוני כלים מעשיים...</div>;
@@ -18,7 +18,7 @@ const Chapter5 = ({ data, onNext, onPrev }) => {
     const networkingCardsReversed = [...(data.networking?.cards ?? [])].reverse();
 
     return (
-        <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-12 md:pt-0 font-['Rubik']">
+        <div className="min-h-screen bg-[#FFFDF5] pt-24 pb-12 font-['Rubik']">
             {/* ========== מובייל בלבד ========== */}
             <div className="md:hidden">
                 {/* 1. Hero */}
