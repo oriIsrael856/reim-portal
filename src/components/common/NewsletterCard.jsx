@@ -46,67 +46,18 @@ const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedS
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // #region agent log
-        fetch('http://127.0.0.1:7242/ingest/33d723f8-c665-4af5-ad39-38344c92c1fe', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                location: 'NewsletterCard.jsx:handleSubmit:entry',
-                message: 'newsletter submit entry',
-                data: {
-                    emailLen: email.trim().length,
-                    isValidEmail,
-                    statusBefore: status,
-                },
-                timestamp: Date.now(),
-                hypothesisId: 'D',
-                runId: 'post-fix',
-            }),
-        }).catch(() => {});
-        // #endregion
         if (!isValidEmail || status === 'sending' || status === 'success') return;
         setStatus('sending');
         setErrorMsg('');
         try {
-            const ref = await addDoc(collection(db, 'newsletter_signups'), {
+            await addDoc(collection(db, 'newsletter_signups'), {
                 email: email.trim(),
                 submittedAt: new Date().toISOString(),
             });
-            // #region agent log
-            fetch('http://127.0.0.1:7242/ingest/33d723f8-c665-4af5-ad39-38344c92c1fe', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    location: 'NewsletterCard.jsx:firestoreSuccess',
-                    message: 'newsletter signup saved',
-                    data: { docIdPrefix: String(ref?.id || '').slice(0, 8) },
-                    timestamp: Date.now(),
-                    hypothesisId: 'F',
-                    runId: 'post-fix',
-                }),
-            }).catch(() => {});
-            // #endregion
             notifyAdminNewsletterBestEffort(email.trim());
             setStatus('success');
             setEmail('');
         } catch (err) {
-            // #region agent log
-            fetch('http://127.0.0.1:7242/ingest/33d723f8-c665-4af5-ad39-38344c92c1fe', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    location: 'NewsletterCard.jsx:firestoreError',
-                    message: 'newsletter signup failed',
-                    data: {
-                        errMsg: String(err?.message || err),
-                        code: err?.code || null,
-                    },
-                    timestamp: Date.now(),
-                    hypothesisId: 'G',
-                    runId: 'post-fix',
-                }),
-            }).catch(() => {});
-            // #endregion
             setStatus('error');
             const code = err?.code;
             const hint =
