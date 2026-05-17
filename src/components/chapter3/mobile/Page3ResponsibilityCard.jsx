@@ -1,5 +1,9 @@
 import React from 'react';
 
+function isAppInternalPageKey(page) {
+    return typeof page === 'string' && /^(home|admin|chapter[1-5])$/.test(page);
+}
+
 const ICONS = {
     purple: '/assets/chapter3/resp-list-icon-arrow.svg',
     learning: '/assets/chapter3/resp-list-icon-arrow-learning.svg',
@@ -13,7 +17,7 @@ function variantFromCard(card) {
     return 'purple';
 }
 
-export default function Page3ResponsibilityCard({ card }) {
+export default function Page3ResponsibilityCard({ card, navigateTo }) {
     if (!card?.items?.length) return null;
     const v = variantFromCard(card);
     const iconSrc = ICONS[v] ?? ICONS.purple;
@@ -48,9 +52,19 @@ export default function Page3ResponsibilityCard({ card }) {
                 <>
                     <div className="ch3-respCard__body">{inner}</div>
                     <div className="ch3-respCard__cta">
-                        <a href={card.action.link || '#'} className="ch3-respCard__btn">
-                            {card.action.text}
-                        </a>
+                        {isAppInternalPageKey(card.action.link) ? (
+                            <button
+                                type="button"
+                                className="ch3-respCard__btn"
+                                onClick={() => navigateTo?.(card.action.link)}
+                            >
+                                {card.action.text}
+                            </button>
+                        ) : (
+                            <a href={card.action.link || '#'} className="ch3-respCard__btn">
+                                {card.action.text}
+                            </a>
+                        )}
                     </div>
                 </>
             ) : (

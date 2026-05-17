@@ -11,6 +11,25 @@ import '../styles/chapter3-mobile.css';
 import '../styles/chapter3-desktop.css';
 import { useChapter3DesktopStyles } from '../hooks/useChapter3DesktopStyles';
 
+/** Values accepted by `App.jsx` `navigateTo` for in-app chapter/home navigation. */
+function isAppInternalPageKey(page) {
+    return typeof page === 'string' && /^(home|admin|chapter[1-5])$/.test(page);
+}
+
+/** Firestore / older CMS may leave `action.link` as `#` on the admin responsibility card — send to chapter 4. */
+function normalizeChapter3Responsibilities(list) {
+    return (list ?? []).map((card) => {
+        const act = card?.action;
+        if (!act) return card;
+        const link = act.link;
+        const isAdminCard = typeof card.title === 'string' && card.title.includes('מנהלית');
+        if (isAdminCard && (link === '#' || link == null || link === '')) {
+            return { ...card, action: { ...act, link: 'chapter4' } };
+        }
+        return card;
+    });
+}
+
 /** Firestore may omit `onboarding`; merge defaults so desktop + mobile show steps (schema-safe). */
 function mergeChapter3Onboarding(fromCms) {
     const base = INITIAL_DATA.chapter3.onboarding;
@@ -45,11 +64,15 @@ const RESPONSIBILITY_SCHEMES = [
     },
 ];
 
-const Chapter3 = ({ data, content, onNext, onPrev }) => {
+const Chapter3 = ({ data, content, onNext, navigateTo }) => {
     const d3 = useChapter3DesktopStyles();
     if (!data) return <div className="text-center p-20 text-text-purple font-bold">טוען נתוני פרק 3...</div>;
 
-    const mergedData = { ...data, onboarding: mergeChapter3Onboarding(data.onboarding) };
+    const mergedData = {
+        ...data,
+        onboarding: mergeChapter3Onboarding(data.onboarding),
+        responsibilities: normalizeChapter3Responsibilities(data.responsibilities),
+    };
 
     /* ── Sticky right sidebar — Figma 120:3759 ── */
     const StickyHeader = (
@@ -94,7 +117,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
     return (
         <div className="min-h-screen bg-white pt-24 pb-0 font-rubik">
             {/* Mobile */}
-            <Chapter3MobileView data={mergedData} onNext={onNext} footerData={content?.footer} />
+            <Chapter3MobileView data={mergedData} onNext={onNext} footerData={content?.footer} navigateTo={navigateTo} />
 
             {/* Desktop */}
             <div className="hidden md:block">
@@ -154,7 +177,7 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                     {/* ── Responsibility cards — Figma 120:3736, 120:4097, 120:4139
                         Outer: 900/1824=49.34vw sticky, px 40/1824=2.19vw.
                         Inner: 520/1824=28.51vw, pe 80/1824=4.39vw, ps 60/1824=3.29vw, py 40/1824=2.19vw, gap 24/1824=1.32vw */}
-                    {(data.responsibilities ?? []).map((card, index) => {
+                    {(mergedData.responsibilities ?? []).map((card, index) => {
                         const scheme = RESPONSIBILITY_SCHEMES[index] ?? RESPONSIBILITY_SCHEMES[0];
                         return (
                             <div
@@ -201,6 +224,13 @@ const Chapter3 = ({ data, content, onNext, onPrev }) => {
                                             <button
                                                 type="button"
                                                 className="flex items-center gap-[12px] bg-brand-purple border border-brand-purple rounded-full px-[12px] py-[8px]"
+                                                onClick={() => {
+                                                    const dest = card.action?.link;
+                                                    if (isAppInternalPageKey(dest)) navigateTo?.(dest);
+                                                    else if (dest?.startsWith('http://') || dest?.startsWith('https://')) {
+                                                        window.open(dest, '_blank', 'noopener,noreferrer');
+                                                    }
+                                                }}
                                             >
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
                                                     <circle cx="12" cy="12" r="10" fill="white" fillOpacity="0.3" />

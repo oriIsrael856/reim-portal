@@ -2,7 +2,7 @@ import React from 'react';
 import Page3HeroImageBlock from './Page3HeroImageBlock';
 import Page3ResponsibilityCard from './Page3ResponsibilityCard';
 
-export default function Page3PageContentColumn({ hero, responsibilities }) {
+export default function Page3PageContentColumn({ hero, responsibilities, navigateTo }) {
     const cards = responsibilities ?? [];
     if (!hero?.image && cards.length === 0) return null;
 
@@ -23,7 +23,7 @@ export default function Page3PageContentColumn({ hero, responsibilities }) {
                                 className="ch3-respStickySlot"
                                 style={{ '--ch3-resp-sticky-index': String(i) }}
                             >
-                                <Page3ResponsibilityCard card={card} />
+                                <Page3ResponsibilityCard card={card} navigateTo={navigateTo} />
                             </div>
                         ))}
                     </div>

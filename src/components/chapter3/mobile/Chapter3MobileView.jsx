@@ -11,7 +11,7 @@ import '../../../styles/chapter3-mobile.css';
  * Chapter 3 — mobile main content only (Figma 253:6715).
  * Shell (menu, logo pill, status, global footer) stays in app chrome.
  */
-export default function Chapter3MobileView({ data, onNext, footerData }) {
+export default function Chapter3MobileView({ data, onNext, footerData, navigateTo }) {
     if (!data) return null;
 
     const chapterNumber = data.chapterNumber ?? '03';
@@ -29,7 +29,7 @@ export default function Chapter3MobileView({ data, onNext, footerData }) {
     return (
         <div className="ch3-mobile md:hidden" dir="rtl" lang="he">
             <Page3HeroSection hero={data.hero} chapterNumber={chapterNumber} />
-            <Page3PageContentColumn hero={data.hero} responsibilities={data.responsibilities} />
+            <Page3PageContentColumn hero={data.hero} responsibilities={data.responsibilities} navigateTo={navigateTo} />
             <Page3OnboardingSection onboarding={data.onboarding} />
             <Page3MeetingSection session={data.sessionStructure} />
             {nextSlot ? <div className="ch3-mobile__next">{nextSlot}</div> : null}

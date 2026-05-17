@@ -41,9 +41,10 @@ export const CH2_DESKTOP_STYLE_REGISTRY = {
         values: { gap: { px: 24, axis: 'width' } },
         mins: { gap: 12 },
     },
+    /* paddingTop: extra space below floating check icon vs goal text (tuned UX) */
     goalsCardPad: {
-        values: { paddingTop: { px: 40, axis: 'height' }, paddingBottom: { px: 16, axis: 'height' } },
-        mins: { paddingTop: 24, paddingBottom: 12 },
+        values: { paddingTop: { px: 56, axis: 'height' }, paddingBottom: { px: 16, axis: 'height' } },
+        mins: { paddingTop: 28, paddingBottom: 12 },
     },
     goalsCardFont: {
         values: { fontSize: { px: 20, axis: 'width' } },
