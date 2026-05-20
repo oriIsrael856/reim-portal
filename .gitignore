@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Cloud Functions env (per Firebase project id)
+functions/.env.reim-portal
+
 # Firebase Admin (migration scripts) — never commit keys
 scripts/serviceAccountKey.json
 **/serviceAccount*.json

@@ -17,5 +17,10 @@ service cloud.firestore {
         && request.resource.data.submittedAt.size() < 40;
       allow read, update, delete: if request.auth != null;
     }
+
+    // מונה מכסת מיילים לניוזלטר — רק שרת (Cloud Functions + Admin SDK); לקוחות ללא גישה
+    match /newsletter_internal/{document=**} {
+      allow read, write: if false;
+    }
   }
 }

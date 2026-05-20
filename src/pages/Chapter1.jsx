@@ -21,7 +21,7 @@ const GreenArrowCircle = ({ direction = 'left' }) => (
     </div>
 );
 
-const Chapter1 = ({ data, content, onNext, onPrev }) => {
+const Chapter1 = ({ data, content, onNext }) => {
     const { ref: stickyReleaseRef, isSticky: heroTitleSticky } = useChapter1StickyTitle(data?.cards?.[1]?.sec1Title);
     const d = useChapter1DesktopStyles();
 

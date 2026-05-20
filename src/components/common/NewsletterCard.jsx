@@ -5,8 +5,8 @@ import { db } from '../../firebase';
 /**
  * כרטיס ניוזלטר — Figma Home 191:9424 (מבנה + מידות + אייקונים מיוצאים).
  * data: { title, subtitle, text, placeholder } — כולם ניתנים לעריכה ב-CMS.
- * הגשה: (1) שמירה ב-Firestore `newsletter_signups` — מקור האמת, עובד גם כש־fetch חיצוני נחסם.
- *        (2) לאחר מכן — ניסיון שקט (best-effort) ל־FormSubmit כדי להודיע למייל של אופיר; אם הרשת חוסמת, ההרשמה עדיין נשמרה ב-Firestore.
+ * הגשה: שמירה ב-Firestore `newsletter_signups` (מקור האמת). התראת מייל לצוות — Cloud Function
+ * `onNewsletterSignupNotify` (Resend + מכסה יומית/חודשית); ראו `functions/index.js`.
  */
 const ASSETS = {
     star1: '/assets/home/home-newsletter-star1.svg',
@@ -14,22 +14,6 @@ const ASSETS = {
     plane: '/assets/home/home-newsletter-plane.svg',
     submit: '/assets/home/home-newsletter-submit.svg',
 };
-
-/** FormSubmit — הודעה לעופיר; לא חוסם UI ולא משפיע על הצלחת ההרשמה אם נכשל. */
-const FORMSUBMIT_NOTIFY = 'https://formsubmit.co/ajax/Ofere@matnasim.org.il';
-
-function notifyAdminNewsletterBestEffort(submittedEmail) {
-    void fetch(FORMSUBMIT_NOTIFY, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-            email: submittedEmail,
-            _subject: 'הרשמה חדשה לניוזלטר רעים',
-            _captcha: 'false',
-            _template: 'table',
-        }),
-    }).catch(() => {});
-}
 
 /**
  * @param {{ data: object, className?: string, embeddedInRow?: boolean, embeddedStyles?: object | null }} props
@@ -54,7 +38,6 @@ const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedS
                 email: email.trim(),
                 submittedAt: new Date().toISOString(),
             });
-            notifyAdminNewsletterBestEffort(email.trim());
             setStatus('success');
             setEmail('');
         } catch (err) {
