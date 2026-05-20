@@ -113,8 +113,8 @@ export const INITIAL_DATA = {
         nextButton: { title: "לפרק הבא", subtitle: "פרק 03 - תפקיד הרכזת" },
         hero: {
             tag: "פרק שני",
-            /** כותרת בשורת הכרום הסגולה (מובייל); אופציונלי ב-Firestore */
-            chromeTitle: "פרק 2",
+            /** פס סגול אנכי + כרום מובייל — קודם ל־`tag` (ראו `getMobileScreenTitle` ב־`App.jsx`). ב־Firestore: אם יש כאן טקסט ישן (למשל ״משתתפות״), הוא יוצג במקום `tag`. */
+            chromeTitle: "פרק שני",
             title: "מי משתתפות ומשתתפים ברעים",
             /* תמונות קולאז' מפיגמה (Mobile Section 1 — nodes 194:16729, 194:16730, 194:16741) */
             image1: "/assets/chapter2/hero-collage-1.png",

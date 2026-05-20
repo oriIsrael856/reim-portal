@@ -11,6 +11,7 @@ import Header from './components/layout/Header';
 import MobilePublicLayout from './components/layout/MobilePublicLayout';
 import AdminBar from './components/admin/AdminBar';
 import LoginModal from './components/auth/LoginModal';
+import { getEffectiveHeroChromeTitle } from './utils/heroChromeTitle';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const Chapter1 = lazy(() => import('./pages/Chapter1'));
@@ -36,7 +37,7 @@ function getMobileScreenTitle(page, content) {
     const key = ROUTES[page]?.contentKey;
     const d = key ? content[key] : null;
     const hero = d?.hero;
-    const chromeTitle = hero?.chromeTitle && String(hero.chromeTitle).trim();
+    const chromeTitle = getEffectiveHeroChromeTitle(page, hero);
     if (chromeTitle) return chromeTitle;
     const tag = hero?.tag && String(hero.tag).trim();
     if (tag) return tag;
