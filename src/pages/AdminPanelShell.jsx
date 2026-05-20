@@ -23,7 +23,7 @@ const TABS = [
   { id: 'header',   label: 'כותרת אתר',         icon: Settings },
   { id: 'home',     label: 'עמוד הבית',          icon: Home },
   { id: 'chapter1', label: '01. נעים להכיר',     icon: Smile },
-  { id: 'chapter2', label: '02. המשתתפים',       icon: Users },
+  { id: 'chapter2', label: '02. פרק 2',       icon: Users },
   { id: 'chapter3', label: '03. תפקיד הרכזת',   icon: Briefcase },
   { id: 'chapter4', label: '04. עבודה מנהלית',   icon: ClipboardList },
   { id: 'chapter5', label: '05. כלים מעשיים',    icon: Wrench },

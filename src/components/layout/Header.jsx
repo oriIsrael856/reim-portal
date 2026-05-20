@@ -1,9 +1,22 @@
 import React from 'react';
 import { ArrowUpRight, Menu, Share2, X } from 'lucide-react';
+import {
+    REIM_GPT_ACTIVITY_AGENT_URL,
+    REIM_GPT_ACTIVITY_AGENT_LABEL,
+    REIM_GPT_MARK_SRC,
+    REIM_LIBRARY_SYSTEM_URL,
+} from '../../config/reimGptAssistant';
 
-const REIMSYS_URL = 'https://www.reimsys.org.il/index.php';
-
-const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl, hideMobileChrome }) => {
+const Header = ({
+    onLogoClick,
+    onMenuClick,
+    isMenuOpen,
+    logoUrl,
+    hideMobileChrome,
+    /** כיתוב קישור הרכזייה (CMS `header.ctaText`). */
+    libraryCtaText = 'לרכזייה',
+}) => {
+    const libraryLabel = (libraryCtaText != null && String(libraryCtaText).trim()) || 'לרכזייה';
     return (
         <>
             {/* מובייל: הדר — מוסר בכל העמודים הציבוריים (כרום Figma ב-`MobilePublicLayout` + `SiteMobileStickyChrome`) */}
@@ -74,32 +87,67 @@ const Header = ({ onLogoClick, onMenuClick, isMenuOpen, logoUrl, hideMobileChrom
                     </span>
                 </button>
 
-                {/* צד שמאל: כפתור – גודל ב־vw */}
-                <a
-                    href={REIMSYS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                        group flex items-center gap-[0.5vw] shrink-0 py-2
-                        bg-white/90 hover:bg-white
-                        border border-white/50 hover:border-[#816AFE]
-                        rounded-full
-                        transition-all duration-300
-                        cursor-pointer shadow-sm no-underline
-                    "
-                    style={{ paddingLeft: '0.25rem', paddingRight: 'clamp(0.75rem, 1.5vw, 1.5rem)' }}
-                    aria-label="מעבר לרכזייה – מערכת רעים"
-                >
-                    <span className="text-[#2D2D44] font-bold group-hover:text-[#816AFE] transition-colors whitespace-nowrap hidden sm:inline" style={{ fontSize: 'clamp(0.7rem, 1vw, 1rem)' }}>
-                        לרכזייה
-                    </span>
-                    <span className="text-[#2D2D44] font-bold group-hover:text-[#816AFE] sm:hidden" style={{ fontSize: 'clamp(0.7rem, 1vw, 1rem)' }}>
-                        לרכזייה
-                    </span>
-                    <div className="bg-[#816AFE] rounded-full flex items-center justify-center text-white transform group-hover:rotate-45 transition-transform duration-300 shadow-md" style={{ width: 'clamp(32px, 2.5vw, 40px)', height: 'clamp(32px, 2.5vw, 40px)' }}>
-                        <ArrowUpRight style={{ width: 'clamp(14px, 1.2vw, 20px)', height: 'clamp(14px, 1.2vw, 20px)' }} />
-                    </div>
-                </a>
+                {/* צד שמאל (ב־RTL): רכזייה + סוכן GPT — אותו פס צף */}
+                <div className="flex shrink-0 items-center gap-2">
+                    <a
+                        href={REIM_LIBRARY_SYSTEM_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
+                            group flex items-center gap-[0.5vw] shrink-0 py-2
+                            bg-white/90 hover:bg-white
+                            border border-white/50 hover:border-[#816AFE]
+                            rounded-full
+                            transition-all duration-300
+                            cursor-pointer shadow-sm no-underline
+                        "
+                        style={{ paddingLeft: '0.25rem', paddingRight: 'clamp(0.75rem, 1.5vw, 1.5rem)' }}
+                        aria-label="מעבר לרכזייה – מערכת רעים"
+                    >
+                        <span
+                            className="hidden text-[#2D2D44] font-bold transition-colors group-hover:text-[#816AFE] whitespace-nowrap sm:inline"
+                            style={{ fontSize: 'clamp(0.7rem, 1vw, 1rem)' }}
+                        >
+                            {libraryLabel}
+                        </span>
+                        <span
+                            className="text-[#2D2D44] font-bold transition-colors group-hover:text-[#816AFE] sm:hidden"
+                            style={{ fontSize: 'clamp(0.7rem, 1vw, 1rem)' }}
+                        >
+                            {libraryLabel}
+                        </span>
+                        <div
+                            className="flex transform items-center justify-center rounded-full bg-[#816AFE] text-white shadow-md transition-transform duration-300 group-hover:rotate-45"
+                            style={{ width: 'clamp(32px, 2.5vw, 40px)', height: 'clamp(32px, 2.5vw, 40px)' }}
+                        >
+                            <ArrowUpRight
+                                style={{ width: 'clamp(14px, 1.2vw, 20px)', height: 'clamp(14px, 1.2vw, 20px)' }}
+                            />
+                        </div>
+                    </a>
+                    <a
+                        href={REIM_GPT_ACTIVITY_AGENT_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="
+                            flex shrink-0 items-center justify-center rounded-full border border-white/50
+                            bg-[hsla(160,55%,90%,0.95)] shadow-sm transition-all duration-300
+                            hover:border-[#10a37f]/50 hover:bg-[hsla(160,55%,88%,1)]
+                            no-underline
+                        "
+                        style={{ width: 'clamp(40px, 2.8vw, 44px)', height: 'clamp(40px, 2.8vw, 44px)' }}
+                        aria-label={REIM_GPT_ACTIVITY_AGENT_LABEL}
+                    >
+                        <img
+                            src={REIM_GPT_MARK_SRC}
+                            alt=""
+                            width={22}
+                            height={22}
+                            className="size-[22px] object-contain"
+                            aria-hidden
+                        />
+                    </a>
+                </div>
             </div>
             </header>
         </>

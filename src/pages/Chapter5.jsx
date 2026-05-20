@@ -9,10 +9,38 @@ import NextChapterButton from '../components/common/NextChapterButton';
 import NewsletterCard from '../components/common/NewsletterCard';
 import { useChapter5DesktopStyles } from '../hooks/useChapter5DesktopStyles';
 
-const Chapter5 = ({ data, onNext }) => {
+const DEFAULT_NEWSLETTER = {
+    title: 'ניוזלטר רעים',
+    subtitle: 'השראות מיוחדות ישירות לתיבה שלך',
+    text: 'מנה חודשית מרוכזת של חדשנות, משחק ומיטב השראה מהשטח.',
+    placeholder: 'הקלידי את כתובת המייל שלך',
+};
+
+/** פרק 5 + עמוד הבית משתמשים בניוזלטר; ב-CMS יש שני מסלולים (`chapter5.resources.newsletter` ו־`home.newsletter`). */
+function mergeNewsletterForChapter5(homeNewsletter, resourcesNewsletter) {
+    const h = homeNewsletter ?? {};
+    const r = resourcesNewsletter ?? {};
+    const pick = (key) => {
+        const fromR = typeof r[key] === 'string' ? r[key].trim() : '';
+        if (fromR) return r[key];
+        const fromH = typeof h[key] === 'string' ? h[key].trim() : '';
+        if (fromH) return h[key];
+        return DEFAULT_NEWSLETTER[key];
+    };
+    return {
+        title: pick('title'),
+        subtitle: pick('subtitle'),
+        text: pick('text'),
+        placeholder: pick('placeholder'),
+    };
+}
+
+const Chapter5 = ({ data, onNext, content }) => {
     const d = useChapter5DesktopStyles();
 
     if (!data) return <div className="p-20 text-center font-bold text-[#816AFE]">טוען נתוני כלים מעשיים...</div>;
+
+    const newsletterCardData = mergeNewsletterForChapter5(content?.home?.newsletter, data.resources?.newsletter);
 
     const marketingParagraphs = (data.marketing?.text ?? '').split(/\n\n+/).filter(Boolean);
     const networkingCardsReversed = [...(data.networking?.cards ?? [])].reverse();
@@ -143,18 +171,7 @@ const Chapter5 = ({ data, onNext }) => {
                         </div>
                     </article>
 
-                    <NewsletterCard
-                        data={{
-                            subtitle: data.resources?.newsletter?.subtitle ?? 'השראות מיוחדות ישירות לתיבה שלך',
-                            title: data.resources?.newsletter?.title ?? 'ניוזלטר רעים',
-                            text:
-                                data.resources?.newsletter?.text ??
-                                'מנה חודשית מרוכזת של חדשנות, משחק ומיטב השראה מהשטח.',
-                            placeholder:
-                                data.resources?.newsletter?.placeholder ?? 'הקלידי את כתובת המייל שלך',
-                        }}
-                        className="w-full"
-                    />
+                    <NewsletterCard data={newsletterCardData} className="w-full" />
                 </section>
 
                 {/* 6. כפתור סיום */}
@@ -483,7 +500,7 @@ const Chapter5 = ({ data, onNext }) => {
                             }}
                         >
                             <NewsletterCard
-                                data={data.resources?.newsletter}
+                                data={newsletterCardData}
                                 className="h-full min-h-0 w-full flex-1"
                                 embeddedInRow
                                 embeddedStyles={{

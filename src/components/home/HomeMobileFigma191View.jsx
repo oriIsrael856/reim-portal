@@ -2,6 +2,12 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { ArrowDown, Bell, ExternalLink, Facebook, Layers, Star, ThumbsUp, Users } from 'lucide-react';
 import NextChapterButton from '../common/NextChapterButton';
 import NewsletterCard from '../common/NewsletterCard';
+import {
+    REIM_GPT_ACTIVITY_AGENT_URL,
+    REIM_GPT_ACTIVITY_AGENT_LABEL,
+    REIM_GPT_MARK_SRC,
+    REIM_LIBRARY_SYSTEM_URL,
+} from '../../config/reimGptAssistant';
 
 const CARD_ID_TO_PAGE = {
     '01': 'chapter1',
@@ -115,19 +121,46 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
                         aria-hidden
                     />
 
-                    {/* Figma 191:15361 Top bar — 335×56, y 108, frosted pill */}
+                    {/* Figma 191:15361 Top bar — גלולית: לוגו + רכזייה + GPT + ניוזלטר */}
                     <div
-                        className="absolute start-1/2 z-30 flex h-14 w-[335px] max-w-[calc(100%-24px)] -translate-x-1/2 items-center justify-between rounded-full border border-[rgba(0,29,38,0.08)] bg-[hsla(0,0%,100%,0.4)] px-3.5 shadow-[0px_4px_24px_rgba(101,70,222,0.04)]"
+                        className="absolute start-1/2 z-30 flex min-h-14 w-[min(100%-24px,380px)] max-w-[calc(100%-24px)] -translate-x-1/2 flex-row flex-wrap items-center justify-between gap-x-2 gap-y-2 rounded-full border border-[rgba(0,29,38,0.08)] bg-[hsla(0,0%,100%,0.4)] px-3 py-2 shadow-[0px_4px_24px_rgba(101,70,222,0.04)]"
                         style={{ top: '108px' }}
                     >
                         <img
                             src={header?.logo || logos.reim}
                             alt=""
-                            className="h-6 max-w-[109px] object-contain opacity-80"
+                            className="h-6 max-w-[96px] shrink-0 object-contain opacity-80"
                         />
+                        <div className="flex min-w-0 flex-1 shrink items-center justify-center gap-1.5">
+                            <a
+                                href={REIM_LIBRARY_SYSTEM_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex max-w-[min(5.5rem,38%)] min-w-0 shrink items-center justify-center rounded-full border border-[#001D26]/15 bg-white/80 px-2 py-1 text-center font-rubik text-[10px] font-bold leading-tight text-[#001D26] no-underline"
+                                aria-label="מעבר לרכזייה – מערכת רעים"
+                            >
+                                <span className="truncate">{(header?.ctaText ?? 'לרכזייה').trim()}</span>
+                            </a>
+                            <a
+                                href={REIM_GPT_ACTIVITY_AGENT_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex size-8 shrink-0 items-center justify-center rounded-full border border-[#001D26]/15 bg-[hsla(160,60%,92%,0.95)] no-underline"
+                                aria-label={REIM_GPT_ACTIVITY_AGENT_LABEL}
+                            >
+                                <img
+                                    src={REIM_GPT_MARK_SRC}
+                                    alt=""
+                                    width={16}
+                                    height={16}
+                                    className="size-4 object-contain"
+                                    aria-hidden
+                                />
+                            </a>
+                        </div>
                         <button
                             type="button"
-                            className="shrink-0 rounded-full border border-[#001D26] px-3 py-2 text-sm font-bold text-[#001D26]"
+                            className="shrink-0 rounded-full border border-[#001D26] px-2.5 py-1.5 text-xs font-bold text-[#001D26]"
                             onClick={() => {
                                 document.getElementById('home-mobile-newsletter-191')?.scrollIntoView({
                                     behavior: 'smooth',

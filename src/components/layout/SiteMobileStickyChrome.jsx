@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Home, ArrowLeft } from 'lucide-react';
+import { Home, ArrowRight } from 'lucide-react';
 import Chapter2MobileTopBarPill from '../chapter2/mobile/Chapter2MobileTopBarPill';
 import {
     MOBILE_MENU_TAB_UNION_SVG,
@@ -17,6 +17,7 @@ export default function SiteMobileStickyChrome({
     onHomeClick,
     logoUrl,
     onLogoClick,
+    libraryCtaText = 'לרכזייה',
 }) {
     const ch = useMobileStickyChromeStyles();
     const iconPurple = { width: ch.logoutIconPx, height: ch.logoutIconPx };
@@ -138,7 +139,7 @@ export default function SiteMobileStickyChrome({
                                         onClick={onBackClick}
                                         aria-label="חזרה לעמוד הקודם"
                                     >
-                                        <ArrowLeft style={iconPurple} strokeWidth={2.25} aria-hidden />
+                                        <ArrowRight style={iconPurple} strokeWidth={2.25} aria-hidden />
                                     </button>
                                 ) : null}
                                 <button
@@ -208,6 +209,7 @@ export default function SiteMobileStickyChrome({
                             onLogoClick={onLogoClick}
                             variant="sticky"
                             figma16482
+                            libraryCtaText={libraryCtaText}
                         />
                     </div>
                 ) : (

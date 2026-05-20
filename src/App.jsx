@@ -42,7 +42,7 @@ function getMobileScreenTitle(page, content) {
     if (tag) return tag;
     const fallbacks = {
         chapter1: 'פרק 01',
-        chapter2: '— משתתפות.ים',
+        chapter2: 'פרק 2',
         chapter3: 'פרק 03',
         chapter4: 'פרק 04',
         chapter5: 'פרק 05',
@@ -125,6 +125,7 @@ const App = () => {
                 onHomeClick={() => navigateTo('home')}
                 logoUrl={content?.header?.logo}
                 onLogoClick={() => navigateTo('home')}
+                libraryCtaText={content?.header?.ctaText}
             >
                 <PageComponent {...pageProps} />
             </MobilePublicLayout>
@@ -183,6 +184,7 @@ const App = () => {
                 onMenuClick={() => setIsMenuOpen((prev) => !prev)}
                 isMenuOpen={isMenuOpen}
                 logoUrl={content?.header?.logo}
+                libraryCtaText={content?.header?.ctaText}
             />
 
             {/* סרגל צף – רק מדסקטופ כדי לא להסתיר תוכן במובייל */}

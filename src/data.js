@@ -3,7 +3,7 @@ export const INITIAL_DATA = {
     menu: [
         { id: "home", title: "דף הבית", page: "home", isHome: true },
         { id: "01", title: "תוכנית רעים: נעים להכיר", page: "chapter1" },
-        { id: "02", title: "המשתתפים והמשתתפות", page: "chapter2" },
+        { id: "02", title: "פרק 2", page: "chapter2" },
         { id: "03", title: "תפקיד הרכזת", page: "chapter3" },
         { id: "04", title: "עבודה מנהלית", page: "chapter4" },
         { id: "05", title: "כלים מעשיים", page: "chapter5" }
@@ -114,7 +114,7 @@ export const INITIAL_DATA = {
         hero: {
             tag: "פרק שני",
             /** כותרת בשורת הכרום הסגולה (מובייל); אופציונלי ב-Firestore */
-            chromeTitle: "— משתתפות.ים",
+            chromeTitle: "פרק 2",
             title: "מי משתתפות ומשתתפים ברעים",
             /* תמונות קולאז' מפיגמה (Mobile Section 1 — nodes 194:16729, 194:16730, 194:16741) */
             image1: "/assets/chapter2/hero-collage-1.png",
@@ -422,7 +422,7 @@ export const INITIAL_DATA = {
                 { text: "מאיפה באנו?", anchor: "ch1-history" },
                 { text: "לאן אנחנו הולכות?", anchor: "ch1-future" }
             ]},
-            { title: "משתתפים ומשתתפות", page: "chapter2", items: [
+            { title: "פרק 2", page: "chapter2", items: [
                 { text: "למי מיועדת התוכנית?", anchor: "ch2-audience" },
                 { text: "מטרות התוכנית", anchor: "ch2-goals" },
                 { text: "המגוון האוטיסטי", anchor: "ch2-group01" },

@@ -14,6 +14,8 @@ export default function MobilePublicLayout({
     onHomeClick,
     logoUrl,
     onLogoClick,
+    /** כיתוב כפתור הרכזייה בכרום הדביק (CMS `header.ctaText`). */
+    libraryCtaText,
 }) {
     return (
         <div
@@ -28,6 +30,7 @@ export default function MobilePublicLayout({
                 onHomeClick={onHomeClick}
                 logoUrl={logoUrl}
                 onLogoClick={onLogoClick}
+                libraryCtaText={libraryCtaText}
             />
             <div className="ch2-mobile-main-content ch2-mobile-main-surface ch2-mobile-main-content--below-sticky-chrome flex min-h-0 w-full max-w-none flex-1 flex-col lg:!mt-0 lg:!max-w-none lg:!min-h-0 lg:!w-full lg:!flex-none lg:!overflow-visible lg:!rounded-none lg:!border-0 lg:!bg-transparent lg:!p-0 lg:!shadow-none">
                 {children}

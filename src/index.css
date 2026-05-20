@@ -1386,7 +1386,8 @@
     padding: var(--ch2-mobile-chrome-logo-gap-after-menu) 12px 8px;
     margin-inline: auto;
     position: relative;
-    z-index: 2;
+    /* מעל שכבת התוכן הלבן שנמשכת עם margin שלילי מתחת לגלולית */
+    z-index: 8;
   }
 
   /* גובה זהה לרצועת הלוגו כשהתפריט פתוח — בלי קפיצת layout מתחת ל־MenuOverlay */
@@ -1430,6 +1431,10 @@
     z-index: 1;
     inset: auto;
     top: auto;
+  }
+
+  .ch2-mobile-top-bar-pill--sticky.ch2-mobile-top-bar-pill--with-shelf-ctas {
+    z-index: 9;
   }
 
   .ch2-mobile-top-bar-pill--figma-16482 {
@@ -1489,6 +1494,91 @@
 
   .ch2-mobile-top-bar-pill--figma-16482 .ch2-mobile-top-bar-pill__btn:hover {
     background-color: rgba(255, 255, 255, 0.22);
+  }
+
+  /* כרום דביק — לוגו + רכזייה + GPT בתוך אותה גלולית (מדף Chapter2MobileTopBarPill) */
+  .ch2-mobile-top-bar-pill--figma-16482.ch2-mobile-top-bar-pill--with-shelf-ctas .ch2-mobile-top-bar-pill__rack {
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    max-width: var(--ch2-mobile-logo-pill-max-w);
+    margin-inline: auto;
+    min-height: var(--ch2-mobile-logo-pill-h);
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: var(--ch2-mobile-logo-pill-pad-y) var(--ch2-mobile-logo-pill-pad-x);
+    border-radius: 200px;
+    border: 1px solid var(--ch2-mobile-logo-pill-stroke);
+    background-color: var(--ch2-mobile-logo-pill-fill);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: var(--ch2-mobile-logo-pill-shadow);
+  }
+
+  .ch2-mobile-top-bar-pill__logo-btn {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .ch2-mobile-top-bar-pill__rack-ctas {
+    display: inline-flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .ch2-mobile-top-bar-pill__mini-cta {
+    display: inline-flex;
+    max-width: min(7rem, 42%);
+    min-width: 0;
+    flex-shrink: 1;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 29, 38, 0.14);
+    background-color: rgba(255, 255, 255, 0.65);
+    font-family: var(--font-rubik);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #001d26;
+    text-decoration: none;
+  }
+
+  .ch2-mobile-top-bar-pill__mini-cta-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ch2-mobile-top-bar-pill__gpt-chip {
+    display: inline-flex;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 29, 38, 0.14);
+    background-color: hsla(160, 60%, 92%, 0.98);
+    text-decoration: none;
+  }
+
+  .ch2-mobile-top-bar-pill__gpt-chip-img {
+    display: block;
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
   }
 
   .ch2-mobile-top-bar-pill__logo {

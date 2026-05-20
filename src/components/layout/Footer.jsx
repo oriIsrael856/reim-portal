@@ -13,7 +13,7 @@ const FOOTER_NAV_LINKS = [
         { text: 'מאיפה באנו?', anchor: 'ch1-history' },
         { text: 'לאן אנחנו הולכות?', anchor: 'ch1-future' },
     ]},
-    { title: 'משתתפים ומשתתפות', page: 'chapter2', items: [
+    { title: 'פרק 2', page: 'chapter2', items: [
         { text: 'למי מיועדת התוכנית?', anchor: 'ch2-audience' },
         { text: 'מטרות התוכנית', anchor: 'ch2-goals' },
         { text: 'המגוון האוטיסטי', anchor: 'ch2-group01' },

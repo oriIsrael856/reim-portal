@@ -1,8 +1,12 @@
 import React, { useCallback, useLayoutEffect, useState } from 'react';
-import { Menu, X, Home, Mail, ArrowLeft } from 'lucide-react';
+import { Menu, X, Home, Mail, ArrowRight } from 'lucide-react';
 import { useMenuOverlayStyles } from '../../hooks/useMenuOverlayStyles';
-
-const REIMSYS_URL = 'https://www.reimsys.org.il/index.php';
+import {
+    REIM_GPT_ACTIVITY_AGENT_URL,
+    REIM_GPT_ACTIVITY_AGENT_LABEL,
+    REIM_GPT_MARK_SRC,
+    REIM_LIBRARY_SYSTEM_URL,
+} from '../../config/reimGptAssistant';
 
 /** מקצר כותרת לאזור אנכי צר בפס הסגול */
 function shortenForVerticalRail(text, maxLen = 28) {
@@ -49,7 +53,7 @@ export const Sidebar = ({ toggleMenu, railTitle = 'דף הבית', onBack, onHom
                     className={railNavBtnClass}
                     aria-label="חזרה לעמוד הקודם"
                 >
-                    <ArrowLeft size={22} color="white" strokeWidth={2} aria-hidden />
+                    <ArrowRight size={22} color="white" strokeWidth={2} aria-hidden />
                 </button>
                 <button
                     type="button"
@@ -275,23 +279,50 @@ export const MenuOverlay = ({
                             >
                                 <div className="shrink-0">{renderHomeRow()}</div>
                                 {renderChapterRows()}
-                                <a
-                                    href={REIMSYS_URL}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onClick={handleNewsletterCta}
-                                    className="flex w-full shrink-0 cursor-pointer items-center rounded-[100px] border-[1.5px] border-[#001d26] bg-transparent text-start font-semibold leading-snug text-[#001d26] no-underline transition hover:bg-[rgba(101,70,222,0.06)]"
-                                    style={newsletterCtaStyle}
-                                    aria-label="מעבר לרכזייה – מערכת רעים"
+                                <div
+                                    className="flex w-full shrink-0 flex-row items-stretch gap-2"
+                                    role="group"
+                                    aria-label="קישורים חיצוניים"
                                 >
-                                    <span
-                                        className="flex shrink-0 items-center justify-center rounded-[32px] bg-[#6546de] text-white"
-                                        style={newsletterIconBoxStyle}
+                                    <a
+                                        href={REIM_LIBRARY_SYSTEM_URL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={handleNewsletterCta}
+                                        className="flex min-w-0 flex-1 cursor-pointer items-center rounded-[100px] border-[1.5px] border-[#001d26] bg-transparent text-start font-semibold leading-snug text-[#001d26] no-underline transition hover:bg-[rgba(101,70,222,0.06)]"
+                                        style={newsletterCtaStyle}
+                                        aria-label="מעבר לרכזייה – מערכת רעים"
                                     >
-                                        <Mail size={20} strokeWidth={2} className="shrink-0" aria-hidden />
-                                    </span>
-                                    <span className="min-w-0 flex-1 text-start text-base">{ctaText}</span>
-                                </a>
+                                        <span
+                                            className="flex shrink-0 items-center justify-center rounded-[32px] bg-[#6546de] text-white"
+                                            style={newsletterIconBoxStyle}
+                                        >
+                                            <Mail size={20} strokeWidth={2} className="shrink-0" aria-hidden />
+                                        </span>
+                                        <span className="min-w-0 flex-1 truncate text-start text-base">
+                                            {ctaText}
+                                        </span>
+                                    </a>
+                                    <a
+                                        href={REIM_GPT_ACTIVITY_AGENT_URL}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        onClick={handleNewsletterCta}
+                                        className="flex min-h-[44px] shrink-0 cursor-pointer items-center justify-center rounded-[100px] border-[1.5px] border-[#001d26] bg-transparent px-3 py-2 text-[#001d26] no-underline transition hover:bg-[rgba(101,70,222,0.06)]"
+                                        aria-label={REIM_GPT_ACTIVITY_AGENT_LABEL}
+                                    >
+                                        <span className="flex items-center justify-center rounded-[32px] bg-[#10a37f]/15 p-1.5">
+                                            <img
+                                                src={REIM_GPT_MARK_SRC}
+                                                alt=""
+                                                width={22}
+                                                height={22}
+                                                className="size-[22px] shrink-0 object-contain"
+                                                aria-hidden
+                                            />
+                                        </span>
+                                    </a>
+                                </div>
                             </nav>
                         </div>
                     </div>
