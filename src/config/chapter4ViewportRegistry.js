@@ -212,9 +212,9 @@ export const CH4_COMPONENT_STYLE = {
     },
     /** FAQ closed row — target height vs 1080p ref */
     faqRowHeight: {
-        values: { height: { px: 56, axis: 'height' } },
-        mins: { height: 36 },
-        maxes: { height: 56 },
+        values: { height: { px: 64, axis: 'height' } },
+        mins: { height: 40 },
+        maxes: { height: 72 },
     },
     /** Vertical gap between accordion items */
     faqListGap: {
@@ -411,21 +411,21 @@ export const CH4_DESKTOP_STYLE_EXTRA = {
         mins: { fontSize: 12 },
     },
     faqSectionLeadFont: {
-        values: { fontSize: { px: 16, axis: 'width' } },
-        mins: { fontSize: 12 },
+        values: { fontSize: { px: 18, axis: 'width' } },
+        mins: { fontSize: 14 },
     },
     faqSectionTitleFont: {
         values: { fontSize: { px: 34, axis: 'width' } },
-        mins: { fontSize: 18 },
+        mins: { fontSize: 20 },
         maxes: { fontSize: 34 },
     },
     faqRowTitleFont: {
-        values: { fontSize: { px: 18, axis: 'width' } },
-        mins: { fontSize: 13 },
+        values: { fontSize: { px: 22, axis: 'width' } },
+        mins: { fontSize: 16 },
     },
     faqExpandedContentFont: {
-        values: { fontSize: { px: 16, axis: 'width' } },
-        mins: { fontSize: 13 },
+        values: { fontSize: { px: 20, axis: 'width' } },
+        mins: { fontSize: 16 },
     },
     /** Figma 125:4050 — files section inner gap between title row and cards: 60px */
     filesZ10StackGap: {

@@ -50,21 +50,21 @@
   --ch4-faq-acc-icon-open: rgba(101, 70, 222, 0.08);
   --ch4-faq-acc-border: rgba(101, 70, 222, 0.08);
   --ch4-faq-acc-pad-x: 16px;
-  --ch4-faq-acc-row-h: 52px;
+  --ch4-faq-acc-row-h: 56px;
   --ch4-faq-acc-btn-pad-open-block: 12px;
   --ch4-faq-acc-panel-pad-start: 20px;
   --ch4-faq-acc-panel-pad-end: 16px;
   --ch4-faq-acc-panel-pad-bottom: 16px;
   --ch4-faq-acc-icon-hit: 16px;
-  --ch4-faq-type-body1-size: 16px;
+  --ch4-faq-type-body1-size: 18px;
   --ch4-faq-type-body1-weight: 400;
   --ch4-faq-type-body1-lh: 1.32;
   --ch4-faq-type-body1-ls: 0.009375em;
-  --ch4-faq-type-subtitle1-size: 16px;
+  --ch4-faq-type-subtitle1-size: 18px;
   --ch4-faq-type-subtitle1-weight: 500;
   --ch4-faq-type-subtitle1-lh: 1.22;
   --ch4-faq-type-subtitle1-ls: 0.009375em;
-  --ch4-faq-type-body2-size: 14px;
+  --ch4-faq-type-body2-size: 17px;
   --ch4-faq-type-body2-weight: 400;
   --ch4-faq-type-body2-lh: 1.43;
   --ch4-faq-type-body2-ls: 0.01214286em;
@@ -786,7 +786,7 @@
 
 .ch4-cf__faqKicker {
   font-family: var(--ch4-font-rubik);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.32;
   color: var(--ch4-ink);
@@ -798,7 +798,7 @@
 
 .ch4-cf__faqTitle {
   font-family: var(--ch4-font-rubik);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   line-height: 1.334;
   color: var(--ch4-ink);
