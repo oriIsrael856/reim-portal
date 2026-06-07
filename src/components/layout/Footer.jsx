@@ -13,7 +13,7 @@ const FOOTER_NAV_LINKS = [
         { text: 'מאיפה באנו?', anchor: 'ch1-history' },
         { text: 'לאן אנחנו הולכות?', anchor: 'ch1-future' },
     ]},
-    { title: 'פרק 2', page: 'chapter2', items: [
+    { title: 'המשתתפים', page: 'chapter2', items: [
         { text: 'למי מיועדת התוכנית?', anchor: 'ch2-audience' },
         { text: 'מטרות התוכנית', anchor: 'ch2-goals' },
         { text: 'המגוון האוטיסטי', anchor: 'ch2-group01' },
@@ -47,6 +47,7 @@ const Footer = ({ data, variant, suppressMobileCard, navigateTo }) => {
     const copyright = data?.copyright ?? '© כל הזכויות שמורות לחברה למתנ"סים';
     const organization = data?.organization ?? 'תוכנית רעים מבית החברה למתנ"סים';
     const logos = data?.logos ?? { reim: '/Logo (1).png', matnasim: '/matnasimLogo.png' };
+    const navLinks = Array.isArray(data?.links) && data.links.length ? data.links : FOOTER_NAV_LINKS;
 
     return (
         <footer
@@ -129,7 +130,7 @@ const Footer = ({ data, variant, suppressMobileCard, navigateTo }) => {
                         </div>
                     </div>
                     <div className="flex flex-wrap gap-8 md:gap-12 text-right me-8">
-                        {FOOTER_NAV_LINKS.map((col, i) => (
+                        {navLinks.map((col, i) => (
                             <div key={i} className="flex flex-col gap-3">
                                 <h4
                                     className="font-bold text-[#2D2D44] text-base cursor-pointer hover:text-[#5E3BEE] transition-colors"
@@ -138,7 +139,7 @@ const Footer = ({ data, variant, suppressMobileCard, navigateTo }) => {
                                     {col.title}
                                 </h4>
                                 <ul className="space-y-2 text-sm text-gray-500">
-                                    {col.items.map((item, j) => (
+                                    {(col.items ?? []).map((item, j) => (
                                         <li key={j}>
                                             <button
                                                 type="button"

@@ -424,8 +424,8 @@ export const CH4_DESKTOP_STYLE_EXTRA = {
         mins: { fontSize: 13 },
     },
     faqExpandedContentFont: {
-        values: { fontSize: { px: 14, axis: 'width' } },
-        mins: { fontSize: 11 },
+        values: { fontSize: { px: 16, axis: 'width' } },
+        mins: { fontSize: 13 },
     },
     /** Figma 125:4050 — files section inner gap between title row and cards: 60px */
     filesZ10StackGap: {

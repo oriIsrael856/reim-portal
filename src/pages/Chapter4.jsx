@@ -12,6 +12,12 @@ import CommitteeStepCard from '../components/chapter4/CommitteeStepCard';
 import NextChapterButton from '../components/common/NextChapterButton';
 import { Chapter4MobileView } from '../components/chapter4/mobile';
 import { CH4_ASSETS } from '../components/chapter4/chapter4Assets';
+import Chapter4FilePreviewModal from '../components/chapter4/Chapter4FilePreviewModal';
+import Chapter4FileCardThumb from '../components/chapter4/Chapter4FileCardThumb';
+import {
+    canChapter4FilePreview,
+    isChapter4FileDownloadUrl,
+} from '../utils/chapter4Files';
 
 function DesktopFaqRow({
     item,
@@ -90,78 +96,75 @@ const FILES_SECTION_INTRO_P1 = 'בקבצים המצורפים ניתן למצו�
 const FILES_SECTION_INTRO_P2 =
     'הנהלים נועדו לסייע בעבודה השוטפת, להעניק סדר וביטחון להתנהלות בתוך המרכז הקהילתי ומחוצה לו.';
 
-function isChapter4FileDownloadUrl(url) {
-    if (!url || typeof url !== 'string') return false;
-    const u = url.trim();
-    if (!u || u === '#') return false;
-    return u.startsWith('https://') || u.startsWith('http://') || u.startsWith('/');
-}
-
 const DESKTOP_FILE_CARD_CLASS =
-    'group relative z-0 flex shrink-0 flex-col items-stretch overflow-visible rounded-[16px] border-[1.5px] border-[rgba(101,70,222,0.16)] bg-white text-[#001d26] shadow-none transition-all duration-200 ease-out hover:z-[2] hover:-translate-y-1 hover:border-[#6546de] hover:shadow-[2px_10px_28px_rgba(101,70,222,0.18)] hover:bg-gradient-to-b hover:from-[rgba(255,178,59,0.14)] hover:to-white focus-visible:z-[2] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6546de]';
+    'group relative z-0 flex shrink-0 flex-col items-stretch overflow-visible rounded-[16px] border-[1.5px] border-[rgba(101,70,222,0.16)] bg-white text-[#001d26] shadow-none transition-all duration-200 ease-out hover:z-[2] hover:-translate-y-1 hover:border-[#6546de] hover:shadow-[2px_10px_28px_rgba(101,70,222,0.18)] hover:bg-gradient-to-b hover:from-[rgba(255,178,59,0.14)] hover:to-white focus-within:z-[2] focus-within:-translate-y-1 focus-within:border-[#6546de] focus-within:shadow-[2px_10px_28px_rgba(101,70,222,0.18)] focus-within:bg-gradient-to-b focus-within:from-[rgba(255,178,59,0.14)] focus-within:to-white';
+
+const DESKTOP_FILE_CTA_CLASS =
+    "inline-flex items-center justify-center gap-2 rounded-full border-[1.5px] font-['Rubik'] font-bold leading-[1.625] tracking-wide transition-colors";
 
 function DesktopFileCard({ name, desc, imageSrc, url, ch4 }) {
-    const src = imageSrc || imgCh4FilesCard;
+    const [previewOpen, setPreviewOpen] = useState(false);
     const href = isChapter4FileDownloadUrl(url) ? url.trim() : null;
+    const showPreview = href && canChapter4FilePreview(href);
+    const thumbImgClass =
+        'pointer-events-none absolute inset-0 size-full max-w-none rounded-[12px] object-cover object-top transition-transform duration-200 group-hover:scale-[1.02] group-focus-within:scale-[1.02]';
 
-    const inner = (
-        <>
-            <div className="relative min-h-0 w-full flex-1 overflow-hidden rounded-[12px] bg-[rgba(0,29,38,0.06)]">
-                <img
-                    alt=""
-                    src={src}
-                    className="pointer-events-none absolute inset-0 size-full max-w-none rounded-[12px] object-cover transition-transform duration-200 group-hover:scale-[1.02]"
-                />
-                <div
-                    className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#001d26]/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100"
-                    aria-hidden
-                >
-                    <span
-                        className="inline-flex items-center justify-center rounded-full border-[1.5px] border-[#6546de] bg-[#6546de] font-['Rubik'] font-bold leading-[1.625] tracking-wide text-white"
-                        style={ch4?.fileCardDownloadRow}
-                    >
-                        <img src={CH4_ASSETS.fileDownloadPill} alt="" width={20} height={20} className="size-5 shrink-0" />
-                        הורדת הקובץ
-                    </span>
-                </div>
-            </div>
-            <div className="flex w-full flex-col text-right tracking-[0.15px]" style={ch4?.fileCardTextCol}>
-                <div className="flex flex-col" style={ch4?.fileCardTextStackGap}>
-                    <p className="text-right font-semibold leading-[1.28]" style={ch4?.fileCardTitleFont}>
-                        {name}
-                    </p>
-                    <p className="text-right font-normal leading-[1.32]" style={ch4?.fileCardDescFont}>
-                        {desc}
-                    </p>
-                </div>
-            </div>
-        </>
-    );
-
-    if (href) {
-        return (
-            <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={DESKTOP_FILE_CARD_CLASS}
-                style={ch4?.fileCard}
-            >
-                {inner}
-            </a>
-        );
-    }
-
-    /* No download URL in CMS — card is visual only (no navigation). */
     return (
-        <button
-            type="button"
-            className={DESKTOP_FILE_CARD_CLASS}
-            style={ch4?.fileCard}
-            aria-disabled="true"
-        >
-            {inner}
-        </button>
+        <>
+            <article className={DESKTOP_FILE_CARD_CLASS} style={ch4?.fileCard} tabIndex={href ? 0 : undefined}>
+                <div className="relative min-h-0 w-full flex-1 overflow-hidden rounded-[12px] bg-[rgba(0,29,38,0.06)]">
+                    <Chapter4FileCardThumb
+                        url={url}
+                        image={imageSrc}
+                        placeholder={imgCh4FilesCard}
+                        imgClassName={thumbImgClass}
+                    />
+                    {href ? (
+                        <div className="absolute inset-0 flex items-center justify-center bg-[#001d26]/40 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-within:opacity-100">
+                            <div className="flex flex-col items-center gap-2 px-3">
+                                {showPreview ? (
+                                    <button
+                                        type="button"
+                                        className={`${DESKTOP_FILE_CTA_CLASS} border-white bg-white text-[#6546de] hover:bg-[#f5f3fa]`}
+                                        style={ch4?.fileCardDownloadRow}
+                                        onClick={() => setPreviewOpen(true)}
+                                    >
+                                        תצוגה מקדימה
+                                    </button>
+                                ) : null}
+                                <a
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`${DESKTOP_FILE_CTA_CLASS} border-[#6546de] bg-[#6546de] text-white hover:bg-[#5435c9]`}
+                                    style={ch4?.fileCardDownloadRow}
+                                >
+                                    <img src={CH4_ASSETS.fileDownloadPill} alt="" width={20} height={20} className="size-5 shrink-0" />
+                                    הורדת הקובץ
+                                </a>
+                            </div>
+                        </div>
+                    ) : null}
+                </div>
+                <div className="flex w-full flex-col text-right tracking-[0.15px]" style={ch4?.fileCardTextCol}>
+                    <div className="flex flex-col" style={ch4?.fileCardTextStackGap}>
+                        <p className="text-right font-semibold leading-[1.28]" style={ch4?.fileCardTitleFont}>
+                            {name}
+                        </p>
+                        <p className="text-right font-normal leading-[1.32]" style={ch4?.fileCardDescFont}>
+                            {desc}
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <Chapter4FilePreviewModal
+                open={previewOpen}
+                url={href}
+                title={name}
+                onClose={() => setPreviewOpen(false)}
+            />
+        </>
     );
 }
 

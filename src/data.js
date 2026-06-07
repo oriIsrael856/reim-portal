@@ -349,11 +349,11 @@ export const INITIAL_DATA = {
             { title: "חשוב לדעת", content: "משתתף שאינו רשום במרכז הקהילתי - אינו מבוטח!" }
         ],
         files: [
-            { name: "שם קובץ", desc: "תיאור הקובץ", url: "" },
-            { name: "שם קובץ", desc: "תיאור הקובץ", url: "" },
-            { name: "שם קובץ", desc: "תיאור הקובץ", url: "" },
-            { name: "שם קובץ", desc: "תיאור הקובץ", url: "" },
-            { name: "שם קובץ", desc: "תיאור הקובץ", url: "" }
+            { name: "שם קובץ", desc: "תיאור הקובץ", url: "", image: "" },
+            { name: "שם קובץ", desc: "תיאור הקובץ", url: "", image: "" },
+            { name: "שם קובץ", desc: "תיאור הקובץ", url: "", image: "" },
+            { name: "שם קובץ", desc: "תיאור הקובץ", url: "", image: "" },
+            { name: "שם קובץ", desc: "תיאור הקובץ", url: "", image: "" }
         ]
     },
 
@@ -422,7 +422,7 @@ export const INITIAL_DATA = {
                 { text: "מאיפה באנו?", anchor: "ch1-history" },
                 { text: "לאן אנחנו הולכות?", anchor: "ch1-future" }
             ]},
-            { title: "פרק 2", page: "chapter2", items: [
+            { title: "המשתתפים", page: "chapter2", items: [
                 { text: "למי מיועדת התוכנית?", anchor: "ch2-audience" },
                 { text: "מטרות התוכנית", anchor: "ch2-goals" },
                 { text: "המגוון האוטיסטי", anchor: "ch2-group01" },

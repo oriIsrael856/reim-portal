@@ -1,12 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CH4_ASSETS } from '../chapter4Assets';
+import Chapter4FilePreviewModal from '../Chapter4FilePreviewModal';
+import Chapter4FileCardThumb from '../Chapter4FileCardThumb';
+import {
+    canChapter4FilePreview,
+    isChapter4FileDownloadUrl,
+} from '../../../utils/chapter4Files';
 
-function resolveCh4FileHref(url) {
-    if (!url || typeof url !== 'string') return null;
-    const u = url.trim();
-    if (!u || u === '#') return null;
-    if (u.startsWith('https://') || u.startsWith('http://') || u.startsWith('/')) return u;
-    return null;
+function Page4FileCard({ file }) {
+    const [previewOpen, setPreviewOpen] = useState(false);
+    const href = isChapter4FileDownloadUrl(file.url) ? file.url.trim() : null;
+    const showPreview = href && canChapter4FilePreview(href);
+
+    return (
+        <>
+            <article className="ch4-fileCard" tabIndex={href ? 0 : undefined}>
+                <div className="ch4-fileCard__thumb">
+                    <Chapter4FileCardThumb
+                        url={file.url}
+                        image={file.image}
+                        placeholder={CH4_ASSETS.fileThumbPlaceholder}
+                        imgClassName="ch4-fileCard__thumbImg"
+                    />
+                    {href ? (
+                        <div className="ch4-fileCard__hoverOverlay">
+                            <div className="ch4-fileCard__hoverActions">
+                                {showPreview ? (
+                                    <button
+                                        type="button"
+                                        className="ch4-fileCard__hoverCta ch4-fileCard__hoverCta--preview"
+                                        onClick={() => setPreviewOpen(true)}
+                                    >
+                                        תצוגה מקדימה
+                                    </button>
+                                ) : null}
+                                <a
+                                    href={href}
+                                    className="ch4-fileCard__hoverCta"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img src={CH4_ASSETS.fileDownloadPill} alt="" width={20} height={20} />
+                                    <span>הורדת הקובץ</span>
+                                </a>
+                            </div>
+                        </div>
+                    ) : null}
+                </div>
+                <div className="ch4-fileCard__row">
+                    <div className="ch4-fileCard__text">
+                        <h3 className="ch4-fileCard__name">{file.name}</h3>
+                        <p className="ch4-fileCard__desc">{file.desc}</p>
+                    </div>
+                    <div className="ch4-fileCard__icon" aria-hidden>
+                        <img src={CH4_ASSETS.fileDownloadPill} alt="" width={36} height={36} />
+                    </div>
+                </div>
+            </article>
+
+            <Chapter4FilePreviewModal
+                open={previewOpen}
+                url={href}
+                title={file.name}
+                onClose={() => setPreviewOpen(false)}
+            />
+        </>
+    );
 }
 
 /** Figma 254:12359 */
@@ -25,59 +84,9 @@ export default function Page4FilesSection({ filesTitle, proceduresIntro, files }
             {list.length > 0 ? (
                 <div className="ch4-files__track">
                     <div className="ch4-files__spacer" aria-hidden />
-                    {list.map((f, i) => {
-                        const href = resolveCh4FileHref(f.url);
-                        const inner = (
-                            <>
-                                <div className="ch4-fileCard__thumb">
-                                    <img
-                                        src={CH4_ASSETS.fileThumbPlaceholder}
-                                        alt=""
-                                        className="ch4-fileCard__thumbImg"
-                                        width={256}
-                                        height={256}
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                    <div className="ch4-fileCard__hoverOverlay" aria-hidden>
-                                        <span className="ch4-fileCard__hoverCta">
-                                            <img src={CH4_ASSETS.fileDownloadPill} alt="" width={20} height={20} />
-                                            <span>הורדת הקובץ</span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="ch4-fileCard__row">
-                                    <div className="ch4-fileCard__text">
-                                        <h3 className="ch4-fileCard__name">{f.name}</h3>
-                                        <p className="ch4-fileCard__desc">{f.desc}</p>
-                                    </div>
-                                    <div className="ch4-fileCard__icon" aria-hidden>
-                                        <img src={CH4_ASSETS.fileDownloadPill} alt="" width={36} height={36} />
-                                    </div>
-                                </div>
-                            </>
-                        );
-
-                        if (href) {
-                            return (
-                                <a
-                                    key={i}
-                                    href={href}
-                                    className="ch4-fileCard"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    {inner}
-                                </a>
-                            );
-                        }
-
-                        return (
-                            <article key={i} className="ch4-fileCard" tabIndex={0}>
-                                {inner}
-                            </article>
-                        );
-                    })}
+                    {list.map((f, i) => (
+                        <Page4FileCard key={i} file={f} />
+                    ))}
                 </div>
             ) : null}
         </section>

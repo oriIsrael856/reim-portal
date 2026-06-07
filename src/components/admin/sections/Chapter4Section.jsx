@@ -68,7 +68,7 @@ const Chapter4Section = ({ getValue, update }) => {
         title="קבצים"
         items={getValue('chapter4.files')}
         onUpdate={(v) => update('chapter4.files', v)}
-        newItemTemplate={{ name: 'שם קובץ', desc: 'תיאור', url: '' }}
+        newItemTemplate={{ name: 'שם קובץ', desc: 'תיאור', url: '', image: '' }}
         icon={FileText}
         storageDocumentUrlKeys={['url']}
       />

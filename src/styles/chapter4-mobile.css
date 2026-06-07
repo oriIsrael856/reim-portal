@@ -1031,6 +1031,15 @@ a.ch4-fileCard {
   pointer-events: none;
 }
 
+.ch4-fileCard__hoverActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 12px;
+  pointer-events: auto;
+}
+
 .ch4-fileCard__hoverCta {
   display: inline-flex;
   align-items: center;
@@ -1054,6 +1063,16 @@ a.ch4-fileCard {
   display: block;
 }
 
+.ch4-fileCard__hoverCta--preview {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #6546de;
+}
+
+a.ch4-fileCard__hoverCta {
+  text-decoration: none;
+}
+
 .ch4-fileCard:hover {
   /* Figma Files card hover: 280x360 -> 320x424 */
   transform: scale(1.143, 1.178);
@@ -1066,6 +1085,7 @@ a.ch4-fileCard {
 
 .ch4-fileCard:hover .ch4-fileCard__hoverOverlay {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .ch4-fileCard:active {
@@ -1079,6 +1099,7 @@ a.ch4-fileCard {
 
 .ch4-fileCard:active .ch4-fileCard__hoverOverlay {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .ch4-fileCard:focus-visible {
@@ -1090,8 +1111,10 @@ a.ch4-fileCard {
   z-index: 4;
 }
 
+.ch4-fileCard:focus-within .ch4-fileCard__hoverOverlay,
 .ch4-fileCard:focus-visible .ch4-fileCard__hoverOverlay {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .ch4-fileCard__row {
