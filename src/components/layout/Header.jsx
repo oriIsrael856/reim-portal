@@ -3,6 +3,7 @@ import { ArrowUpRight, Menu, Share2, X } from 'lucide-react';
 import {
     REIM_GPT_ACTIVITY_AGENT_URL,
     REIM_GPT_ACTIVITY_AGENT_LABEL,
+    REIM_GPT_HEADER_CAPTION,
     REIM_GPT_MARK_SRC,
     REIM_LIBRARY_SYSTEM_URL,
 } from '../../config/reimGptAssistant';
@@ -130,22 +131,34 @@ const Header = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="
-                            flex shrink-0 items-center justify-center rounded-full border border-white/50
-                            bg-[hsla(160,55%,90%,0.95)] shadow-sm transition-all duration-300
-                            hover:border-[#10a37f]/50 hover:bg-[hsla(160,55%,88%,1)]
+                            group flex min-w-0 max-w-[min(100%,28rem)] items-center gap-[0.5vw] shrink py-2
+                            border border-white/50 hover:border-[#10a37f]/50
+                            bg-[hsla(160,55%,90%,0.95)] hover:bg-[hsla(160,55%,88%,1)]
+                            rounded-full shadow-sm transition-all duration-300
                             no-underline
                         "
-                        style={{ width: 'clamp(40px, 2.8vw, 44px)', height: 'clamp(40px, 2.8vw, 44px)' }}
+                        style={{ paddingLeft: 'clamp(0.75rem, 1.5vw, 1.5rem)', paddingRight: '0.25rem' }}
                         aria-label={REIM_GPT_ACTIVITY_AGENT_LABEL}
                     >
-                        <img
-                            src={REIM_GPT_MARK_SRC}
-                            alt=""
-                            width={22}
-                            height={22}
-                            className="size-[22px] object-contain"
-                            aria-hidden
-                        />
+                        <span
+                            className="min-w-0 text-[#2D2D44] font-bold leading-tight transition-colors group-hover:text-[#0d8a6a] text-start"
+                            style={{ fontSize: 'clamp(0.65rem, 0.95vw, 0.9375rem)' }}
+                        >
+                            {REIM_GPT_HEADER_CAPTION}
+                        </span>
+                        <div
+                            className="flex shrink-0 items-center justify-center rounded-full border border-[#10a37f]/20 bg-white/80 shadow-sm"
+                            style={{ width: 'clamp(32px, 2.5vw, 40px)', height: 'clamp(32px, 2.5vw, 40px)' }}
+                        >
+                            <img
+                                src={REIM_GPT_MARK_SRC}
+                                alt=""
+                                width={22}
+                                height={22}
+                                className="size-[22px] object-contain"
+                                aria-hidden
+                            />
+                        </div>
                     </a>
                 </div>
             </div>

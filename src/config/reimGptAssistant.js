@@ -7,5 +7,8 @@ export const REIM_GPT_ACTIVITY_AGENT_URL =
 
 export const REIM_GPT_ACTIVITY_AGENT_LABEL = 'רעים סוכן אישי חכם ליצירת פעילויות';
 
+/** כיתוב ליד כפתור GPT בפס העליון (דסקטופ). */
+export const REIM_GPT_HEADER_CAPTION = 'סוכנת רעים: פה תוכלו לשאול שאלות מקצועיות';
+
 /** סימן OpenAI/GPT — קובץ SVG סטטי (Simple Icons). */
 export const REIM_GPT_MARK_SRC = '/assets/common/reim-openai-gpt-mark.svg';

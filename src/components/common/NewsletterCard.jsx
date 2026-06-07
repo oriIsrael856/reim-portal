@@ -4,6 +4,7 @@ import { db } from '../../firebase';
 import {
     REIM_GPT_ACTIVITY_AGENT_URL,
     REIM_GPT_ACTIVITY_AGENT_LABEL,
+    REIM_GPT_HEADER_CAPTION,
     REIM_GPT_MARK_SRC,
 } from '../../config/reimGptAssistant';
 
@@ -114,9 +115,9 @@ const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedS
         ? { fontSize: embeddedStyles.bodyFont.fontSize, lineHeight: 1.25 }
         : { fontSize: 'var(--home-newsletter-input-font-size)', lineHeight: 1.25 };
 
-    /** כפתור GPT — אייקון בלבד כדי לשמור על גובה כרטיס הניוזלטר. */
-    const gptChipClass =
-        'relative z-[2] flex size-9 shrink-0 items-center justify-center rounded-full border border-[#001D26] bg-white shadow-[1px_1px_0_#001D26] no-underline transition-colors hover:bg-[hsla(0,0%,100%,0.95)]';
+    const gptCaptionTypography = useEmbedded
+        ? { fontSize: embeddedStyles.bodyFont.fontSize, lineHeight: 1.25 }
+        : { fontSize: 'clamp(11px, 0.75vw, 14px)', lineHeight: 1.25 };
 
     return (
         <article
@@ -186,65 +187,81 @@ const NewsletterCard = ({ data, className = '', embeddedInRow = false, embeddedS
                 </>
             )}
 
-            <div className="relative z-[2] flex w-full shrink-0 flex-row items-center justify-center gap-2">
+            <div className="relative z-[2] flex w-full shrink-0 flex-col gap-2">
+                <form
+                    onSubmit={handleSubmit}
+                    className="flex w-full min-w-0 items-center justify-between gap-2 rounded-[100px] border border-[#001D26] bg-white py-1 ps-1 pe-2"
+                    style={inputRowStyle}
+                >
+                    <input
+                        type="email"
+                        name="email"
+                        required
+                        autoComplete="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder={placeholder}
+                        disabled={status === 'sending' || status === 'success'}
+                        className="min-w-0 flex-1 border-0 bg-transparent py-0.5 text-end font-normal leading-[1.25] tracking-[0.009375em] text-[#001D26] outline-none placeholder:text-[rgba(0,29,38,0.4)] disabled:opacity-60"
+                        style={inputTypography}
+                    />
+                    <button
+                        type="submit"
+                        disabled={status === 'sending' || status === 'success' || !isValidEmail}
+                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-[32px] p-1 transition-all duration-200 ${
+                            isValidEmail && status !== 'success'
+                                ? 'scale-105 bg-[#6546de] shadow-[2px_2px_0_#001D26] hover:scale-110 hover:shadow-[3px_3px_0_#001D26] active:scale-100 active:shadow-[1px_1px_0_#001D26]'
+                                : 'opacity-50'
+                        } ${status === 'sending' ? 'animate-pulse' : ''}`}
+                        aria-label="שליחה"
+                    >
+                        <img src={ASSETS.submit} alt="" width={28} height={28} className="size-7" aria-hidden />
+                    </button>
+                </form>
+
                 <a
                     href={REIM_GPT_ACTIVITY_AGENT_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={gptChipClass}
+                    className="
+                        group flex w-full min-w-0 items-center gap-2 rounded-full border border-[#001D26]
+                        bg-white py-1 shadow-[1px_1px_0_#001D26] transition-colors duration-200
+                        hover:bg-[hsla(0,0%,100%,0.95)] no-underline
+                    "
+                    style={{ paddingInlineStart: '0.75rem', paddingInlineEnd: '0.25rem', minHeight: '36px' }}
                     aria-label={REIM_GPT_ACTIVITY_AGENT_LABEL}
                 >
-                    <img
-                        src={REIM_GPT_MARK_SRC}
-                        alt=""
-                        width={18}
-                        height={18}
-                        className="pointer-events-none size-[18px] shrink-0 object-contain"
-                        aria-hidden
-                    />
+                    <span
+                        className="min-w-0 flex-1 text-start font-bold text-[#001D26] transition-colors group-hover:text-[#0d8a6a]"
+                        style={gptCaptionTypography}
+                    >
+                        {REIM_GPT_HEADER_CAPTION}
+                    </span>
+                    <span
+                        className="flex size-8 shrink-0 items-center justify-center rounded-full border border-[#10a37f]/25 bg-[hsla(160,55%,90%,0.95)]"
+                    >
+                        <img
+                            src={REIM_GPT_MARK_SRC}
+                            alt=""
+                            width={18}
+                            height={18}
+                            className="pointer-events-none size-[18px] shrink-0 object-contain"
+                            aria-hidden
+                        />
+                    </span>
                 </a>
-            </div>
 
-            <form
-                onSubmit={handleSubmit}
-                className="relative z-[2] flex w-full min-w-0 shrink-0 items-center justify-between gap-2 rounded-[100px] border border-[#001D26] bg-white py-1 ps-1 pe-2"
-                style={inputRowStyle}
-            >
-                <input
-                    type="email"
-                    name="email"
-                    required
-                    autoComplete="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder={placeholder}
-                    disabled={status === 'sending' || status === 'success'}
-                    className="min-w-0 flex-1 border-0 bg-transparent py-0.5 text-end font-normal leading-[1.25] tracking-[0.009375em] text-[#001D26] outline-none placeholder:text-[rgba(0,29,38,0.4)] disabled:opacity-60"
-                    style={inputTypography}
-                />
-                <button
-                    type="submit"
-                    disabled={status === 'sending' || status === 'success' || !isValidEmail}
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-[32px] p-1 transition-all duration-200 ${
-                        isValidEmail && status !== 'success'
-                            ? 'scale-105 bg-[#6546de] shadow-[2px_2px_0_#001D26] hover:scale-110 hover:shadow-[3px_3px_0_#001D26] active:scale-100 active:shadow-[1px_1px_0_#001D26]'
-                            : 'opacity-50'
-                    } ${status === 'sending' ? 'animate-pulse' : ''}`}
-                    aria-label="שליחה"
-                >
-                    <img src={ASSETS.submit} alt="" width={28} height={28} className="size-7" aria-hidden />
-                </button>
-            </form>
-            {status === 'success' ? (
-                <p className="relative z-[2] mt-1 text-center text-xs text-[#001D26]">
-                    תודה! נרשמת בהצלחה.
-                </p>
-            ) : null}
-            {status === 'error' ? (
-                <p className="relative z-[2] mt-1 text-center text-xs text-[#c4213b]">
-                    {errorMsg}
-                </p>
-            ) : null}
+                {status === 'success' ? (
+                    <p className="text-center text-xs text-[#001D26]">
+                        תודה! נרשמת בהצלחה.
+                    </p>
+                ) : null}
+                {status === 'error' ? (
+                    <p className="text-center text-xs text-[#c4213b]">
+                        {errorMsg}
+                    </p>
+                ) : null}
+            </div>
         </article>
     );
 };
