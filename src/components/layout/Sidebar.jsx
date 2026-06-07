@@ -4,6 +4,7 @@ import { useMenuOverlayStyles } from '../../hooks/useMenuOverlayStyles';
 import {
     REIM_GPT_ACTIVITY_AGENT_URL,
     REIM_GPT_ACTIVITY_AGENT_LABEL,
+    REIM_GPT_HEADER_CAPTION,
     REIM_GPT_MARK_SRC,
     REIM_LIBRARY_SYSTEM_URL,
 } from '../../config/reimGptAssistant';
@@ -280,7 +281,7 @@ export const MenuOverlay = ({
                                 <div className="shrink-0">{renderHomeRow()}</div>
                                 {renderChapterRows()}
                                 <div
-                                    className="flex w-full shrink-0 flex-row items-stretch gap-2"
+                                    className="flex w-full shrink-0 flex-col gap-2"
                                     role="group"
                                     aria-label="קישורים חיצוניים"
                                 >
@@ -289,7 +290,7 @@ export const MenuOverlay = ({
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={handleNewsletterCta}
-                                        className="flex min-w-0 flex-1 cursor-pointer items-center rounded-[100px] border-[1.5px] border-[#001d26] bg-transparent text-start font-semibold leading-snug text-[#001d26] no-underline transition hover:bg-[rgba(101,70,222,0.06)]"
+                                        className="flex min-w-0 w-full cursor-pointer items-center rounded-[100px] border-[1.5px] border-[#001d26] bg-transparent text-start font-semibold leading-snug text-[#001d26] no-underline transition hover:bg-[rgba(101,70,222,0.06)]"
                                         style={newsletterCtaStyle}
                                         aria-label="מעבר לרכזייה – מערכת רעים"
                                     >
@@ -308,10 +309,11 @@ export const MenuOverlay = ({
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={handleNewsletterCta}
-                                        className="flex min-h-[44px] shrink-0 cursor-pointer items-center justify-center rounded-[100px] border-[1.5px] border-[#001d26] bg-transparent px-3 py-2 text-[#001d26] no-underline transition hover:bg-[rgba(101,70,222,0.06)]"
+                                        className="flex min-w-0 w-full cursor-pointer items-center rounded-[100px] border-[1.5px] border-[#001d26] bg-[hsla(160,55%,90%,0.5)] text-start font-semibold leading-snug text-[#001d26] no-underline transition hover:bg-[rgba(16,163,127,0.08)]"
+                                        style={newsletterCtaStyle}
                                         aria-label={REIM_GPT_ACTIVITY_AGENT_LABEL}
                                     >
-                                        <span className="flex items-center justify-center rounded-[32px] bg-[#10a37f]/15 p-1.5">
+                                        <span className="flex shrink-0 items-center justify-center rounded-[32px] bg-[#10a37f]/15 p-1.5">
                                             <img
                                                 src={REIM_GPT_MARK_SRC}
                                                 alt=""
@@ -320,6 +322,9 @@ export const MenuOverlay = ({
                                                 className="size-[22px] shrink-0 object-contain"
                                                 aria-hidden
                                             />
+                                        </span>
+                                        <span className="min-w-0 flex-1 text-start text-sm leading-tight">
+                                            {REIM_GPT_HEADER_CAPTION}
                                         </span>
                                     </a>
                                 </div>

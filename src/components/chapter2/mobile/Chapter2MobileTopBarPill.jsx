@@ -2,6 +2,7 @@ import React from 'react';
 import {
     REIM_GPT_ACTIVITY_AGENT_URL,
     REIM_GPT_ACTIVITY_AGENT_LABEL,
+    REIM_GPT_HEADER_CAPTION,
     REIM_GPT_MARK_SRC,
     REIM_LIBRARY_SYSTEM_URL,
 } from '../../../config/reimGptAssistant';
@@ -59,15 +60,18 @@ export default function Chapter2MobileTopBarPill({
                             href={REIM_GPT_ACTIVITY_AGENT_URL}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="ch2-mobile-top-bar-pill__gpt-chip"
+                            className="ch2-mobile-top-bar-pill__mini-cta ch2-mobile-top-bar-pill__mini-cta--gpt"
                             aria-label={REIM_GPT_ACTIVITY_AGENT_LABEL}
                         >
+                            <span className="ch2-mobile-top-bar-pill__mini-cta-text">
+                                {REIM_GPT_HEADER_CAPTION}
+                            </span>
                             <img
                                 src={REIM_GPT_MARK_SRC}
                                 alt=""
                                 width={18}
                                 height={18}
-                                className="ch2-mobile-top-bar-pill__gpt-chip-img"
+                                className="ch2-mobile-top-bar-pill__gpt-chip-img shrink-0"
                                 aria-hidden
                             />
                         </a>

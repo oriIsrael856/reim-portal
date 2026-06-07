@@ -1555,23 +1555,34 @@
     text-decoration: none;
   }
 
+  .ch2-mobile-top-bar-pill__mini-cta--gpt {
+    max-width: none;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    gap: 4px;
+    padding-inline: 8px 6px;
+    background-color: hsla(160, 60%, 92%, 0.98);
+  }
+
+  .ch2-mobile-top-bar-pill__mini-cta--gpt .ch2-mobile-top-bar-pill__mini-cta-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    white-space: normal;
+    text-align: start;
+    font-size: 9px;
+    line-height: 1.25;
+  }
+
+  .ch2-mobile-top-bar-pill--with-shelf-ctas .ch2-mobile-top-bar-pill__mini-cta:not(.ch2-mobile-top-bar-pill__mini-cta--gpt) {
+    max-width: min(4.75rem, 32%);
+  }
+
   .ch2-mobile-top-bar-pill__mini-cta-text {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  .ch2-mobile-top-bar-pill__gpt-chip {
-    display: inline-flex;
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 9999px;
-    border: 1px solid rgba(0, 29, 38, 0.14);
-    background-color: hsla(160, 60%, 92%, 0.98);
-    text-decoration: none;
   }
 
   .ch2-mobile-top-bar-pill__gpt-chip-img {

@@ -5,6 +5,7 @@ import NewsletterCard from '../common/NewsletterCard';
 import {
     REIM_GPT_ACTIVITY_AGENT_URL,
     REIM_GPT_ACTIVITY_AGENT_LABEL,
+    REIM_GPT_HEADER_CAPTION,
     REIM_GPT_MARK_SRC,
     REIM_LIBRARY_SYSTEM_URL,
 } from '../../config/reimGptAssistant';
@@ -145,15 +146,18 @@ export default function HomeMobileFigma191View({ data, navigateTo, footer, heade
                                 href={REIM_GPT_ACTIVITY_AGENT_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex size-8 shrink-0 items-center justify-center rounded-full border border-[#001D26]/15 bg-[hsla(160,60%,92%,0.95)] no-underline"
+                                className="inline-flex min-w-0 max-w-[min(12rem,58%)] flex-1 items-center gap-1 rounded-full border border-[#001D26]/15 bg-[hsla(160,60%,92%,0.95)] px-2 py-1 font-rubik text-[9px] font-bold leading-tight text-[#001D26] no-underline"
                                 aria-label={REIM_GPT_ACTIVITY_AGENT_LABEL}
                             >
+                                <span className="min-w-0 flex-1 text-start line-clamp-2">
+                                    {REIM_GPT_HEADER_CAPTION}
+                                </span>
                                 <img
                                     src={REIM_GPT_MARK_SRC}
                                     alt=""
                                     width={16}
                                     height={16}
-                                    className="size-4 object-contain"
+                                    className="size-4 shrink-0 object-contain"
                                     aria-hidden
                                 />
                             </a>
